@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+
+.idea
+*.iml
+*.ipr
+*.iws
+
+*.bak
+
+.settings/
+target/
+build/
+
+*.class
+
+node_modules/*
