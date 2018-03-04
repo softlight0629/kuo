@@ -12,6 +12,7 @@
 		<module>kuo-core</module>
 		<module>kuo-auth</module>
 		<module>kuo-resource</module>
+		<module>kuo-zuul</module>
 	</modules>
 	<packaging>pom</packaging>
 
@@ -84,6 +85,18 @@
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Dalston.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>

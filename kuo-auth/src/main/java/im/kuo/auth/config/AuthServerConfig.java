@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.config.annotation.authentication.ProviderManagerBuilder;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -14,6 +17,9 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.CompositeTokenGranter;
 import org.springframework.security.oauth2.provider.TokenGranter;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.context.request.WebRequestInterceptor;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -26,10 +32,10 @@ import java.util.List;
 public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Inject
-    private AuthenticationManager authenticationManager;
+    private UserDetailsService oAuthUserService;
 
     @Inject
-    private OAuthUserService oAuthUserService;
+    private AuthenticationManager authenticationManager;
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -44,28 +50,32 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
         clients.inMemory()
                 .withClient("SimpleClientId")
                 .resourceIds("auth", "resource")
-                .secret("secret")
-                .authorizedGrantTypes("authorization_code", "password", "social")
+                .authorizedGrantTypes("authorization_code", "password", "social", "implicit", "refresh_token")
                 .scopes("user_info")
-                .autoApprove(true);
+                .autoApprove(true)
+                .refreshTokenValiditySeconds(24 * 60 * 60);
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return oAuthUserService;
+        return new OAuthUserService();
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager)
+        endpoints
                 .tokenGranter(tokenGranter(endpoints))
+                .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService())
                 .allowedTokenEndpointRequestMethods(HttpMethod.POST, HttpMethod.GET);
     }
 
     private TokenGranter tokenGranter(final AuthorizationServerEndpointsConfigurer endpoints) {
-        List<TokenGranter> granters = new ArrayList<>(Arrays.asList(endpoints.getTokenGranter()));
+        List<TokenGranter> granters = new ArrayList<>();
+        granters.add(endpoints.getTokenGranter());
         granters.add(new SocialTokenGranter(authenticationManager, endpoints.getTokenServices(), endpoints.getClientDetailsService(), endpoints.getOAuth2RequestFactory()));
         return new CompositeTokenGranter(granters);
     }
+
+
 }
