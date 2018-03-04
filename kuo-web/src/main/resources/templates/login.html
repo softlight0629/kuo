@@ -5,10 +5,12 @@
     <title>Spring Security Example </title>
 </head>
 <body>
-<form action="/signin/github" method="post">
+<form th:action="@{/signin/github}" method="post">
     <!--<div><label> User Name : <input type="text" name="username"/> </label></div>-->
     <!--<div><label> Password: <input type="password" name="password"/> </label></div>-->
     <div><input type="submit" value="Sign In"/></div>
+
+    <p sec:authorization="${pricipal}"></p>
 </form>
 </body>
 </html>

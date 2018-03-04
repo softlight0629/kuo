@@ -45,7 +45,10 @@ public class SocialConfig {
 
     @Bean
     public ProviderSignInController providerSignInController() {
-        return new ProviderSignInController(connectionFactoryLocator(), usersConnectionRepository(), new SimpleSignInAdapter());
+        ProviderSignInController controller =  new ProviderSignInController(connectionFactoryLocator(), usersConnectionRepository(), new SimpleSignInAdapter());
+        controller.setApplicationUrl("http://100.72.192.136/api");
+
+        return controller;
     }
 
     @Bean

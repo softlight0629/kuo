@@ -1,0 +1,44 @@
+server:
+  port: 8081
+  context-path: /auth
+  basic:
+    enabled: false
+
+spring:
+  thymeleaf:
+    cache: false
+    check-template: true
+    check-template-location: true
+    enabled: true
+    encoding: UTF-8
+    mode: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
+  jpa:
+    generate-ddl: true
+    show-sql: true
+
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: h2
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+github:
+  client:
+    clientId: 6659547c38307112d7bc
+    clientSecret: 8cb10909d1d23286bcc952811f2f80c716d945f9
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
+
+security:
+    oauth2:
+        resource:
+            filter-order: 3

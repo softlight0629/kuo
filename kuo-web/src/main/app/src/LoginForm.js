@@ -50,8 +50,8 @@ class NormalLoginForm extends React.Component {
             </Button>
           </FormItem>
         </Form>
-        <form action="api/signin/github">
-            <input type="submit" value="Sign In22" />
+        <form action="/signin/github" method="post">
+            <input type="submit" value="Sign In" />
         </form>
       </div>
     );

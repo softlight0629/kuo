@@ -1,0 +1,10 @@
+server:
+  port: 8082
+  context-path: /resource
+  basic:
+    enabled: false
+
+security:
+    oauth2:
+        resource:
+            filter-order: 3

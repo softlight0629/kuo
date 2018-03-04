@@ -1,5 +1,6 @@
 package im.kuo.web.config;
 
+import im.kuo.web.security.KuoAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoTokenServices;
@@ -44,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.debug(true);
+        web.debug(true).ignoring().antMatchers("/*.html", "/js/**", "/static/**", "/resources/**","/resources/public/**", "/**/*.js");
     }
 
     @Override
@@ -54,19 +55,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/", "/home", "/login", "/register", "/connect/**").permitAll()
-//                .anyRequest().permitAll()
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/", "/home", "/login", "/register", "/connect/**", "/signin/**").permitAll()
+                .anyRequest().authenticated();
 //                .and()
 //                .formLogin()
 //                .loginPage("/login")
 //                .defaultSuccessUrl("/welcome")
 //                .permitAll();
 
-        http.csrf().disable()
-                .authorizeRequests()
-                .anyRequest().permitAll();
+//        http.csrf().disable()
+//                .authorizeRequests()
+//                .anyRequest().permitAll();
     }
 
     @Bean
