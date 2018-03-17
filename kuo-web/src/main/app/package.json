@@ -4,7 +4,11 @@
   "private": true,
   "dependencies": {
     "antd": "^3.2.2",
+    "axios": "^0.18.0",
+    "browser-cookies": "^1.2.0",
     "history": "^4.7.2",
+    "less": "^3.0.1",
+    "less-loader": "^4.1.0",
     "mobx": "^3.5.1",
     "mobx-react": "^4.4.2",
     "mobx-react-router": "^4.0.1",
@@ -20,5 +24,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://100.72.192.136"
+  "proxy": "http://192.168.1.100:8081"
 }

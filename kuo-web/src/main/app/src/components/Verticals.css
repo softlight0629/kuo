@@ -1,0 +1,46 @@
+.verticals-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 2;
+  width: 50%;
+  height: 100%;
+}
+
+.verticals-container h1 {
+  color: #121416;
+  font-size: 3.75vmax;
+  line-height: 4.9vmax;
+  letter-spacing: .08vmax;
+  margin: 0 0 7.8vh;
+  font-weight: 100;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.verticals-container nav {
+  width: 50%;
+}
+
+.verticals-list-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.verticals-list-group ul {
+  list-style: none;
+}
+
+.verticals-list-group ul li {
+  font-size: 1.15vmax;
+  line-height: 1.92vmax;
+  letter-spacing: .01vmax;
+  text-align: left;
+  margin-bottom: 2.8vh;
+  cursor: pointer;
+
+  color: #121416;
+  font-weight: 400;
+  padding-right: .2vw;
+}

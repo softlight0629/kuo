@@ -3,22 +3,16 @@ import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { computed } from 'mobx';
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
+import client from '../utils/client';
 const FormItem = Form.Item;
 
 class NormalLoginForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields(async (err, values) => {
       if (!err) {
-        fetch('/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(values),
-        })
-          .then(response => {
-          });
+        await client.login(values.phone, values.password);
+        this.props.history.push('/');
       }
     });
 
@@ -50,9 +44,6 @@ class NormalLoginForm extends React.Component {
             </Button>
           </FormItem>
         </Form>
-        <form action="/signin/github" method="post">
-            <input type="submit" value="Sign In" />
-        </form>
       </div>
     );
   }

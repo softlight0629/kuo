@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ResourceController {
 
-    @GetMapping("/api/resource")
+    @GetMapping("/api/data")
     public TestData test() {
         return new TestData("123", "456");
     }

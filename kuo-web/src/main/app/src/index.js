@@ -1,29 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
-import { Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import AuthStore from './stores/auth_store';
+import SiteStore from './stores/site_store';
 
-const history = createBrowserHistory();
-// const routingStore = new RouterStore();
+const authStore = new AuthStore();
+const siteStore = new SiteStore();
 
-
-// const stores = {
-//   routing: routingStore,
-// };
-
-// const history = syncHistoryWithStore(browserHistory, routingStore);
-
-
-// ReactDOM.render(<App />, document.getElementById('root'));
+const stores = {
+  authStore,
+  siteStore,
+}
 
 ReactDOM.render(
-  <Router history={history}>
-    <App />
-  </Router>,
+  <Provider {...stores}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 )
 registerServiceWorker();
