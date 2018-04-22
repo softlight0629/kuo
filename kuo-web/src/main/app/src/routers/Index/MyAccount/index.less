@@ -1,0 +1,213 @@
+.my-account {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  color: #20455e;
+  min-width: 964px;
+  overflow: auto;
+  overflow-x: hidden;
+  
+  .site-section-container {
+    min-width: 372px;
+    padding-left: 36px;
+    width: 1px;
+
+    .site-section {
+
+      .site-name {
+        margin-top: 20px;
+        max-width: 300px;
+        display: flex;
+
+        &-dropdown {
+          margin-top: 15px;
+          cursor: pointer;
+          color: #162d3d;
+        }
+      }
+
+      .site-role {
+        color: #20455e;
+
+        .role-name {
+          display: inline-block;
+        }
+      }
+
+      .site-graphics-container {
+        margin: 28px 0 36px;
+        display: inline-block;
+        
+        .site-graphics {
+          text-decoration: none;
+          position: relative;
+          display: block;
+
+          .site-thumbnail {
+            color: #577083;
+            display: inline-block;
+            height: 196px;
+            position: relative;
+
+            .browser-navbar {
+              background: url('https://static.parastorage.com/services/wix-dashboard-app-statics/1.1832.0/bower_components/wix-dashboard-framework-statics/dist/images/svg/browser.svg?1521039439') no-repeat;
+              height: 12px;
+              width: 300px;
+              background-size: 300px 12px;
+            }
+
+            .graphics-wrapper {
+              box-shadow: 0 2px 5px 0 rgba(43,86,114,.8);
+              border-radius: 0 0 8px 8px;
+              border-top: 0;
+              box-sizing: border-box;
+              height: 184px;
+              width: 300px;
+            }
+
+            .button-wrapper {
+              position: absolute;
+              background: rgba(2333,241,246,.8);
+              bottom: 3px;
+              width: 300px;
+              height: 77px;
+              border-radius: 0 0 8px 8px;
+              overflow: hidden;
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
+      }
+
+      .site-info {
+        padding-left: 6px;
+        color: #20455e;
+        font-size: 14px;
+
+        section {
+          margin: 0 0 17px;
+
+          .label {
+            display: inline-block;
+          }
+
+          .data {
+            display: inline-block;
+          }
+
+          a {
+            text-decoration: none;
+            color: #3899ec;
+          }
+        }
+      }
+    }
+  }
+
+
+  .apps-section {
+    width: 100%;
+    height: 100%;
+    flex-flow: 1;
+    padding: 0;
+    background: #fff;
+
+    .adaptive-content-wrapper {
+      min-height: calc(100vh - 48px);
+      background: rgba(219,232,231,.2);
+      background-image: radial-gradient(ellipse 59% 100% at 93% 30%,#f0d7ca,rgba(219,232,231,.2) 90%),radial-gradient(ellipse 59% 140% at 0 120%,#f0d7ca,rgba(219,232,231,.2) 60%),radial-gradient(ellipse 60% 100% at 5% 20%,#b3d7d5,rgba(219,232,231,.2) 100%),radial-gradient(ellipse 60% 100% at 100% 110%,#b3d7d5,rgba(219,232,231,.2) 90%);
+      
+      .adaptive-content {
+        width: 798px;
+        margin: 0 auto;
+
+        .my-apps {
+          display: flex;
+          flex-direction: column;
+          width: 828px;
+
+          &-header {
+            margin-right: 30px;
+            margin-top: 36px;
+
+            h2 {
+              font-weight: 400;
+              font-size: 24px;
+              margin: 0 0 30px 30px;
+              float: left;
+            }
+
+            .right {
+              float: right;
+              position: relative;
+              top: -3px;
+            }
+          }
+
+          &-article {
+            position: relative;
+
+            .app-boxes-container {
+              display: flex;
+              flex-wrap: wrap;
+        
+              .app-box {
+                border-radius: 12px;
+                z-index: 10;
+                background-color: #fff;
+                box-shadow: 0 11px 18px 0 rgba(32,48,60,.05);
+                width: 246px;
+                position: relative;
+                height:240px;
+                margin: 0 30px 30px 0;
+                overflow: hidden;
+
+                .item {
+                  text-decoration: none;
+                  color: #162d3d;
+                  padding-top: 48px;
+                  display: block;
+                  cursor: pointer;
+
+                  .icon {
+                    height: 60px;
+                    width: 60px;
+                    background: #20455e;
+                    margin: 0 auto 26px;
+                    border-radius: 50px;
+                  }
+
+                  .name {
+                    color: #2b5672;
+                    font-size: 20px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    width: 90%;
+                    margin: 0 auto 11px;
+                    text-overflow: ellipsis;
+                    text-align: center;
+                  }
+
+                  .description {
+                    font-size: 14px;
+                    color: #7a92a5;
+                    height: 56px;
+                    line-height: 18px;
+                    overflow: hidden;
+                    width: 80%;
+                    margin: 0 auto;
+                    opacity: 1;
+                    transition: all .2s ease-out .3s;
+                    transform-origin: 50% 13%;
+                    text-align: center;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

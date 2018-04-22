@@ -1,27 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
 import { Provider } from 'mobx-react';
-import './index.css';
+import { useStrict } from 'mobx';
+import { AppContainer } from 'react-hot-loader';
+import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
+import {Router } from 'react-router';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import AuthStore from './stores/auth_store';
-import SiteStore from './stores/site_store';
+import stores from './stores';
 
-const authStore = new AuthStore();
-const siteStore = new SiteStore();
+import './index.css';
 
-const stores = {
-  authStore,
-  siteStore,
-}
+const browserHistory = createBrowserHistory();
+const routingStore = new RouterStore();
+
+const history = syncHistoryWithStore(browserHistory, routingStore);
+useStrict(true);
 
 ReactDOM.render(
-  <Provider {...stores}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
+  <AppContainer>
+    <Provider routing={routingStore} {...stores}>
+      <Router history={history}>
+        <App />
+      </Router>
+    </Provider>
+  </AppContainer>,
   document.getElementById('root')
 )
 registerServiceWorker();

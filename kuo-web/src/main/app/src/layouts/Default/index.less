@@ -1,0 +1,33 @@
+.layout {
+  height: 100%;
+
+  .layout-header {
+    display: flex;
+    background: #fff;
+    box-shadow: 0 0 11px rgba(0,0,0,.5);
+    display: flex;
+    z-index: 1;
+    height: 64px;
+  
+    .logo {
+      padding-top: 16px;
+    }
+  
+    .ant-menu-item {
+      height: 64px;
+      line-height: 64px;
+    }
+  }
+
+  .layout-body {
+    position: relative;
+    top: 64px;
+    height: calc(100% - 64px);
+
+    .layout-main {
+      height: 100%;
+    }
+  }
+}
+
+

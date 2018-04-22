@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import { Route } from 'react-router-dom';
-import { withRouter } from 'react-router';
-import logo from './logo.svg';
-import './App.css';
-import client from './utils/client';
-import KuoLayout from './layouts/KuoLayout';
+import { withRouter, Route, Link, Switch } from 'react-router';
+import Index from './routers/Index';
+import WorkSpace from './routers/WorkSpace';
+import './App.less';
 
+@withRouter
+@inject('workSpaceStore',  'authStore')
+@observer
 class App extends Component {
 
-  async componentDidMount() {
-    const { siteStore } = this.props;
-
-    const res = await siteStore.load(1);
-
-    console.log(res);
+  componentWillMount() {
+    this.props.authStore.authenticate();
   }
 
   render() {
-    // const { siteStore } = this.props;
 
     return (
       <div className="app">
-        <KuoLayout />
+        <Switch>
+          <Route path="/workspace/:guid" component={WorkSpace} />
+          <Route path="/" component={Index} />
+        </Switch>
       </div>
     );
   }
 }
 
-export default withRouter(inject('siteStore')(observer(App)));
+export default App;

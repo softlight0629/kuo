@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: queue.log.messages
+          binder: local_rabbit
+        output:
+          destination: queue.log.messages
+          binder: local_rabbit
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 127.0.0.1
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /

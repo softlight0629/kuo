@@ -13,6 +13,7 @@
 		<module>kuo-auth</module>
 		<module>kuo-resource</module>
 		<module>kuo-zuul</module>
+		<module>kuo-stream</module>
 	</modules>
 	<packaging>pom</packaging>
 
@@ -100,6 +101,13 @@
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
 				<version>Dalston.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-stream-dependencies</artifactId>
+				<version>Ditmars.SR3</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
