@@ -20,10 +20,19 @@ class ToolBar extends Component {
     // });
 
     this.props.sketchBoardStore.addAst({
-      width: 150,
-      height: 150,
-      x: 10,
-      y: 10,
+      spec: {
+        rect: {
+          width: 216,
+          height: 48,
+          x: 100,
+          y: 100,
+        },
+        style: {
+          fill: {
+            color: '#d3b5c6',
+          },
+        },
+      }
     });
   }
 

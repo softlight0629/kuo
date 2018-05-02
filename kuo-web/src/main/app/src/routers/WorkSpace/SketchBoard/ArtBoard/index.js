@@ -6,7 +6,8 @@ import MasterPage from './MasterPage';
 import './index.less';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
-import { AstvButton } from '../Assets';
+import { SketchPicker } from 'react-color';
+import AssetBox from '../AssetBox';
 
 @withRouter
 @inject('workSpaceStore', 'sketchBoardStore')
@@ -21,6 +22,11 @@ class ArtBoard extends Component {
           height: 48,
           x: 100,
           y: 100,
+        },
+        style: {
+          fill: {
+            color: '#fdf5fc',
+          },
         },
       }
     });
@@ -45,7 +51,7 @@ class ArtBoard extends Component {
                       <div className="mainPageBg">{ pageResource.template }</div>
                       <div className="mainPageBgContent">
                       {
-                        astms.map(astm => <AstvButton astm={astm} />)
+                        astms.map(astm => <AssetBox astm={astm} />)
                       }
                       </div>
                     </div>

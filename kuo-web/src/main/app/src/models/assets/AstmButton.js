@@ -19,6 +19,10 @@ class AstmButton {
     this.spec.rect.width = width;
     this.spec.rect.height = height;
   }
+
+  @action fillColor(color) {
+    this.spec.style.fill.color = color;
+  }
 }
 
 export default AstmButton;

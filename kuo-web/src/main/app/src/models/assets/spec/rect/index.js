@@ -5,7 +5,7 @@ class Rect {
   @observable x;
   @observable y;
   @observable width;
-  @observable y;
+  @observable height;
 
   constructor(option) {
     extendObservable(this, option);
