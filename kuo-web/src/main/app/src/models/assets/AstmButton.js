@@ -11,17 +11,16 @@ class AstmButton {
   }
 
   @action position(x, y) {
-    this.spec.rect.x = x;
-    this.spec.rect.y = y;
+   
+    this.spec.position(x, y);
   } 
 
-  @action size(width, height) {
-    this.spec.rect.width = width;
-    this.spec.rect.height = height;
+  size(width, height) {
+    this.spec.size(width, height);
   }
 
-  @action fillColor(color) {
-    this.spec.style.fill.color = color;
+  fillColor(color) {
+    this.spec.fillColor(color);
   }
 }
 

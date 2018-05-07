@@ -53,7 +53,6 @@ class AssetBox extends Component {
     }
 
     return (
-        
         <Rnd
           style={stylus}
           className="asset-handles"

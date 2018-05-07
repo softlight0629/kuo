@@ -1,12 +1,12 @@
 import { observable, action } from 'mobx';
 
-class CompToolUiStore {
-  
+class AstmRefUiStore {
+
   @observable.ref astm;
 
-  @action setAstm(astm) {
+  @action refAstm(astm) {
     this.astm = astm;
   }
 }
 
-export default CompToolUiStore;
+export default AstmRefUiStore;

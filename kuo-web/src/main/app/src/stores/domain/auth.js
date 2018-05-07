@@ -12,7 +12,7 @@ class AuthStore {
     this.service = service;
   }
 
-  login() {
+  login(callback) {
     oauth.authenticate()
       .then((res) => {
         this.fetchUserAuth();
@@ -32,7 +32,10 @@ class AuthStore {
 
   authenticate() {
     if (!this.isAuthenticated) {
-      this.fetchUserAuth();
+      oauth.authenticate()
+        .then((res) => {
+          this.fetchUserAuth();
+        });
     }
   }
 }

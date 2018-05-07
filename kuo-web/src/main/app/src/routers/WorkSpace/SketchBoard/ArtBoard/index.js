@@ -23,10 +23,18 @@ class ArtBoard extends Component {
           x: 100,
           y: 100,
         },
+        text: {
+          content: 'this is text',
+        },
         style: {
           fill: {
             color: '#fdf5fc',
           },
+          border: {
+            color: '#fdf5fc',
+            width: 1,
+            opacity: '0.82',
+          }
         },
       }
     });

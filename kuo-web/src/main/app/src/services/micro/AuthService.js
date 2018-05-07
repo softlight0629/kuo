@@ -10,7 +10,7 @@ class AuthService {
   }
 
   async fetchUserAuth() {
-    return await oauth.get(`${endpoint}/api/user/me`);
+    return await oauth.get(`${endpoint}/user/me`);
   }
 }
 

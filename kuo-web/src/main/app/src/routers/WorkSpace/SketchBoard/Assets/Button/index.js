@@ -14,15 +14,25 @@ const style = {
 }
 
 @withRouter
-@inject('designPanelUiStore')
+@inject('astmRefUiStore')
 @observer
 class AstvButton extends Component {
 
   render() {
+    const { astm } = this.props.astmRefUiStore;
+    let content = '';
+    let width = 1;
+    let color = '#fff';
+    if (astm) {
+      content = astm.spec.text.content;
+      width = astm.spec.style.border.width;
+      color = astm.spec.style.border.color;
+    }
+
     return (
-      <div className="asset">
+      <div className="asset" style={{ borderWidth: width, borderStyle: 'solid', borderColor:color  }}>
         <a className="ast-button">
-          <span>All Posts</span>
+          <span>{content}</span>
         </a>
       </div>
     )

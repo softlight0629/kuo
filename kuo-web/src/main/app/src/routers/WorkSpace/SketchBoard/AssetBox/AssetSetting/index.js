@@ -5,15 +5,47 @@ import { withRouter } from 'react-router';
 
 import './index.less';
 
-@inject('designPanelUiStore')
+@inject('designPanelUiStore', 'astmRefUiStore')
 class AssetSetting extends Component {
 
-  showDesignPanel() {
+  showStylePanel() {
     const { astm } = this.props;
 
-    this.props.designPanelUiStore.setAstm(astm);
+    this.props.astmRefUiStore.refAstm(astm);
     this.props.designPanelUiStore.position(astm.spec.rect.x + astm.spec.rect.width + 25, astm.spec.rect.y);
-    this.props.designPanelUiStore.show();
+    this.props.designPanelUiStore.showStylePanel();
+  }
+
+  showTextPanel() {
+    const { astm } = this.props;
+
+    this.props.astmRefUiStore.refAstm(astm);
+    this.props.designPanelUiStore.position(astm.spec.rect.x + astm.spec.rect.width + 25, astm.spec.rect.y);
+    this.props.designPanelUiStore.showTextPanel();
+  }
+
+  showLayoutPanel() {
+    const { astm } = this.props;
+
+    this.props.astmRefUiStore.refAstm(astm);
+    this.props.designPanelUiStore.position(astm.spec.rect.x + astm.spec.rect.width + 25, astm.spec.rect.y);
+    this.props.designPanelUiStore.showLayoutPanel();
+  }
+
+  showAnimationPanel() {
+    const { astm } = this.props;
+
+    this.props.astmRefUiStore.refAstm(astm);
+    this.props.designPanelUiStore.position(astm.spec.rect.x + astm.spec.rect.width + 25, astm.spec.rect.y);
+    this.props.designPanelUiStore.showAnimationPanel();
+  }
+
+  showLinkedPanel() {
+    const { astm } = this.props;
+
+    this.props.astmRefUiStore.refAstm(astm);
+    this.props.designPanelUiStore.position(astm.spec.rect.x + astm.spec.rect.width + 25, astm.spec.rect.y);
+    this.props.designPanelUiStore.showLinkedPanel();
   }
 
   render() {
@@ -21,19 +53,19 @@ class AssetSetting extends Component {
     return (
       <div className="asset-setting">
         <ul className="asset-setting-btns">
-          <li className="asset-setting-btn" onClick={() => this.showDesignPanel() }>
+          <li className="asset-setting-btn" onClick={() => this.showTextPanel() }>
             <span className="label" >Change Text</span>
           </li>
-          <li className="asset-setting-btn" onClick={() => this.showDesignPanel()}>
+          <li className="asset-setting-btn" onClick={() => this.showLayoutPanel()}>
             <Icon type="layout" />
           </li>
-          <li className="asset-setting-btn">
+          <li className="asset-setting-btn" onClick={() => this.showStylePanel()}>
             <Icon type="dashboard" />
           </li>
-          <li className="asset-setting-btn">
+          <li className="asset-setting-btn" onClick={() => this.showAnimationPanel()}>
             <Icon type="sync" />
           </li>
-          <li className="asset-setting-btn">
+          <li className="asset-setting-btn" onClick={() => this.showLinkedPanel()}>
             <Icon type="link" />
           </li>
           <li className="asset-setting-btn">

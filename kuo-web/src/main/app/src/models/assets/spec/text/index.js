@@ -1,14 +1,12 @@
 import { observable, extendObservable } from 'mobx';
 
-class SpecLayout {
-
-  @observable align;
+class SpecText {
   
-  @observable margin;
+  @observable content;
 
   constructor(option) {
     extendObservable(this, option);
   }
 }
 
-export default SpecLayout;
+export default SpecText;

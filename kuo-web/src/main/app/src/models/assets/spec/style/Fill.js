@@ -9,8 +9,6 @@ class Fill {
   constructor(option) {
     extendObservable(this, option);
   }
-
-  
 }
 
 export default Fill;

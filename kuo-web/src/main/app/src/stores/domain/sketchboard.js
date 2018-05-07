@@ -11,7 +11,10 @@ class SketchBoardStore {
   }
 
   @action addAst(option) {
-    this.astms.push(new AstmButton(option));
+    const astm = new AstmButton(option);
+    this.astms.push(astm);
+
+    this.store.astmRefUiStore.refAstm(astm);
   }
 }
 

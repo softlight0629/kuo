@@ -17,7 +17,7 @@ class SpecStyle {
     this.fill = new Fill(option.fill || {});
     this.border = new Border(option.border || {});
     this.corner = new Corner(option.corner || {});
-    this.shadow = new Shadow(option.shadow | {});
+    this.shadow = new Shadow(option.shadow || {});
     this.text = new Text(option.text || {});
   }
 }
