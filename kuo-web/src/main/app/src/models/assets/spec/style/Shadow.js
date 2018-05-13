@@ -1,21 +1,51 @@
-import { observable, extendObservable } from 'mobx';
+import { observable, extendObservable, action } from 'mobx';
 
 class Shadow {
+
+  @observable enable = false;
   
-  @observable angle;
+  @observable angle = 225;
 
-  @observable distance;
+  @observable distance = 0;
 
-  @observable size;
+  @observable size = 0;
 
-  @observable blur;
+  @observable blur = 0;
 
-  @observable color;
+  @observable color = '#000000';
 
-  @observable opacity;
+  @observable opacity = 100;
 
   constructor(option) {
     extendObservable(this, option);
+  }
+
+  @action setEnable(enable) {
+    this.enable = enable;
+  }
+
+  @action setAngle(angle) {
+    this.angle = angle;
+  }
+
+  @action setDistance(distance) {
+    this.distance = distance;
+  }
+
+  @action setSize(size) {
+    this.size = size;
+  }
+
+  @action setBlur(blur) {
+    this.blur = blur;
+  }
+
+  @action setColor(color) {
+    this.color = color;
+  }
+
+  @action setOpacity(opacity) {
+    this.opacity = opacity;
   }
 }
 

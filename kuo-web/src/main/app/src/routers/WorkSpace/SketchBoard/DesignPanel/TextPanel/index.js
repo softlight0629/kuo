@@ -17,6 +17,7 @@ class TextPanel extends Component {
 
   render() {
     const { astm } = this.props;
+    const { text } = astm.spec;
 
     return (
       <PanelWrapper title="Button Settings" onClose={this.close.bind(this)}>
@@ -26,7 +27,7 @@ class TextPanel extends Component {
               <span>what does this button say?</span>
             </div>
             <div className="panel-section-input">
-              <Input value={astm.spec.text.content} onChange={(e) => astm.spec.content(e.target.value)}/>
+              <Input value={text.content} onChange={(e) => text.setContent(e.target.value)}/>
             </div>
           </div>
           <hr className="divider-long" />

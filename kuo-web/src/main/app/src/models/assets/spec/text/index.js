@@ -1,4 +1,4 @@
-import { observable, extendObservable } from 'mobx';
+import { observable, extendObservable, action } from 'mobx';
 
 class SpecText {
   
@@ -7,6 +7,11 @@ class SpecText {
   constructor(option) {
     extendObservable(this, option);
   }
+
+  @action setContent(content) {
+    this.content = content;
+  }
 }
+
 
 export default SpecText;

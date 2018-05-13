@@ -14,7 +14,7 @@ class ColorPickerUiStore {
     this.colorPickerVisible = true;
   }
 
-  @action hide() {
+  @action close() {
     this.colorPickerVisible = false;
   }
 }

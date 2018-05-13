@@ -1,0 +1,41 @@
+.layout-panel {
+  .panel-section {
+
+    &-thumbnails {
+      display: flex;
+      margin-bottom: 6px;
+      margin-top: 18px;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .thumbnail-wrapper {
+        margin-right: 12px;
+        width: 38px;
+        height: 38px;
+
+        .control-thumbnail {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          cursor: pointer;
+
+          .thumbnail-bg {
+            background-color: #eaf7ff;
+            border-radius: 8px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+
+        .selected {
+          .thumbnail-bg {
+            background-color: #3899ec;
+          }
+          
+        }
+      }
+    }
+  }
+}

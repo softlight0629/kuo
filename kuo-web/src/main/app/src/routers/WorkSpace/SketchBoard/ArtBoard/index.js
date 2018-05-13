@@ -17,6 +17,10 @@ class ArtBoard extends Component {
   componentDidMount() {
     this.props.sketchBoardStore.addAst({
       spec: {
+        layout: {
+          align: 'left',
+          margin: 0,
+        },
         rect: {
           width: 216,
           height: 48,
@@ -29,11 +33,23 @@ class ArtBoard extends Component {
         style: {
           fill: {
             color: '#fdf5fc',
+            opacity: 82,
           },
           border: {
             color: '#fdf5fc',
             width: 1,
-            opacity: '0.82',
+            opacity: 82,
+          },
+          font: {
+            fontFamily: 'Arial',
+            fontSize: 12,
+            color: '#000',
+          },
+          corner: {
+            leftTop: 0,
+            rightTop: 0,
+            leftBottom: 0,
+            rightBottom: 0,
           }
         },
       }

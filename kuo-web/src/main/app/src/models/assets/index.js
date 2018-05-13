@@ -1,1 +1,1 @@
-export AstmButton from './AstmButton';
+export AstmButton from './Button';

@@ -30,12 +30,12 @@ class SketchBoard extends Component {
           <div className="sketch-board-canvas">
             <ArtBoard />
             <CompToolBar />
-            { stylePanelVisible && <StylePanel /> }
+            { stylePanelVisible && <StylePanel astm={astm}/> }
             { textPanelVisible && <TextPanel astm={astm} /> }
-            { layoutPanelVisible &&  <LayoutPanel /> }
-            { animationPanelVisible && <AnimationPanel /> }
-            { linkedPanelVisible && <LinkedPanel /> }
-            { colorPickerVisible && <ColorPicker /> }
+            { layoutPanelVisible &&  <LayoutPanel astm={astm}/> }
+            { animationPanelVisible && <AnimationPanel astm={astm}/> }
+            { linkedPanelVisible && <LinkedPanel astm={astm}/> }
+            { colorPickerVisible && <ColorPicker astm={astm}/> }
           </div>
           {/* <ResBtnGrp /> */}
         </div>

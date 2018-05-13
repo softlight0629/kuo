@@ -1,4 +1,4 @@
-import { observable, extendObservable } from 'mobx';
+import { observable, extendObservable, action } from 'mobx';
 
 class SpecLinked {
 
@@ -14,6 +14,26 @@ class SpecLinked {
 
   constructor(option) {
     extendObservable(this, option);
+  }
+
+  @action setPage(page) {
+    this.page = page;
+  }
+
+  @action setAnchor(anchor) {
+    this.anchor = anchor;
+  }
+
+  @action setWebAddress(webAddress) {
+    this.webAddress = webAddress;
+  }
+
+  @action setEmail(email) {
+    this.email = email;
+  }
+
+  @action setPhoneNum(phoneNum) {
+    this.phoneNum = phoneNum;
   }
 }
 

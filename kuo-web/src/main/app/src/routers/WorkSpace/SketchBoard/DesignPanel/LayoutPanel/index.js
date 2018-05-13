@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Slider, Icon } from 'antd';
+import { Slider, Icon, InputNumber } from 'antd';
 import PanelWrapper from '../PanelWrapper';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
 
+import './index.less';
+
 @withRouter
-@inject('designPanelUiStore')
+@inject('designPanelUiStore', 'astmRefUiStore')
 @observer
 class LayoutPanel extends Component {
 
@@ -14,47 +16,54 @@ class LayoutPanel extends Component {
   }
 
   render() {
+    const { astm } = this.props.astmRefUiStore;
+    const { layout } = astm.spec;
+
     return (
-      <PanelWrapper title="Button Layouts" onClose={this.close.bind(this)}> 
+      <PanelWrapper title="Button Layouts" onClose={this.close.bind(this)}>
         <div className="layout-panel">
-          <div className="panel-section panel-section-with-thumbnails">
-            <div className="panel-section-label">
-              <span>How's text aligned?</span>
-            </div>
-            <div className="panel-section-thumbnails">
-              <div className="thumbnail-wrapper">
-                <div className="control-thumbnail">
-                  <div className="thumbnail-bg">
-                    <Icon type="dashboard" />
+          <section className="comp-panel-content">
+            <div className="composite-thumbnails has-label">
+              <label className="label">How's text aligned?</label>
+              <div className="composite-thumbnails-list">
+                <div className="thumbnail-wrapper">
+                  <div className={`control-thumbnail ${layout.align === 'left' ? 'selected' : ''}`} onClick={() => layout.setAlign('left')}>
+                    <div className="thumbnail-bg">
+                      <Icon type="align-left" />
+                    </div>
+                  </div>
+                </div>
+                <div className="thumbnail-wrapper">
+                  <div className={`control-thumbnail ${layout.align === 'center' ? 'selected' : ''}`} onClick={() => layout.setAlign('center')}>
+                    <div className="thumbnail-bg">
+                      <Icon type="align-center" />
+                    </div>
+                  </div>
+                </div>
+                <div className="thumbnail-wrapper">
+                  <div className={`control-thumbnail ${layout.align === 'right' ? 'selected' : ''}`} onClick={() => layout.setAlign('right')}>
+                    <div className="thumbnail-bg">
+                      <Icon type="align-right" />
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="thumbnail-wrapper">
-                <div className="control-thumbnail">
-                  <div className="thumbnail-bg">
-                    <Icon type="dashboard" />
-                  </div>
-                </div>
-              </div>
-              <div className="thumbnail-wrapper">
-                <div className="control-thumbnail">
-                  <div className="thumbnail-bg">
-                    <Icon type="dashboard" />
-                  </div>
-                </div>
+            </div>
+            <hr className="divider-short" />
+            <div className="composite-input-slider has-label">
+              <label className="label">Margin</label>
+              <div className="composite-input-slider-container">
+                <Slider defaultValue={layout.margin} onChange={v => layout.setMargin(v)} />
+                <InputNumber
+                  min={1}
+                  value={layout.margin}
+                  onChange={v => layout.setMargin(v)}
+                />
               </div>
             </div>
-          </div>
-          <hr className="divider-long" />
-          <div className="panel-section panel-section-with-slider">
-            <div className="panel-section-label">
-              <span>where does it link to?</span>
-            </div>
-            
-            <div className="panel-section-input">
-              <Slider defaultValue={30} disabled={false} />
-            </div>
-          </div>
+          </section>
+
+  
         </div>
       </PanelWrapper>
     )

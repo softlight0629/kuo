@@ -1,4 +1,4 @@
-import { observable, extendObservable } from 'mobx';
+import { observable, extendObservable, action } from 'mobx';
 
 class SpecLayout {
 
@@ -8,6 +8,14 @@ class SpecLayout {
 
   constructor(option) {
     extendObservable(this, option);
+  }
+
+  @action setAlign(align) {
+    this.align = align;
+  }
+
+  @action setMargin(margin) {
+    this.margin = margin;
   }
 }
 

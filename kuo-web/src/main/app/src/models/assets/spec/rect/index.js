@@ -1,4 +1,4 @@
-import { observable, extendObservable } from 'mobx';
+import { observable, extendObservable, action } from 'mobx';
 
 class Rect {
 
@@ -9,6 +9,16 @@ class Rect {
 
   constructor(option) {
     extendObservable(this, option);
+  }
+
+  @action setPosition(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  @action setSize(width, height) {
+    this.width = width;
+    this.height = height;
   }
 }
 

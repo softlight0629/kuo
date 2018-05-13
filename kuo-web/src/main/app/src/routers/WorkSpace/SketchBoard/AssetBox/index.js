@@ -8,6 +8,10 @@ import { AstvButton } from '../Assets';
 
 import './index.less';
 
+function hexToRgba(hex, opacity) { 
+  return "rgba(" + parseInt("0x" + hex.slice(1, 3)) + "," + parseInt("0x" + hex.slice(3, 5)) + "," + parseInt("0x" + hex.slice(5, 7)) + "," + opacity + ")"; 
+}
+
 @withRouter
 @inject('designPanelUiStore')
 @observer
@@ -22,21 +26,51 @@ class AssetBox extends Component {
 
   onDragStop(e, d) {
     this.setState({ rnding: false });
-    this.props.astm.position(d.x, d.y);
+    this.props.astm.spec.rect.setPosition(d.x, d.y);
+  }
+
+  renderSpecStyle(style, layout) {
+    const { fill, border, font, shadow, corner} = style;
+
+    const yshadow = (Math.floor(Math.cos(shadow.angle * Math.PI / 180)*100) / 100) * shadow.distance;
+    const xshadow = (Math.floor(Math.sin(shadow.angle * Math.PI / 180)*100) / 100) * shadow.distance * -1;
+
+    const bi = {};
+    if (font.bold) {
+      bi.fontWeight = 'bold';
+    }
+
+    if (font.italic) {
+      bi.fontStyle = 'italic';
+    }
+
+    return Object.assign({}, {
+      textAlign: layout.align,
+      backgroundColor: hexToRgba(fill.color, fill.opacity/100),
+      padding: `${layout.margin}px`,
+      borderWidth: `${border.width}px`,
+      borderColor: hexToRgba(border.color, border.opacity/100),
+      borderStyle: 'solid',
+      color: '#fff',
+      font: `${font.fontSize}px/1.4em \'${font.fontFamily}\', sans-serif`,
+      color: font.color,
+      borderTopLeftRadius: `${corner.leftTop}px`,
+      borderTopRightRadius: `${corner.rightTop}px`,
+      borderBottomLeftRadius: `${corner.leftBottom}px`,
+      borderBottomRightRadius: `${corner.rightBottom}px`,
+      boxShadow: `${xshadow}px ${yshadow}px ${shadow.blur}px ${shadow.size}px ${hexToRgba(shadow.color, shadow.opacity/100)}`,
+    }, bi);
   }
 
   render() {
     const { astm, designPanelUiStore } = this.props;
-    const { rect, style } = astm.spec;
+    const { rect, style, layout } = astm.spec;
 
     const stylus = {
-      color: '#fff',
-      backgroundColor: style.fill.color,
       cursor: 'pointer',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      font: '15px/1.4em \'open sans\', sans-serif',
       width: '100%',
       height: '100%',
     }
@@ -60,8 +94,8 @@ class AssetBox extends Component {
           position={{ x: rect.x, y: rect.y }}
           resizeHandleClasses={resizeHandleClasses}
           onResize={(e, direction, ref, delta, position) => {
-            astm.size(ref.offsetWidth, ref.offsetHeight);
-            astm.position(position.x, position.y);
+            rect.setSize(ref.offsetWidth, ref.offsetHeight);
+            rect.setPosition(position.x, position.y);
           }}
           onResizeStart={() => this.setState({ rnding: true })}
           onResizeStop={() => this.setState({ rnding: false })}
@@ -70,7 +104,9 @@ class AssetBox extends Component {
         >
           <div className="asset-box">
             {!this.state.rnding && <AssetSetting astm={astm} />}
-            <AstvButton />
+            <div className="asset" style={this.renderSpecStyle(style, layout )}>
+              <AstvButton astm={astm} />
+            </div>
           </div>
         </Rnd>
     )

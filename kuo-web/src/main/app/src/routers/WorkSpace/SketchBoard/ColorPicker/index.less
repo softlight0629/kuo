@@ -1,0 +1,49 @@
+.color-picker {
+  border-radius: 10px;
+  box-shadow: 0 0 14px 0 rgba(22,45,61,0.36);
+  background-color: #fff;
+
+  &-header {
+    padding: 0 14px;
+    cursor: move;
+    border-bottom: 1px solid #d9e1e8;
+    position: relative;
+    height: 47px;
+    line-height: 47px;
+    margin-right: 21px;
+
+    .title {
+      font-size: 14px;
+      line-height: 47px;
+      color: #000;
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 0;
+      top: 10px;
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      background-color: #d3edff;
+      cursor: pointer;
+      text-align: center;
+
+      & > i {
+        position: relative;
+        top: -12px;
+      }
+    }
+  }
+
+  &-body {
+
+    .block-picker > div:first-child {
+      display: none;
+    }
+
+    .block-picker > div {
+      border-radius: 0 !important;
+    }
+  }
+}

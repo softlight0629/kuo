@@ -3,7 +3,7 @@ import Border from './Border';
 import Corner from './Corner';
 import Fill from './Fill';
 import Shadow from './Shadow';
-import Text from './Text';
+import Font from './Font';
 
 class SpecStyle {
 
@@ -11,14 +11,14 @@ class SpecStyle {
   @observable border = {};
   @observable corner = {};
   @observable shadow = {};
-  @observable text = {};
+  @observable font = {};
 
   constructor(option) {
     this.fill = new Fill(option.fill || {});
     this.border = new Border(option.border || {});
     this.corner = new Corner(option.corner || {});
     this.shadow = new Shadow(option.shadow || {});
-    this.text = new Text(option.text || {});
+    this.font = new Font(option.font || {});
   }
 }
 
