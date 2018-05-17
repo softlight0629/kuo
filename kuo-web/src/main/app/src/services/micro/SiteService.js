@@ -21,7 +21,6 @@ class SiteService {
   }
 
   async updateSiteToServer(site) {
-    console.log(site, 'site.....');
     return await oauth.put(`${endpoint}/${site.guid}`, site);
   }
 

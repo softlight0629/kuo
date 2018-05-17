@@ -13,12 +13,11 @@ class AstvButton extends Component {
 
   render() {
     const { astm } = this.props;
-    const { content } = astm.spec.text;
 
     return (
       <div className="ast-button">
         <a className="ast-button">
-          <span>{content}</span>
+          <span>{astm.text}</span>
         </a>
       </div>
     )

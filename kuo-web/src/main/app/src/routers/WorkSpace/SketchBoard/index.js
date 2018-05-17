@@ -5,7 +5,8 @@ import { withRouter } from 'react-router';
 import ResBtnGrp from './ResBtnGrp';
 import CompToolBar from './CompToolBar';
 import ArtBoard from './ArtBoard';
-import { StylePanel, TextPanel, LayoutPanel, LinkedPanel, AnimationPanel } from './DesignPanel';
+import { DesignPanel, LayoutPanel, LinkPanel, AnimationPanel } from './Panel/SettingPanel';
+import { ChangeTextPanel } from './Panel/ChangePanel';
 import ColorPicker from './ColorPicker';
 
 @withRouter
@@ -29,12 +30,12 @@ class SketchBoard extends Component {
         <div className="sketch-board-editor">
           <div className="sketch-board-canvas">
             <ArtBoard />
-            <CompToolBar />
-            { stylePanelVisible && <StylePanel astm={astm}/> }
-            { textPanelVisible && <TextPanel astm={astm} /> }
+            {/* <CompToolBar /> */}
+            { stylePanelVisible && <DesignPanel astm={astm}/> }
+            { textPanelVisible && <ChangeTextPanel astm={astm} /> }
             { layoutPanelVisible &&  <LayoutPanel astm={astm}/> }
             { animationPanelVisible && <AnimationPanel astm={astm}/> }
-            { linkedPanelVisible && <LinkedPanel astm={astm}/> }
+            { linkedPanelVisible && <LinkPanel astm={astm}/> }
             { colorPickerVisible && <ColorPicker astm={astm}/> }
           </div>
           {/* <ResBtnGrp /> */}

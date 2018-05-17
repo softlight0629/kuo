@@ -55,7 +55,6 @@ class WorkSpaceStore {
   }
 
   @action activatePageResource(pageResource) {
-    console.log(pageResource, 'sdadas');
     this.pageResource = pageResource;
     this.name = pageResource.name;
   }

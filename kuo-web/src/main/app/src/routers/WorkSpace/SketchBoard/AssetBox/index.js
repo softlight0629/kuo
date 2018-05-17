@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import Rnd from 'react-rnd';
 import { Icon } from 'antd';
 import AssetSetting from './AssetSetting';
-import { AstvButton } from '../Assets';
+import { AstvButton, AstvMenu, AstvText } from '../Assets';
 
 import './index.less';
 
@@ -13,7 +13,7 @@ function hexToRgba(hex, opacity) {
 }
 
 @withRouter
-@inject('designPanelUiStore')
+@inject('designPanelUiStore', 'astmRefUiStore')
 @observer
 class AssetBox extends Component {
   constructor(props) {
@@ -26,11 +26,11 @@ class AssetBox extends Component {
 
   onDragStop(e, d) {
     this.setState({ rnding: false });
-    this.props.astm.spec.rect.setPosition(d.x, d.y);
+    this.props.astm.rect.setPosition(d.x, d.y);
   }
 
-  renderSpecStyle(style, layout) {
-    const { fill, border, font, shadow, corner} = style;
+  renderSpecStyle(style) {
+    const { fill, border, font, shadow, corner, layout} = style;
 
     const yshadow = (Math.floor(Math.cos(shadow.angle * Math.PI / 180)*100) / 100) * shadow.distance;
     const xshadow = (Math.floor(Math.sin(shadow.angle * Math.PI / 180)*100) / 100) * shadow.distance * -1;
@@ -62,9 +62,35 @@ class AssetBox extends Component {
     }, bi);
   }
 
+  handleRefAstm(astm) {
+    this.props.astmRefUiStore.refAstm(astm);
+
+    // 检测 shift
+  }
+
+  renderAstv(astm) {
+    if (astm.astm === 'Button') {
+      return (
+        <AstvButton astm={astm} />
+      )
+    }
+
+    if (astm.astm === 'Menu') {
+      return (
+        <AstvMenu astm={astm} />
+      )
+    }
+
+    if (astm.astm === 'Text') {
+      return (
+        <AstvText astm={astm} />
+      )
+    }
+  }
+
   render() {
     const { astm, designPanelUiStore } = this.props;
-    const { rect, style, layout } = astm.spec;
+    const { rect, animation } = astm;
 
     const stylus = {
       cursor: 'pointer',
@@ -86,10 +112,25 @@ class AssetBox extends Component {
       left: 'left-resize-cursor handle handle-resize-side left',
     }
 
+    const animationProps = {};
+    if (animation.duration) {
+      animationProps.animationDuration = `${animation.duration}s`;
+    }
+
+    if (animation.delay) {
+      animationProps.animationDelay = `${animation.delay}s`;
+    }
+
+    if (animation.direction) {
+      animationProps.animationDirection = animation.direction;
+    }
+
+    const selected = astm === this.props.astmRefUiStore.astm;
+
     return (
         <Rnd
           style={stylus}
-          className="asset-handles"
+          className={`asset-handles ${selected?'selected':''}`}
           size={{ width: rect.width, height: rect.height }}
           position={{ x: rect.x, y: rect.y }}
           resizeHandleClasses={resizeHandleClasses}
@@ -102,10 +143,12 @@ class AssetBox extends Component {
           // onDragStart={() => this.setState({ rnding: true })}
           onDragStop={this.onDragStop.bind(this)}
         >
-          <div className="asset-box">
-            {!this.state.rnding && <AssetSetting astm={astm} />}
-            <div className="asset" style={this.renderSpecStyle(style, layout )}>
-              <AstvButton astm={astm} />
+          <div className="asset-box" onMouseDown={() => this.handleRefAstm(astm)}>
+            {selected && !this.state.rnding && <AssetSetting astm={astm} />}
+            <div className={`animated`} style={{ width: '100%', height: '100%', ...animationProps}}>
+              <div key={1} className="asset" style={this.renderSpecStyle(astm)}>
+                {this.renderAstv(astm) }
+              </div>
             </div>
           </div>
         </Rnd>

@@ -1,0 +1,1 @@
+export ChangeTextPanel from './ChangeText';

@@ -16,43 +16,134 @@ class ArtBoard extends Component {
 
   componentDidMount() {
     this.props.sketchBoardStore.addAst({
+      astm: 'Text',
       spec: {
         layout: {
           align: 'left',
           margin: 0,
         },
         rect: {
-          width: 216,
-          height: 48,
-          x: 100,
+          width: 660,
+          height: 80,
+          x: 20,
           y: 100,
         },
-        text: {
-          content: 'this is text',
+        animation: {
+          // animate: 'rubberBand',
         },
-        style: {
-          fill: {
-            color: '#fdf5fc',
-            opacity: 82,
+        fill: {
+          color: '#ffffff',
+          opacity: 100,
+        },
+        border: {
+          color: '#fdf5fc',
+          width: 1,
+          opacity: 82,
+        },
+        font: {
+          fontFamily: 'Arial',
+          fontSize: 12,
+          color: '#000',
+        },
+        corner: {
+          leftTop: 0,
+          rightTop: 0,
+          leftBottom: 0,
+          rightBottom: 0,
+        },
+        text: 'DESIGN22222',
+        theme: 'h3',
+      },
+    });
+
+    this.props.sketchBoardStore.addAst({
+      astm: 'Menu',
+      spec: {
+        layout: {
+          align: 'left',
+          margin: 0,
+        },
+        rect: {
+          width: 660,
+          height: 50,
+          x: 20,
+          y: 100,
+        },
+        animation: {
+          // animate: 'rubberBand',
+        },
+        fill: {
+          color: '#fdf5fc',
+          opacity: 82,
+        },
+        border: {
+          color: '#fdf5fc',
+          width: 1,
+          opacity: 82,
+        },
+        font: {
+          fontFamily: 'Arial',
+          fontSize: 12,
+          color: '#000',
+        },
+        corner: {
+          leftTop: 0,
+          rightTop: 0,
+          leftBottom: 0,
+          rightBottom: 0,
+        },
+        menuItems: [
+          {
+            text: 'HOME',
           },
-          border: {
-            color: '#fdf5fc',
-            width: 1,
-            opacity: 82,
+          {
+            text: 'BLOG',
           },
-          font: {
-            fontFamily: 'Arial',
-            fontSize: 12,
-            color: '#000',
-          },
-          corner: {
-            leftTop: 0,
-            rightTop: 0,
-            leftBottom: 0,
-            rightBottom: 0,
+          {
+            text: 'ABOUT',
           }
+        ],
+      },
+    });
+
+    this.props.sketchBoardStore.addAst({
+      astm: 'Button',
+      spec: {
+        layout: {
+          align: 'left',
+          margin: 0,
         },
-      }
+        rect: {
+          width: 260,
+          height: 50,
+          x: 20,
+          y: 100,
+        },
+        animation: {
+          // animate: 'rubberBand',
+        },
+        fill: {
+          color: '#fdf5fc',
+          opacity: 82,
+        },
+        border: {
+          color: '#fdf5fc',
+          width: 1,
+          opacity: 82,
+        },
+        font: {
+          fontFamily: 'Arial',
+          fontSize: 12,
+          color: '#000',
+        },
+        corner: {
+          leftTop: 0,
+          rightTop: 0,
+          leftBottom: 0,
+          rightBottom: 0,
+        },
+        text: 'Button',
+      },
     });
   }
 
@@ -75,7 +166,7 @@ class ArtBoard extends Component {
                       <div className="mainPageBg">{ pageResource.template }</div>
                       <div className="mainPageBgContent">
                       {
-                        astms.map(astm => <AssetBox astm={astm} />)
+                        astms.map((astm, i) => <AssetBox key={i} astm={astm} />)
                       }
                       </div>
                     </div>

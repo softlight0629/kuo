@@ -11,7 +11,6 @@ class Verticals extends Component {
   render() {
     const { push } = this.props.routing;
 
-    console.log(push, 'push.......');
     return (
       <div className="verticals">
         <section className="verticals-container">

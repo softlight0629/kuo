@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import { AstmButton } from '../../models/assets';
+import { AstmButton, AstmMenu, AstmText } from '../../models/assets';
 
 class SketchBoardStore {
 
@@ -10,8 +10,22 @@ class SketchBoardStore {
     this.service = service;
   }
 
+  _getAstm(option) {
+    if (option.astm === 'Button') {
+      return new AstmButton(option);
+    }
+
+    if (option.astm === 'Menu') {
+      return new AstmMenu(option);
+    }
+
+    if (option.astm === 'Text') {
+      return new AstmText(option);
+    }
+  }
+
   @action addAst(option) {
-    const astm = new AstmButton(option);
+    const astm = this._getAstm(option);
     this.astms.push(astm);
 
     this.store.astmRefUiStore.refAstm(astm);

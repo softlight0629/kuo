@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
+import alignment from '../../../helper/alignment';
 
 import './index.less';
 
@@ -14,25 +15,59 @@ class ToolBar extends Component {
   }
 
   handleAddPageResorce() {
-    // this.props.workSpaceStore.addPageResource({
-    //   name: 'Contact',
-    //   template: 'contact page',
-    // });
-
     this.props.sketchBoardStore.addAst({
       spec: {
+        layout: {
+          align: 'left',
+          margin: 0,
+        },
         rect: {
           width: 216,
           height: 48,
           x: 100,
           y: 100,
         },
+        text: {
+          content: 'this is text',
+        },
         style: {
           fill: {
-            color: '#d3b5c6',
+            color: '#fdf5fc',
+            opacity: 82,
           },
+          border: {
+            color: '#fdf5fc',
+            width: 1,
+            opacity: 82,
+          },
+          font: {
+            fontFamily: 'Arial',
+            fontSize: 12,
+            color: '#000',
+          },
+          corner: {
+            leftTop: 0,
+            rightTop: 0,
+            leftBottom: 0,
+            rightBottom: 0,
+          }
         },
       }
+    });
+  }
+
+  alignment() {
+    const alignItems = alignment.distributeX(this.props.sketchBoardStore.astms.map(astm => ({
+      left: astm.rect.x,
+      top: astm.rect.y,
+      width: astm.rect.width,
+      height: astm.rect.height,
+    })));
+
+    this.props.sketchBoardStore.astms.forEach((astm, i) => {
+      const { left, top, width, height } = alignItems[i];
+      astm.rect.setPosition(left, top);
+      astm.rect.setSize(width, height);
     });
   }
 
@@ -70,7 +105,7 @@ class ToolBar extends Component {
                   <span className="label" onClick={() => this.handleAddPageResorce()}>Preview</span>
                 </a>
               </div>
-              <div style={{ position: 'relative', height: '100%' }}>
+              <div style={{ position: 'relative', height: '100%' }} onClick={() => this.alignment()}>
                 <a className="top-bar-btn">
                   <span className="label">Publish</span>
                 </a>

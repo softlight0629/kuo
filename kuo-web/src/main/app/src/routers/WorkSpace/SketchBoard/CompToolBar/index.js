@@ -61,13 +61,13 @@ class CompToolBar extends Component {
             <label className="row">
               <span className="label">W:</span>
               <div className="input-stepper">
-                <input type="text" className="input" value={astm.spec.rect.width}/>
+                <input type="text" className="input" value={astm.rect.width}/>
               </div>
             </label>
             <label className="row">
               <span className="label">H:</span>
               <div className="input-stepper">
-                <input type="text" className="input" value={astm.spec.rect.height}/>
+                <input type="text" className="input" value={astm.rect.height}/>
               </div>
             </label>
           </div>
@@ -76,13 +76,13 @@ class CompToolBar extends Component {
             <label className="row">
               <span className="label">X:</span>
               <div className="input-stepper">
-                <input type="text" className="input" value={astm.spec.rect.x}/>
+                <input type="text" className="input" value={astm.rect.x}/>
               </div>
             </label>
             <label className="row">
               <span className="label">Y:</span>
               <div className="input-stepper">
-                <input type="text" className="input" value={astm.spec.rect.y}/>
+                <input type="text" className="input" value={astm.rect.y}/>
               </div>
             </label>
           </div>
