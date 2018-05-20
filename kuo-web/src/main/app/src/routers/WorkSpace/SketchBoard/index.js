@@ -5,7 +5,13 @@ import { withRouter } from 'react-router';
 import ResBtnGrp from './ResBtnGrp';
 import CompToolBar from './CompToolBar';
 import ArtBoard from './ArtBoard';
-import { DesignPanel, LayoutPanel, LinkPanel, AnimationPanel } from './Panel/SettingPanel';
+import { 
+  DesignPanel, 
+  LayoutPanel, 
+  LinkPanel, 
+  AnimationPanel,
+  TextPanel,
+} from './Panel/SettingPanel';
 import { ChangeTextPanel } from './Panel/ChangePanel';
 import ColorPicker from './ColorPicker';
 
@@ -16,11 +22,13 @@ class SketchBoard extends Component {
 
   render() {
     const { 
-      stylePanelVisible, 
-      textPanelVisible,
+      designPanelVisible, 
       layoutPanelVisible,
-      linkedPanelVisible,
+      linkPanelVisible,
+      editTextPanelVisible,
       animationPanelVisible,
+
+      changeTextPanelVisible,
     } = this.props.designPanelUiStore;
     const { astm } = this.props.astmRefUiStore;
     const { colorPickerVisible } = this.props.colorPickerUiStore;
@@ -31,11 +39,14 @@ class SketchBoard extends Component {
           <div className="sketch-board-canvas">
             <ArtBoard />
             {/* <CompToolBar /> */}
-            { stylePanelVisible && <DesignPanel astm={astm}/> }
-            { textPanelVisible && <ChangeTextPanel astm={astm} /> }
+            { designPanelVisible && <DesignPanel astm={astm}/> }
+            { editTextPanelVisible && <TextPanel astm={astm} /> }
             { layoutPanelVisible &&  <LayoutPanel astm={astm}/> }
             { animationPanelVisible && <AnimationPanel astm={astm}/> }
-            { linkedPanelVisible && <LinkPanel astm={astm}/> }
+            { linkPanelVisible && <LinkPanel astm={astm}/> }
+
+            { changeTextPanelVisible && <ChangeTextPanel astm={astm} /> }
+
             { colorPickerVisible && <ColorPicker astm={astm}/> }
           </div>
           {/* <ResBtnGrp /> */}

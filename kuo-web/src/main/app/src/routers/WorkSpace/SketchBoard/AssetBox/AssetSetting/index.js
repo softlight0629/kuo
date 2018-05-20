@@ -2,75 +2,66 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Icon } from 'antd';
 import { withRouter } from 'react-router';
+import AssetSettingButton from './AssetSettingButton';
 
 import './index.less';
 
-@inject('designPanelUiStore', 'astmRefUiStore')
+@inject('designPanelUiStore', 'astmRefUiStore', 'astUiStore')
 class AssetSetting extends Component {
 
-  showStylePanel() {
+  refAstm() {
     const { astm } = this.props;
 
     this.props.astmRefUiStore.refAstm(astm);
-    this.props.designPanelUiStore.position(astm.spec.rect.x + astm.spec.rect.width + 25, astm.spec.rect.y);
-    this.props.designPanelUiStore.showStylePanel();
+    this.props.designPanelUiStore.position(astm.rect.x + astm.rect.width + 25, astm.rect.y);
   }
 
-  showTextPanel() {
-    const { astm } = this.props;
+  showDesignPanel() {
+    this.refAstm();
+    this.props.designPanelUiStore.showDesignPanel();
+  }
 
-    this.props.astmRefUiStore.refAstm(astm);
-    this.props.designPanelUiStore.position(astm.spec.rect.x + astm.spec.rect.width + 25, astm.spec.rect.y);
-    this.props.designPanelUiStore.showTextPanel();
+  showEditTextPanel() {
+    this.refAstm();
+    this.props.designPanelUiStore.showEditTextPanel();
+  }
+
+  showChangeTextPanel() {
+    this.refAstm();
+    this.props.designPanelUiStore.showChangeTextPanel();
   }
 
   showLayoutPanel() {
-    const { astm } = this.props;
-
-    this.props.astmRefUiStore.refAstm(astm);
-    this.props.designPanelUiStore.position(astm.spec.rect.x + astm.spec.rect.width + 25, astm.spec.rect.y);
+    this.refAstm();
     this.props.designPanelUiStore.showLayoutPanel();
   }
 
   showAnimationPanel() {
-    const { astm } = this.props;
-
-    this.props.astmRefUiStore.refAstm(astm);
-    this.props.designPanelUiStore.position(astm.spec.rect.x + astm.spec.rect.width + 25, astm.spec.rect.y);
+    this.refAstm();
     this.props.designPanelUiStore.showAnimationPanel();
   }
 
-  showLinkedPanel() {
-    const { astm } = this.props;
-
-    this.props.astmRefUiStore.refAstm(astm);
-    this.props.designPanelUiStore.position(astm.spec.rect.x + astm.spec.rect.width + 25, astm.spec.rect.y);
-    this.props.designPanelUiStore.showLinkedPanel();
+  showLinkPanel() {
+    this.refAstm();
+    this.props.designPanelUiStore.showLinkPanel();
   }
 
   render() {
+    const { astm, astUiStore } = this.props;
+    const settingButtons = astUiStore.astSettingButtons(astm.astm);
 
     return (
       <div className="asset-setting">
         <ul className="asset-setting-btns">
-          <li className="asset-setting-btn" onClick={() => this.showTextPanel() }>
-            <span className="label" >Change Text</span>
-          </li>
-          <li className="asset-setting-btn" onClick={() => this.showLayoutPanel()}>
-            <Icon type="layout" />
-          </li>
-          <li className="asset-setting-btn" onClick={() => this.showStylePanel()}>
-            <Icon type="dashboard" />
-          </li>
-          <li className="asset-setting-btn" onClick={() => this.showAnimationPanel()}>
-            <Icon type="sync" />
-          </li>
-          <li className="asset-setting-btn" onClick={() => this.showLinkedPanel()}>
-            <Icon type="link" />
-          </li>
-          <li className="asset-setting-btn">
-            <Icon type="database" />
-          </li>
+          { settingButtons.includes('EditText') && <AssetSettingButton label={<span className="label" >Edit Text</span>} onClick={() => this.showEditTextPanel()} /> }
+          { settingButtons.includes('ChangeText') && <AssetSettingButton label={<span className="label" >Change Text</span>} onClick={() => this.showChangeTextPanel()} /> }
+          { settingButtons.includes('Layout') && <AssetSettingButton label={<Icon type="layout" />} onClick={() => this.showLayoutPanel()} />}
+          { settingButtons.includes('Design') && <AssetSettingButton label={<Icon type="dashboard" />} onClick={() => this.showDesignPanel()} />}
+          { settingButtons.includes('Animation') && <AssetSettingButton label={<Icon type="sync" />} onClick={() => this.showAnimationPanel()} />}
+          { settingButtons.includes('Link') && <AssetSettingButton label={<Icon type="link" />} onClick={() => this.showLinkPanel()} />}
+          { settingButtons.includes('Database') && <AssetSettingButton label={<Icon type="database" />} onClick={() => this.showLinkPanel()} />}
+          
+          
         </ul>
       </div>
     )

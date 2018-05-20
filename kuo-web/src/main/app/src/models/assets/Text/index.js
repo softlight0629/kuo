@@ -14,7 +14,7 @@ class Text {
 
     const { spec } = option;
     const { 
-      rect, 
+      rect,
       font,
       text,
       animation,

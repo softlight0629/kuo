@@ -5,62 +5,75 @@ class DesignPanelUiStore {
 
   @observable stylePanelVisible = false;
 
-  @observable textPanelVisible = false;
+  @observable editTextPanelVisible = false;
 
   @observable layoutPanelVisible = false;
 
-  @observable linkedPanelVisible = false;
+  @observable linkPanelVisible = false;
 
   @observable animationPanelVisible = false;
 
-  @observable x;
 
-  @observable y;
+  @observable changeTextPanelVisible = false;
 
-  @action showStylePanel() {
-    this.stylePanelVisible = true;
+
+  @observable x = 0;
+
+  @observable y = 0;
+
+  @action showDesignPanel() {
+    this.designPanelVisible = true;
   }
 
-  @action showTextPanel() {
-    this.textPanelVisible = true;
+  @action closeDesignPanel() {
+    this.designPanelVisible = false;
+  }
+
+  @action showEditTextPanel() {
+    this.editTextPanelVisible = true;
+  }
+
+  @action closeEditTextPanel() {
+    this.editTextPanelVisible = false;
   }
 
   @action showLayoutPanel() {
     this.layoutPanelVisible = true;
   }
 
-  @action showAnimationPanel() {
-    this.animationPanelVisible = true;
-  }
-
-  @action showLinkedPanel() {
-    this.linkedPanelVisible = true;
-  }
-
-  @action closeTextPanel() {
-    this.textPanelVisible = false;
-  }
-
-  @action closeStylePanel() {
-    this.stylePanelVisible = false;
-  }
-
   @action closeLayoutPanel() {
     this.layoutPanelVisible = false;
+  }
+
+  @action showAnimationPanel() {
+    this.animationPanelVisible = true;
   }
 
   @action closeAniamtionPanel() {
     this.animationPanelVisible = false;
   }
 
-  @action closeLinkedPanel() {
-    this.linkedPanelVisible = false;
+  @action showLinkPanel() {
+    this.linkPanelVisible = true;
+  }
+
+  @action closeLinkPanel() {
+    this.linkPanelVisible = false;
+  }
+
+  @action showChangeTextPanel() {
+    this.changeTextPanelVisible = true;
+  }
+
+  @action closeChangeTextPanel() {
+    this.changeTextPanelVisible = false;
   }
 
   @action position(x, y) {
     this.x = x;
     this.y = y;
   }
+
 }
 
 export default DesignPanelUiStore;

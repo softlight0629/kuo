@@ -9,6 +9,7 @@ import DesignPanelUiStore from './ui/design_panel_ui';
 import ColorPickerUiStore from './ui/color_picker_ui';
 import CompToolBarUiStore from './ui/comp_tool_bar_ui';
 import AstmRefUiStore from './ui/astm_ref_ui';
+import AstUiStore from './ui/ast_ui';
 
 import service from '../services';
 
@@ -26,6 +27,7 @@ class GlobalStore {
     this.colorPickerUiStore = new ColorPickerUiStore(this, service);
     this.compToolBarUiStore = new CompToolBarUiStore(this, service);
     this.astmRefUiStore = new AstmRefUiStore(this, service);
+    this.astUiStore = new AstUiStore(this, service);
   }
 
 }
@@ -44,4 +46,5 @@ export default {
   colorPickerUiStore: store.colorPickerUiStore,
   compToolBarUiStore: store.compToolBarUiStore,
   astmRefUiStore: store.astmRefUiStore,
+  astUiStore: store.astUiStore,
 };

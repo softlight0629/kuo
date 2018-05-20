@@ -1,9 +1,6 @@
 import { observable, action, extendObservable } from 'mobx';
 import { Animation, Rect, Layout, Design, Link, Database } from '../../settings';
-console.log(Design, 'dessss');
 const { Fill, Border, Corner, Shadow, Font } = Design;
-
-
 
 class Button {
 
@@ -14,15 +11,15 @@ class Button {
 
     const { spec, specHover, specDisabled } = option;
     const { 
-      rect, 
+      rect,
       animation,
       layout, 
       link,
       fill,
       border,
       corner, 
-      shadow, 
-      font, 
+      shadow,
+      font,
       text } = spec;
 
     this.rect = new Rect(rect || {});
@@ -38,9 +35,6 @@ class Button {
 
     this.text = text;
   }
-
-  
-
 }
 
 export default Button;

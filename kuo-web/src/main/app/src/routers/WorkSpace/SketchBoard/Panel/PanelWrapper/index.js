@@ -29,6 +29,7 @@ class PanelWrapper extends Component {
     const { title, width = 288 } = this.props;
     const { x, y } = this.props.designPanelUiStore;
 
+    console.log(x, y, 'ddeeeeee');
     return (
       <Rnd
         position={{ x: x, y: y }}

@@ -3,7 +3,9 @@ import { Input } from 'antd';
 import PanelWrapper from '../../PanelWrapper';
 import { observer , inject } from 'mobx-react';
 import { withRouter } from 'react-router';
-
+import {
+  Divider,
+} from '../../Component';
 import './index.less';
 
 @withRouter
@@ -12,7 +14,7 @@ import './index.less';
 class ChangeTextPanel extends Component {
 
   close() {
-    this.props.designPanelUiStore.closeTextPanel();
+    this.props.designPanelUiStore.closeChangeTextPanel();
   }
 
   render() {
@@ -30,7 +32,7 @@ class ChangeTextPanel extends Component {
               <Input value={text.content} onChange={(e) => text.setContent(e.target.value)}/>
             </div>
           </div>
-          <hr className="divider-long" />
+          <Divider type="long" />
           <div className="panel-section">
             <div className="panel-section-label">
               <span>where does it link to?</span>

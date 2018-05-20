@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import { Icon, Slider, Tabs, Select, InputNumber } from 'antd';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
+import { 
+  Divider, 
+  ColorPickerOpacity, 
+  ColorPicker, 
+  InputSlider, 
+  Dropdown, 
+  CornerRadius,
+  TextButtonGroup,
+} from '../../Component';
 
 import './index.less';
 
@@ -9,6 +18,8 @@ import PanelWrapper from '../../PanelWrapper';
 
 const TabPane = Tabs.TabPane;
 const Option = Select.Option;
+
+const TextButton = TextButtonGroup.TextButton;
 
 const Fonts = [
   'Arial',
@@ -22,18 +33,10 @@ const Fonts = [
   'Times',
 ];
 
-
-
 @withRouter
-@inject('designPanelUiStore', 'colorPickerUiStore', 'astmRefUiStore')
+@inject('designPanelUiStore', 'astmRefUiStore')
 @observer
-class StylePanel extends Component {
-
-
-  showColorPicker(cb) {
-    this.props.colorPickerUiStore.show();
-    this.props.colorPickerUiStore.callback(cb);
-  }
+class DesignPanel extends Component {
 
   renderBorderPane() {
     const { astm } = this.props.astmRefUiStore;
@@ -44,43 +47,18 @@ class StylePanel extends Component {
         <div className="content-wrapper">
           <span className="tab-text">Border</span>
           <div className="section">
-            <div className="color-picker-input-with-opacity">
-              <label className="label">Opacity & Color</label>
-
-              <div className="color-picker-input-with-opacity-slider">
-                <div className="input-slider">
-                  <div className="input-slider-container">
-                    <Slider defaultValue={border.opacity} onChange={v => border.setOpacity(v)}/>
-                    <InputNumber
-                      min={0}
-                      value={border.opacity}
-                      onChange={v => border.setOpacity(v)}
-                    />
-                  </div>
-                </div>
-                <div className="color-picker-input" onClick={() => this.showColorPicker(color => border.setColor(color.hex))}>
-                  <div className="color-picker-wrapper">
-                    <div className="color-picker-color" style={{ backgroundColor: border.color, opacity: border.opacity / 100 }}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr className="divider-short" />
-            <div className="input-slider has-label">
-              <label className="label">Width</label>
-              <div className="input-slider-container">
-                <Slider defaultValue={border.width} disabled={false} onChange={v => border.setWidth(v)} />
-                <InputNumber
-                  min={0}
-                  value={border.width}
-                  onChange={v => border.setWidth(v)}
-                />
-              </div>
-            </div>
+            <ColorPickerOpacity
+              label="Opacity & Color"
+              opacity={border.opacity}
+              color={border.color}
+              onOpacityChange={v => border.setOpacity(v)}
+              onColorChange={color => border.setColor(color.hex)}
+            />
+            <Divider type="short" />
+            <InputSlider label="Width" value={border.width} onChange={v => border.setWidth(v)} />
           </div>
         </div>
       </div>
-
     )
   }
 
@@ -93,66 +71,10 @@ class StylePanel extends Component {
         <div className="content-wrapper">
           <span className="tab-text">Corners</span>
           <div className="section">
-            <div className="composite-corner-radius-input has-label">
-              <label className="label">Radius</label>
-              <div className="corner-radius-input">
-                <div className="top">
-                  <div className="control-corner top left">
-                    <div className="input-container">
-                      <InputNumber
-                        min={0}
-                        size="small"
-                        value={corner.leftTop}
-                        onChange={v => corner.setLeftTop(v)}
-                      />
-                    </div>
-                    <div className="corner-border" style={{ borderTopLeftRadius: 48 }}></div>
-                  </div>
-                  <div className="control-corner top right">
-                    <div className="input-container">
-                      <InputNumber
-                        min={0}
-                        size="small"
-                        value={corner.rightTop}
-                        onChange={v => corner.setRightTop(v)}
-                      />
-                    </div>
-                    <div className="corner-border" style={{ borderTopRightRadius: 48 }} ></div>
-                  </div>
-                </div>
-                <div className="control-boolean link" onClick={() => corner.toggleCornerLink()}>
-                  <Icon type="link" />
-                </div>
-                <div className="bottom">
-                  <div className="control-corner bottom left">
-                    <div className="input-container">
-                      <InputNumber
-                        min={0}
-                        size="small"
-                        value={corner.leftBottom}
-                        onChange={v => corner.setLeftBottom(v)}
-                      />
-                    </div>
-                    <div className="corner-border" style={{ borderBottomLeftRadius: 48 }}></div>
-                  </div>
-                  <div className="control-corner bottom right">
-                    <div className="input-container">
-                      <InputNumber
-                        min={0}
-                        size="small"
-                        value={corner.rightBottom}
-                        onChange={v => corner.setRightBottom(v)}
-                      />
-                    </div>
-                    <div className="corner-border" style={{ borderBottomRightRadius: 48 }}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CornerRadius label="Radius" corner={corner} />
           </div>
         </div>
       </div>
-
     )
   }
 
@@ -165,27 +87,13 @@ class StylePanel extends Component {
         <div className="content-wrapper">
           <span className="tab-text">Fill Color & Opacity</span>
           <div className="section">
-            <div className="color-picker-input-with-opacity">
-              <label className="label">Background</label>
-
-              <div className="color-picker-input-with-opacity-slider">
-                <div className="input-slider">
-                  <div className="input-slider-container">
-                    <Slider defaultValue={fill.opacity} onChange={v => fill.setOpacity(v)} />
-                    <InputNumber
-                      min={1}
-                      value={fill.opacity}
-                      onChange={v => fill.setOpacity(v)}
-                    />
-                  </div>
-                </div>
-                <div className="color-picker-input" onClick={() => this.showColorPicker(color => fill.setColor(color.hex))}>
-                  <div className="color-picker-wrapper">
-                    <div className="color-picker-color" style={{ backgroundColor: fill.color, opacity: fill.opacity / 100 }}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ColorPickerOpacity
+              label="Background"
+              opacity={fill.opacity}
+              color={fill.color}
+              onOpacityChange={v => fill.setOpacity(v)}
+              onColorChange={color => fill.setColor(color.hex)}
+            />
           </div>
         </div>
       </div>
@@ -201,60 +109,15 @@ class StylePanel extends Component {
         <div className="content-wrapper">
           <span className="tab-text">Shadow</span>
           <div className="section">
-            <div className="input-slider has-label">
-              <label className="label">Angle</label>
-              <div className="input-slider-container">
-                <Slider defaultValue={shadow.angle} onChange={v => shadow.setAngle(v)} max={360} min={0} />
-              </div>
-            </div>
-            <hr className="divider-short" />
-            <div className="input-slider has-label">
-              <label className="panel-section-label">Distance</label>
-              <div className="input-slider-container">
-                <Slider defaultValue={shadow.distance} onChange={v => shadow.setDistance(v)} />
-                <InputNumber
-                  min={0}
-                  value={shadow.distance}
-                  onChange={v => shadow.setDistance(v)}
-                />
-              </div>
-            </div>
-            <hr className="divider-short" />
-            <div className="input-slider has-label">
-              <label className="label">Size</label>
-              <div className="input-slider-container">
-                <Slider defaultValue={shadow.size} onChange={v => shadow.setSize(v)} />
-                <InputNumber
-                  min={0}
-                  value={shadow.size}
-                  onChange={v => shadow.setSize(v)}
-                />
-              </div>
-            </div>
-            <hr className="divider-short" />
-            <div className="input-slider has-label">
-              <label className="label">Blur</label>
-              <div className="input-slider-container">
-                <Slider defaultValue={shadow.blur} onChange={v => shadow.setBlur(v)} />
-                <InputNumber
-                  min={0}
-                  value={shadow.blur}
-                  onChange={v => shadow.setBlur(v)}
-                />
-              </div>
-            </div>
-            <hr className="divider-short" />
-            <div className="input-slider has-label">
-              <label className="label">Opacity & Color</label>
-              <div className="input-slider-container">
-                <Slider defaultValue={shadow.opacity} onChange={v => shadow.setOpacity(v)} />
-                <InputNumber
-                  min={0}
-                  value={shadow.opacity}
-                  onChange={v => shadow.setOpacity(v)}
-                />
-              </div>
-            </div>
+            <InputSlider label="Angle" value={shadow.angle} onChange={v => shadow.setAngle(v)} max={360} min={0} />
+            <Divider type="short" />
+            <InputSlider label="Distance" value={shadow.distance} onChange={v => shadow.setDistance(v)} />
+            <Divider type="short" />
+            <InputSlider label="Size" value={shadow.size} onChange={v => shadow.setSize(v)} min={0} />
+            <Divider type="short" />
+            <InputSlider label="Blur" value={shadow.blur} onChange={v => shadow.setBlur(v)} min={0} />
+            <Divider type="short" />
+            <InputSlider label="Opacity" value={shadow.opacity} onChange={v => shadow.setOpacity(v)} min={0} />
           </div>
         </div>
       </div>
@@ -274,55 +137,19 @@ class StylePanel extends Component {
         <div className="content-wrapper">
           <span className="tab-text">Text</span>
           <div className="section">
-            <div className="color-picker-input has-label" onClick={() => this.showColorPicker((color) => font.setColor(color.hex))}>
-              <label className="label">Color</label>
-              <div className="color-picker-wrapper">
-                <div className="color-picker-color" style={{ backgroundColor: font.color }}></div>
-              </div>
-            </div>
-            <hr className="divider-short" />
-            <div className="input-slider has-label">
-              <label className="label">Font size</label>
-              <div className="input-slider-container">
-                <Slider defaultValue={font.fontSize} onChange={v => font.setFontSize(v)} />
-                <InputNumber
-                  min={1}
-                  value={font.fontSize}
-                  onChange={v => font.setFontSize(v)}
-                />
-              </div>
-            </div>
-            <hr className="divider-short" />
-            <div className="dropdown has-label">
-              <label className="label">Font</label>
-              <div className="dropdown-container">
-                <Select
-                  size="default"
-                  defaultValue={font.fontFamily}
-                  onChange={v => font.setFontFamily(v)}
-                  style={{ width: '100%' }}
-                >
-                  {children}
-                </Select>
-              </div>
-            </div>
-            <hr className="divider-short" />
-            <div className="text-buttons">
-              <span>
-                <label className="toggle-button" onClick={() => font.toggleBold()}>
-                  <Icon type="bold" />
-                </label>
-              </span>
-              <span>
-                <label className="toggle-button" onClick={() => font.toggleItalic()} style={{ fontSize: 18 }}>
-                  <Icon type="italic" />
-                </label>
-              </span>
-            </div>
+            <ColorPicker label="Color" value={font.color} onChange={color => font.setColor(color.hex)} />
+            <Divider type="short" />
+            <InputSlider label="Font size" value={font.fontSize} onChange={v => font.setFontSize(v)} min={1} />
+            <Divider type="short" />
+            <Dropdown label="Font" value={font.fontFamily} onChange={v => font.setFontFamily(v)} options={children} />
+            <Divider type="short" />
+            <TextButtonGroup>
+              <TextButton label={<Icon type="bold" />} onClick={() => font.toggleBold()} />
+              <TextButton label={<Icon type="italic" />} onClick={() => font.toggleItalic()} style={{ fontSize: 18 }} />
+            </TextButtonGroup>
           </div>
         </div>
       </div>
-
     )
   }
 
@@ -359,7 +186,6 @@ class StylePanel extends Component {
                   {this.renderTextPane()}
                 </TabPane>
               </Tabs>
-
             </div>
           </div>
         </div>
@@ -368,4 +194,4 @@ class StylePanel extends Component {
   }
 }
 
-export default StylePanel;
+export default DesignPanel;

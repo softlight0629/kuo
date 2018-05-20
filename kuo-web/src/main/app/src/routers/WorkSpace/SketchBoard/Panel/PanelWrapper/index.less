@@ -470,6 +470,165 @@
           max-width: 100%;
         }
 
+        .button-row {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          padding: 19px 12px;
+
+          .control-button {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            border-radius: 8px;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+          }
+
+          .control-button.checked {
+            background-color: #3899ec;
+            color: #fff;
+          }
+ 
+          .control-button.dropdown-button {
+            position: relative;
+
+            .dropdown-options {
+              position: absolute;
+              top: 0;
+              left: -12px;
+
+              .options {
+                position: fixed;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 22px 0 rgba(22, 45, 61, 0.26);
+                display: flex;
+                flex-direction: column;
+                width: 56px;
+                z-index: 999;
+
+                .dropdown-options-list {
+                  display: block;
+
+                  .dropdown-option {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    cursor: pointer;
+                    display: block;
+                    font-size: 14px;
+                    height: 32px;
+                    padding: 0;
+                    text-align: center;
+                    line-height: 32px;
+
+                    &:hover {
+                      background: #eaf7ff;
+                    }
+                  }
+
+                  .dropdown-option.selected {
+                    background: #3899ec;
+                    color: #fff;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .accordian {
+          position: relative;
+
+          &-header {
+            background-color: #fff;
+
+            .accordian-icon {
+              margin: 19px 15px 18px 24px;
+            }
+
+            .accordian-label {
+              font-size: 14px;
+              color: #162d3d;
+              text-align: left;
+              padding: 19px 0 18px 0;
+              display: inline-block;
+              line-height: 13px;
+              cursor: pointer;
+              user-select: none;
+            }
+          }
+        }
+
+        .text-effect-container {
+          padding: 0 0 20px 25px;
+
+          .text-effect-button {
+            color:#3899ec;
+            font-size: 26px;
+            border-radius: 8px;
+            width: 38px;
+            height: 38px;
+            background-color: #eaf7ff;
+            border: none;
+            outline: none;
+            display: inline-block;
+            margin: 12px 12px 0 0;
+            padding: 0;
+            font-weight: 600;
+            cursor: pointer;
+          }
+
+          .text-none-icon {
+            margin: 12px 12px 0 0;
+            width: 36px;
+            height: 36px;
+            vertical-align: top;
+            display: inline-block;
+            cursor: pointer;
+            background-color: #fff;
+            border-radius: 8px;
+            position: relative;
+            border: 2px solid #d9e1e8;
+
+            &::before {
+              content: '';
+              height: 2px;
+              background: #f00;
+              position: absolute;
+              width: 42px;
+              right: -5px;
+              top: 15px;
+              transform: rotate(135deg);
+            }
+          }
+        }
+
+        .composite-radio-buttons {
+          padding: 18px 24px;
+          position: relative;
+
+          .ant-radio-wrapper {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+          }
+        }
+
+        .composite-radio-buttons.has-label > label {
+          width: calc(100% - 24px);
+          max-height: 36px;
+          overflow: hidden;
+          margin-bottom: 12px;
+          display: inline-flex;
+          text-overflow: ellipsis;
+          font-size: 14px;
+          line-height: 18px;
+          color: #2b5672;
+        }
+
         .section {
           position: relative;
           padding-left: 2px;

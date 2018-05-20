@@ -13,10 +13,10 @@ class Menu {
 
     const { spec } = option;
     const { 
-      rect, 
+      rect,
       fill,
       border,
-      corner, 
+      corner,
       shadow, 
       font,
       animation,
