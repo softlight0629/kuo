@@ -4,7 +4,7 @@ class Shadow {
 
   @observable enable = false;
   
-  @observable angle = 225;
+  @observable angle = 0;
 
   @observable distance = 0;
 

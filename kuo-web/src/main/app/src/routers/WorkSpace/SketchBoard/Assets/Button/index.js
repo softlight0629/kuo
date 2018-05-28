@@ -3,9 +3,8 @@ import { observer } from 'mobx-react';
 import { withRouter } from 'react-router';
 import Rnd from 'react-rnd';
 
+import cssrender from '../../../../../helper/cssrender';
 import './index.less';
-
-
 
 @withRouter
 @observer
@@ -13,13 +12,12 @@ class AstvButton extends Component {
 
   render() {
     const { astm } = this.props;
+    const { spec, store } = astm;
 
     return (
-      <div className="ast-button">
-        <a className="ast-button">
-          <span>{astm.text}</span>
-        </a>
-      </div>
+      <a className="ast-button" style={cssrender(spec)}>
+        <span>{store.text}</span>
+      </a>
     )
   }
 }

@@ -14,7 +14,7 @@ const TabPane = Tabs.TabPane;
 class LinkPanel extends Component {
 
   close() {
-    this.props.designPanelUiStore.closeLinkedPanel();
+    this.props.designPanelUiStore.closeLinkPanel();
   }
 
   renderMenu() {

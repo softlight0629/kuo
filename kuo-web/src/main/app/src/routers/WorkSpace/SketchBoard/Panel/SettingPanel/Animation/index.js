@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import './index.less';
 
 @withRouter
-@inject('designPanelUiStore', 'astmRefUiStore')
+@inject('designPanelUiStore', 'astRefUiStore')
 @observer
 class AnimationPanel extends Component {
 
@@ -15,7 +15,7 @@ class AnimationPanel extends Component {
   }
 
   render() {
-    const { astm } = this.props.astmRefUiStore;
+    const { astm } = this.props.astRefUiStore;
     const { animation } = astm;
 
     return (

@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import { AstmButton, AstmMenu, AstmText } from '../../models/assets';
+import { AstmButton, AstmMenu, AstmText } from '../../models/artboard/assets';
 
 class SketchBoardStore {
 
@@ -25,10 +25,11 @@ class SketchBoardStore {
   }
 
   @action addAst(option) {
+    console.log(option, 'option..');
     const astm = this._getAstm(option);
     this.astms.push(astm);
 
-    this.store.astmRefUiStore.refAstm(astm);
+    this.store.astRefUiStore.refAstm(astm);
   }
 }
 

@@ -58,16 +58,16 @@ class ToolBar extends Component {
 
   alignment() {
     const alignItems = alignment.distributeX(this.props.sketchBoardStore.astms.map(astm => ({
-      left: astm.rect.x,
-      top: astm.rect.y,
-      width: astm.rect.width,
-      height: astm.rect.height,
+      left: astm.spec.rect.x,
+      top: astm.spec.rect.y,
+      width: astm.spec.rect.width,
+      height: astm.spec.rect.height,
     })));
 
     this.props.sketchBoardStore.astms.forEach((astm, i) => {
       const { left, top, width, height } = alignItems[i];
-      astm.rect.setPosition(left, top);
-      astm.rect.setSize(width, height);
+      astm.spec.rect.setPosition(left, top);
+      astm.spec.rect.setSize(width, height);
     });
   }
 

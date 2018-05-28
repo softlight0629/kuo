@@ -4,13 +4,13 @@ import { Icon } from 'antd';
 import './index.less';
 import { observer, inject } from 'mobx-react';
 
-@inject('compToolBarUiStore', 'astmRefUiStore')
+@inject('compToolBarUiStore', 'astRefUiStore')
 @observer
 class CompToolBar extends Component {
 
   render() {
     const { x, y } = this.props.compToolBarUiStore;
-    const { astm } = this.props.astmRefUiStore;
+    const { astm } = this.props.astRefUiStore;
 
     console.log(astm);
 
@@ -61,13 +61,13 @@ class CompToolBar extends Component {
             <label className="row">
               <span className="label">W:</span>
               <div className="input-stepper">
-                <input type="text" className="input" value={astm.rect.width}/>
+                <input type="text" className="input" value={astm.spec.rect.width}/>
               </div>
             </label>
             <label className="row">
               <span className="label">H:</span>
               <div className="input-stepper">
-                <input type="text" className="input" value={astm.rect.height}/>
+                <input type="text" className="input" value={astm.spec.rect.height}/>
               </div>
             </label>
           </div>
@@ -76,13 +76,13 @@ class CompToolBar extends Component {
             <label className="row">
               <span className="label">X:</span>
               <div className="input-stepper">
-                <input type="text" className="input" value={astm.rect.x}/>
+                <input type="text" className="input" value={astm.spec.rect.x}/>
               </div>
             </label>
             <label className="row">
               <span className="label">Y:</span>
               <div className="input-stepper">
-                <input type="text" className="input" value={astm.rect.y}/>
+                <input type="text" className="input" value={astm.spec.rect.y}/>
               </div>
             </label>
           </div>

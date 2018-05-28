@@ -8,6 +8,8 @@ class Menu {
 
   menuItems = [];
 
+  gap = 0;
+
   constructor(option) {
     this.astm = 'Menu';
 
@@ -21,7 +23,12 @@ class Menu {
       font,
       animation,
       layout,
-      menuItems } = spec;
+      menuItems,
+      gap,
+      state = {},
+    } = spec;
+
+    this.gap = gap;
 
     this.rect = new Rect(rect || {});
 
@@ -36,6 +43,12 @@ class Menu {
     menuItems.forEach(menuItem => {
       this.menuItems.push(new MenuItem(menuItem));
     });
+    
+    this.spec = {};
+    this.store = {};
+    this.state = {};
+    this.event = {};
+    this.binder = {};
   }
 
 }

@@ -2,9 +2,10 @@ import Border from './Border';
 import Corner from './Corner';
 import Fill from './Fill';
 import Shadow from './Shadow';
-import TextEffect from './TextEffect';
 import Font from './Font';
-
+import TextEffect from './TextEffect';
+import TextIndent from './TextIndent';
+import TextAlign from './TextAlign';
 
 export default {
   Border,
@@ -12,5 +13,7 @@ export default {
   Fill,
   Shadow,
   TextEffect,
+  TextIndent,
+  TextAlign,
   Font,
 }

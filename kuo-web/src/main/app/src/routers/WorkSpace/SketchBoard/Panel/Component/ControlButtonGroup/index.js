@@ -16,10 +16,10 @@ class ControlButtonGroup extends Component {
 class ControlToggleButton extends Component {
 
   render() {
-    const { label } = this.props;
+    const { label, onClick } = this.props;
 
     return (
-      <span className="control-button toggle-button">
+      <span className="control-button toggle-button" onClick={() => onClick()}>
         <label className="control-button-label">
           {label}
         </label>
@@ -54,6 +54,7 @@ class ControlDropdownButtonGroup extends Component {
     })
   }
 
+  // todo
   getChildContext() {
     return {
       dropdownButtonGroup: {

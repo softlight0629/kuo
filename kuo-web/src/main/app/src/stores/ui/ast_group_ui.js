@@ -2,7 +2,7 @@ import { observable, action} from "mobx";
 
 'use strict';
 
-class AstmGroupUiStore {
+class AstGroupUiStore {
 
   @observable astms = [];
 

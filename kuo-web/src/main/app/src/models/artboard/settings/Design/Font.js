@@ -8,11 +8,13 @@ class Font {
 
   @observable fontSize;
 
-  @observable highLight;
+  @observable bgColor;
 
   @observable bold = false;
 
   @observable italic = false;
+
+  @observable underline = false;
 
   constructor(option) {
     extendObservable(this, option);
@@ -30,12 +32,24 @@ class Font {
     this.fontSize = fontSize;
   }
 
+  @action setBgColor(bgColor) {
+    this.bgColor = bgColor;
+  }
+
   @action toggleBold() {
     this.bold = !this.bold;
   }
 
+  @action setBold(bold) {
+    this.bold = bold;
+  }
+
   @action toggleItalic() {
     this.italic = !this.italic;
+  }
+
+  @action toggleUnderline() {
+    this.underline = !this.underline;
   }
 }
 

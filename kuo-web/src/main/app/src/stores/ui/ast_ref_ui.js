@@ -61,7 +61,7 @@ const op = {
   },
 }
 
-class AstmRefUiStore {
+class AstRefUiStore {
 
   @observable.ref astm = op;
 
@@ -70,4 +70,4 @@ class AstmRefUiStore {
   }
 }
 
-export default AstmRefUiStore;
+export default AstRefUiStore;

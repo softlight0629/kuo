@@ -5,15 +5,11 @@ import Rnd from 'react-rnd';
 import { Icon } from 'antd';
 import AssetSetting from './AssetSetting';
 import { AstvButton, AstvMenu, AstvText } from '../Assets';
-
+import cssrender from '../../../../helper/cssrender';
 import './index.less';
 
-function hexToRgba(hex, opacity) { 
-  return "rgba(" + parseInt("0x" + hex.slice(1, 3)) + "," + parseInt("0x" + hex.slice(3, 5)) + "," + parseInt("0x" + hex.slice(5, 7)) + "," + opacity + ")"; 
-}
-
 @withRouter
-@inject('designPanelUiStore', 'astmRefUiStore')
+@inject('designPanelUiStore', 'astRefUiStore')
 @observer
 class AssetBox extends Component {
   constructor(props) {
@@ -26,44 +22,11 @@ class AssetBox extends Component {
 
   onDragStop(e, d) {
     this.setState({ rnding: false });
-    this.props.astm.rect.setPosition(d.x, d.y);
-  }
-
-  renderSpecStyle(style) {
-    const { fill, border, font, shadow, corner, layout} = style;
-
-    const yshadow = (Math.floor(Math.cos(shadow.angle * Math.PI / 180)*100) / 100) * shadow.distance;
-    const xshadow = (Math.floor(Math.sin(shadow.angle * Math.PI / 180)*100) / 100) * shadow.distance * -1;
-
-    const bi = {};
-    if (font.bold) {
-      bi.fontWeight = 'bold';
-    }
-
-    if (font.italic) {
-      bi.fontStyle = 'italic';
-    }
-
-    return Object.assign({}, {
-      textAlign: layout.align,
-      backgroundColor: hexToRgba(fill.color, fill.opacity/100),
-      padding: `${layout.margin}px`,
-      borderWidth: `${border.width}px`,
-      borderColor: hexToRgba(border.color, border.opacity/100),
-      borderStyle: 'solid',
-      color: '#fff',
-      font: `${font.fontSize}px/1.4em \'${font.fontFamily}\', sans-serif`,
-      color: font.color,
-      borderTopLeftRadius: `${corner.leftTop}px`,
-      borderTopRightRadius: `${corner.rightTop}px`,
-      borderBottomLeftRadius: `${corner.leftBottom}px`,
-      borderBottomRightRadius: `${corner.rightBottom}px`,
-      boxShadow: `${xshadow}px ${yshadow}px ${shadow.blur}px ${shadow.size}px ${hexToRgba(shadow.color, shadow.opacity/100)}`,
-    }, bi);
+    this.props.astm.spec.rect.setPosition(d.x, d.y);
   }
 
   handleRefAstm(astm) {
-    this.props.astmRefUiStore.refAstm(astm);
+    this.props.astRefUiStore.refAstm(astm);
 
     // 检测 shift
   }
@@ -90,7 +53,7 @@ class AssetBox extends Component {
 
   render() {
     const { astm, designPanelUiStore } = this.props;
-    const { rect, animation } = astm;
+    const { rect, animation } = astm.spec;
 
     const stylus = {
       cursor: 'pointer',
@@ -125,7 +88,7 @@ class AssetBox extends Component {
       animationProps.animationDirection = animation.direction;
     }
 
-    const selected = astm === this.props.astmRefUiStore.astm;
+    const selected = astm === this.props.astRefUiStore.astm;
 
     return (
         <Rnd
@@ -146,7 +109,7 @@ class AssetBox extends Component {
           <div className="asset-box" onMouseDown={() => this.handleRefAstm(astm)}>
             {selected && !this.state.rnding && <AssetSetting astm={astm} />}
             <div className={`animated`} style={{ width: '100%', height: '100%', ...animationProps}}>
-              <div key={1} className="asset" style={this.renderSpecStyle(astm)}>
+              <div key={1} className="asset">
                 {this.renderAstv(astm) }
               </div>
             </div>

@@ -3,13 +3,13 @@
 
   &-items {
     white-space: nowrap;
-    display: inline-block;
+    display: flex;
     overflow: visible;
     height: 100%;
     width: 100%;
     background: rgba(255,255,255,1);
     border-radius: 0;
-    border: 1px solid rgba(0,0,0,1);
+    border: 0px solid rgba(0,0,0,1);
     position: relative;
 
     .ast-menu-btn {
@@ -23,28 +23,37 @@
       overflow: visible;
 
       &-link {
-        display: inline-block;
+        display: block;
         width: 100%;
         height: 100%;
       }
 
       &-gapper {
-        padding: 0 5px;
-        border-left: 1px solid rgba(0,0,0,1);
+        padding: 0;
+        border-left: 0px solid rgba(0,0,0,1);
       }
 
       &-bg {
-        text-align: center;
 
         .ast-menu-btn-label {
           display: inline-block;
-          padding: 0 10px;
-          color: #000000;
+          // padding: 0 10px;
           transition: color 0.4s ease 0s;
-          text-align: center;
           margin: 0;
         }
       }
+    }
+
+    .ast-menu-btn.gap {
+      margin: 0 5px;
+    }
+
+    .ast-menu-btn.gap[data-postion=left] {
+      margin-left: 0;
+    }
+
+    .ast-menu-btn.gap[data-postion=right] {
+      margin-right: 0;
     }
 
     .ast-menu-btn[data-postion="left"] .ast-menu-btn-gapper {

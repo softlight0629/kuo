@@ -6,14 +6,14 @@ import AssetSettingButton from './AssetSettingButton';
 
 import './index.less';
 
-@inject('designPanelUiStore', 'astmRefUiStore', 'astUiStore')
+@inject('designPanelUiStore', 'astRefUiStore', 'astUiStore')
 class AssetSetting extends Component {
 
   refAstm() {
     const { astm } = this.props;
 
-    this.props.astmRefUiStore.refAstm(astm);
-    this.props.designPanelUiStore.position(astm.rect.x + astm.rect.width + 25, astm.rect.y);
+    this.props.astRefUiStore.refAstm(astm);
+    this.props.designPanelUiStore.position(astm.spec.rect.x + astm.spec.rect.width + 25, astm.spec.rect.y);
   }
 
   showDesignPanel() {
@@ -50,18 +50,18 @@ class AssetSetting extends Component {
     const { astm, astUiStore } = this.props;
     const settingButtons = astUiStore.astSettingButtons(astm.astm);
 
+    console.log(astm, astm.astm, settingButtons);
     return (
       <div className="asset-setting">
         <ul className="asset-setting-btns">
           { settingButtons.includes('EditText') && <AssetSettingButton label={<span className="label" >Edit Text</span>} onClick={() => this.showEditTextPanel()} /> }
           { settingButtons.includes('ChangeText') && <AssetSettingButton label={<span className="label" >Change Text</span>} onClick={() => this.showChangeTextPanel()} /> }
+
           { settingButtons.includes('Layout') && <AssetSettingButton label={<Icon type="layout" />} onClick={() => this.showLayoutPanel()} />}
           { settingButtons.includes('Design') && <AssetSettingButton label={<Icon type="dashboard" />} onClick={() => this.showDesignPanel()} />}
           { settingButtons.includes('Animation') && <AssetSettingButton label={<Icon type="sync" />} onClick={() => this.showAnimationPanel()} />}
           { settingButtons.includes('Link') && <AssetSettingButton label={<Icon type="link" />} onClick={() => this.showLinkPanel()} />}
           { settingButtons.includes('Database') && <AssetSettingButton label={<Icon type="database" />} onClick={() => this.showLinkPanel()} />}
-          
-          
         </ul>
       </div>
     )

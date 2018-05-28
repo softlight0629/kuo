@@ -51,8 +51,10 @@ class ArtBoard extends Component {
           leftBottom: 0,
           rightBottom: 0,
         },
-        text: 'DESIGN22222',
         theme: 'h3',
+      },
+      store: {
+        text: 'DESIGN22222',
       },
     });
 
@@ -92,6 +94,20 @@ class ArtBoard extends Component {
           leftBottom: 0,
           rightBottom: 0,
         },
+      },
+      state: {
+        hover: {
+          fill: {
+            color: '#d3d3d3',
+          },
+        },
+        clicked: {
+          fill: {
+            color: '#9c9c9c',
+          },
+        },
+      },
+      store: {
         menuItems: [
           {
             text: 'HOME',
@@ -103,7 +119,7 @@ class ArtBoard extends Component {
             text: 'ABOUT',
           }
         ],
-      },
+      }
     });
 
     this.props.sketchBoardStore.addAst({
@@ -142,8 +158,10 @@ class ArtBoard extends Component {
           leftBottom: 0,
           rightBottom: 0,
         },
-        text: 'Button',
       },
+      store: {
+        text: 'Button',
+      }
     });
   }
 

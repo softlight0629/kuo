@@ -14,10 +14,10 @@ class TextEffect extends Component {
 class TextEffectButton extends Component {
 
   render() {
-    const { textShadow, label, key } = this.props;
+    const { textShadow, label, key, onClick } = this.props;
 
     return (
-      <span className={key}>
+      <span className={key} onClick={() => onClick() }>
         <button className="text-effect-button">
           <span className="text-shadow-effect" style={{ textShadow }}>{label}</span>
         </button>

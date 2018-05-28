@@ -16,7 +16,7 @@ import { ChangeTextPanel } from './Panel/ChangePanel';
 import ColorPicker from './ColorPicker';
 
 @withRouter
-@inject('designPanelUiStore', 'colorPickerUiStore', 'astmRefUiStore')
+@inject('designPanelUiStore', 'colorPickerUiStore', 'astRefUiStore')
 @observer
 class SketchBoard extends Component {
 
@@ -30,7 +30,7 @@ class SketchBoard extends Component {
 
       changeTextPanelVisible,
     } = this.props.designPanelUiStore;
-    const { astm } = this.props.astmRefUiStore;
+    const { astm } = this.props.astRefUiStore;
     const { colorPickerVisible } = this.props.colorPickerUiStore;
 
     return (

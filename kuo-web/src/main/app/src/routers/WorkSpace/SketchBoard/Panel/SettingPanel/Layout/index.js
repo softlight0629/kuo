@@ -7,7 +7,7 @@ import { withRouter } from 'react-router';
 import './index.less';
 
 @withRouter
-@inject('designPanelUiStore', 'astmRefUiStore')
+@inject('designPanelUiStore', 'astRefUiStore')
 @observer
 class LayoutPanel extends Component {
 
@@ -16,7 +16,7 @@ class LayoutPanel extends Component {
   }
 
   render() {
-    const { astm } = this.props.astmRefUiStore;
+    const { astm } = this.props.astRefUiStore;
     const { layout } = astm;
 
     return (

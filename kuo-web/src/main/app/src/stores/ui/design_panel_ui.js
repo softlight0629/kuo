@@ -3,7 +3,7 @@ import { generateShowHourMinuteSecond } from 'antd/lib/time-picker';
 
 class DesignPanelUiStore {
 
-  @observable stylePanelVisible = false;
+  @observable designPanelVisible = false;
 
   @observable editTextPanelVisible = false;
 
