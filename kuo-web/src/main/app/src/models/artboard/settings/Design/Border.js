@@ -23,6 +23,14 @@ class Border {
   @action setWidth(width) {
     this.width = width;
   }
+
+  serialize() {
+    return {
+      color: this.color,
+      opacity: this.opacity,
+      width: this.width,
+    }
+  }
 }
 
 export default Border;

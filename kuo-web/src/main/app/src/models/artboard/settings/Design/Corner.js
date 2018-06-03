@@ -67,6 +67,15 @@ class Corner {
 
     this.rightBottom = rightBottom;
   }
+
+  serialize() {
+    return {
+      leftTop: this.leftTop,
+      rightTop: this.rightTop,
+      leftBottom: this.leftBottom,
+      rightBottom: this.rightBottom,
+    }
+  }
 }
 
 export default Corner;

@@ -20,6 +20,18 @@ class Font {
     extendObservable(this, option);
   }
 
+  serialize() {
+    return {
+      color: this.color,
+      fontFamily: this.fontFamily,
+      fontSize:  this.fontSize,
+      bgColor: this.bgColor,
+      bold: this.bold,
+      italic: this.italic,
+      underline: this.underline,
+    }
+  }
+
   @action setColor(color) {
     this.color = color;
   }

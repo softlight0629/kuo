@@ -11,6 +11,7 @@ import ColorPickerUiStore from './ui/color_picker_ui';
 import CompToolBarUiStore from './ui/comp_tool_bar_ui';
 import AstRefUiStore from './ui/ast_ref_ui';
 import AstUiStore from './ui/ast_ui';
+import AstSkinUiStore from './ui/ast_skin_ui';
 
 import service from '../services';
 
@@ -22,7 +23,6 @@ class GlobalStore {
     this.dashboardStore = new DashboardStore(this, service);
     this.accountStore = new AccountStore(this, service);
     this.sketchBoardStore = new SketchBoardStore(this, service);
-    console.log('ooooo');
     this.themeStore = new ThemeStore(this, service);
 
     this.workSpaceUiStore = new WorkSpaceUiStore(this, service);
@@ -31,6 +31,7 @@ class GlobalStore {
     this.compToolBarUiStore = new CompToolBarUiStore(this, service);
     this.astRefUiStore = new AstRefUiStore(this, service);
     this.astUiStore = new AstUiStore(this, service);
+    this.astSkinUiStore = new AstSkinUiStore(this, service);
   }
 }
 
@@ -50,4 +51,5 @@ export default {
   compToolBarUiStore: store.compToolBarUiStore,
   astRefUiStore: store.astRefUiStore,
   astUiStore: store.astUiStore,
+  astSkinUiStore: store.astSkinUiStore,
 };

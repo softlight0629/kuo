@@ -22,6 +22,18 @@ class Spec {
     this.layout = new Layout(layout || {});
     this.font = new Font(font || {});
   }
+
+  serialize() {
+    return {
+      rect: this.rect.serialize(),
+      fill: this.fill.serialize(),
+      border: this.border.serialize(),
+      corner: this.corner.serialize(),
+      shadow: this.shadow.serialize(),
+      font: this.font.serialize(),
+      layout: this.layout.serialize(),
+    };
+  }
 }
 
 export default Spec;

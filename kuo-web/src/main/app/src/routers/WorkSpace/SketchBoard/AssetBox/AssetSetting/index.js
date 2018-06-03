@@ -48,14 +48,14 @@ class AssetSetting extends Component {
 
   render() {
     const { astm, astUiStore } = this.props;
-    const settingButtons = astUiStore.astSettingButtons(astm.astm);
+    const settingButtons = astUiStore.astSettingButtons(astm.kind);
 
-    console.log(astm, astm.astm, settingButtons);
     return (
       <div className="asset-setting">
         <ul className="asset-setting-btns">
           { settingButtons.includes('EditText') && <AssetSettingButton label={<span className="label" >Edit Text</span>} onClick={() => this.showEditTextPanel()} /> }
           { settingButtons.includes('ChangeText') && <AssetSettingButton label={<span className="label" >Change Text</span>} onClick={() => this.showChangeTextPanel()} /> }
+          { settingButtons.includes('Change Image') && <AssetSettingButton label={<span className="label" >Change Image</span>} onClick={() => this.showChangeTextPanel()} /> }
 
           { settingButtons.includes('Layout') && <AssetSettingButton label={<Icon type="layout" />} onClick={() => this.showLayoutPanel()} />}
           { settingButtons.includes('Design') && <AssetSettingButton label={<Icon type="dashboard" />} onClick={() => this.showDesignPanel()} />}

@@ -6,6 +6,8 @@ class Fill {
 
   @observable opacity;
 
+  @observable separator;
+
   constructor(option) {
     extendObservable(this, option);
   }
@@ -16,6 +18,18 @@ class Fill {
 
   @action setOpacity(opacity) {
     this.opacity = opacity;
+  }
+
+  @action setSeparator(separator) {
+    this.separator = separator;
+  }
+
+  serialize() {
+    return {
+      color: this.color,
+      opacity: this.opacity,
+      separator: this.separator,
+    }
   }
 }
 

@@ -17,6 +17,13 @@ class SpecLayout {
   @action setMargin(margin) {
     this.margin = margin;
   }
+
+  serialize() {
+    return {
+      align: this.align,
+      margin: this.margin,
+    }
+  }
 }
 
 export default SpecLayout;

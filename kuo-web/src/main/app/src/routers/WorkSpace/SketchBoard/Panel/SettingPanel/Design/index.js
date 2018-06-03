@@ -12,10 +12,10 @@ import {
   TextButtonGroup,
 } from '../../Component';
 import ThemeButton from '../../../ThemeButton';
+import PanelWrapper from '../../PanelWrapper';
 
 import './index.less';
-
-import PanelWrapper from '../../PanelWrapper';
+import SkinButtonSlider from '../../Component/SkinButtonSlider';
 
 const TabPane = Tabs.TabPane;
 const Option = Select.Option;
@@ -35,7 +35,7 @@ const Fonts = [
 ];
 
 @withRouter
-@inject('designPanelUiStore', 'astRefUiStore', 'themeStore')
+@inject('designPanelUiStore', 'astRefUiStore', 'themeStore', 'astSkinUiStore')
 @observer
 class DesignPanel extends Component {
 
@@ -159,13 +159,13 @@ class DesignPanel extends Component {
   }
 
   renderThemePanel() {
-    const { themesOfMenu } = this.props.themeStore;
+    const { astm } = this.props.astRefUiStore;
+    const themes = this.props.themeStore.themesOfKind(astm.kind);
 
-    console.log(themesOfMenu, 'sdddmmm');
     return (
       <div className="theme-wrapper">
         {
-          themesOfMenu.map(theme => <ThemeButton astm={theme}/>)
+          themes.map(theme => <ThemeButton theme={theme}/>)
         }
       </div>
     )
@@ -197,15 +197,20 @@ class DesignPanel extends Component {
   )
 
   render() {
+    const { astm } = this.props.astRefUiStore;
+    const skins = this.props.astSkinUiStore.skinsOfKind(astm.kind);
 
+    console.log(skins);
     // 抽象出来， 要支持 theme
     return (
       <PanelWrapper title="Button Setttings" onClose={this.close.bind(this)}>
         <div className="advanced-style-panel">
-          <div className="advanced-style-panel-header"></div>
+          <div className="advanced-style-panel-header">
+            <SkinButtonSlider skins={skins} />
+          </div>
           <div className="advanced-style-panel-body">
             <div className="content-container">
-              {this.renderThemePanel()}
+              {this.renderCustomPanel()}
             </div>
           </div>
         </div>

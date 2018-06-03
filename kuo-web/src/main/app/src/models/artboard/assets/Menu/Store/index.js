@@ -1,9 +1,10 @@
 
+import { observable } from 'mobx';
 import MenuItem from './MenuItem';
 
 class Store {
   
-  menuItems = [];
+  @observable menuItems = [];
 
   constructor({ menuItems = [] }) {
     menuItems.forEach(menuItem => {

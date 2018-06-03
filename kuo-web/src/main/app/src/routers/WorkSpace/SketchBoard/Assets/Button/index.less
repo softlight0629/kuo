@@ -1,16 +1,39 @@
 .ast-button {
   cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  position: relative;
   justify-content: center;
   align-items: center;
   display: flex;
+  overflow: hidden;
   transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
   
-  span {
+  &-top, &-bottom {
+    border-left: 0;
+    border-right: 50px solid transparent;
+    position: absolute;
+    right: 0;
+  }
+
+  &-top {
+    border-bottom: 50px solid transparent;
+    bottom: 50% !important;
+  }
+
+  &-bottom {
+    border-top: 50px solid transparent;
+    top: 50% !important;
+  }
+
+  &-bg {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 50px;
+  }
+
+  &-text {
     display: inline-block;
     transition: color 0.4s ease 0s;
     margin: 0;

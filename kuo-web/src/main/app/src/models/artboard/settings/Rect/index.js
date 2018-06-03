@@ -24,6 +24,15 @@ class Rect {
     this.width = width;
     this.height = height;
   }
+
+  serialize() {
+    return {
+      x: this.x,
+      y: this.y,
+      width: this.width,
+      height: this.height,
+    }
+  }
 }
 
 export default Rect;

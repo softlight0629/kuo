@@ -11,6 +11,12 @@ class TextEffect {
   @action setEffect(effect) {
     this.effect = effect;
   }
+
+  serialize() {
+    return {
+      effect: this.effect,
+    }
+  }
 }
 
 export default TextEffect;

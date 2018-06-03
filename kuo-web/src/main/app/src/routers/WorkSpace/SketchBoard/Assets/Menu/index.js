@@ -6,12 +6,16 @@ import './index.less';
 @observer
 class AstvMenu extends Component {
 
+
+
   render() {
     const { astm } = this.props;
-    const { spec, store } = astm;
-    const { rect, fill, shadow, border, font, layout, corner, gap = 5 } = spec;
+    const { spec, store, state } = astm;
+    const { rect: { width, height }, shadow, border, fill, font, layout, corner, gap = 5 } = spec;
+
     const { menuItems } = store;
-    const { width, height } = rect;
+    const { hover, clicked } = state;
+
     const menuItemWidth = (width - (gap ? 30 : 0 )) / menuItems.length;
 
     return (
@@ -23,9 +27,11 @@ class AstvMenu extends Component {
                 style={{
                   width: `${menuItemWidth}px`,
                   height: `${height}px`,
-                ...(cssrender(gap ? {shadow, layout, border, fill, corner} : { fill, layout }))}} 
+                  ...(fill.separator && i !== 0 ? {borderLeft: `1px solid ${fill.separator}`}:{}),
+                  ...(cssrender(gap ? {shadow, layout, ...(i === 0 ? {border: hover.border} : {border}), ...(i === 0 ? {fill: hover.fill} : {fill}), corner} : { ...(i === 0 ? {fill: hover.fill} : {fill}), layout }))
+                }} 
                 data-postion={`${i === 0 ? 'left' : i === menuItems.length - 1 ? 'right' : 'center'}`}>
-                <a className="ast-menu-btn-link" style={cssrender({font})}>
+                <a className="ast-menu-btn-link" style={cssrender({...(i === 0 ? {font: hover.font } : {font})})}>
                   <div className="ast-menu-btn-gapper">
                     <div className="ast-menu-btn-bg">
                       <p className="ast-menu-btn-label" style={{ lineHeight: `${height}px`}}>{menuItem.text}</p>

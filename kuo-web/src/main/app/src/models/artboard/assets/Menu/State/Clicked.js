@@ -2,7 +2,11 @@
 class Clicked {
   
   constructor(option) {
+  }
 
+  serialize() {
+    return {
+    }
   }
 }
 

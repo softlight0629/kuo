@@ -16,6 +16,8 @@ class Shadow {
 
   @observable opacity = 100;
 
+  @observable boxShadow = '';
+
   constructor(option) {
     extendObservable(this, option);
   }
@@ -46,6 +48,23 @@ class Shadow {
 
   @action setOpacity(opacity) {
     this.opacity = opacity;
+  }
+  @action setBoxShadow(boxShadow) {
+    this.boxShadow = boxShadow;
+  }
+
+  serialize() {
+    return {
+      enable: this.enable,
+      angle: this.angle,
+      distance: this.distance,
+      size:  this.size,
+      blur: this.blur,
+      bold: this.bold,
+      color: this.color,
+      opacity: this.opacity,
+      boxShadow: this.boxShadow,
+    }
   }
 }
 

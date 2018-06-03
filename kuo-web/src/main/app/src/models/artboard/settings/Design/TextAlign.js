@@ -11,6 +11,12 @@ class TextAlign {
   @action setAlign(align) {
     this.align = align;
   }
+
+  serialize() {
+    return {
+      align: this.align,
+    }
+  }
 }
 
 export default TextAlign;

@@ -4,6 +4,40 @@
   display: flex;
   text-align: left;
 
+  &-header {
+
+    .thumbnails-slider {
+      white-space: nowrap;
+      height: 68px;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      position: relative;
+      background-color: #fff;
+
+      .items-container {
+        margin-top: -26px;
+        padding-left: 25px;
+        padding-right: 25px;
+        position: absolute;
+        transition-property: left;
+        transition-duration: 0.3s;
+        top: 50%;
+
+        label {
+          height: 100%;
+          display: inline-block;
+          font-size: 0;
+          cursor: pointer;
+
+          img {
+            margin-left: 6px;
+            border: 2px solid transparent;
+          }
+        }
+      }
+    }
+  }
+
   &-body {
     flex: 1;
     display: flex;

@@ -1,7 +1,5 @@
-
-function hexToRgba(hex, opacity) { 
-  return "rgba(" + parseInt("0x" + hex.slice(1, 3)) + "," + parseInt("0x" + hex.slice(3, 5)) + "," + parseInt("0x" + hex.slice(5, 7)) + "," + opacity + ")"; 
-}
+import color from '../utility/color';
+const { hexToRgba } = color;
 
 const effects = {
   effect_1: 'rgba(255,255,255,0.6) 1px 1px 1px, rgba(0,0,0,0.6) -1px -1px 1px',
@@ -43,10 +41,10 @@ const _border = ({color, opacity = 100, width}) =>
 
 const _corner = ({leftTop, rightTop, leftBottom, rightBottom}) =>
 ({
-  borderTopLeftRadius: `${leftTop}px`,
-  borderTopRightRadius: `${rightTop}px`,
-  borderBottomLeftRadius: `${leftBottom}px`,
-  borderBottomRightRadius: `${rightBottom}px`,
+  borderTopLeftRadius: leftTop.endsWith('%') ? leftTop : `${leftTop}px`,
+  borderTopRightRadius: rightTop.endsWith('%') ? rightTop : `${rightTop}px`,
+  borderBottomLeftRadius: leftBottom.endsWith('%') ? leftBottom : `${leftBottom}px`,
+  borderBottomRightRadius: rightBottom.endsWith('%') ? rightBottom : `${rightBottom}px`,
 });
 
 const _shadow = ({
@@ -56,16 +54,20 @@ const _shadow = ({
   distance,
   size,
   blur,
+  boxShadow
 }) =>
 ({
-  boxShadow: `${(Math.floor(Math.sin(angle * Math.PI / 180)*100) / 100) * distance * -1}px ${(Math.floor(Math.cos(angle * Math.PI / 180)*100) / 100) * distance}px ${blur}px ${size}px ${hexToRgba(color, opacity/100)}`,
+  boxShadow: boxShadow ? boxShadow : `${(Math.floor(Math.sin(angle * Math.PI / 180)*100) / 100) * distance * -1}px ${(Math.floor(Math.cos(angle * Math.PI / 180)*100) / 100) * distance}px ${blur}px ${size}px ${hexToRgba(color, opacity/100)}`,
 });
 
 const _layout = ({align, margin}) => ({textAlign: align, padding: `${margin}px`});
 const _textIndent = ({ step }) => ({marginLeft: `${step * 40}px`});
 const _textAlign = ({ align }) =>({ textAlign: align });
 const _textEffect = ({ effect }) => ({ textShadow: effects[effect] });
-const _fill = ({ color, opacity = 100 }) => ({ backgroundColor: hexToRgba(color, opacity/100) });
+const _fill = ({ color, opacity = 100 }) => ({ backgroundColor: color === 'transparent' ? color : hexToRgba(color, opacity/100) });
+
+
+const _rect = ({ width, height }) => ({ width: `${width}px`, height: `${height}px`})
 
 const cssrender = ({
   fill,
@@ -76,14 +78,16 @@ const cssrender = ({
   textAlign,
   textEffect,
   textIndent,
+  rect,
   layout,
 }) => ({
   ...(font ? _font(font) : {}),
   ...(border ? _border(border) : {}),
   ...(corner ? _corner(corner) : {}),
-  ...(shadow ? _shadow(shadow) : {}),
+  ...(shadow && shadow.enable ? _shadow(shadow) : {}),
   ...(layout ? _layout(layout) : {}),
   ...(fill ? _fill(fill) : {}),
+  ...(rect ? _rect(rect) : {}),
   ...(textIndent ? _textIndent(textIndent) : {}),
   ...(textAlign ? _textAlign(textAlign) : {}),
   ...(textIndent ? _textIndent(textIndent) : {}),

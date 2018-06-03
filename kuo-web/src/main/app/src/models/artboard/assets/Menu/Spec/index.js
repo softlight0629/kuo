@@ -10,6 +10,13 @@ class MenuSpec extends Spec {
 
     this.gap = gap;
   }
+
+  serialize() {
+    return {
+      ...(super.serialize()),
+      gap: this.gap,
+    }
+  }
 }
 
 export default MenuSpec;

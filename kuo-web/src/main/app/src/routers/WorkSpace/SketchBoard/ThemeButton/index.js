@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
-import { AstvMenu } from '../Assets';
 import { inject } from 'mobx-react';
+import astfactory from '../../../../helper/astfactory';
 
 import './index.less';
 
+@inject('astRefUiStore')
 class ThemeButton extends Component {
 
+  apply() {
+    const { astm } = this.props.astRefUiStore;
+    const { theme } = this.props;
+    theme.apply(this.props.astm);
+  }
+
   render() {
-    const { spec, store, state } = this.props.astm;
+    const { kind, spec, store, state } = this.props.theme;
+    const Astv = astfactory.findAstv(kind);
 
     return (
-      <div className="theme-button">
+      <div className="theme-button" onClick={() => this.apply()}>
         <div key={1} className="asset">
-          <AstvMenu astm={{ spec, store, state }} />
+          <Astv astm={{ spec, store, state }} />
         </div>
       </div>
     )

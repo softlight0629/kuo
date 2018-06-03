@@ -19,6 +19,12 @@ class TextIndent {
     
     this.step -= 1;
   }
+
+  serialize() {
+    return {
+      step: this.step,
+    }
+  }
 }
 
 export default TextIndent;

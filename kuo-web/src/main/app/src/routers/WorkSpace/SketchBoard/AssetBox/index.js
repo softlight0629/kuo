@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import Rnd from 'react-rnd';
 import { Icon } from 'antd';
 import AssetSetting from './AssetSetting';
-import { AstvButton, AstvMenu, AstvText } from '../Assets';
+import { AstvButton, AstvMenu, AstvText, AstvImage } from '../Assets';
 import cssrender from '../../../../helper/cssrender';
 import './index.less';
 
@@ -32,21 +32,27 @@ class AssetBox extends Component {
   }
 
   renderAstv(astm) {
-    if (astm.astm === 'Button') {
+    if (astm.kind === 'Button') {
       return (
         <AstvButton astm={astm} />
       )
     }
 
-    if (astm.astm === 'Menu') {
+    if (astm.kind === 'Menu') {
       return (
         <AstvMenu astm={astm} />
       )
     }
 
-    if (astm.astm === 'Text') {
+    if (astm.kind === 'Text') {
       return (
         <AstvText astm={astm} />
+      )
+    }
+
+    if (astm.kind === 'Image') {
+      return (
+        <AstvImage astm={astm} />
       )
     }
   }
@@ -94,11 +100,12 @@ class AssetBox extends Component {
         <Rnd
           style={stylus}
           className={`asset-handles ${selected?'selected':''}`}
-          size={{ width: rect.width, height: rect.height }}
+          size={{ width: rect.width + 2, height: rect.height + 2 }}
           position={{ x: rect.x, y: rect.y }}
           resizeHandleClasses={resizeHandleClasses}
+          lockAspectRatio={true}
           onResize={(e, direction, ref, delta, position) => {
-            rect.setSize(ref.offsetWidth, ref.offsetHeight);
+            rect.setSize(ref.offsetWidth - 2, ref.offsetHeight - 2);
             rect.setPosition(position.x, position.y);
           }}
           onResizeStart={() => this.setState({ rnding: true })}

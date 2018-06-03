@@ -1,16 +1,16 @@
-import { observable, action, extendObservable } from 'mobx';
+import { observable, extendObservable, action } from 'mobx';
 import { SpecFactory, StateFactory, MetaFactory } from '../../common';
+
 import Store from './Store';
 
-class Button {
+class Image {
 
   @observable.ref spec;
 
   @observable.ref meta;
 
-  constructor({ spec, state, store, meta }) {
-    this.astm = 'Button';
-    this.kind = 'Button';
+  constructor({ spec, store, meta }) {
+    this.kind = 'Image';
     this.spec = SpecFactory.create(spec || {});
     this.meta = MetaFactory.create(meta || {});
     this.store = new Store(store);
@@ -32,4 +32,4 @@ class Button {
   }
 }
 
-export default Button;
+export default Image;
