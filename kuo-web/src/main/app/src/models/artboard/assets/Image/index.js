@@ -9,10 +9,11 @@ class Image {
 
   @observable.ref meta;
 
-  constructor({ spec, store, meta }) {
+  constructor({ spec = {}, store, meta = {}, state = {} }) {
     this.kind = 'Image';
-    this.spec = SpecFactory.create(spec || {});
-    this.meta = MetaFactory.create(meta || {});
+    this.spec = SpecFactory.create(spec);
+    this.meta = MetaFactory.create(meta);
+    this.state = StateFactory.create(state)
     this.store = new Store(store);
   }
 

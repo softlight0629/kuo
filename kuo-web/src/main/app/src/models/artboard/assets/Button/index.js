@@ -8,11 +8,12 @@ class Button {
 
   @observable.ref meta;
 
-  constructor({ spec, state, store, meta }) {
+  constructor({ spec = {}, state = {}, store, meta = {} }) {
     this.astm = 'Button';
     this.kind = 'Button';
-    this.spec = SpecFactory.create(spec || {});
-    this.meta = MetaFactory.create(meta || {});
+    this.spec = SpecFactory.create(spec);
+    this.meta = MetaFactory.create(meta);
+    this.state = StateFactory.create(state);
     this.store = new Store(store);
   }
 

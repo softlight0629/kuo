@@ -7,11 +7,7 @@ class ThemeButtonRef {
     this.serializeOfSpec = astm.spec.serialize();
 
     if (astm.state) {
-      this.serializeOfState = {};
-      const keys = Object.keys(astm.state);
-      keys.forEach(key => {
-        this.serializeOfState[key] = astm.state[key].serialize();
-      });
+      this.serializeOfState = astm.state.serialize();
     }
   }
 

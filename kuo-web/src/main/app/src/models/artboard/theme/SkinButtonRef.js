@@ -10,15 +10,14 @@ class SkinButtonRef {
   }
 
   apply(astm) {
-    console.log(astm, 'astm.....');
     const spec = astm.spec.serialize();
     const meta = astm.meta.serialize();
-    const state = astm.state;
+    const state = astm.state.serialize();
 
     astm.apply({
       spec: extend(true, {}, spec, this.spec),
       meta: extend(true, {}, meta, this.meta),
-      state: extend(true, {}, { hover: state.hover.serialize(), clicked: state.clicked.serialize() }, this.state),
+      state: extend(true, {}, state, this.state),
     })
   }
 }

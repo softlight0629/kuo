@@ -1,12 +1,18 @@
+import State from '../State';
 
 export default {
 
   create: (factory, option) => {
-    const keys = Object.keys(option);
-    const o = {};
-    for (const k of keys) {
-      o[k] = factory[k](option[k]);
+    const state = new State();
+    if (!factory || !option) {
+      return state;
     }
-    return o;
+    
+    const keys = Object.keys(option);
+    for (const k of keys) {
+      state.push(k, factory[k](option[k]));
+    }
+
+    return state;
   }
 }
