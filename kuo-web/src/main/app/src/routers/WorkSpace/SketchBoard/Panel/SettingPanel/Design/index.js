@@ -39,9 +39,7 @@ const Fonts = [
 @observer
 class DesignPanel extends Component {
 
-  renderBorderPane() {
-    const { astm } = this.props.astRefUiStore;
-    const { border } = astm.spec;
+  renderBorderPane(border) {
 
     return (
       <div className="inner-container">
@@ -63,9 +61,7 @@ class DesignPanel extends Component {
     )
   }
 
-  renderBorderCornerPane() {
-    const { astm } = this.props.astRefUiStore;
-    const { corner } = astm.spec;
+  renderBorderCornerPane(corner) {
 
     return (
       <div className="inner-container">
@@ -79,9 +75,7 @@ class DesignPanel extends Component {
     )
   }
 
-  renderFillPane() {
-    const { astm } = this.props.astRefUiStore;
-    const { fill } = astm.spec;
+  renderFillPane(fill) {
 
     return (
       <div className="inner-container">
@@ -101,9 +95,7 @@ class DesignPanel extends Component {
     )
   }
 
-  renderShadowPane() {
-    const { astm } = this.props.astRefUiStore;
-    const { shadow } = astm.spec;
+  renderShadowPane(shadow) {
 
     return (
       <div className="inner-container">
@@ -125,9 +117,7 @@ class DesignPanel extends Component {
     )
   }
 
-  renderTextPane() {
-    const { astm } = this.props.astRefUiStore;
-    const { font } = astm.spec;
+  renderTextPane(font) {
     const children = [];
     for (let i = 0; i < Fonts.length; i++) {
       children.push(<Option key={i} value={Fonts[i]} style={{ fontFamily: Fonts[i] }} >{Fonts[i]}</Option>);
@@ -165,13 +155,13 @@ class DesignPanel extends Component {
     return (
       <div className="theme-wrapper">
         {
-          themes.map(theme => <ThemeButton theme={theme}/>)
+          themes.map(theme => <ThemeButton theme={theme} />)
         }
       </div>
     )
   }
 
-  renderCustomPanel = () => (
+  renderRegularPanel = ({ fill, border, corner, shadow, font }) => (
     <Tabs
       defaultActiveKey="1"
       tabPosition="left"
@@ -179,20 +169,100 @@ class DesignPanel extends Component {
       style={{ height: '100%' }}
     >
       <TabPane tab={<Icon type="fill-opacity" />} key="1">
-        {this.renderFillPane()}
+        {this.renderFillPane(fill)}
       </TabPane>
       <TabPane tab={<Icon type="border" />} key="2">
-        {this.renderBorderPane()}
+        {this.renderBorderPane(border)}
       </TabPane>
       <TabPane tab={<Icon type="border-corner" />} key="3">
-        {this.renderBorderCornerPane()}
+        {this.renderBorderCornerPane(corner)}
       </TabPane>
       <TabPane tab={<Icon type="box-shadow" />} key="4">
-        {this.renderShadowPane()}
+        {this.renderShadowPane(shadow)}
       </TabPane>
       <TabPane tab={<Icon type="font" />} key="5">
-        {this.renderTextPane()}
+        {this.renderTextPane(font)}
       </TabPane>
+    </Tabs>
+  )
+
+  renderStatePanel({ fill, border, corner, shadow, font }) {
+    return (
+      <Tabs
+        defaultActiveKey="1"
+        tabPosition="left"
+        tabBarStyle={{ width: 48, padding: 0 }}
+        style={{ height: '100%' }}
+      >
+        {
+          fill && (
+            <TabPane tab={<Icon type="fill-opacity" />} key="1">
+              {this.renderFillPane(fill)}
+            </TabPane>
+          )
+        }
+        {
+          border && (
+            <TabPane tab={<Icon type="border" />} key="2">
+              {this.renderBorderPane(border)}
+            </TabPane>
+          )
+        }
+        {
+          corner && (
+            <TabPane tab={<Icon type="border-corner" />} key="3">
+              {this.renderBorderCornerPane(corner)}
+            </TabPane>
+          )
+        }
+        {
+          shadow && (
+            <TabPane tab={<Icon type="box-shadow" />} key="4">
+              {this.renderShadowPane(shadow)}
+            </TabPane>
+          )
+        }
+        {
+          font && (
+            <TabPane tab={<Icon type="font" />} key="5">
+              {this.renderTextPane(font)}
+            </TabPane>
+          )
+        }
+      </Tabs>
+    )
+  }
+
+  renderStateTabs = ({ spec, state: { hover, clicked, disabled } }) => (
+    <Tabs
+      defaultActiveKey="1"
+      size="small"
+      style={{ height: '100%' }}
+    >
+      <TabPane tab={<span>Regular</span>} key="1">
+        {this.renderRegularPanel(spec)}
+      </TabPane>
+      {
+        hover && (
+          <TabPane tab={<span>Hover</span>} key="2">
+            {this.renderStatePanel(hover)}
+          </TabPane>
+        )
+      }
+      {
+        clicked && (
+          <TabPane tab={<span>Clicked</span>} key="3">
+            {this.renderStatePanel(clicked)}
+          </TabPane>
+        )
+      }
+      {
+        disabled && (
+          <TabPane tab={<span>Disabled</span>} key="3">
+            {this.renderStatePanel(disabled)}
+          </TabPane>
+        )
+      }
     </Tabs>
   )
 
@@ -200,8 +270,6 @@ class DesignPanel extends Component {
     const { astm } = this.props.astRefUiStore;
     const skins = this.props.astSkinUiStore.skinsOfKind(astm.kind);
 
-    console.log(skins);
-    // 抽象出来， 要支持 theme
     return (
       <PanelWrapper title="Button Setttings" onClose={this.close.bind(this)}>
         <div className="advanced-style-panel">
@@ -210,7 +278,7 @@ class DesignPanel extends Component {
           </div>
           <div className="advanced-style-panel-body">
             <div className="content-container">
-              {this.renderCustomPanel()}
+              {this.renderStateTabs(astm)}
             </div>
           </div>
         </div>

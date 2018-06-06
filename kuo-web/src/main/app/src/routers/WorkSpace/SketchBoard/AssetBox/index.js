@@ -59,7 +59,7 @@ class AssetBox extends Component {
 
   render() {
     const { astm, designPanelUiStore } = this.props;
-    const { rect, animation } = astm.spec;
+    const { spec: { rect, animation }, meta: { lockRation} } = astm;
 
     const stylus = {
       cursor: 'pointer',
@@ -103,7 +103,7 @@ class AssetBox extends Component {
           size={{ width: rect.width + 2, height: rect.height + 2 }}
           position={{ x: rect.x, y: rect.y }}
           resizeHandleClasses={resizeHandleClasses}
-          lockAspectRatio={true}
+          lockAspectRatio={lockRation}
           onResize={(e, direction, ref, delta, position) => {
             rect.setSize(ref.offsetWidth - 2, ref.offsetHeight - 2);
             rect.setPosition(position.x, position.y);

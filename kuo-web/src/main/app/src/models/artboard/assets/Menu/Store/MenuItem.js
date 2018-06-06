@@ -7,6 +7,12 @@ class MenuItem {
   constructor(option) {
     extendObservable(this, option);
   }
+
+  serialize() {
+    return {
+      text: this.text,
+    }
+  }
 }
 
 export default MenuItem;

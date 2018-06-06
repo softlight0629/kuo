@@ -17,8 +17,6 @@ class SiteSavePanel extends Component {
     }
   }
 
-
-
   closeSavePanel() {
     this.props.workSpaceUiStore.closeSavePanel();
   }

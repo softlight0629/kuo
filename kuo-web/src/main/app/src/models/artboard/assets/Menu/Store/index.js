@@ -11,6 +11,12 @@ class Store {
       this.menuItems.push(new MenuItem(menuItem));
     });
   }
+
+  serialize() {
+    return {
+      menuItems: this.menuItems.map(menuItem => menuItem.serialize()),
+    }
+  }
 }
 
 export default Store;

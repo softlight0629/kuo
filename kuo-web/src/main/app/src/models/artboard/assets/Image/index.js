@@ -12,7 +12,10 @@ class Image {
   constructor({ spec = {}, store, meta = {}, state = {} }) {
     this.kind = 'Image';
     this.spec = SpecFactory.create(spec);
-    this.meta = MetaFactory.create(meta);
+    this.meta = MetaFactory.create({
+      ...meta,
+      lockRation: true,
+    });
     this.state = StateFactory.create(state)
     this.store = new Store(store);
   }
@@ -30,6 +33,16 @@ class Image {
     });
 
     this.meta = MetaFactory.create(meta || {});
+  }
+
+  serialize() {
+    return {
+      kind: this.kind,
+      meta: this.meta.serialize(),
+      spec: this.spec.serialize(),
+      state: this.state.serialize(),
+      store: this.store.serialize(),
+    }
   }
 }
 

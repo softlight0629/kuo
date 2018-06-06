@@ -10,6 +10,13 @@ class Store {
     this.src = src;
     this.alt = alt;
   }
+
+  serialize() {
+    return {
+      src: this.src,
+      alt: this.alt,
+    }
+  }
 }
 
 export default Store;

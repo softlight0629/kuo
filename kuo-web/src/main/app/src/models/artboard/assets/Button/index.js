@@ -31,6 +31,16 @@ class Button {
 
     this.meta = MetaFactory.create(meta || {});
   }
+
+  serialize() {
+    return {
+      kind: this.kind,
+      meta: this.meta.serialize(),
+      spec: this.spec.serialize(),
+      state: this.state.serialize(),
+      store: this.store.serialize(),
+    }
+  }
 }
 
 export default Button;

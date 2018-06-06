@@ -1,14 +1,18 @@
-import { AstmMenu, AstmButton } from '../models/artboard/assets';
-import { AstvMenu, AstvButton } from '../routers/WorkSpace/SketchBoard/Assets';
+import { AstmMenu, AstmButton, AstmText, AstmImage } from '../models/artboard/assets';
+import { AstvMenu, AstvButton, AstvText, AstvImage } from '../routers/WorkSpace/SketchBoard/Assets';
 
 const astm_regs = {
   Menu: AstmMenu,
   Button: AstmButton,
+  Text: AstmText,
+  Image: AstmImage,
 };
 
 const astv_regs = {
   Menu: AstvMenu,
   Button: AstvButton,
+  Text: AstvText,
+  Image: AstvImage,
 };
 
 export default {

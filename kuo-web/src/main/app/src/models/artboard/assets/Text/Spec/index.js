@@ -24,6 +24,15 @@ class TextSpec extends Spec {
     this.theme = theme;
     this._theme2Font(theme);
   }
+
+  serialize() {
+    const spec = super.serialize();
+
+    return {
+      ...spec,
+      theme: this.theme,
+    }
+  }
 }
 
 export default TextSpec;

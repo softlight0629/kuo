@@ -16,12 +16,12 @@ class Site {
 
   @observable pageResources = [];
 
-  constructor(store, initialState) {
+  constructor(store, option) {
     this.store = store;
-    extendObservable(this, initialState);
+    extendObservable(this, option);
 
     this.pageResources = 
-      initialState.pageResources.map(pageResource => new PageResource(this.store, pageResource));
+      option.pageResources.map(pageResource => new PageResource(this.store, pageResource));
   }
 
   @action addPageResource(pageResource) {
@@ -32,7 +32,7 @@ class Site {
     return this.pageResources && this.pageResources[0];
   }
 
-  toJson() {
+  serialize() {
     return {
       id: this.id,
       guid: this.guid,
@@ -42,12 +42,12 @@ class Site {
       address: this.address,
       owner: this.owner,
 
-      pageResources: this.pageResources.map(pageResource => pageResource.toJson()),
+      pageResources: this.pageResources.map(pageResource => pageResource.serialize()),
     }
   }
 
   updateSiteToServer() {
-    this.store.siteStore.updateSiteToServer(this.toJson());
+    this.store.siteStore.updateSiteToServer(this.serialize());
   }
 }
 

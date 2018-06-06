@@ -44,6 +44,16 @@ class Menu {
       clicked: option => new Clicked(this.spec, option),
     }, state || this.state.serialize());
   }
+
+  serialize() {
+    return {
+      kind: this.kind,
+      meta: this.meta.serialize(),
+      spec: this.spec.serialize(),
+      state: this.state.serialize(),
+      store: this.store.serialize(),
+    }
+  }
 }
 
 export default Menu;
