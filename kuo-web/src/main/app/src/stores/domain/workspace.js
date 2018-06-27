@@ -3,11 +3,7 @@ import Site from '../../models/site/Site';
 
 class WorkSpaceStore {
 
-  @observable site = {};
-
-  @observable.ref pageResource = {};
-
-  @observable name = '';
+  @observable.ref site = {};
 
   constructor(store, service) {
     this.store = store;
@@ -19,12 +15,7 @@ class WorkSpaceStore {
       .then(action(res => {
         if (res.data) {
           this.site = new Site(this.store, res.data);
-          this.pageResource = this.site.getFirstPageResource();
-          this.name = this.pageResource.name;
-
-          this.store.sketchBoardStore.refPageResource(this.pageResource)
-
-          // this.init();
+          this.store.sketchBoardStore.refPageResource(this.site.getFirstPageResource())
         }
       }))
       .catch(e => {
@@ -161,7 +152,6 @@ class WorkSpaceStore {
           y: 300,
         },
         animation: {
-          // animate: 'rubberBand',
         },
         fill: {
           color: '#000000',
@@ -265,11 +255,6 @@ class WorkSpaceStore {
 
   addPageResource(option) {
     this.site.addPageResource(option);
-  }
-
-  @action activatePageResource(pageResource) {
-    this.pageResource = pageResource;
-    this.name = pageResource.name;
   }
 }
 

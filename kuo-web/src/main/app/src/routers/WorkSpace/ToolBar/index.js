@@ -15,44 +15,9 @@ class ToolBar extends Component {
   }
 
   handleAddPageResorce() {
-    this.props.sketchBoardStore.addAst({
-      spec: {
-        layout: {
-          align: 'left',
-          margin: 0,
-        },
-        rect: {
-          width: 216,
-          height: 48,
-          x: 100,
-          y: 100,
-        },
-        text: {
-          content: 'this is text',
-        },
-        style: {
-          fill: {
-            color: '#fdf5fc',
-            opacity: 82,
-          },
-          border: {
-            color: '#fdf5fc',
-            width: 1,
-            opacity: 82,
-          },
-          font: {
-            fontFamily: 'Arial',
-            fontSize: 12,
-            color: '#000',
-          },
-          corner: {
-            leftTop: 0,
-            rightTop: 0,
-            leftBottom: 0,
-            rightBottom: 0,
-          }
-        },
-      }
+    this.props.workSpaceStore.addPageResource({
+      name: 'BLOG',
+      template: 'xx',
     });
   }
 

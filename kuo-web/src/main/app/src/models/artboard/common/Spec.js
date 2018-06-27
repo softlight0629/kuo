@@ -1,5 +1,5 @@
 import { Animation, Rect, Layout, Design, Link, Database } from '../../artboard/settings';
-const { Fill, Border, Corner, Shadow, Font } = Design;
+const { Fill, Border, Corner, Shadow, Font, Separator } = Design;
 
 class Spec {
  
@@ -12,6 +12,7 @@ class Spec {
     font,
     animation,
     layout,
+    separator,
   }) {
     this.rect = new Rect(rect || {});
     this.fill = new Fill(fill || {});
@@ -21,12 +22,14 @@ class Spec {
     this.animation = new Animation(animation || {});
     this.layout = new Layout(layout || {});
     this.font = new Font(font || {});
+    this.separator = new Separator(separator || {});
   }
 
   serialize() {
     return {
       rect: this.rect.serialize(),
       fill: this.fill.serialize(),
+      separator: this.separator.serialize(),
       border: this.border.serialize(),
       corner: this.corner.serialize(),
       shadow: this.shadow.serialize(),

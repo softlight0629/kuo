@@ -4,12 +4,12 @@ import { withRouter } from 'react-router';
 import { observer, inject } from 'mobx-react';
 
 @withRouter
-@inject('workSpaceStore')
+@inject('workSpaceStore', 'sketchBoardStore')
 @observer
 class SiteStructure extends Component {
 
-  activatePageResource(pageResource) {
-    this.props.workSpaceStore.activatePageResource(pageResource);
+  refPageResource(pageResource) {
+    this.props.sketchBoardStore.refPageResource(pageResource);
   }
 
   render() {
@@ -28,7 +28,7 @@ class SiteStructure extends Component {
           >
             <Menu.SubMenu key="sub_1" title={<span>Pages</span>}>
             {
-              pageResources.map((pageResource, i) => <Menu.Item key={i}><span onClick={() => this.activatePageResource(pageResource)}>{pageResource.name}</span></Menu.Item>)
+              pageResources.map((pageResource, i) => <Menu.Item key={i}><span className="code-page-menu-item" onClick={() => this.refPageResource(pageResource)}>{pageResource.name}</span></Menu.Item>)
             }
             </Menu.SubMenu>
             <Menu.SubMenu key="sub_2" title={<span>Public</span>}>

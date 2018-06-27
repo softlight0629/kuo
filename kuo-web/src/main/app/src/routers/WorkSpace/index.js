@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import { observer, inject } from 'mobx-react';
 
 import SiteStructure from './SiteStructure';
-import { SiteSavePanel }  from './Panel';
+import { SiteSavePanel, MediaGallery }  from './Panel';
 import ToolBar from './ToolBar';
 
 import SketchBoard from './SketchBoard';
@@ -11,7 +11,7 @@ import SketchBoard from './SketchBoard';
 import './index.less';
 
 @withRouter
-@inject('workSpaceStore', 'authStore')
+@inject('workSpaceStore', 'workSpaceUiStore', 'authStore')
 @observer
 class WorkSpace extends Component {
 
@@ -21,9 +21,12 @@ class WorkSpace extends Component {
   }
 
   render() {
+    const { mediaGalleryVisible } = this.props.workSpaceUiStore;
+
     return (
       <div className="workspace">
         <SiteSavePanel />
+        { mediaGalleryVisible && <MediaGallery /> }
         <div className="workspace-wrapper">
           <div className="pane-container">
             <SiteStructure />

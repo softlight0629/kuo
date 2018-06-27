@@ -6,7 +6,7 @@ import AssetSettingButton from './AssetSettingButton';
 
 import './index.less';
 
-@inject('designPanelUiStore', 'astRefUiStore', 'astUiStore')
+@inject('designPanelUiStore', 'astRefUiStore', 'astUiStore', 'workSpaceUiStore')
 class AssetSetting extends Component {
 
   refAstm() {
@@ -24,6 +24,11 @@ class AssetSetting extends Component {
   showEditTextPanel() {
     this.refAstm();
     this.props.designPanelUiStore.showEditTextPanel();
+  }
+
+  showChangeImagePanel() {
+    this.refAstm();
+    this.props.workSpaceUiStore.openMediaGallery();
   }
 
   showChangeTextPanel() {
@@ -55,7 +60,7 @@ class AssetSetting extends Component {
         <ul className="asset-setting-btns">
           { settingButtons.includes('EditText') && <AssetSettingButton label={<span className="label" >Edit Text</span>} onClick={() => this.showEditTextPanel()} /> }
           { settingButtons.includes('ChangeText') && <AssetSettingButton label={<span className="label" >Change Text</span>} onClick={() => this.showChangeTextPanel()} /> }
-          { settingButtons.includes('Change Image') && <AssetSettingButton label={<span className="label" >Change Image</span>} onClick={() => this.showChangeTextPanel()} /> }
+          { settingButtons.includes('ChangeImage') && <AssetSettingButton label={<span className="label" >Change Image</span>} onClick={() => this.showChangeImagePanel()} /> }
 
           { settingButtons.includes('Layout') && <AssetSettingButton label={<Icon type="layout" />} onClick={() => this.showLayoutPanel()} />}
           { settingButtons.includes('Design') && <AssetSettingButton label={<Icon type="dashboard" />} onClick={() => this.showDesignPanel()} />}

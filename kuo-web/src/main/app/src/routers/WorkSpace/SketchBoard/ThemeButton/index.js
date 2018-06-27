@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { inject } from 'mobx-react';
+import extend from 'extend';
 import astfactory from '../../../../helper/astfactory';
 
 import './index.less';
@@ -10,17 +11,29 @@ class ThemeButton extends Component {
   apply() {
     const { astm } = this.props.astRefUiStore;
     const { theme } = this.props;
-    theme.apply(this.props.astm);
+  }
+
+  handleClick() {
+    const { astm } = this.props.astRefUiStore;
+    const { ast } = this.props;
+    this.props.onClick(ast, astm);
   }
 
   render() {
-    const { kind, spec, store, state } = this.props.theme;
+    const { loc, ast, onClick } = this.props;
+    const { kind, spec, store, state, meta = {} } = ast;
+    const { width, height, x, y } = loc;
     const Astv = astfactory.findAstv(kind);
 
     return (
-      <div className="theme-button" onClick={() => this.apply()}>
+      <div className="theme-button" onClick={(theme) => this.handleClick()} style={{
+        width: `${width}px`,
+        height: `${height}px`,
+        left: `${x}px`,
+        top: `${y}px`,
+      }}>
         <div key={1} className="asset">
-          <Astv astm={{ spec, store, state }} />
+          <Astv astm={{ spec: extend(true, {}, spec, { rect: { width, height }, font: { fontSize: '12px' }}), store, state, meta }} />
         </div>
       </div>
     )

@@ -11,7 +11,7 @@ class AstvMenu extends Component {
   render() {
     const { astm } = this.props;
     const { spec, store, state, meta } = astm;
-    const { rect: { width, height }, shadow, border, fill, font, layout, corner, gap = 5 } = spec;
+    const { rect: { width, height }, shadow, border, fill, font, layout, corner, separator, gap = 0 } = spec;
 
     const { menuItems } = store;
     const { hover, clicked } = state;
@@ -27,7 +27,7 @@ class AstvMenu extends Component {
                 style={{
                   width: `${menuItemWidth}px`,
                   height: `${height}px`,
-                  ...(fill.separator && i !== 0 ? {borderLeft: `1px solid ${fill.separator}`}:{}),
+                  ...(separator && i !== 0 ? {borderLeft: `1px solid ${separator.color}`}:{}),
                   ...(cssrender(gap ? {shadow, layout, ...(i === 0 ? {border: hover.border} : {border}), ...(i === 0 ? {fill: hover.fill} : {fill}), corner} : { ...(i === 0 ? {fill: hover.fill} : {fill}), layout }))
                 }} 
                 data-postion={`${i === 0 ? 'left' : i === menuItems.length - 1 ? 'right' : 'center'}`}>

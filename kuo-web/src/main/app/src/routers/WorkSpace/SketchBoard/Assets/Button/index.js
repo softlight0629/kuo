@@ -29,11 +29,11 @@ class AstvButton extends Component {
   render() {
     const { astm } = this.props;
     const { spec, store: {text}, meta } = astm;
-    const { fill, border, ...rest } = spec;
+    const { arrow, fill, border, ...rest } = spec;
 
     return (
-      <a className="ast-button" style={cssrender({ ...(meta.skin === 'skin_button_02' ? {} : {fill}), ...rest})}>
-        { meta.skin === 'skin_button_02' && this.renderArrow(fill) }
+      <a className="ast-button" style={cssrender({ ...(arrow ? {} : {fill}), ...({ ...rest, border })})}>
+        { arrow && this.renderArrow(fill) }
         <span className="ast-button-text">{text}</span>
       </a>
     )

@@ -35,7 +35,7 @@ const Fonts = [
 ];
 
 @withRouter
-@inject('designPanelUiStore', 'astRefUiStore', 'themeStore', 'astSkinUiStore')
+@inject('designPanelUiStore', 'astRefUiStore', 'astThemeUiStore', 'astSkinUiStore')
 @observer
 class DesignPanel extends Component {
 
@@ -150,7 +150,7 @@ class DesignPanel extends Component {
 
   renderThemePanel() {
     const { astm } = this.props.astRefUiStore;
-    const themes = this.props.themeStore.themesOfKind(astm.kind);
+    const themes = this.props.astThemeUiStore.themesOfKind(astm.kind);
 
     return (
       <div className="theme-wrapper">

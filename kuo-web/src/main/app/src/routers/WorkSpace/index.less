@@ -29,6 +29,12 @@
             padding: 12px;
             border-bottom: 1px solid #d9e1e8;
           }
+
+          .code-page-menu-item {
+            display: inline-block;
+            width: 100%;
+          }
+ 
         }
       }
   
@@ -38,41 +44,9 @@
         .sketch-board-editor {
           position: absolute;
           height: 100%;
-          width: 100%;
+          width: calc(100% - 296px);
 
-          .resbtn-grp {
-            position: absolute;
-            top: 32px;
-            left: 12px;
 
-            .resbtn-items {
-              display: inline-block;
-              list-style: none;
-              margin: 0;
-              padding: 0;
-
-              .resbtn-item {
-                font-size: 16px;
-                box-shadow: 0 2px 5px 0 rgba(22,45,61,0.58);
-                border-radius: 24px;
-                line-height: 48px;
-                height: 48px;
-                background: linear-gradient(to bottom, rgba(255,255,255,0.96) 0%, rgba(238,238,238,0.96) 100%);
-                cursor: pointer;
-                padding-right: 46px;
-                margin-bottom: 12px;
-                clear: left;
-                z-index: 1050;
-
-                .text {
-                  padding-left: 48px;
-                  color: #162d3d;
-                  white-space: nowrap;
-                  display: inline-block;
-                }
-              }
-            }
-          }
         }
       }
     }

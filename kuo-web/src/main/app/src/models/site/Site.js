@@ -24,8 +24,10 @@ class Site {
       option.pageResources.map(pageResource => new PageResource(this.store, pageResource));
   }
 
-  @action addPageResource(pageResource) {
-    this.pageResources.push(new PageResource(this.store, pageResource));
+  @action addPageResource(option) {
+    const pageResource = new PageResource(this.store, option);
+    this.pageResources.push(pageResource);
+    this.store.sketchBoardStore.refPageResource(pageResource);
   }
 
   getFirstPageResource() {

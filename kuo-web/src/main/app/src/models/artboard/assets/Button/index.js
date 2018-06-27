@@ -1,6 +1,7 @@
 import { observable, action, extendObservable } from 'mobx';
 import { SpecFactory, StateFactory, MetaFactory } from '../../common';
 import Store from './Store';
+import ButtonSpec from './Spec';
 
 class Button {
 
@@ -11,7 +12,7 @@ class Button {
   constructor({ spec = {}, state = {}, store, meta = {} }) {
     this.astm = 'Button';
     this.kind = 'Button';
-    this.spec = SpecFactory.create(spec);
+    this.spec = SpecFactory.create(spec, spec => new ButtonSpec(spec));
     this.meta = MetaFactory.create(meta);
     this.state = StateFactory.create(state);
     this.store = new Store(store);

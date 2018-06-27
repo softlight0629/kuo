@@ -1,6 +1,6 @@
 import extend from 'extend';
 
-class SkinButtonRef {
+class SkinRefButton {
   
   constructor({ skinImg, spec, state,  meta}) {
     this.skinImg = skinImg;
@@ -22,4 +22,4 @@ class SkinButtonRef {
   }
 }
 
-export default SkinButtonRef;
+export default SkinRefButton;

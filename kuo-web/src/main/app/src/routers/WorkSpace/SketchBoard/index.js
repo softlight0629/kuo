@@ -49,7 +49,7 @@ class SketchBoard extends Component {
 
             { colorPickerVisible && <ColorPicker astm={astm}/> }
           </div>
-          {/* <ResBtnGrp /> */}
+          <ResBtnGrp />
         </div>
       </div>
     )
