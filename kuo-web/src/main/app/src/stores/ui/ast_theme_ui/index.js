@@ -1,6 +1,6 @@
 import { themes_of_button, themes_of_menu } from './themes';
 import themes_loc from './themes_loc';
-import { ThemeRefButton } from '../../../models/artboard/lib/ui';
+import AstThemeButton from '../../../models/workspace/button/AstThemeButton';
 
 class AstThemeUiStore {
   
@@ -8,8 +8,8 @@ class AstThemeUiStore {
     this.store = store;
     this.service = service;
 
-    this.themesOfButton = themes_of_button.map(themeOfButton => new ThemeRefButton(themeOfButton));
-    this.themesOfMenu = themes_of_menu.map(themeOfMenu => new ThemeRefButton(themeOfMenu));
+    this.themesOfButton = themes_of_button.map(themeOfButton => new AstThemeButton(themeOfButton));
+    this.themesOfMenu = themes_of_menu.map(themeOfMenu => new AstThemeButton(themeOfMenu));
   }
 
   themesOfKind(kind) {

@@ -4,7 +4,7 @@ class WorkSpaceUiStore {
 
   @observable savePanelVisible = false;
 
-  @observable mediaGalleryVisible = false;
+  @observable mediaLibraryVisible = false;
 
   @action openSavePanel() {
     this.savePanelVisible = true;
@@ -14,12 +14,12 @@ class WorkSpaceUiStore {
     this.savePanelVisible = false;
   }
 
-  @action closeMediaGallery() {
-    this.mediaGalleryVisible = false;
+  @action closeMediaLibrary() {
+    this.mediaLibraryVisible = false;
   }
 
-  @action openMediaGallery() {
-    this.mediaGalleryVisible = true;
+  @action openMediaLibrary() {
+    this.mediaLibraryVisible = true;
   }
 }
 

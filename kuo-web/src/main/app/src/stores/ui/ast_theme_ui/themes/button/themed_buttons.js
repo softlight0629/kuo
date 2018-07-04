@@ -12,8 +12,8 @@ const themed_button_comp1 = {
     rect: {
       width: 260,
       height: 50,
-      x: 20,
-      y: 100,
+      x: 520,
+      y: 200,
     },
     animation: {
     },
@@ -56,8 +56,8 @@ const themed_button_comp2 = {
     rect: {
       width: 260,
       height: 50,
-      x: 20,
-      y: 100,
+      x: 520,
+      y: 200,
     },
     animation: {
     },
@@ -100,8 +100,8 @@ const themed_button_comp3 = {
     rect: {
       width: 260,
       height: 50,
-      x: 20,
-      y: 100,
+      x: 520,
+      y: 200,
     },
     animation: {
     },
@@ -144,8 +144,8 @@ const themed_button_comp4 = {
     rect: {
       width: 260,
       height: 50,
-      x: 20,
-      y: 100,
+      x: 520,
+      y: 200,
     },
     animation: {
     },

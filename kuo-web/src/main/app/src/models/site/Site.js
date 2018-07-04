@@ -1,5 +1,5 @@
 import { observable, extendObservable, action, reaction, autorun } from 'mobx';
-import { PageResource } from './resources';
+import { PageRes } from './resource';
 
 class Site {
 
@@ -14,24 +14,24 @@ class Site {
   @observable address;
   @observable owner;
 
-  @observable pageResources = [];
+  @observable pageResList = [];
 
   constructor(store, option) {
     this.store = store;
     extendObservable(this, option);
 
-    this.pageResources = 
-      option.pageResources.map(pageResource => new PageResource(this.store, pageResource));
+    this.pageResList = 
+      option.pageResources.map(pageRes => new PageRes(this.store, pageRes));
   }
 
   @action addPageResource(option) {
-    const pageResource = new PageResource(this.store, option);
-    this.pageResources.push(pageResource);
-    this.store.sketchBoardStore.refPageResource(pageResource);
+    const pageRes = new PageRes(this.store, option);
+    this.pageResList.push(pageRes);
+    this.store.sketchBoardStore.activatePage(pageRes);
   }
 
   getFirstPageResource() {
-    return this.pageResources && this.pageResources[0];
+    return this.pageResList && this.pageResList[0];
   }
 
   serialize() {
@@ -44,7 +44,7 @@ class Site {
       address: this.address,
       owner: this.owner,
 
-      pageResources: this.pageResources.map(pageResource => pageResource.serialize()),
+      pageResList: this.pageResList.map(pageRes => pageRes.serialize()),
     }
   }
 

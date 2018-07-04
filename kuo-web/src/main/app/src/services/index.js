@@ -1,6 +1,6 @@
-import SiteService from './micro/SiteService';
-import AuthService from './micro/AuthService';
-import MediaService from './micro/MediaService';
+import SiteService from './backend/Site';
+import AuthService from './backend/Auth';
+import MediaService from './backend/Media';
 
 export default {
   siteService: new SiteService(),

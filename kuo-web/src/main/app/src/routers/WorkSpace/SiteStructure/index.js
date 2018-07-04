@@ -8,8 +8,8 @@ import { observer, inject } from 'mobx-react';
 @observer
 class SiteStructure extends Component {
 
-  refPageResource(pageResource) {
-    this.props.sketchBoardStore.refPageResource(pageResource);
+  activatePage(pageResource) {
+    this.props.sketchBoardStore.activatePage(pageResource);
   }
 
   render() {
@@ -28,7 +28,7 @@ class SiteStructure extends Component {
           >
             <Menu.SubMenu key="sub_1" title={<span>Pages</span>}>
             {
-              pageResources.map((pageResource, i) => <Menu.Item key={i}><span className="code-page-menu-item" onClick={() => this.refPageResource(pageResource)}>{pageResource.name}</span></Menu.Item>)
+              pageResources.map((pageResource, i) => <Menu.Item key={i}><span className="code-page-menu-item" onClick={() => this.activatePage(pageResource)}>{pageResource.name}</span></Menu.Item>)
             }
             </Menu.SubMenu>
             <Menu.SubMenu key="sub_2" title={<span>Public</span>}>

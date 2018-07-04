@@ -1,5 +1,5 @@
 import { skins_of_button, skins_of_image, skins_of_menu } from './skins';
-import { SkinRefButton } from '../../../models/artboard/lib/ui';
+import AstSkinButton from '../../../models/workspace/button/AstSkinButton';
 
 class AstSkinUiStore {
   
@@ -11,9 +11,9 @@ class AstSkinUiStore {
   }
 
   init() {
-    this.skinsOfButton = skins_of_button.map(skinOfButton => new SkinRefButton(skinOfButton));
-    this.skinsOfImage = skins_of_image.map(skinOfImage => new SkinRefButton(skinOfImage));
-    this.skinsOfMenu = skins_of_menu.map(skinOfMenu => new SkinRefButton(skinOfMenu));
+    this.skinsOfButton = skins_of_button.map(skinOfButton => new AstSkinButton(skinOfButton));
+    this.skinsOfImage = skins_of_image.map(skinOfImage => new AstSkinButton(skinOfImage));
+    this.skinsOfMenu = skins_of_menu.map(skinOfMenu => new AstSkinButton(skinOfMenu));
   }
 
   skinsOfKind(kind) {

@@ -4,8 +4,9 @@ import { withRouter } from 'react-router';
 import Rnd from 'react-rnd';
 import { Icon } from 'antd';
 import AssetSetting from './AssetSetting';
-import { AstvButton, AstvMenu, AstvText, AstvImage } from '../Assets';
+import { AstvButton, AstvMenu, AstvText, AstvImage } from '../Asset';
 import cssrender from '../../../../helper/cssrender';
+import astRegister from '../../../../helper/ast_register';
 import './index.less';
 
 @withRouter
@@ -25,41 +26,19 @@ class AssetBox extends Component {
     this.props.astm.spec.rect.setPosition(d.x, d.y);
   }
 
-  handleRefAstm(astm) {
+  activateAst(astm) {
     this.props.astRefUiStore.refAstm(astm);
-
     // 检测 shift
   }
 
   renderAstv(astm) {
-    if (astm.kind === 'Button') {
-      return (
-        <AstvButton astm={astm} />
-      )
-    }
-
-    if (astm.kind === 'Menu') {
-      return (
-        <AstvMenu astm={astm} />
-      )
-    }
-
-    if (astm.kind === 'Text') {
-      return (
-        <AstvText astm={astm} />
-      )
-    }
-
-    if (astm.kind === 'Image') {
-      return (
-        <AstvImage astm={astm} />
-      )
-    }
+    const Astv = astRegister.findAstv(astm.kind);
+    return <Astv astm={astm} />;
   }
 
   render() {
     const { astm, designPanelUiStore } = this.props;
-    const { spec: { rect, animation }, meta: { lockRation} } = astm;
+    const { spec: { rect, animation }, meta: { lockRation } } = astm;
 
     const stylus = {
       cursor: 'pointer',
@@ -113,7 +92,7 @@ class AssetBox extends Component {
           // onDragStart={() => this.setState({ rnding: true })}
           onDragStop={this.onDragStop.bind(this)}
         >
-          <div className="asset-box" onMouseDown={() => this.handleRefAstm(astm)}>
+          <div className="asset-box" onMouseDown={() => this.activateAst(astm)}>
             {selected && !this.state.rnding && <AssetSetting astm={astm} />}
             <div className={`animated`} style={{ width: '100%', height: '100%', ...animationProps}}>
               <div key={1} className="asset">

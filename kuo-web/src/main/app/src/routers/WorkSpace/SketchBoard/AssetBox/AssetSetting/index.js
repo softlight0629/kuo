@@ -28,7 +28,7 @@ class AssetSetting extends Component {
 
   showChangeImagePanel() {
     this.refAstm();
-    this.props.workSpaceUiStore.openMediaGallery();
+    this.props.workSpaceUiStore.openMediaLibrary();
   }
 
   showChangeTextPanel() {

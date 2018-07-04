@@ -16,10 +16,19 @@ class DesignPanelUiStore {
 
   @observable changeTextPanelVisible = false;
 
+  @observable manageMediaPanelVisible = true;
 
-  @observable x = 0;
+  @observable x = 100;
 
-  @observable y = 0;
+  @observable y = 50;
+
+  @action showManageMediaPanel() {
+    this.manageMediaPanelVisible = true;
+  }
+
+  @action closeManageMediaPanel() {
+    this.manageMediaPanelVisible = false;
+  }
 
   @action showDesignPanel() {
     this.designPanelVisible = true;

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import { observer, inject } from 'mobx-react';
 
 import SiteStructure from './SiteStructure';
-import { SiteSavePanel, MediaGallery }  from './Panel';
+import { SiteSavePanel, MediaLibrary }  from './Common';
 import ToolBar from './ToolBar';
 
 import SketchBoard from './SketchBoard';
@@ -21,12 +21,12 @@ class WorkSpace extends Component {
   }
 
   render() {
-    const { mediaGalleryVisible } = this.props.workSpaceUiStore;
+    const { mediaLibraryVisible } = this.props.workSpaceUiStore;
 
     return (
       <div className="workspace">
         <SiteSavePanel />
-        { mediaGalleryVisible && <MediaGallery /> }
+        { mediaLibraryVisible && <MediaLibrary /> }
         <div className="workspace-wrapper">
           <div className="pane-container">
             <SiteStructure />

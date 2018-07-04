@@ -7,7 +7,7 @@ import './index.less';
 class ResPanel extends Component {
 
   handleClick(ast) {
-    this.props.sketchBoardStore.addAst(ast);
+    this.props.sketchBoardStore.appendAst(ast);
     this.props.resGrpUiStore.closeResPanel();
   }
 

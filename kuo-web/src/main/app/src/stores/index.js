@@ -2,8 +2,8 @@ import AuthStore from './domain/auth';
 import WorkSpaceStore from './domain/workspace';
 import DashboardStore from './domain/dashboard';
 import AccountStore from './domain/account';
-import SketchBoardStore from './domain/sketchboard';
-import MediaBoardStore from './domain/mediaboard';
+import SketchBoardStore from './domain/sketch_board';
+import MediaLibraryStore from './domain/media_library';
 
 import WorkSpaceUiStore from './ui/workspace_ui';
 import DesignPanelUiStore from './ui/design_panel_ui';
@@ -25,7 +25,7 @@ class GlobalStore {
     this.dashboardStore = new DashboardStore(this, service);
     this.accountStore = new AccountStore(this, service);
     this.sketchBoardStore = new SketchBoardStore(this, service);
-    this.mediaBoardStore = new MediaBoardStore(this, service);
+    this.mediaLibraryStore = new MediaLibraryStore(this, service);
 
     this.workSpaceUiStore = new WorkSpaceUiStore(this, service);
     this.designPanelUiStore = new DesignPanelUiStore(this, service);
@@ -47,7 +47,7 @@ export default {
   dashboardStore: store.dashboardStore,
   accountStore: store.accountStore,
   sketchBoardStore: store.sketchBoardStore,
-  mediaBoardStore: store.mediaBoardStore,
+  mediaLibraryStore: store.mediaLibraryStore,
 
   workSpaceUiStore: store.workSpaceUiStore,
   designPanelUiStore: store.designPanelUiStore,

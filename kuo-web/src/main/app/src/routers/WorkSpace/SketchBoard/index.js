@@ -12,7 +12,10 @@ import {
   AnimationPanel,
   TextPanel,
 } from './Panel/SettingPanel';
-import { ChangeTextPanel } from './Panel/ChangePanel';
+import { 
+  ChangeTextPanel,
+  ManageMediaPanel,
+} from './Panel/ChangePanel';
 import ColorPicker from './ColorPicker';
 
 @withRouter
@@ -29,6 +32,7 @@ class SketchBoard extends Component {
       animationPanelVisible,
 
       changeTextPanelVisible,
+      manageMediaPanelVisible,
     } = this.props.designPanelUiStore;
     const { astm } = this.props.astRefUiStore;
     const { colorPickerVisible } = this.props.colorPickerUiStore;
@@ -46,6 +50,7 @@ class SketchBoard extends Component {
             { linkPanelVisible && <LinkPanel astm={astm}/> }
 
             { changeTextPanelVisible && <ChangeTextPanel astm={astm} /> }
+            { manageMediaPanelVisible && <ManageMediaPanel astm={astm} />}
 
             { colorPickerVisible && <ColorPicker astm={astm}/> }
           </div>

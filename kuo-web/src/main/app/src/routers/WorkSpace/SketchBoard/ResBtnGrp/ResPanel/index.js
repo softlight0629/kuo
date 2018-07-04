@@ -10,7 +10,7 @@ const TabPane = Tabs.TabPane;
 class ResPanel extends Component {
 
   handleClick(ast) {
-    this.props.sketchBoardStore.addAst(ast);
+    this.props.sketchBoardStore.appendAst(ast);
     this.props.resGrpUiStore.closeResPanel();
   }
 
@@ -102,7 +102,7 @@ class ResPanel extends Component {
                 <div className="preset-item" style={{ left: 0, top: '20px', width: '324px', height: '62px' }} onClick={() => this.handle('Menu', 'horizontal_menu_comp1')}></div>
                 <div className="preset-item" style={{ left: 0, top: '86px', width: '324px', height: '50px' }} onClick={() => this.handle('Menu', 'horizontal_menu_comp2')}></div>
                 <div className="preset-item" style={{ left: 0, top: '146px', width: '324px', height: '67px' }} onClick={() => this.handle('Menu', 'horizontal_menu_comp3')}></div>
-                <div className="preset-item" style={{ left: 0, top: '220px', width: '324px', height: '62px' }}  onClick={() => this.handle('Menu', 'horizontal_menu_comp4')}></div>
+                <div className="preset-item" style={{ left: 0, top: '220px', width: '324px', height: '62px' }} onClick={() => this.handle('Menu', 'horizontal_menu_comp4')}></div>
               </div>
             </div>
           </div>
@@ -111,8 +111,37 @@ class ResPanel extends Component {
     )
   }
 
-  openMediaGallery() {
-    this.props.workSpaceUiStore.openMediaGallery()
+  renderGalleryResPanel() {
+    const { sketchBoardStore } = this.props;
+    const themesOfGallery = this.props.astThemeUiStore.themesOfKind('Gallery');
+
+    return (
+      <div className="content-wrapper">
+        <div className="sections">
+          <div className="section-wrapper" style={{ height: '210px' }}>
+            <div className="section-header">
+              <div className="title-line">
+                <div className="title">Themed Menus</div>
+              </div>
+            </div>
+            <div className="section-live-site-wrapper">
+              <div className="section-preview-container">
+                {themesOfGallery.map(
+                  themeOfGallery => <ThemeButton
+                    ast={themeOfGallery}
+                    loc={this.props.astThemeUiStore.locOfTheme(themeOfGallery.meta.theme)}
+                    onClick={ast => this.handleClick(ast)}
+                  />)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  openMediaLibrary() {
+    this.props.workSpaceUiStore.openMediaLibrary()
     this.props.resGrpUiStore.closeResPanel();
   }
 
@@ -128,7 +157,7 @@ class ResPanel extends Component {
             </div>
             <div className="section-live-site-wrapper">
               <div className="section-preview-container">
-                <div onClick={() => this.openMediaGallery()}>xxx</div>
+                <div onClick={() => this.openMediaLibrary()}>xxx</div>
               </div>
             </div>
           </div>
