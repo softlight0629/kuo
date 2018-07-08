@@ -9,6 +9,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>kuo-model</artifactId>
+    <artifactId>kuo-media-mng</artifactId>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>im.kuo</groupId>
+            <artifactId>kuo-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

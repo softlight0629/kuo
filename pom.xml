@@ -13,7 +13,15 @@
 		<module>kuo-auth</module>
 		<module>kuo-resource</module>
 		<module>kuo-zuul</module>
+<<<<<<< Updated upstream
 		<module>kuo-stream</module>
+=======
+		<module>kuo-site-mng</module>
+		<module>kuo-meida-mng</module>
+		<module>kuo-render</module>
+		<module>kuo-gateway</module>
+		<module>kuo-web-render</module>
+>>>>>>> Stashed changes
 	</modules>
 	<packaging>pom</packaging>
 
@@ -50,6 +58,10 @@
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
 		</dependency>
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->
@@ -105,11 +117,17 @@
 				<scope>import</scope>
 			</dependency>
 			<dependency>
+<<<<<<< Updated upstream
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-stream-dependencies</artifactId>
 				<version>Ditmars.SR3</version>
 				<type>pom</type>
 				<scope>import</scope>
+=======
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>24.0-jre</version>
+>>>>>>> Stashed changes
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

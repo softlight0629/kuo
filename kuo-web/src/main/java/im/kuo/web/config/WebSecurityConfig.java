@@ -36,29 +36,22 @@ import java.util.List;
 @EnableOAuth2Client
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
-    @Autowired
-    @Qualifier("userDetailsService")
-    private UserDetailsService userDetailsService;
 
 //    @Autowired
 //    private OAuth2ClientContext oAuth2ClientContext;
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.debug(true).ignoring().antMatchers("/*.html", "/js/**", "/static/**", "/resources/**","/resources/public/**", "/**/*.js");
+        web.ignoring().antMatchers("/*.html", "/js/**", "/static/**", "/resources/**","/resources/public/**", "/**/*.js");
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/home", "/login", "/register", "/connect/**", "/signin/**").permitAll()
-                .anyRequest().authenticated();
+//                .antMatchers("/", "/home", "/login", "/register", "/connect/**", "/signin/**").permitAll()
+                .anyRequest().permitAll();
 //                .and()
 //                .formLogin()
 //                .loginPage("/login")

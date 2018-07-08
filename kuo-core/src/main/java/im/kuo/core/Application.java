@@ -32,7 +32,6 @@ public class Application {
             log.info("log found");
 
             for (User user : userRepository.findAll()) {
-                log.info(user.getNickName() + "1231231232132131");
             }
         };
     }

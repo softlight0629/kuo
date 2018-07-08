@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    generate-ddl: true
+    show-sql: true
+
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: h2
+
+
+server:
+#  contextPath: /api
+  port: 8085
