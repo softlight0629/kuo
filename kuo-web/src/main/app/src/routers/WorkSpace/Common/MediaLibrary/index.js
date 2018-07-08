@@ -19,8 +19,8 @@ class MediaLibrary extends Component {
   }
 
   choose() {
-    this.props.mediaLibraryStore.appendToSkecthBoard();
-    this.props.workSpaceUiStore.closeMediaLibrary();
+    // this.props.mediaLibraryStore.appendToSkecthBoard();
+    this.props.mediaLibraryStore.done();
   }
 
   render() {

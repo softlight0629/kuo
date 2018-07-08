@@ -6,26 +6,63 @@ import { withRouter } from 'react-router';
 
 import './index.less';
 
+@inject('designPanelUiStore', 'mediaLibraryStore')
+@observer
 class ManageMedia extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selected: null,
+    };
+  }
+
+  componentDidMount() {
+    const { medias } = this.props.astm.store;
+    if (!this.state.selected) {
+      this.setState({
+        selected: medias[0],
+      });
+    }
+  }
 
   close() {
     this.props.designPanelUiStore.closeManageMediaPanel();
   }
+
+  replaceImage() {
+    const media = this.state.selected;
+
+    this.props.mediaLibraryStore.choose((selectedMedia) => {
+      media.replaceImage(selectedMedia.fileUrl);
+    });
+  }
+
+  selectMedia(media) {
+    this.setState({
+      selected: media,
+    })
+  }
   
   render() {
+    const { store } = this.props.astm;
+    const { medias } = store;
+
     return (
-      <PanelWrapper title="Organize Your Gallery" width={768} onClose={this.close.bind(this)}>
+      <PanelWrapper title="Organize Your Gallery" width={1152} onClose={this.close.bind(this)}>
         <div className="organize-media">
           <div className="om-content">
-            <div className="om-sidebar">
+            <div className="om-sidebar menu right">
               <div className="sidebar-header">
                 <div className="sidebar-header-image">
-                  <div className="sidebar-header-image-wrapper"></div>
+                  <div className="sidebar-header-image-wrapper">
+                  </div>
                 </div>
               </div>
               <div className="sidebar-border"></div>
-              <div className="sidebar-divider">
-                <Button className="sidebar-button">
+              <div className="sidebar-divider replace">
+                <Button className="sidebar-button" onClick={() => this.replaceImage()}>
                   <span>
                     <div className="icon">
                       <Icon type="sync" />
@@ -59,34 +96,39 @@ class ManageMedia extends Component {
             </div>
             <div className="om-subheader">
               <div className="subheader-actions">
-                <div className="photo-upload">
-                  <Button>Add Media</Button>
+                <div className="photos-upload">
+                  <Button>+ Add Media</Button>
                 </div>
                 <div className="icons-container">
-                  <Icon type="search" />
-                  <Icon type="bar-chart" />
                   <Icon type="dashboard" />
+                  <Icon type="bar-chart" />
+                  <Icon type="search" />
                 </div>
               </div>
               <div className="subheader">
                 <div className="photos-actions">
                   <span className="">1 Selected</span>
                   <span className="separator">|</span>
-                  <span>Actions</span>
+                  <a>Actions</a>
                 </div>
               </div>
             </div>
+            <div className="subheader-divider" />
             <div className="om-photos-dialog">
               <div className="photos-container om-organize-images">
                 <div className="photos-wrapper">
                   <ul className="items-wrapper">
-                    <div className="item-wrapper">
-                      <div className="item">
-                        <div className="item-details">
-                          <div className="actions-menu"></div>
-                        </div>
-                      </div>
-                    </div>
+                    {
+                      medias.map((media, i) => (
+                        <li key={i} className="item-wrapper" style={{ width: media.width, height: media.height }} onClick={() => this.selectMedia(media)}>
+                          <div className="item" style={{ backgroundImage: `url(${media.pictureUrl})`}}>
+                            <div className="item-details">
+                              <div className="actions-menu"></div>
+                            </div>
+                          </div>
+                        </li>
+                      ))
+                    }
                   </ul>
                 </div>
               </div>

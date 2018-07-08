@@ -36,6 +36,12 @@ class AssetSetting extends Component {
     this.props.designPanelUiStore.showChangeTextPanel();
   }
 
+  showManageMediaPanel() {
+    this.refAstm();
+    this.props.designPanelUiStore.position(-80, 50);
+    this.props.designPanelUiStore.showManageMediaPanel();
+  }
+
   showLayoutPanel() {
     this.refAstm();
     this.props.designPanelUiStore.showLayoutPanel();
@@ -61,6 +67,7 @@ class AssetSetting extends Component {
           { settingButtons.includes('EditText') && <AssetSettingButton label={<span className="label" >Edit Text</span>} onClick={() => this.showEditTextPanel()} /> }
           { settingButtons.includes('ChangeText') && <AssetSettingButton label={<span className="label" >Change Text</span>} onClick={() => this.showChangeTextPanel()} /> }
           { settingButtons.includes('ChangeImage') && <AssetSettingButton label={<span className="label" >Change Image</span>} onClick={() => this.showChangeImagePanel()} /> }
+          { settingButtons.includes('ManageMedia') && <AssetSettingButton label={<span className="label" >Manage Media</span>} onClick={() => this.showManageMediaPanel()} /> }
 
           { settingButtons.includes('Layout') && <AssetSettingButton label={<Icon type="layout" />} onClick={() => this.showLayoutPanel()} />}
           { settingButtons.includes('Design') && <AssetSettingButton label={<Icon type="dashboard" />} onClick={() => this.showDesignPanel()} />}

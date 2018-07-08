@@ -7,6 +7,10 @@ class MediaLibraryStore {
 
   @observable selectedPics = {};
 
+  @observable selectedPic = {};
+
+  chooseCallback = null;
+
   constructor(store, service) {
     this.store= store;
     this.service = service;
@@ -19,7 +23,21 @@ class MediaLibraryStore {
     }));
   }
 
+  choose(cb) {
+    this.chooseCallback = cb;
+    this.store.workSpaceUiStore.openMediaLibrary();
+  }
+
+  done() {
+    this.store.workSpaceUiStore.closeMediaLibrary();
+    setTimeout(() => {
+      this.chooseCallback && this.chooseCallback(this.selectedPic);
+      this.chooseCallback = null;
+    }, 200);
+  }
+
   selectPicture(picture) {
+    this.selectedPic = picture;
     const selectedPic = this.selectedPics[picture.id];
     if (selectedPic) {
       delete this.selectedPics[picture.id];

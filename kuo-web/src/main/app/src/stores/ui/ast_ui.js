@@ -4,7 +4,7 @@ const ast_setting_buttons = {
   Text: ['EditText', 'Animation', 'Link'],
   Menu: ['ChangeText', 'Layout', 'Design'],
   Image: ['ChangeImage', 'Design', 'Animation', 'Link'],
-  Gallery: ['ChangeText', 'Layout', 'Design'],
+  Gallery: ['ManageMedia', 'Layout', 'Design'],
 }
 
 class AstUiStore {

@@ -16,7 +16,7 @@ class DesignPanelUiStore {
 
   @observable changeTextPanelVisible = false;
 
-  @observable manageMediaPanelVisible = true;
+  @observable manageMediaPanelVisible = false;
 
   @observable x = 100;
 

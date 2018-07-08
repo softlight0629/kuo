@@ -33,6 +33,7 @@ class PanelWrapper extends Component {
       <Rnd
         position={{ x: x, y: y }}
         dragHandleClassName=".panel-header"
+        style={{ zIndex: 999 }}
         onDragStop={(e, d) => { this.props.designPanelUiStore.position(d.x, d.y) }}
       >
         <div className="design-panel" style={{ width: `${width}px` }}>
