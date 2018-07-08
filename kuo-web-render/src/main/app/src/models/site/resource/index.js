@@ -1,0 +1,1 @@
+export PageRes from './Page';

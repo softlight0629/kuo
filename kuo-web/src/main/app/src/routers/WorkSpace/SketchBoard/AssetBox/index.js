@@ -4,8 +4,6 @@ import { withRouter } from 'react-router';
 import Rnd from 'react-rnd';
 import { Icon } from 'antd';
 import AssetSetting from './AssetSetting';
-import { AstvButton, AstvMenu, AstvText, AstvImage } from '../Asset';
-import cssrender from '../../../../helper/cssrender';
 import astRegister from '../../../../helper/ast_register';
 import './index.less';
 

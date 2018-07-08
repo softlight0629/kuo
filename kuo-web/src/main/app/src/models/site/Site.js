@@ -21,7 +21,7 @@ class Site {
     extendObservable(this, option);
 
     this.pageResList = 
-      option.pageResources.map(pageRes => new PageRes(this.store, pageRes));
+      option.pageResList.map(pageRes => new PageRes(this.store, pageRes));
   }
 
   @action addPageResource(option) {

@@ -8,13 +8,13 @@ import { observer, inject } from 'mobx-react';
 @observer
 class SiteStructure extends Component {
 
-  activatePage(pageResource) {
-    this.props.sketchBoardStore.activatePage(pageResource);
+  activatePage(pageRes) {
+    this.props.sketchBoardStore.activatePage(pageRes);
   }
 
   render() {
     const { site = {} } = this.props.workSpaceStore;
-    const { pageResources = [] } = site;
+    const { pageResList = [] } = site;
 
     return (
       <div className="code-site-structure">
@@ -28,7 +28,7 @@ class SiteStructure extends Component {
           >
             <Menu.SubMenu key="sub_1" title={<span>Pages</span>}>
             {
-              pageResources.map((pageResource, i) => <Menu.Item key={i}><span className="code-page-menu-item" onClick={() => this.activatePage(pageResource)}>{pageResource.name}</span></Menu.Item>)
+              pageResList.map((pageRes, i) => <Menu.Item key={i}><span className="code-page-menu-item" onClick={() => this.activatePage(pageRes)}>{pageRes.name}</span></Menu.Item>)
             }
             </Menu.SubMenu>
             <Menu.SubMenu key="sub_2" title={<span>Public</span>}>
