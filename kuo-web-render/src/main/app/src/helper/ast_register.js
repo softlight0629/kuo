@@ -1,5 +1,5 @@
 import { AstmMenu, AstmButton, AstmText, AstmImage, AstmGallery } from '../models/asset/entity';
-import { AstvButton } from '../engine/Asset';
+import { AstvButton, AstvImage } from '../engine/Asset';
 
 const astm_regs = {
   Menu: AstmMenu,
@@ -11,6 +11,7 @@ const astm_regs = {
 
 const astv_regs = {
   Button: AstvButton,
+  Image: AstvImage,
 };
 
 

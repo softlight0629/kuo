@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
-
+import GridLine  from './GridLine';
 import ResBtnGrp from './ResBtnGrp';
 import CompToolBar from './CompToolBar';
 import ArtBoard from './ArtBoard';
@@ -40,6 +40,9 @@ class SketchBoard extends Component {
     return (
       <div className="sketch-board">
         <div className="sketch-board-editor">
+          <div className="editor-stage-cover">
+            <GridLine />
+          </div>
           <div className="sketch-board-canvas">
             <ArtBoard />
             {/* <CompToolBar /> */}

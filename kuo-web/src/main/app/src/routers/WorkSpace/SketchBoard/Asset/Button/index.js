@@ -27,7 +27,7 @@ class AstvButton extends Component {
 
   render() {
     const { astm } = this.props;
-    const { spec, store: {text}, meta } = astm;
+    const { spec, store: { text }, meta } = astm;
     const { arrow, fill, border, ...rest } = spec;
 
     return (

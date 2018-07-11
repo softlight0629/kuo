@@ -7,12 +7,11 @@ import { ArtBoard } from '../../engine';
 class Index extends Component {
 
   componentDidMount() {
-    this.props.appStore.fetch('1f14286f-2fa6-42c1-9428-6f2fa642c130');
+    this.props.appStore.fetch('8a453a94-8233-4ee4-853a-948233cee497');
   }
 
   render() {
     const { site } = this.props.appStore;
-    console.log(site, 'site.....');
     return (
       <div>
         <ArtBoard />  

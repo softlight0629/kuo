@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx';
 import { AstmButton, AstmMenu, AstmText, AstmImage } from '../../models/asset/entity';
-import { PageRes } from '../../models/site/resource';
+import { PageRes } from '../../models/domain/site/entity/resource';
 
 class SketchBoardStore {
 

@@ -14,6 +14,7 @@ import AstRefUiStore from './ui/ast_ref_ui';
 import AstUiStore from './ui/ast_ui';
 import AstSkinUiStore from './ui/ast_skin_ui';
 import AstThemeUiStore from './ui/ast_theme_ui';
+import MediaLibraryUiStore from './ui/media_library_ui';
 
 import service from '../services';
 
@@ -36,6 +37,7 @@ class GlobalStore {
     this.astUiStore = new AstUiStore(this, service);
     this.astSkinUiStore = new AstSkinUiStore(this, service);
     this.astThemeUiStore = new AstThemeUiStore(this, service);
+    this.mediaLibraryUiStore = new MediaLibraryUiStore(this, service);
   }
 }
 
@@ -58,4 +60,5 @@ export default {
   astUiStore: store.astUiStore,
   astSkinUiStore: store.astSkinUiStore,
   astThemeUiStore: store.astThemeUiStore,
+  mediaLibraryUiStore: store.mediaLibraryUiStore,
 };

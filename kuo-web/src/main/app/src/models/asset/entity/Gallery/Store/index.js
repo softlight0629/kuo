@@ -1,5 +1,5 @@
 import { observable } from 'mobx';
-import { MediaFactory } from '../../../common';
+import { MediaFactory } from '../../../../domain/media/common';
 
 class Store {
   

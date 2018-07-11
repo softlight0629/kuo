@@ -11,7 +11,7 @@ import SketchBoard from './SketchBoard';
 import './index.less';
 
 @withRouter
-@inject('workSpaceStore', 'workSpaceUiStore', 'authStore')
+@inject('workSpaceStore', 'authStore')
 @observer
 class WorkSpace extends Component {
 
@@ -21,12 +21,11 @@ class WorkSpace extends Component {
   }
 
   render() {
-    const { mediaLibraryVisible } = this.props.workSpaceUiStore;
 
     return (
       <div className="workspace">
         <SiteSavePanel />
-        { mediaLibraryVisible && <MediaLibrary /> }
+        <MediaLibrary />
         <div className="workspace-wrapper">
           <div className="pane-container">
             <SiteStructure />

@@ -1,6 +1,6 @@
 import { themes_of_button, themes_of_menu } from './themes';
 import themes_loc from './themes_loc';
-import AstThemeButton from '../../../models/workspace/button/AstThemeButton';
+import AstThemeButton from '../../../models/ui/button/AstThemeButton';
 
 class AstThemeUiStore {
   

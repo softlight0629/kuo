@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 import { Tabs } from 'antd';
 import { inject } from 'mobx-react';
+import ScrollBar from '../../../../../components/ScrollBar';
 import ThemeButton from '../../ThemeButton';
 import './index.less';
 
 const TabPane = Tabs.TabPane;
 
-@inject('astThemeUiStore', 'sketchBoardStore', 'resGrpUiStore', 'workSpaceUiStore')
+const ListItemWithImage = ({ title, onClick, desc, imageSrc}) => (
+  <div className="list-item-with-image" onClick={() => onClick()}>
+    <img className="image" src={imageSrc} />
+    <div className="content">
+      <div className="title ellipsis">{title}</div>
+      <div className="desc ellipsis">{desc}</div>
+    </div>
+    <div className="indicator">
+      <div>
+        <svg width="27" height="27" viewBox="0 0 27 27" className="symbol symbol-arrow-with-states">
+          <circle id="Combined-Shape" cx="13.5" cy="13.5" r="12.5" fill="#CBCBCB" className="st0"></circle>
+          <path id="Path-2" fill="#3899EC" d="M15.331 13.5l-3.705 4.168.748.664 4.295-4.832-4.295-4.832-.748.664z" className="st1"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+)
+
+@inject('astThemeUiStore', 'sketchBoardStore', 'mediaLibraryUiStore', 'resGrpUiStore', 'workSpaceUiStore')
 class ResPanel extends Component {
 
   handleClick(ast) {
@@ -141,28 +160,87 @@ class ResPanel extends Component {
   }
 
   openMediaLibrary() {
-    this.props.workSpaceUiStore.openMediaLibrary()
+    this.props.mediaLibraryUiStore.openWithPane('frees');
     this.props.resGrpUiStore.closeResPanel();
   }
 
-  renderImagePanel() {
+  renderImageResPanel() {
     return (
-      <div className="content-wrapper">
-        <div className="sections">
-          <div className="section-wrapper" style={{ height: '159px' }}>
-            <div className="section-header">
-              <div className="title-line">
-                <div className="title">My Buttons</div>
+      <ScrollBar>
+        <div className="content-wrapper">
+          <div className="sections">
+            <div className="section-wrapper" style={{ height: '159px' }}>
+              <div className="section-header">
+                <div className="title-line">
+                  <div className="title">My Uploads</div>
+                </div>
+              </div>
+              <div className="items">
+                <ListItemWithImage 
+                  title="My Image Uploads" 
+                  desc="Upload and add your own images to your site." 
+                  imageSrc="https://static.parastorage.com/services/santa-resources/resources/editor/addPanelData/sections/imageSection/imageUploader.v3.png" 
+                  onClick={() => this.openMediaLibrary()}
+                />
               </div>
             </div>
-            <div className="section-live-site-wrapper">
-              <div className="section-preview-container">
-                <div onClick={() => this.openMediaLibrary()}>xxx</div>
+            <div className="section-wrapper">
+              <div className="section-header">
+                <div className="title-line">
+                  <div className="title">Image Collections</div>
+                </div>
+              </div>
+              <div className="items">
+                <ListItemWithImage 
+                  title="Free Wix Images" 
+                  desc="Beautiful free images to use on your site." 
+                  imageSrc="https://static.parastorage.com/services/santa-resources/resources/editor/addPanelData/sections/imageSection/wixFreeImages.v3.png" 
+                  onClick={() => this.openMediaLibrary()}
+                />
+                <ListItemWithImage 
+                  title="Free Wix Illustrations" 
+                  desc="Stunning illustrations designed for your site." 
+                  imageSrc="https://static.parastorage.com/services/santa-resources/resources/editor/addPanelData/sections/imageSection/freeWixIllustrations.v2.png" 
+                  onClick={() => this.openMediaLibrary()}
+                />
+                <ListItemWithImage 
+                  title="Stock Images" 
+                  desc="High quality images to purchase and down." 
+                  imageSrc="https://static.parastorage.com/services/santa-resources/resources/editor/addPanelData/sections/imageSection/bigStockImages.v3.png" 
+                  onClick={() => this.openMediaLibrary()}
+                />
+              </div>
+            </div>
+            <div className="section-wrapper">
+              <div className="section-header">
+                <div className="title-line">
+                  <div className="title">Image Collections</div>
+                </div>
+              </div>
+              <div className="items">
+                <ListItemWithImage 
+                  title="Free Wix Images" 
+                  desc="Beautiful free images to use on your site." 
+                  imageSrc="https://static.parastorage.com/services/santa-resources/resources/editor/addPanelData/sections/imageSection/wixFreeImages.v3.png" 
+                  onClick={() => this.openMediaLibrary()}
+                />
+                <ListItemWithImage 
+                  title="Free Wix Illustrations" 
+                  desc="Stunning illustrations designed for your site." 
+                  imageSrc="https://static.parastorage.com/services/santa-resources/resources/editor/addPanelData/sections/imageSection/freeWixIllustrations.v2.png" 
+                  onClick={() => this.openMediaLibrary()}
+                />
+                <ListItemWithImage 
+                  title="Stock Images" 
+                  desc="High quality images to purchase and down." 
+                  imageSrc="https://static.parastorage.com/services/santa-resources/resources/editor/addPanelData/sections/imageSection/bigStockImages.v3.png" 
+                  onClick={() => this.openMediaLibrary()}
+                />
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </ScrollBar>
     )
   }
 
@@ -186,7 +264,7 @@ class ResPanel extends Component {
             <TabPane tab={<span className="category-name-wrapper">User Input</span>} key="2">Content of tab 2</TabPane>
             <TabPane tab={<span className="category-name-wrapper">Text</span>} key="3">Content of tab 3</TabPane>
             <TabPane tab={<span className="category-name-wrapper">Image</span>} key="4">
-              {this.renderImagePanel()}
+              {this.renderImageResPanel()}
             </TabPane>
             <TabPane tab={<span className="category-name-wrapper">Button</span>} key="5">
               {this.renderButtonResPanel()}

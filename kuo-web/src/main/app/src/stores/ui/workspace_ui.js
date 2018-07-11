@@ -4,8 +4,6 @@ class WorkSpaceUiStore {
 
   @observable savePanelVisible = false;
 
-  @observable mediaLibraryVisible = false;
-
   @action openSavePanel() {
     this.savePanelVisible = true;
   }

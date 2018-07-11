@@ -59,13 +59,10 @@
       width: 229px;
 
       &-inner {
+        height: 100%;
+        
         .folders {
-          position: absolute;
-          top: 0;
-          right: 0;
-          left: 0;
-          bottom: 0;
-          overflow-y: auto;
+          overflow-y: visible;
 
           ul {
             list-style: none;
@@ -77,6 +74,10 @@
               height: 42px;
               position: relative;
               cursor: pointer;
+
+              &:hover {
+                background-color: rgb(237, 247, 255);
+              }
 
               .name {
                 padding: 0 16px;
@@ -107,11 +108,11 @@
       overflow: hidden;
       top: 0;
       bottom: 0;
-      padding:  0 0 24px 25px;
       left: 230px;
 
       .entities-grid {
         display: block;
+        padding:  0 0 24px 25px;
 
         .ant-breadcrumb {
           height: 54px;

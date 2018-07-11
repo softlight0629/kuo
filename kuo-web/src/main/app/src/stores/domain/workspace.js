@@ -1,5 +1,5 @@
 import { observable, autorun, action, reaction } from 'mobx';
-import Site from '../../models/site/Site';
+import Site from '../../models/domain/site/entity/Site';
 
 class WorkSpaceStore {
 

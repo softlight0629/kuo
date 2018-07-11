@@ -1,5 +1,5 @@
 import { observable, action, extendObservable } from 'mobx';
-import astfactory from '../../../../helper/ast_register';
+import astfactory from '../../../../../../helper/ast_register';
 
 class PageRes {
 

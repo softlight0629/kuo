@@ -1,4 +1,3 @@
-import Site from '../../models/site/Site';
 import oauth from '../../utils/oauth';
 
 // 一个 service 就对应一个 微服务

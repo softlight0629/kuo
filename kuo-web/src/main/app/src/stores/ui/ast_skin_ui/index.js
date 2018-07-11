@@ -1,5 +1,5 @@
 import { skins_of_button, skins_of_image, skins_of_menu } from './skins';
-import AstSkinButton from '../../../models/workspace/button/AstSkinButton';
+import AstSkinButton from '../../../models/ui/button/AstSkinButton';
 
 class AstSkinUiStore {
   
