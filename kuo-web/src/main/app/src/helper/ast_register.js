@@ -1,5 +1,34 @@
-import { AstmMenu, AstmButton, AstmText, AstmImage, AstmGallery } from '../models/asset/entity';
-import { AstvMenu, AstvButton, AstvText, AstvImage, AstvGallery } from '../routers/WorkSpace/SketchBoard/Asset';
+import { 
+  AstmMenu, 
+  AstmButton, 
+  AstmText, 
+  AstmImage, 
+  AstmGallery,
+  AstmInput,
+  AstmSelect,
+  AstmDropdown,
+  AstmRadio,
+  AstmCheckbox,
+  AstmTextArea,
+  AstmPagination,
+  AstmSwitch,
+} from '../models/asset/entity';
+
+import { 
+  AstvMenu, 
+  AstvButton, 
+  AstvText, 
+  AstvImage, 
+  AstvGallery,
+  AstvInput,
+  AstvSelect,
+  AstvDropdown,
+  AstvRadio,
+  AstvCheckbox,
+  AstvTextArea,
+  AstvPagination,
+  AstvSwitch,
+} from '../routers/WorkSpace/SketchBoard/Asset';
 
 const astm_regs = {
   Menu: AstmMenu,
@@ -7,6 +36,14 @@ const astm_regs = {
   Text: AstmText,
   Image: AstmImage,
   Gallery: AstmGallery,
+  Input: AstmInput,
+  Select: AstmSelect,
+  Dropdown: AstmDropdown,
+  Radio: AstmRadio,
+  Checkbox: AstmCheckbox,
+  TextArea: AstmTextArea,
+  Pagination: AstmPagination,
+  Switch: AstmSwitch,
 };
 
 const astv_regs = {
@@ -15,6 +52,14 @@ const astv_regs = {
   Text: AstvText,
   Image: AstvImage,
   Gallery: AstvGallery,
+  Input: AstvInput,
+  Select: AstvSelect,
+  Dropdown: AstvDropdown,
+  Radio: AstvRadio,
+  Checkbox: AstvCheckbox,
+  TextArea: AstvTextArea,
+  Pagination: AstvPagination,
+  Switch: AstvSwitch,
 };
 
 export default {

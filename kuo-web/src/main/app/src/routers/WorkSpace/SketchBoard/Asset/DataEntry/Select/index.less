@@ -1,0 +1,30 @@
+.ast-select {
+  
+  select {
+    border-radius: 0;
+    -webkit-appearance: none;
+    background-color: rgba(255, 255, 255, 1);
+    color: #000000;
+    border: 2px solid rgba(145, 145, 145, 1);
+    margin: 0;
+    padding: 0 45px;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 10px;
+    height: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    padding-left: 18px;
+
+    &:focus {
+      outline: none;
+    }
+
+    option {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}

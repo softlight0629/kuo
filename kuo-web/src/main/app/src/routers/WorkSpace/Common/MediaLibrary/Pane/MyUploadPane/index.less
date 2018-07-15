@@ -1,0 +1,94 @@
+
+.sidebar-inner {
+  .folders-container {
+    height: calc(100% - 50px);
+  }
+
+  .hide-add-folder {
+    display: none;
+  }
+  
+  .add-folder {
+    font-size: 14px;
+    border: 0;
+    width: 100%;
+    line-height: 30px;
+    color: rgb(56, 153, 236);
+    display: block;
+    text-align: left;
+    padding: 0px 9px 0px 26px;
+    margin-top: 9px;
+  }
+
+  .add-folder-input {
+    padding: 6px 16px;
+
+    .ant-input {
+      height: 30px;
+    }
+  }
+}
+
+.entities-wrapper {
+  left: 230px;
+  right: 0px;
+
+  .no-entities-placeholder {
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+    top: 25px;
+    border-width: 2px;
+    border-style: dashed;
+    border-color: rgb(211, 237, 255);
+    border-radius: 12px;
+    outline: none;
+
+    .no-entities {
+      position: absolute;
+      left: 0px;
+      top: 50%;
+      margin-top: -100px;
+      display: block;
+      width: 100%;
+      text-align: center;
+      color: rgb(43, 86, 114);
+      padding: 135px 0px 0px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        background-size: 134px 2466px;
+        background-position: 0 57.481%;
+        display: block;
+        width: 128px;
+        height: 100px;
+        margin-left: -64px;
+        background-image: url(https://www.wix.com/_partials/media-gallery-g5/1.536.0/images/sprite.svg-no-items-icons-a6eb84a7.svg);
+        background-repeat: no-repeat;
+      }
+
+      h3 {
+        font-size: 18px;
+        text-overflow: ellipsis;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        color: rgb(43, 86, 114);
+      }
+
+      .description {
+        font-size: 14px;
+        line-height: 20px;
+        text-overflow: ellipsis;
+        color: rgb(122, 146, 165);
+        padding: 0;
+        margin: 7px 0px 0px;
+        overflow: hidden;
+      }
+    }
+  }
+}

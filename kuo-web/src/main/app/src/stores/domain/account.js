@@ -11,7 +11,7 @@ class AccountStore {
   }
 
   fetch() {
-    this.service.siteService.fetchAllSitesFromServer()
+    this.service.siteService.fetchSites()
       .then(action(res => {
         if (res.data) {
           this.mysites = res.data.map(site => new Site(this.store, site));

@@ -11,7 +11,7 @@ class DashboardStore {
   }
 
   fetch(guid) {
-    this.service.siteService.fetchAllSitesFromServer()
+    this.service.siteService.fetchSites()
       .then(res => {
         console.log(res.data);
       });
@@ -20,7 +20,6 @@ class DashboardStore {
       .then(action(res => {
         if (res.data) {
           this.site = new Site(this.store, res.data);
-
           console.log(this.site);
         }
       }));

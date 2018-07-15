@@ -5,6 +5,14 @@ const ast_setting_buttons = {
   Menu: ['ChangeText', 'Layout', 'Design'],
   Image: ['ChangeImage', 'Design', 'Animation', 'Link'],
   Gallery: ['ManageMedia', 'Layout', 'Design'],
+  Input: ['ManageMedia', 'Layout', 'Design'],
+  Select: ['ManageMedia', 'Layout', 'Design'],
+  Dropdown: ['ManageMedia', 'Layout', 'Design'],
+  Radio: ['ManageMedia', 'Layout', 'Design'],
+  Checkbox: ['ManageMedia', 'Layout', 'Design'],
+  TextArea: ['ManageMedia', 'Layout', 'Design'],
+  Pagination: ['ManageMedia', 'Layout', 'Design'],
+  Switch: ['ManageMedia', 'Layout', 'Design'],
 }
 
 class AstUiStore {

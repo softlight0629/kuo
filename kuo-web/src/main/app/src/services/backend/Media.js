@@ -23,6 +23,21 @@ class MediaService {
       },
     });
   }
+
+  async fetchMediaFolders(guid) {
+    return oauth.get(`${endpoint}/media_folders`, {
+      params: {
+        guid,
+      },
+    });
+  }
+
+  async addMediaFolder(name, parentGuid) {
+    return oauth.post(`${endpoint}/media_folders`, {
+      guid: parentGuid,
+      name,
+    })
+  }
 }
 
 export default MediaService;

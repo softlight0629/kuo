@@ -11,7 +11,7 @@ class SiteService {
     return oauth.get(`${endpoint}/${siteId}`);
   }
 
-  async fetchAllSitesFromServer() {
+  async fetchSites() {
     return oauth.get(endpoint);
   }
 

@@ -32,7 +32,7 @@ const _font = ({
   ...(underline ? {textDecoration: 'underline'} : {}),
 });
 
-const _border = ({color, opacity = 100, width}) =>
+const _border = ({color = '#000000', opacity = 100, width}) =>
 ({
   borderColor: hexToRgba(color, opacity/100),
   borderStyle: 'solid',
@@ -48,7 +48,7 @@ const _corner = ({leftTop, rightTop, leftBottom, rightBottom}) =>
 });
 
 const _shadow = ({
-  color,
+  color = '#000000',
   opacity = 100,
   angle,
   distance,
@@ -64,8 +64,7 @@ const _layout = ({align, margin}) => ({textAlign: align, padding: `${margin}px`}
 const _textIndent = ({ step }) => ({marginLeft: `${step * 40}px`});
 const _textAlign = ({ align }) =>({ textAlign: align });
 const _textEffect = ({ effect }) => ({ textShadow: effects[effect] });
-const _fill = ({ color, opacity = 100 }) => ({ backgroundColor: color === 'transparent' ? color : hexToRgba(color, opacity/100) });
-
+const _fill = ({ color = '#000000', opacity = 100 }) => ({ backgroundColor: color === 'transparent' ? color : hexToRgba(color, opacity/100) });
 
 const _rect = ({ width, height }) => ({ width: `${width}px`, height: `${height}px`})
 
@@ -83,7 +82,7 @@ const cssrender = ({
 }) => ({
   ...(font ? _font(font) : {}),
   ...(border ? _border(border) : {}),
-  ...(corner ? _corner(corner) : {}),
+  ...(corner && corner.enable ? _corner(corner) : {}),
   ...(shadow && shadow.enable ? _shadow(shadow) : {}),
   ...(layout ? _layout(layout) : {}),
   ...(fill ? _fill(fill) : {}),

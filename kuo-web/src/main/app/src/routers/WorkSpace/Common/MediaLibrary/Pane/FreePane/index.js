@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Tabs, Breadcrumb } from 'antd';
-import ScrollBar from '../../../../../components/ScrollBar';
+import ScrollBar from '../../../../../../components/ScrollBar';
 import { observer } from 'mobx-react';
 
 @observer

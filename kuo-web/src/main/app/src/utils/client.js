@@ -6,8 +6,9 @@ class Client {
     return await axios.get(path, option);
   }
 
-  async post(path, option) {
-    return await axios.post(path, option);
+  async post(path, data, option) {
+    console.log(data, 'data..', option);
+    return await axios.post(path, data, option);
   }
 
   async delete(path, option) {

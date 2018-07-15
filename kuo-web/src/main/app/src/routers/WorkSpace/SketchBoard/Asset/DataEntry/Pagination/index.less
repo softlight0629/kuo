@@ -1,0 +1,64 @@
+.ast-pagination {
+  
+  .pagination-root {
+    align-items: stretch;
+    display: inline-flex;
+    user-select: none;
+    font: normal normal normal 16px/1.4em georgia,palatino,'book antiqua','palatino linotype',serif;
+
+    .pagination-navbtn {
+      min-width: 1em;
+      min-height: 1em;
+      padding: calc(0.75em - 0px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0px solid rgba(65, 65, 65, 1);
+      background: transparent;
+      border-radius: 10px 10px 10px 10px;
+    }
+
+    .navbtn-next {
+      margin-left: 1em;
+    }
+
+    .navbtn-previous {
+      margin-right: 1em;
+    }
+
+    .pagination-strip {
+      min-width: 3em;
+      overflow: visible;
+      align-self: center;
+      order: 3;
+
+      &-inner {
+        flex-grow: 1;
+        flex-basis: auto;
+        justify-content: center;
+        overflow: visible;
+        align-items: center;
+        display: flex;
+
+        .page-button {
+          min-width: 1em;
+          min-height: 1em;
+          line-height: 1em;
+          justify-content: center;
+          align-items: center;
+          padding: 0.5em 0.5em;
+          margin: 0.25em;
+          position: relative;
+          color: #727272;
+          display: inline-flex;
+          flex-shrink: 0;
+          cursor: pointer;
+        }
+
+        .current-page {
+          color: #42cccc;
+        }
+      }
+    }
+  }
+}

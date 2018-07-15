@@ -1,0 +1,49 @@
+.ast-checkbox {
+  pointer-events: all;
+
+  .checkbox-text {
+    word-break: break-all;
+    text-align: start;
+    pointer-events: none;
+    position: absolute;
+    width: 188px;
+    left: 33px;
+    top: 1px;
+  }
+
+  .checkbox-box {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+
+    .checkbox-container {
+      -webkit-box-align: center;
+      align-items: center;
+
+      .checkbox-input {
+        position: absolute;
+        opacity: 0;
+      }
+
+      .checkbox-shadow {
+        border: 2px solid rgba(115, 115, 115, 1);
+        background-color: rgba(255, 255, 255, 1);
+        position: relative;
+        display: block;
+        border-radius: 0;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .checkbox-mark {
+        cursor: pointer;
+        height: 100%;
+        position: relative;
+        pointer-events: none;
+        margin-top: -100%;
+      }
+    }
+  }
+}

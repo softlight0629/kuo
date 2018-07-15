@@ -15,7 +15,140 @@ class WorkSpaceStore {
       .then(action(res => {
         if (res.data) {
           this.site = new Site(this.store, res.data);
-          this.store.sketchBoardStore.activatePage(this.site.getFirstPageResource())
+          this.store.sketchBoardStore.activatePage(this.site.getFirstPageResource());
+          this.store.sketchBoardStore.appendAst({
+            kind: 'Input',
+            meta: {},
+            spec: {
+              rect: {
+                width: 304,
+                height: 43,
+                x: 200,
+                y: 200,
+              },
+              fill: {
+                opacity: 0,
+              },
+              border: {
+                width: 0,
+              },
+            },
+            state: {},
+          });
+          this.store.sketchBoardStore.appendAst({
+            kind: 'Select',
+            meta: {},
+            spec: {
+              rect: {
+                width: 304,
+                height: 43,
+                x: 300,
+                y: 400,
+              },
+              fill: {
+                opacity: 0,
+              },
+              border: {
+                width: 0,
+              },
+            },
+            state: {},
+          });
+          // this.store.sketchBoardStore.appendAst({
+          //   kind: 'Checkbox',
+          //   meta: {},
+          //   spec: {
+          //     rect: {
+          //       width: 304,
+          //       height: 35,
+          //       x: 350,
+          //       y: 400,
+          //     },
+          //     fill: {
+          //       opacity: 0,
+          //     },
+          //     border: {
+          //       width: 0,
+          //     },
+          //   },
+          //   state: {},
+          // });
+          this.store.sketchBoardStore.appendAst({
+            kind: 'Pagination',
+            meta: {},
+            spec: {
+              rect: {
+                width: 324,
+                height: 40,
+                x: 50,
+                y: 400,
+              },
+              fill: {
+                opacity: 0,
+              },
+              border: {
+                width: 0,
+              },
+            },
+            state: {},
+          });
+          this.store.sketchBoardStore.appendAst({
+            kind: 'Switch',
+            meta: {},
+            spec: {
+              rect: {
+                width: 48,
+                height: 24,
+                x: 150,
+                y: 50,
+              },
+              fill: {
+                opacity: 0,
+              },
+              border: {
+                width: 0,
+              },
+            },
+            state: {},
+          });
+          // this.store.sketchBoardStore.appendAst({
+          //   kind: 'TextArea',
+          //   meta: {},
+          //   spec: {
+          //     rect: {
+          //       width: 304,
+          //       height: 70,
+          //       x: 50,
+          //       y: 400,
+          //     },
+          //     fill: {
+          //       opacity: 0,
+          //     },
+          //     border: {
+          //       width: 0,
+          //     },
+          //   },
+          //   state: {},
+          // });
+          this.store.sketchBoardStore.appendAst({
+            kind: 'Radio',
+            meta: {},
+            spec: {
+              rect: {
+                width: 304,
+                height: 90,
+                x: 150,
+                y: 400,
+              },
+              fill: {
+                opacity: 0,
+              },
+              border: {
+                width: 0,
+              },
+            },
+            state: {},
+          });
           // this.store.sketchBoardStore.appendAst({
           //   kind: 'Gallery',
           //   meta: {

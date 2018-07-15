@@ -12,6 +12,7 @@
 
   .ant-modal-body {
     padding: 0;
+    position: relative;
   }
 
   .ant-tabs-nav-container {
@@ -44,6 +45,26 @@
     }
   }
 
+  .upload-btn {
+    position: absolute;
+    top: 10px;
+    right: 13px;
+    z-index: 9;
+    border-radius: 20px;
+
+    .ant-btn {
+      font-size: 14px;
+      text-align: center;
+      vertical-align: middle;
+      font-weight: 100;
+      color: #fff;
+      line-height: 32px;
+      background-color: rgb(251, 125, 51);
+      border-radius: 20px;
+      border: 0;
+    }
+  }
+
 
   .content-wrapper {
     position: relative;
@@ -60,7 +81,7 @@
 
       &-inner {
         height: 100%;
-        
+
         .folders {
           overflow-y: visible;
 

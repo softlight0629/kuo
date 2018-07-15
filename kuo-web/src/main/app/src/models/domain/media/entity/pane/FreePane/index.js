@@ -1,8 +1,8 @@
 import { observable, action } from 'mobx';
-import MediaCategory from './MediaCategory';
-import { MediaFactory } from '../common';
+import MediaCategory from '../../MediaCategory';
+import { MediaFactory } from '../../../common';
 
-class MediaPane {
+class FreePane {
   
   @observable.ref categories = [];
   @observable.ref medias = [];
@@ -14,7 +14,7 @@ class MediaPane {
   }
 
   fetch() {
-    return this.service.mediaService.fetchMediaCategories('d03a8377-fb85-4d08-ba83-77fb85ad0813')
+    return this.service.mediaService.fetchMediaCategories('416cae22-ceaf-49b0-acae-22ceaf69b075')
       .then(action(res => {
         this.categories = res.data.map(category => new MediaCategory(category));
         this.selectCategory(this.categories[0]);
@@ -23,12 +23,18 @@ class MediaPane {
 
   @action selectCategory(category) {
     this.currentCategory = category;
-
     this.service.mediaService.fetchMediaResources(category.guid)
       .then(action(res => {
         this.medias = res.data.map(media => MediaFactory.create(media));
-      }))
+      }));
+  }
+
+  @action reload() {
+    this.service.mediaService.fetchMediaResources(this.currentCategory.guid)
+      .then(action(res => {
+        this.medias = res.data.map(media => MediaFactory.create(media));
+      }));
   }
 }
 
-export default MediaPane;
+export default FreePane;

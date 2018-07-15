@@ -70,14 +70,15 @@ class Oauth {
     return res;
   }
 
-  async post(path, option) {
+  async post(path, data, option = {}) {
     option.headers = Object.assign({}, option.headers, {
       'Authorization': `Bearer ${this._getAccessToken()}`,
+      'Content-Type': 'application/json;charset=utf-8',
     });
 
     let res;
     try {
-      res = await client.post(path, option);
+      res = await client.post(path, data, option);
     } catch (e) {
       if (e.response && e.response.status === 401) {
         await this._refreshToken();

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Modal, Tabs, Breadcrumb } from 'antd';
+import { Modal, Tabs, Breadcrumb, Button, Icon } from 'antd';
 import { observer, inject } from 'mobx-react';
-import FreePane from './FreePane';
+import { FreePane, MyUploadPane } from './Pane';
+
+import Upload from 'rc-upload';
 
 import './index.less';
 
@@ -27,9 +29,34 @@ class MediaLibrary extends Component {
    this.props.mediaLibraryUiStore.close(); 
   }
 
+  fetchPane(paneType) {
+      this.props.mediaLibraryUiStore.fetchPane(paneType);
+  }
+
   render() {
     const { currentPane, mediaLibraryVisible } = this.props.mediaLibraryUiStore;
+    this.uploadProps = {
+      action: 'http://192.168.1.102:8085/api/v1/medias',
+      data: { guid: currentPane.currentCategory && currentPane.currentCategory.guid },
+      multiple: true,
+      beforeUpload: file => {
+        console.log(file.name);
+      },
+      onStart: file => {
+        console.log(file.name);
+      },
+      onSuccess: file => {
+        currentPane.reload();
+      },
+      onProgress: file => {
+        console.log(file.name);
+      },
+      onError: err => {
+        console.log(err);
+      },
+    };
 
+    console.log(currentPane, 'current....');
     return (
       <Modal
         title="Choose Images"
@@ -40,11 +67,25 @@ class MediaLibrary extends Component {
         onOk={() => this.choose()}
         onCancel={() => this.close()}
       >
-        <Tabs defaultActiveKey="myUploads" activeKey={currentPane.paneType ? currentPane.paneType : 'myUploads'} animated={false}>
-          <TabPane tab="My Images" key="myUploads"></TabPane>
+        <div className="upload-btn">
+          <Upload {...this.uploadProps} >
+            <Button>
+              <Icon type="upload" />Upload Images
+            </Button>
+          </Upload>
+        </div>
+        <Tabs 
+          defaultActiveKey="myUploads" 
+          activeKey={currentPane.paneType ? currentPane.paneType : 'myUploads'} 
+          animated={false}
+          onChange={activeKey => this.fetchPane(activeKey)}
+        >
+          <TabPane tab="My Images" key="myUploads">
+            {currentPane.paneType === 'myUploads' && <MyUploadPane pane={currentPane} /> }
+          </TabPane>
           <TabPane tab="Social Images" key="socials">Content of Tab Pane 2</TabPane>
           <TabPane tab="Free From Wix" key="frees">
-            <FreePane pane={currentPane} />
+            {currentPane.paneType === 'frees' && <FreePane pane={currentPane} /> }
           </TabPane>
         </Tabs>
       </Modal>

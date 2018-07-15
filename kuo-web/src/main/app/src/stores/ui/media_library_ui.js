@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx'
-import MediaPane from '../../models/domain/media/entity/MediaPane';
+import { FreePane, MyUploadPane } from '../../models/domain/media/entity/pane';
 
 class MediaLibraryUiStore {
   
@@ -13,16 +13,14 @@ class MediaLibraryUiStore {
     this.store = store;
     this.service = service;
 
-    this.mediaPanes.myUploads = new MediaPane(service, 'myUploads');
-    this.mediaPanes.socials = new MediaPane(service, 'socials');
-    this.mediaPanes.frees = new MediaPane(service, 'frees');
+    this.mediaPanes.myUploads = new MyUploadPane(service, 'myUploads');
+    // this.mediaPanes.socials = new MediaPane(service, 'socials');
+    this.mediaPanes.frees = new FreePane(service, 'frees');
   }
   
-  fetchPane(type) {
-    this.mediaPanes[type].fetch()
-      .then(action(() => {
-        this.currentPane = this.mediaPanes[type];
-      }))
+  @action fetchPane(type) {
+    this.currentPane = this.mediaPanes[type];
+    this.currentPane.fetch()
       .catch(e => {
         console.log(e);
       });

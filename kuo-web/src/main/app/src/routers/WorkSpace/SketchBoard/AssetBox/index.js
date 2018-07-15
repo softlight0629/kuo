@@ -95,6 +95,7 @@ class AssetBox extends Component {
             <div className={`animated`} style={{ width: '100%', height: '100%', ...animationProps}}>
               <div key={1} className="asset">
                 {this.renderAstv(astm) }
+                <div className="asset-modal" />
               </div>
             </div>
           </div>
