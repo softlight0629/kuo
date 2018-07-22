@@ -9,8 +9,8 @@ class CheckboxGroup extends Component {
       <div className="composite-checkboxes has-label">
         <label className="label">{label}</label>
         <div className="checkbox-list">
-          <Checkbox value="A">Required</Checkbox>
-          <Checkbox value="B">Read only</Checkbox>
+
+          { this.props.children }
         </div>
       </div>
     )

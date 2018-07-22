@@ -82,6 +82,11 @@ class AssetSetting extends Component {
     this.props.designPanelUiStore.showLinkPanel();
   }
 
+  showSettingPanel() {
+    this.refAstm();
+    this.props.designPanelUiStore.showSettingPanel();
+  }
+
   render() {
     const { astm, astUiStore } = this.props;
     const settingButtons = astUiStore.astSettingButtons(astm.kind);
@@ -100,6 +105,7 @@ class AssetSetting extends Component {
           { settingButtons.includes('SwitchSettings') && <AssetSettingButton label={<span className="label" >Settings</span>} onClick={() => this.showSwitchSettingsPanel()} /> }
           { settingButtons.includes('ManageTable') && <AssetSettingButton label={<span className="label" >Manage Table</span>} onClick={() => this.showSwitchSettingsPanel()} /> }
 
+          { settingButtons.includes('Setting') && <AssetSettingButton label={<Icon type="setting" />} onClick={() => this.showSettingPanel()} />}
           { settingButtons.includes('Layout') && <AssetSettingButton label={<Icon type="layout" />} onClick={() => this.showLayoutPanel()} />}
           { settingButtons.includes('Design') && <AssetSettingButton label={<Icon type="dashboard" />} onClick={() => this.showDesignPanel()} />}
           { settingButtons.includes('Animation') && <AssetSettingButton label={<Icon type="sync" />} onClick={() => this.showAnimationPanel()} />}

@@ -6,7 +6,7 @@ const ast_setting_buttons = {
   Image: ['ChangeImage', 'Design', 'Animation', 'Link'],
   Gallery: ['ManageMedia', 'Layout', 'Design'],
   Input: ['SetInputType', 'Layout', 'Design'],
-  Select: ['ManageItems', 'Layout', 'Design'],
+  Select: ['ManageItems', 'Setting', 'Layout', 'Design'],
   Dropdown: ['ManageItems', 'Layout', 'Design'],
   Radio: ['ManageButtons', 'Layout', 'Design'],
   Checkbox: ['ManageButtons', 'Layout', 'Design'],

@@ -20,6 +20,7 @@ import {
   ManageButtonsPanel,
   SwitchSettingsPanel,
   ManageItemsPanel,
+  SelectSettingsPanel,
 } from './Panel/ManagePanel';
 import ColorPicker from './ColorPicker';
 
@@ -35,6 +36,7 @@ class SketchBoard extends Component {
       linkPanelVisible,
       editTextPanelVisible,
       animationPanelVisible,
+      settingPanelVisible,
 
       changeTextPanelVisible,
       manageMediaPanelVisible,
@@ -61,6 +63,7 @@ class SketchBoard extends Component {
             { layoutPanelVisible &&  <LayoutPanel astm={astm}/> }
             { animationPanelVisible && <AnimationPanel astm={astm}/> }
             { linkPanelVisible && <LinkPanel astm={astm}/> }
+            { settingPanelVisible && <SelectSettingsPanel astm={astm} />}
 
             { changeTextPanelVisible && <ChangeTextPanel astm={astm} /> }
             { setInputTypePanelVisible && <SetInputTypePanel astm={astm} />}

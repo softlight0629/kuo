@@ -34,6 +34,20 @@ class WorkSpaceStore {
               },
             },
             state: {},
+            store: {
+              placeholderText: 'this is placehoder',
+              initialText: 'this is initial',
+            },
+            opts: {
+              type: 'Password',
+              required: true,
+              readOnly: false,
+              showTextOnLoad: 'PlaceholderText',
+              enableLimitLength: true,
+              enableMaximumValue: false,
+              enableMinimumValue: false,
+              enablePatternValidation: false,
+            },
           });
           this.store.sketchBoardStore.appendAst({
             kind: 'Select',
@@ -52,7 +66,20 @@ class WorkSpaceStore {
                 width: 0,
               },
             },
-            state: {},
+            state: {
+            },
+            store: {
+              items: [
+                {
+                  label: 'Prince',
+                  value: 'Prince',
+                },
+                {
+                  label: 'Kanye',
+                  value: 'Kanye',
+                },
+              ],
+            },
           });
           this.store.sketchBoardStore.appendAst({
             kind: 'Table',

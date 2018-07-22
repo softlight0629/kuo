@@ -45,7 +45,7 @@ class ManageButtonsPanel extends Component {
               <div style={{ position: 'relative' }}>
                 <SortDragList
                   count={radioBtns.length}
-                  items={radioBtns.slice()}
+                  items={radioBtns}
                   dragItemRender={this.dragItemRender.bind(this)}
                   dragListStyle={this.dragListStyle.bind(this)}
                   dragItemStyle={this.dragItemStyle.bind(this)}

@@ -1,12 +1,12 @@
 import { observable, action } from "mobx";
 let i = 0;
-class RadioButton {
+class SelectItem {
 
-  @observable label = '';
+  @observable label;
 
-  @observable value = '';
+  @observable value;
 
-  constructor({ label, value }) {
+  constructor({ label,  value }) {
     this.id = `${i++}`;
     this.label = label;
     this.value = value;
@@ -21,4 +21,4 @@ class RadioButton {
   }
 }
 
-export default RadioButton;
+export default SelectItem;

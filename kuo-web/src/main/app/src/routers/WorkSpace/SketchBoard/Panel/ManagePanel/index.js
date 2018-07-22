@@ -6,3 +6,4 @@ export SetInitialTextPanel from './SetInitialText';
 export ManageButtonsPanel from './ManageButtons';
 export ManageItemsPanel from './ManageItems';
 export SwitchSettingsPanel from './SwitchSettings';
+export SelectSettingsPanel from './SelectSettings';

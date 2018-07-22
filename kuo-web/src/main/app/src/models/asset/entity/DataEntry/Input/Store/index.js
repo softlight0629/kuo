@@ -1,9 +1,22 @@
-import { observable } from "mobx";
+import { observable, action } from "mobx";
 
 class Store {
 
-  constructor({ text }) {
-    this.text = text;
+  @observable placeholderText = '';
+
+  @observable initialText = '';
+
+  constructor({ placeholderText, initialText }) {
+    this.placeholderText = placeholderText;
+    this.initialText = initialText;
+  }
+
+  @action setPlaceholderText(placeholderText) {
+    this.placeholderText = placeholderText;
+  }
+
+  @action setInitialText(initialText) {
+    this.initialText = initialText;
   }
 
   serialize() {

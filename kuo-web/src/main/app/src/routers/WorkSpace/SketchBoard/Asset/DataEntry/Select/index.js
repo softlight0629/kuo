@@ -11,7 +11,6 @@ class AstvSelect extends Component {
     const { astm } = this.props;
     const { spec, meta } = astm;
 
-    console.log('select......');
     return (
       <div className="ast-select" style={cssrender(spec)}>
         <select>

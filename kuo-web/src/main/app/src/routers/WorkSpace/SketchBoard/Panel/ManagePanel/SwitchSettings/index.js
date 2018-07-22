@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PanelWrapper from '../../PanelWrapper';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
+import PanelWrapper from '../../PanelWrapper';
 import {
   Divider,
   TextInput,

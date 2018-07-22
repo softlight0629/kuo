@@ -11,6 +11,8 @@ class DesignPanelUiStore {
 
   @observable linkPanelVisible = false;
 
+  @observable settingPanelVisible = false;
+
   @observable animationPanelVisible = false;
 
   @observable changeTextPanelVisible = false;
@@ -125,6 +127,14 @@ class DesignPanelUiStore {
 
   @action closeManageItemsPanel() {
     this.manageItemsPanelVisible = false;
+  }
+
+  @action showSettingPanel() {
+    this.settingPanelVisible = true;
+  }
+
+  @action closeSettingPanel() {
+    this.settingPanelVisible = false;
   }
 
   @action position(x, y) {

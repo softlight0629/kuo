@@ -4,13 +4,13 @@ import { Switch } from 'antd';
 class ToggleSwitch extends Component {
 
   render() {
-    const { label } = this.props;
+    const { label, checked = false, onChange } = this.props;
 
     return (
       <div className="composite-toggle-switch">
         <div className="composite-toggle-switch-inner">
           <label className="label">{label}</label>
-          <Switch defaultChecked />
+          <Switch checked={checked} onChange={v => onChange(v)}/>
         </div>
       </div>
     )
