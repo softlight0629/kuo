@@ -2,8 +2,9 @@ import { observable } from "mobx";
 
 class Store {
 
-  constructor({ text }) {
-    this.text = text;
+  @observable.ref buttons = [];
+
+  constructor({ buttons }) {
   }
 
   serialize() {

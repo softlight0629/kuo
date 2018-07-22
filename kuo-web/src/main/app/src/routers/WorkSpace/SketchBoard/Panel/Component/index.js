@@ -9,3 +9,7 @@ export Divider from './Divider';
 export Dropdown from './Dropdown';
 export ControlButtonGroup from './ControlButtonGroup';
 export TextEffect from './TextEffect';
+export SectionDivider from './SectionDivider';
+export CheckboxGroup from './CheckboxGroup';
+export ToggleSwitch from './ToggleSwitch';
+export TextInput from './TextInput';

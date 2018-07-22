@@ -1,6 +1,6 @@
 import { observable, action, extendObservable } from 'mobx';
 
-class SpecAnimation {
+class Animation {
 
   @observable animate;
 
@@ -37,4 +37,4 @@ class SpecAnimation {
   }
 }
 
-export default SpecAnimation;
+export default Animation;

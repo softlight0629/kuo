@@ -51,6 +51,7 @@
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-animated-css": "^1.0.4",
+    "react-beautiful-dnd": "^8.0.5",
     "react-color": "^2.14.1",
     "react-dev-utils": "^5.0.0",
     "react-dom": "^16.2.0",

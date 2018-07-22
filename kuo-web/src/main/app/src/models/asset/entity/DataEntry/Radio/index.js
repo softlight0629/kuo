@@ -7,6 +7,9 @@ class Radio {
   @observable.ref spec;
 
   @observable.ref meta;
+
+  @observable.ref store;
+  
   constructor({ spec ={}, state ={}, store ={}, meta ={}}) {
     this.kind = 'Radio';
     this.spec = SpecFactory.create(spec);

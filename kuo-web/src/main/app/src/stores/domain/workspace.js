@@ -54,6 +54,25 @@ class WorkSpaceStore {
             },
             state: {},
           });
+          this.store.sketchBoardStore.appendAst({
+            kind: 'Table',
+            meta: {},
+            spec: {
+              rect: {
+                width: 809,
+                height: 180,
+                x: 100,
+                y: 100,
+              },
+              fill: {
+                opacity: 0,
+              },
+              border: {
+                width: 0,
+              },
+            },
+            state: {},
+          });
           // this.store.sketchBoardStore.appendAst({
           //   kind: 'Checkbox',
           //   meta: {},
@@ -111,25 +130,25 @@ class WorkSpaceStore {
             },
             state: {},
           });
-          // this.store.sketchBoardStore.appendAst({
-          //   kind: 'TextArea',
-          //   meta: {},
-          //   spec: {
-          //     rect: {
-          //       width: 304,
-          //       height: 70,
-          //       x: 50,
-          //       y: 400,
-          //     },
-          //     fill: {
-          //       opacity: 0,
-          //     },
-          //     border: {
-          //       width: 0,
-          //     },
-          //   },
-          //   state: {},
-          // });
+          this.store.sketchBoardStore.appendAst({
+            kind: 'TextArea',
+            meta: {},
+            spec: {
+              rect: {
+                width: 304,
+                height: 70,
+                x: 50,
+                y: 400,
+              },
+              fill: {
+                opacity: 0,
+              },
+              border: {
+                width: 0,
+              },
+            },
+            state: {},
+          });
           this.store.sketchBoardStore.appendAst({
             kind: 'Radio',
             meta: {},
@@ -148,6 +167,18 @@ class WorkSpaceStore {
               },
             },
             state: {},
+            store: {
+              radioBtns: [
+                {
+                  label: 'Maybe, we\'ll see',
+                  value: 'Radio Button',
+                },
+                {
+                  label: 'Yep, I\'ll come',
+                  value: 'Radio Button',
+                },
+              ],
+            },
           });
           // this.store.sketchBoardStore.appendAst({
           //   kind: 'Gallery',

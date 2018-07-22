@@ -1,0 +1,258 @@
+.sort-drag-panel {
+  max-height: 525px;
+  height: 525px;
+  background-color: #fff;
+
+  .sort-by-drag-list {
+    padding-bottom: 114px;
+    border-top: 1px solid #d9e1e8;
+    width: 288px;
+    overflow-x: hidden;
+
+    .sbdl-item-row {
+      cursor: move;
+      border-bottom: 1px solid #d9e1e8;
+      width: 288px;
+      font-size: 14px;
+      background-color: #fff;
+      user-select: none;
+
+      &-base {
+        position: relative;
+        width: 288px;
+        min-height: 47px;
+
+        .drag-handle-container {
+          cursor: move;
+          position: absolute;
+          display: inline-block;
+          width: 48px;
+          height: 100%;
+
+          .symbol-drag {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            fill: #3899ec;
+
+            svg {
+              width: 8px;
+              height: 12px;
+              margin-left: 24px;
+              margin-right: 16px;
+            }
+          }
+        }
+
+        .content {
+          position: relative;
+          display: inline-block;
+          height: auto;
+          vertical-align: top;
+          overflow-x: hidden;
+
+          .text-edit-container {
+            height: 65px;
+            display: flex;
+            align-items: center;
+
+            .input-container {
+              margin-left: 12px;
+
+              .ant-input {
+                width: 192px;
+                height: 26px;
+                border-radius: 4px;
+                font-size: 16px;
+                padding: 0 11px 0;
+              }
+            }
+
+            .ant-btn {
+              margin-left: 6px;
+              width: 54px;
+              height: 24px;
+              font-size: 14px;
+              background-color: #3899ec;
+              color: #fff;
+              border-radius: 18px;
+              border: 0;
+              text-align: center;
+
+              span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                font-weight: 200;
+              }
+            }
+          }
+
+ 
+
+          .view-mode-content {
+            position: relative;
+            width: 100%;
+            color: #2b5672;
+            height: 65px;
+
+            .text-container {
+              width: calc(100% - 48px);
+              height: 100%;
+              display: flex;
+              align-items: center;
+
+              .text-inner-container {
+                width: calc(100% - 0px);
+
+                .tooltip-on-ellipsis-content {
+                  position: relative;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+
+                  .label {
+                    width: 100%;
+                    font-size: 16px;
+                    font-weight: 300;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                  }
+
+                  .value {
+                    padding-top: 3px;
+                    color: #7a92a5;
+                    font-size: 12px;
+                    width: 100%;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                  }
+                }
+              }
+            }
+
+            .context-menu-container {
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 48px;
+              height: 100%;
+
+              .context-menu {
+                position: absolute;
+                top: calc(50% - 12px);
+                display: inline-flex;
+                cursor: pointer;
+
+                .dropdown-selected {
+                  cursor: pointer;
+
+                  .context-menu-button {
+                    box-shadow: none;
+                    background: transparent;
+                    box-sizing: border-box;
+                    border: 2px solid #b1ddf8;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 24px;
+                    width: 24px;
+                    border-radius: 50%;
+                  }
+
+                  svg {
+                    width: 12px;
+                    height: 4px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .content.has-drag-handle {
+          left: 48px;
+          width: calc(100% - 48px);
+        }
+      }
+    }
+
+
+    .sbdl-item-row.edit-mode {
+      background-color: #d3edff;
+
+      .sbdl-item-row-base {
+        .drag-handle-container {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .actions {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 0, white 90%);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    bottom: 0;
+    height: 126px;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 12px;
+    padding-bottom: 21px;
+
+    .main-button {
+      font-size: 16px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      cursor: pointer;
+      height: 36px;
+      line-height: 16px;
+      padding: 0 24px;
+      border-radius: 18px;
+      text-align: center;
+      box-sizing: border-box;
+      border: 0;
+      outline: none;
+      background-color: #3899ec;
+      color: #fff;
+      margin: 12px 24px;
+
+      .button-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+
+        svg {
+          background: transparent;
+
+           * {
+             fill: #fff;
+           }
+        }
+
+        .button-label {
+          font-weight: 150;
+          margin-left: 5px;
+        }
+      }
+    }
+
+    .action-item {
+      font-size: 14px;
+      display: block;
+      color: #3899ec;
+      line-height: 18px;
+      cursor: pointer;
+    }
+  }
+}

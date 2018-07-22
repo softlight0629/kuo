@@ -13,10 +13,19 @@ class DesignPanelUiStore {
 
   @observable animationPanelVisible = false;
 
-
   @observable changeTextPanelVisible = false;
 
   @observable manageMediaPanelVisible = false;
+
+  @observable setInputTypePanelVisible = false;
+
+  @observable setInitialTextPanelVisible = false;
+
+  @observable manageButtonsPanelVisible = false;
+
+  @observable manageItemsPanelVisible = false;
+
+  @observable switchSettingsPanelVisible = false;
 
   @observable x = 100;
 
@@ -76,6 +85,46 @@ class DesignPanelUiStore {
 
   @action closeChangeTextPanel() {
     this.changeTextPanelVisible = false;
+  }
+
+  @action showSetInputTypePanel() {
+    this.setInputTypePanelVisible = true;
+  }
+
+  @action closeSetInputTypePanel() {
+    this.setInputTypePanelVisible = false;
+  }
+
+  @action showSetInitialTextPanel() {
+    this.setInitialTextPanelVisible = true;
+  }
+
+  @action closeSetInitialTextPanel() {
+    this.setInitialTextPanelVisible = false;
+  }
+
+  @action showManageButtonsPanel() {
+    this.manageButtonsPanelVisible = true;
+  }
+
+  @action closeManageButtonsPanel() {
+    this.manageButtonsPanelVisible = false;
+  }
+
+  @action showSwitchSettingsPanel() {
+    this.switchSettingsPanelVisible = true;
+  }
+
+  @action closeSwitchSettingsPanel() {
+    this.switchSettingsPanelVisible = false;
+  }
+
+  @action showManageItemsPanel() {
+    this.manageItemsPanelVisible = true;
+  }
+
+  @action closeManageItemsPanel() {
+    this.manageItemsPanelVisible = false;
   }
 
   @action position(x, y) {

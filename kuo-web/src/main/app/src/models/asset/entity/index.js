@@ -12,5 +12,6 @@ export {
   TextArea as AstmTextArea,
   Pagination as AstmPagination,
   Switch as AstmSwitch,
+  Table as AstmTable,
 } from './DataEntry';
 

@@ -1,0 +1,148 @@
+
+.ast-table {
+  height: 180px;
+
+  .tb-root {
+    position: relative;
+    border: 2px solid rgba(126, 96, 223, 1);
+    border-radius: 0;
+    overflow: hidden;
+    height: 100%;
+    transform: translate3d(0,0,0);
+
+    .tb-header {
+      position: relative;
+      top: 0;
+      left: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      font-weight: 400;
+      color: #000;
+      border: none;
+      padding-bottom: 0;
+      background: rgba(255, 255, 255, 1);
+      height: 53px;
+
+      &-viewport {
+        overflow: visible;
+        height: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+
+        .tb-header-container {
+          white-space: nowrap;
+          position: relative;
+          height: 100%;
+
+          .tb-header-row {
+            position: absolute;
+            height: 53px;
+            top: 0;
+
+            .tb-header-cell {
+              background: rgba(126, 96, 223, 1);
+              color: #fff;
+              border-right: 2px solid rgba(126, 96, 223, 1);
+              position: absolute;
+              text-align: center;
+              padding: 0;
+              width: 270px;
+              display: inline-block;
+              vertical-align: bottom;
+              height: 100%;
+
+              &-label {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                white-space: normal;
+                padding: 4px 2px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+              }
+
+              &-text {
+                padding-left: 2px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .tb-body {
+      position: absolute;
+      top: 53px;
+      height: 126;
+      background: transparent;
+      width: 100%;
+      z-index: 99;
+
+      &-viewport-wrapper {
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 100%;
+        transform: translate3d(0,0,0);
+
+        .tb-body-viewport {
+          overflow-x: hidden;
+          overflow-y: auto;
+          background: rgba(255, 255, 255, 1);
+          border-radius: 0;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          height: 100%;
+
+          .tb-body-container {
+            display: block;
+            position: relative;
+            height: 180px;
+            width: 809px;
+
+            .tb-row {
+              color: #000;
+              border-bottom: 0px solid transparent;
+              background: transparent;
+              text-align: center;
+              transition: background-color .1s;
+              white-space: normal;
+              position: absolute;
+              width: 100%;
+              height: 45px;
+
+              .tb-cell {
+                display: block;
+                height: 100%;
+                border-right: 2px solid rgba(126, 96, 223, 1);
+                border-left: 0;
+                border-top: 0;
+                border-bottom: 0;
+                text-overflow: ellipsis;
+                position: absolute;
+
+                &-content-wrapper {
+                  position: relative;
+                  height: 100%;
+                  padding: 2px;
+
+                  .tb-cell-text-wrapper {
+                    display: table;
+                    width: 100%;
+                    height: 100%;
+
+                    .tb-cell-text {
+                      display: table-cell;
+                      vertical-align: middle;
+                      white-space: normal;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

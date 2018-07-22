@@ -6,3 +6,5 @@ export Checkbox from './Checkbox';
 export TextArea from './TextArea';
 export Pagination from './Pagination';
 export Switch from './Switch';
+export UploadButton from './UploadButton';
+export Table from './Table';

@@ -12,6 +12,7 @@ import {
   AstmTextArea,
   AstmPagination,
   AstmSwitch,
+  AstmTable,
 } from '../models/asset/entity';
 
 import { 
@@ -28,6 +29,7 @@ import {
   AstvTextArea,
   AstvPagination,
   AstvSwitch,
+  AstvTable,
 } from '../routers/WorkSpace/SketchBoard/Asset';
 
 const astm_regs = {
@@ -44,6 +46,7 @@ const astm_regs = {
   TextArea: AstmTextArea,
   Pagination: AstmPagination,
   Switch: AstmSwitch,
+  Table: AstmTable,
 };
 
 const astv_regs = {
@@ -60,6 +63,7 @@ const astv_regs = {
   TextArea: AstvTextArea,
   Pagination: AstvPagination,
   Switch: AstvSwitch,
+  Table: AstvTable,
 };
 
 export default {

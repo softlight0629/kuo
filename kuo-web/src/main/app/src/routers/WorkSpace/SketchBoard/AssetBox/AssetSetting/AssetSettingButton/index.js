@@ -6,9 +6,7 @@ class AssetSettingButton extends Component {
     const { label, onClick } = this.props;
 
     return (
-      <li className="asset-setting-btn" onClick={() => onClick() }>
-        { label }
-      </li>
+      <li className="asset-setting-btn" onClick={() => onClick() }>{ label }</li>
     )
   }
 }

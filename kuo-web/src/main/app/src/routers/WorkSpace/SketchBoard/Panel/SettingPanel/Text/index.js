@@ -112,7 +112,7 @@ class TextPanel extends Component {
           <section className="text-theme-settings-section"></section>
           <div className="inner-container">
             <div className="content-wrapper">
-              <div section="section">
+              <div className="section">
                 <Dropdown label="Theme" value={theme} onChange={v => this.props.astm.setTheme(v)} options={themes} />
                 <Divider type="long" />
                 <Dropdown label="Fonts" value={font.fontFamily} onChange={v => font.setFontFamily(v)} options={fonts} />

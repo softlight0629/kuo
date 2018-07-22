@@ -15,7 +15,6 @@ class Rect {
   }
 
   @action setPosition(x, y) {
-    console.log('sdasdsadsa', x, y);
     this.x = x;
     this.y = y;
   }

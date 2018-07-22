@@ -12,4 +12,6 @@ export {
   TextArea as AstvTextArea,
   Pagination as AstvPagination,
   Switch as AstvSwitch,
+  Table as AstvTable,
+  UploadButton as AstvUploadButton,
 } from './DataEntry';
