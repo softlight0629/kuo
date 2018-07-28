@@ -1,0 +1,139 @@
+.gallery {
+  height: 528px;
+  
+  .tabs {
+    display: flex;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+
+    &-menu {
+      width: calc(100% - 3in);
+      background: rgba(246, 251, 255, .98);
+      padding: 15px 10px 9px;
+
+      .tab-wrapper {
+        max-width: 100%;
+        position: relative;
+        display: inline-block;
+
+        .tab-label {
+          padding: 6px 14px;
+          margin: 0 0 4px;
+          border-radius: 20px;
+          color: #2b5672;
+          display: inline-block;
+          font-size: 14px;
+          font-weight: 300;
+
+          .label-text {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+    .settings-panel {
+      width: 3in;
+      height: 100%;
+      overflow: auto;
+      background-color: #fff;
+
+      .content-wrapper {
+        margin-right: 0;
+        height: 100%;
+        overflow-y: visible;
+
+        .tab-content {
+          background-color: #fff;
+          min-height: 100%;
+          visibility: visible;
+
+          .control-thumbnails {
+            position: relative;
+            padding: 13px 24px 1pc;
+
+            .radio-control {
+              position: relative;
+              display: inline-block;
+              margin: 0 9pt 9pt 0;
+              vertical-align: top;
+              cursor: pointer;
+              margin-bottom: 1pc;
+
+              .image-radio {
+                border: none;
+                background: #eaf7ff;
+                transition: background-color .2s;
+                border-radius: 8px;
+                overflow: hidden;
+                position: relative;
+                width: 100%;
+                display: inline-block;
+                
+                img {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                }
+              }
+
+              .label {
+                margin-top: 12px;
+                white-space: nowrap;
+                font-size: 9pt;
+                display: block;
+                text-align: center;
+                color: #3899ec;
+                word-break: break-word;
+              }
+            }
+          }
+
+          .control-thumbnails[data-max-thumbs-per-row="3"] {
+            .radio-control {
+              width: 72px;
+              .image-radio {
+                height: 72px;
+              }
+
+            }
+            .radio-control:nth-of-type(3n) {
+              margin-right: 0;
+            }
+          }
+
+          .control-thumbnails[data-max-thumbs-per-row="4"] {
+            .radio-control {
+              width: 51px;
+              .image-radio {
+                height: 51px;
+              }
+
+            }
+            .radio-control:nth-of-type(4n) {
+              margin-right: 0;
+            }
+          }
+
+          .control-thumbnails.with-title {
+            .title {
+              font-size: 14px;
+              display: block;
+              color: #2b5672;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

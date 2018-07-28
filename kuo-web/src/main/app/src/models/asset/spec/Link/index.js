@@ -1,40 +1,63 @@
-import { observable, extendObservable, action } from 'mobx';
+import { observable, action } from 'mobx';
+import {
+  Page,
+  PhoneNumber,
+  TopBottom,
+  WebAddress,
+  Email,
+} from './Type';
 
-class SpecLinked {
+class Link {
 
-  @observable page;
+  // None|Page|Anchor|WebAddress|Email|PhoneNumber|Document|TopBottom
+  @observable type = 'None';
 
-  @observable anchor;
+  @observable.ref page;
 
-  @observable webAddress;
+  @observable.ref webAddress;
 
-  @observable email;
+  @observable.ref email;
 
-  @observable phoneNum;
+  @observable.ref phoneNumber;
 
-  constructor(option) {
-    extendObservable(this, option);
+  @observable.ref topBottom;
+
+  constructor({ 
+    type = 'None',
+    page,
+    webAddress,
+    email,
+    phoneNumber,
+    topBottom,
+  }) {
+    this.type = type;
+    this.page = page && new Page(page);
+    this.webAddress = webAddress && new WebAddress(webAddress);
+    this.email = email && new Email(email);
+    this.phoneNumber = phoneNumber && new PhoneNumber(phoneNumber);
+    this.topBottom = topBottom && new TopBottom(topBottom);
   }
 
-  @action setPage(page) {
-    this.page = page;
+  @action setPage(option) {
+    this.type = 'Page';
+    this.page = new Page(option);
   }
 
-  @action setAnchor(anchor) {
-    this.anchor = anchor;
+  @action setEmail(option) {
+    this.type = 'Email';
+    this.email = new Email(option);
   }
 
-  @action setWebAddress(webAddress) {
-    this.webAddress = webAddress;
+  @action setWebAddress(option) {
+    this.type = 'WebAddress';
+    this.webAddress = new WebAddress(option);
   }
 
-  @action setEmail(email) {
-    this.email = email;
+  @action setPhoneNumber(option) {
+    this.type = 'PhoneNumber';
+    this.phoneNumber = new PhoneNumber(option);
   }
 
-  @action setPhoneNum(phoneNum) {
-    this.phoneNum = phoneNum;
-  }
 }
 
-export default SpecLinked;
+export default Link;

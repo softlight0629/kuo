@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Rnd from 'react-rnd';
-import { Icon, Slider, Tabs } from 'antd';
+import { Icon, Slider, Tabs, Button } from 'antd';
 
 import './index.less';
 import { observer, inject } from 'mobx-react';
@@ -26,7 +26,7 @@ class PanelWrapper extends Component {
   }
 
   render() {
-    const { title, width = 288 } = this.props;
+    const { title, width = 288, onDone } = this.props;
     const { x, y } = this.props.designPanelUiStore;
 
     return (
@@ -56,6 +56,18 @@ class PanelWrapper extends Component {
               </div>
             </div>
           </div>
+          {
+            onDone && (
+              <footer className="panel-footer">
+                <Button className="footer-btn cancel-btn">
+                  <span>Cancel</span>
+                </Button>
+                <Button className="footer-btn done-btn" onClick={e => onDone(e)}>
+                  <span>Done</span>
+                </Button>
+              </footer>
+            )
+          }
         </div>
       </Rnd>
     )

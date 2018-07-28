@@ -7,3 +7,4 @@ export ManageButtonsPanel from './ManageButtons';
 export ManageItemsPanel from './ManageItems';
 export SwitchSettingsPanel from './SwitchSettings';
 export SelectSettingsPanel from './SelectSettings';
+export GallerySettingsPanel from './GallerySettings';

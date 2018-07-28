@@ -64,7 +64,7 @@ const _layout = ({align, margin}) => ({textAlign: align, padding: `${margin}px`}
 const _textIndent = ({ step }) => ({marginLeft: `${step * 40}px`});
 const _textAlign = ({ align }) =>({ textAlign: align });
 const _textEffect = ({ effect }) => ({ textShadow: effects[effect] });
-const _fill = ({ color = '#000000', opacity = 100 }) => ({ backgroundColor: color === 'transparent' ? color : hexToRgba(color, opacity/100) });
+const _fill = ({ color = '#000000', opacity = 100, filter }) => ({ backgroundColor: color === 'transparent' ? color : hexToRgba(color, opacity/100), ...(filter ? { filter: `url(#${filter})` }: {}) });
 
 const _rect = ({ width, height }) => ({ width: `${width}px`, height: `${height}px`})
 

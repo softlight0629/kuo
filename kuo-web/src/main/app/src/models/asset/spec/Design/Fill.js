@@ -6,8 +6,16 @@ class Fill {
 
   @observable opacity;
 
-  constructor(option) {
-    extendObservable(this, option);
+  @observable filter;
+
+  constructor({
+    color,
+    opacity,
+    filter,
+  }) {
+    this.color = color;
+    this.opacity = opacity;
+    this.filter = filter;
   }
 
   @action setColor(color) {
@@ -16,6 +24,10 @@ class Fill {
 
   @action setOpacity(opacity) {
     this.opacity = opacity;
+  }
+
+  @action setFilter(filter) {
+    this.filter = filter;
   }
 
   serialize() {

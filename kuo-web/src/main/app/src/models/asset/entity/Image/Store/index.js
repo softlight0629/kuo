@@ -1,14 +1,29 @@
-import { observable } from "mobx";
+import { observable, action } from "mobx";
 
 class Store {
 
   @observable src;
 
   @observable alt;
+
+  @observable filter
   
-  constructor({ src, alt }) {
+  constructor({ src, alt, filter}) {
     this.src = src;
     this.alt = alt;
+    this.filter = filter;
+  }
+
+  @action setSrc(src) {
+    this.src = src;
+  }
+
+  @action setAlt(alt) {
+    this.alt = alt;
+  }
+
+  @action setFilter(filter) {
+    this.filter = filter;
   }
 
   serialize() {

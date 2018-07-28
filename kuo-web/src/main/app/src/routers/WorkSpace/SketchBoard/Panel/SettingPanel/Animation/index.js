@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PanelWrapper from '../../PanelWrapper';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
-
+import ScrollBar from '../../../../../../components/ScrollBar';
 import './index.less';
 
 @withRouter
@@ -22,6 +22,7 @@ class AnimationPanel extends Component {
       <PanelWrapper title="Choose Animation" onClose={this.close.bind(this)}>
         <div className="animation-panel">
           <div className="comp-panel-content">
+            <ScrollBar>
             <div>
               <ul className="behavior-thumbnails">
                 <li>
@@ -146,6 +147,7 @@ class AnimationPanel extends Component {
                 </li>
               </ul>
             </div>
+            </ScrollBar>
           </div>
         </div>
       </PanelWrapper>

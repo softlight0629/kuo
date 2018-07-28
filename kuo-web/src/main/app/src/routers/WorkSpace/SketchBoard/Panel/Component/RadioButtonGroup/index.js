@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Radio } from 'antd';
+import './index.less';
 
 const RadioGroup = Radio.Group;
 

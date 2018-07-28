@@ -17,50 +17,18 @@ class WorkSpaceStore {
           this.site = new Site(this.store, res.data);
           this.store.sketchBoardStore.activatePage(this.site.getFirstPageResource());
           this.store.sketchBoardStore.appendAst({
-            kind: 'Input',
+            kind: 'Image',
             meta: {},
             spec: {
               rect: {
-                width: 304,
-                height: 43,
-                x: 200,
+                width: 600,
+                height: 337,
+                x: 100,
                 y: 200,
               },
               fill: {
-                opacity: 0,
-              },
-              border: {
-                width: 0,
-              },
-            },
-            state: {},
-            store: {
-              placeholderText: 'this is placehoder',
-              initialText: 'this is initial',
-            },
-            opts: {
-              type: 'Password',
-              required: true,
-              readOnly: false,
-              showTextOnLoad: 'PlaceholderText',
-              enableLimitLength: true,
-              enableMaximumValue: false,
-              enableMinimumValue: false,
-              enablePatternValidation: false,
-            },
-          });
-          this.store.sketchBoardStore.appendAst({
-            kind: 'Select',
-            meta: {},
-            spec: {
-              rect: {
-                width: 304,
-                height: 43,
-                x: 300,
-                y: 400,
-              },
-              fill: {
-                opacity: 0,
+                opacity: 1,
+                filter: 'Kennedy',
               },
               border: {
                 width: 0,
@@ -69,37 +37,93 @@ class WorkSpaceStore {
             state: {
             },
             store: {
-              items: [
-                {
-                  label: 'Prince',
-                  value: 'Prince',
-                },
-                {
-                  label: 'Kanye',
-                  value: 'Kanye',
-                },
-              ],
+              src: 'https://static.wixstatic.com/media/f31ce2_51215dc7492f455f81e5e5e443704ad7~mv2.jpg/v1/fill/w_720,h_404,al_c,lg_1,q_80/f31ce2_51215dc7492f455f81e5e5e443704ad7~mv2.webp',
             },
           });
-          this.store.sketchBoardStore.appendAst({
-            kind: 'Table',
-            meta: {},
-            spec: {
-              rect: {
-                width: 809,
-                height: 180,
-                x: 100,
-                y: 100,
-              },
-              fill: {
-                opacity: 0,
-              },
-              border: {
-                width: 0,
-              },
-            },
-            state: {},
-          });
+          // this.store.sketchBoardStore.appendAst({
+          //   kind: 'Input',
+          //   meta: {},
+          //   spec: {
+          //     rect: {
+          //       width: 304,
+          //       height: 43,
+          //       x: 200,
+          //       y: 200,
+          //     },
+          //     fill: {
+          //       opacity: 0,
+          //     },
+          //     border: {
+          //       width: 0,
+          //     },
+          //   },
+          //   state: {},
+          //   store: {
+          //     placeholderText: 'this is placehoder',
+          //     initialText: 'this is initial',
+          //   },
+          //   opts: {
+          //     type: 'Password',
+          //     required: true,
+          //     readOnly: false,
+          //     showTextOnLoad: 'PlaceholderText',
+          //     enableLimitLength: true,
+          //     enableMaximumValue: false,
+          //     enableMinimumValue: false,
+          //     enablePatternValidation: false,
+          //   },
+          // });
+          // this.store.sketchBoardStore.appendAst({
+          //   kind: 'Select',
+          //   meta: {},
+          //   spec: {
+          //     rect: {
+          //       width: 304,
+          //       height: 43,
+          //       x: 300,
+          //       y: 400,
+          //     },
+          //     fill: {
+          //       opacity: 0,
+          //     },
+          //     border: {
+          //       width: 0,
+          //     },
+          //   },
+          //   state: {
+          //   },
+          //   store: {
+          //     items: [
+          //       {
+          //         label: 'Prince',
+          //         value: 'Prince',
+          //       },
+          //       {
+          //         label: 'Kanye',
+          //         value: 'Kanye',
+          //       },
+          //     ],
+          //   },
+          // });
+          // this.store.sketchBoardStore.appendAst({
+          //   kind: 'Table',
+          //   meta: {},
+          //   spec: {
+          //     rect: {
+          //       width: 809,
+          //       height: 180,
+          //       x: 100,
+          //       y: 100,
+          //     },
+          //     fill: {
+          //       opacity: 0,
+          //     },
+          //     border: {
+          //       width: 0,
+          //     },
+          //   },
+          //   state: {},
+          // });
           // this.store.sketchBoardStore.appendAst({
           //   kind: 'Checkbox',
           //   meta: {},
@@ -119,94 +143,94 @@ class WorkSpaceStore {
           //   },
           //   state: {},
           // });
-          this.store.sketchBoardStore.appendAst({
-            kind: 'Pagination',
-            meta: {},
-            spec: {
-              rect: {
-                width: 324,
-                height: 40,
-                x: 50,
-                y: 400,
-              },
-              fill: {
-                opacity: 0,
-              },
-              border: {
-                width: 0,
-              },
-            },
-            state: {},
-          });
-          this.store.sketchBoardStore.appendAst({
-            kind: 'Switch',
-            meta: {},
-            spec: {
-              rect: {
-                width: 48,
-                height: 24,
-                x: 150,
-                y: 50,
-              },
-              fill: {
-                opacity: 0,
-              },
-              border: {
-                width: 0,
-              },
-            },
-            state: {},
-          });
-          this.store.sketchBoardStore.appendAst({
-            kind: 'TextArea',
-            meta: {},
-            spec: {
-              rect: {
-                width: 304,
-                height: 70,
-                x: 50,
-                y: 400,
-              },
-              fill: {
-                opacity: 0,
-              },
-              border: {
-                width: 0,
-              },
-            },
-            state: {},
-          });
-          this.store.sketchBoardStore.appendAst({
-            kind: 'Radio',
-            meta: {},
-            spec: {
-              rect: {
-                width: 304,
-                height: 90,
-                x: 150,
-                y: 400,
-              },
-              fill: {
-                opacity: 0,
-              },
-              border: {
-                width: 0,
-              },
-            },
-            state: {},
-            store: {
-              radioBtns: [
-                {
-                  label: 'Maybe, we\'ll see',
-                  value: 'Radio Button',
-                },
-                {
-                  label: 'Yep, I\'ll come',
-                  value: 'Radio Button',
-                },
-              ],
-            },
-          });
+          // this.store.sketchBoardStore.appendAst({
+          //   kind: 'Pagination',
+          //   meta: {},
+          //   spec: {
+          //     rect: {
+          //       width: 324,
+          //       height: 40,
+          //       x: 50,
+          //       y: 400,
+          //     },
+          //     fill: {
+          //       opacity: 0,
+          //     },
+          //     border: {
+          //       width: 0,
+          //     },
+          //   },
+          //   state: {},
+          // });
+          // this.store.sketchBoardStore.appendAst({
+          //   kind: 'Switch',
+          //   meta: {},
+          //   spec: {
+          //     rect: {
+          //       width: 48,
+          //       height: 24,
+          //       x: 150,
+          //       y: 50,
+          //     },
+          //     fill: {
+          //       opacity: 0,
+          //     },
+          //     border: {
+          //       width: 0,
+          //     },
+          //   },
+          //   state: {},
+          // });
+          // this.store.sketchBoardStore.appendAst({
+          //   kind: 'TextArea',
+          //   meta: {},
+          //   spec: {
+          //     rect: {
+          //       width: 304,
+          //       height: 70,
+          //       x: 50,
+          //       y: 400,
+          //     },
+          //     fill: {
+          //       opacity: 0,
+          //     },
+          //     border: {
+          //       width: 0,
+          //     },
+          //   },
+          //   state: {},
+          // });
+          // this.store.sketchBoardStore.appendAst({
+          //   kind: 'Radio',
+          //   meta: {},
+          //   spec: {
+          //     rect: {
+          //       width: 304,
+          //       height: 90,
+          //       x: 150,
+          //       y: 400,
+          //     },
+          //     fill: {
+          //       opacity: 0,
+          //     },
+          //     border: {
+          //       width: 0,
+          //     },
+          //   },
+          //   state: {},
+          //   store: {
+          //     radioBtns: [
+          //       {
+          //         label: 'Maybe, we\'ll see',
+          //         value: 'Radio Button',
+          //       },
+          //       {
+          //         label: 'Yep, I\'ll come',
+          //         value: 'Radio Button',
+          //       },
+          //     ],
+          //   },
+          // });
           // this.store.sketchBoardStore.appendAst({
           //   kind: 'Gallery',
           //   meta: {

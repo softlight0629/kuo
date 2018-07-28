@@ -12,7 +12,6 @@ class CompToolBar extends Component {
     const { x, y } = this.props.compToolBarUiStore;
     const { astm } = this.props.astRefUiStore;
 
-    console.log(astm);
 
     if (!astm) {
       return (<div />)

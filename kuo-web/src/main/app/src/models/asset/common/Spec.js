@@ -12,6 +12,7 @@ class Spec {
     font,
     animation,
     layout,
+    link,
     separator,
   }) {
     this.rect = new Rect(rect || {});
@@ -23,6 +24,7 @@ class Spec {
     this.layout = new Layout(layout || {});
     this.font = new Font(font || {});
     this.separator = new Separator(separator || {});
+    this.link = new Link(link || {});
   }
 
   serialize() {

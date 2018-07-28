@@ -13,6 +13,8 @@ class DesignPanelUiStore {
 
   @observable settingPanelVisible = false;
 
+  @observable filterPanelVisible = false;
+
   @observable animationPanelVisible = false;
 
   @observable changeTextPanelVisible = false;
@@ -28,6 +30,8 @@ class DesignPanelUiStore {
   @observable manageItemsPanelVisible = false;
 
   @observable switchSettingsPanelVisible = false;
+
+  @observable gallerySettingsPanelVisible = true;
 
   @observable x = 100;
 

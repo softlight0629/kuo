@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
+import { Checkbox } from 'antd';
 import PanelWrapper from '../../PanelWrapper';
 import {
   Divider,
@@ -16,6 +17,7 @@ class SwitchSettingsPanel extends Component {
   }
 
   render() {
+    const { opts, store } = this.props.astm;
     return (
       <PanelWrapper title="Switch Settings" onClose={this.close.bind(this)}>
         <div className="settings-panel">
@@ -24,7 +26,9 @@ class SwitchSettingsPanel extends Component {
               <div className="section">
                 <TextInput />
                 <Divider type="long" />
-                <CheckboxGroup label="General Settings" />
+                <CheckboxGroup label="General Settings" >
+                  <Checkbox value="B" checked={opts.toggleOnDefault} onChange={e => opts.setReadOnly(!!e.target.checked)} >Toggled on By default</Checkbox>
+                </CheckboxGroup>
               </div>
             </div>
           </div>

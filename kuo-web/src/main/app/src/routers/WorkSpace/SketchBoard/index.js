@@ -11,6 +11,7 @@ import {
   LinkPanel, 
   AnimationPanel,
   TextPanel,
+  FilterPanel,
 } from './Panel/SettingPanel';
 import { 
   ChangeTextPanel,
@@ -21,6 +22,7 @@ import {
   SwitchSettingsPanel,
   ManageItemsPanel,
   SelectSettingsPanel,
+  GallerySettingsPanel,
 } from './Panel/ManagePanel';
 import ColorPicker from './ColorPicker';
 
@@ -37,6 +39,7 @@ class SketchBoard extends Component {
       editTextPanelVisible,
       animationPanelVisible,
       settingPanelVisible,
+      filterPanelVisible,
 
       changeTextPanelVisible,
       manageMediaPanelVisible,
@@ -45,6 +48,7 @@ class SketchBoard extends Component {
       manageButtonsPanelVisible,
       manageItemsPanelVisible,
       switchSettingsPanelVisible,
+      gallerySettingsPanelVisible,
     } = this.props.designPanelUiStore;
     const { astm } = this.props.astRefUiStore;
     const { colorPickerVisible } = this.props.colorPickerUiStore;
@@ -64,6 +68,7 @@ class SketchBoard extends Component {
             { animationPanelVisible && <AnimationPanel astm={astm}/> }
             { linkPanelVisible && <LinkPanel astm={astm}/> }
             { settingPanelVisible && <SelectSettingsPanel astm={astm} />}
+            { filterPanelVisible && <FilterPanel astm={astm} />}
 
             { changeTextPanelVisible && <ChangeTextPanel astm={astm} /> }
             { setInputTypePanelVisible && <SetInputTypePanel astm={astm} />}
@@ -72,6 +77,7 @@ class SketchBoard extends Component {
             { manageItemsPanelVisible && <ManageItemsPanel astm={astm} />}
             { manageMediaPanelVisible && <ManageMediaPanel astm={astm} />}
             { switchSettingsPanelVisible && <SwitchSettingsPanel astm={astm} />}
+            { gallerySettingsPanelVisible && <GallerySettingsPanel astm={astm} />}
 
             { colorPickerVisible && <ColorPicker astm={astm}/> }
           </div>

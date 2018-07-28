@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Select } from 'antd'
+import './index.less';
 
 class DropDown extends Component {
 

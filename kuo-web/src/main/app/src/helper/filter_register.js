@@ -1,0 +1,93 @@
+import React from 'react';
+import {
+  Kennedy,
+  Darken,
+  Blur,
+  Lighten,
+  Faded,
+  Kerouac,
+  Orca,
+  Sangria,
+  Gothen,
+  Nightrain,
+  Whislter,
+  Feathered,
+  Soledad,
+  Goldie,
+  ThreeD,
+  Ink,
+  Manhattan,
+  Gumby,
+  Organic,
+  Elmo,
+  Nepture,
+  Jellybean,
+  NeonSky,
+  Hulk,
+  Bauhaus,
+  Yoda,
+  Midnight,
+  Unicorn,
+  BlueRay,
+  Malibu,
+  RedRum,
+  Flamingo,
+  Hydra,
+  KoolAid,
+  Barney,
+  Pixie,
+  Marge,
+  Lucille,
+} from '../routers/WorkSpace/FilterDef';
+
+const filters = {
+  Kennedy,
+  Darken,
+  Blur,
+  Lighten,
+  Faded,
+  Kerouac,
+  Orca,
+  Sangria,
+  Gothen,
+  Nightrain,
+  Whislter,
+  Feathered,
+  Soledad,
+  Goldie,
+  ThreeD,
+  Ink,
+  Manhattan,
+  Gumby,
+  Organic,
+  Elmo,
+  Nepture,
+  Jellybean,
+  NeonSky,
+  Hulk,
+  Bauhaus,
+  Yoda,
+  Midnight,
+  Unicorn,
+  BlueRay,
+  Malibu,
+  RedRum,
+  Flamingo,
+  Hydra,
+  KoolAid,
+  Barney,
+  Pixie,
+  Marge,
+  Lucille,
+}
+
+function findFilter(name) {
+  return filters[name];
+}
+
+export default {
+  render: (name, props) => {
+    const Filter = findFilter(name);
+    return (<Filter {...props} />)
+  }
+}

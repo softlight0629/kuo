@@ -1,8 +1,31 @@
-.linked-panel {
-  
-  .ant-tabs-vertical.ant-tabs-left > .ant-tabs-bar .ant-tabs-tab {
-    margin: 0;
-    padding: 4px 24px;
-    text-align: left;
+.link-panel {
+
+  .content {
+    color: #162d3d;
+    font-size: 14px;
+
+    .tabs {
+      border-bottom: 1px solid #d9e1e8;
+      min-height: 235px;
+      overflow: hidden;
+      position: relative;
+
+      .tab-header {
+        padding: 20px 24px;
+        border-right: 1px solid #d9e1e8;
+        min-width: 210px;
+        width: 210px;
+      }
+
+      .tab-content {
+        flex-grow: 1;
+        overflow: hidden;
+        position: relative;
+      }
+    }
+
+    .tabs.left {
+      display: flex;
+    }
   }
 }

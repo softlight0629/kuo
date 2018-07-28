@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Icon, Slider, Tabs, Select, InputNumber } from 'antd';
 
+import './index.less';
+
 class InputSlider extends Component {
 
   render() {

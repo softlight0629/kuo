@@ -13,3 +13,4 @@ export SectionDivider from './SectionDivider';
 export CheckboxGroup from './CheckboxGroup';
 export ToggleSwitch from './ToggleSwitch';
 export TextInput from './TextInput';
+export RadioImageButtonGroup from './RadioImageButtonGroup';
