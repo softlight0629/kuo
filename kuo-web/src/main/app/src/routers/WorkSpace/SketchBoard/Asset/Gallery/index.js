@@ -1,57 +1,23 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { withRouter } from 'react-router';
+import {
+  ThumbnailsGalleryLayout,
+  MasonryGalleryLayout,
+} from './GalleryLayout';
 
-import cssrender from '../../../../../helper/cssrender';
 import './index.less';
 
 @observer
 class AstvGallery extends Component {
 
   render() {
-    const { rect: { width, height } } = this.props.astm.spec;
-    const { galleryMedias } = this.props.astm.store;
-    const thumbnailWidth = 147;
-    const containerHeight = height - thumbnailWidth - 9;
-
+    const { astm } = this.props;
+    const { opts: { galleryLayout } } = astm;
     return (
       <div className="ast-gallery">
-        <div className="ast-gallery-container">
-          <div className="gallery-column">
-            <div className="gallery-group" data-group-idx="1" style={{ width, height: containerHeight }}>
-              <div className="gallery-item-container" style={{ width, margin: 0, top: 0, left: 0 }}>
-                <div className="gallery-item-wrapper" style={{ height: containerHeight }}>
-                  <div className="gallery-item">
-                    <img
-                      className="gallery-item"
-                      src={galleryMedias[0].cover}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="ast-gallery-thumbnails" style={{ width, height: thumbnailWidth }}>
-          <div className="gallery-column" style={{ width, height: thumbnailWidth }}>
-            {
-              galleryMedias.map(media => (
-                <div className="gallery-group" style={{ width: thumbnailWidth, height: thumbnailWidth }}>
-                  <div className="gallery-item-container">
-                    <div className="gallery-item-wrapper">
-                      <div className="gallery-item">
-                        <img
-                          className="gallery-item"
-                          src={media.cover}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
+        { galleryLayout === 'Thumbnails' && <ThumbnailsGalleryLayout astm={astm} /> }
+        { galleryLayout === 'Masonry' && <MasonryGalleryLayout astm={astm} /> }
       </div>
     )
   }

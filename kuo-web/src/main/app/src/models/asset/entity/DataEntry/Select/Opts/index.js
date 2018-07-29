@@ -5,6 +5,7 @@ class Opts {
   @observable showTextOnLoad;
 
   @observable required;
+  
   constructor({
     showTextOnLoad = 'None',
     required = false,

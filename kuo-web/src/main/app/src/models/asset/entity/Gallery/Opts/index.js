@@ -25,7 +25,7 @@ class Opts {
   @observable enableLoopVideos;
 
   constructor({
-    galleryLayout = 'Collage',
+    galleryLayout = 'Thumbnails',
     thumbnailPlacement = 'bottom',
     thumbnailSpacing = 17,
     itemClickAction = 'Expand',
