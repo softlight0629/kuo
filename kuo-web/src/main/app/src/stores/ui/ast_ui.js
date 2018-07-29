@@ -4,7 +4,7 @@ const ast_setting_buttons = {
   Text: ['EditText', 'Animation', 'Link'],
   Menu: ['ChangeText', 'Layout', 'Design'],
   Image: ['ChangeImage', 'Design', 'Animation', 'Link'],
-  Gallery: ['ManageMedia', 'Layout', 'Design'],
+  Gallery: ['ManageMedia','GallerySettings', 'Layout', 'Design'],
   Input: ['SetInputType', 'Layout', 'Design'],
   Select: ['ManageItems', 'Setting', 'Layout', 'Design'],
   Dropdown: ['ManageItems', 'Layout', 'Design'],

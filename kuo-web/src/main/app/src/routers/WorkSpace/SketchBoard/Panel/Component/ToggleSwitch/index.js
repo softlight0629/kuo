@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Switch } from 'antd';
 
+import './index.less';
+
 class ToggleSwitch extends Component {
 
   render() {

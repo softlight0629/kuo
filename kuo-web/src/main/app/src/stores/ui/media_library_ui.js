@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx'
+import * as _ from 'lodash';
 import { FreePane, MyUploadPane } from '../../models/domain/media/entity/pane';
 
 class MediaLibraryUiStore {
@@ -8,6 +9,10 @@ class MediaLibraryUiStore {
   @observable mediaPanes = {};
 
   @observable.ref currentPane = {};
+
+  @observable selectedMedias = [];
+
+  doneFn = null;
 
   constructor(store, service) {
     this.store = store;
@@ -25,14 +30,35 @@ class MediaLibraryUiStore {
         console.log(e);
       });
   }
-  
-  @action openWithPane(paneType) {
-    this.mediaLibraryVisible = true;
-    this.fetchPane(paneType);
+
+  @action select(media) {
+    const exists = this.selectedMedias.filter(selectedMedia => selectedMedia.id === media.id);
+    if (exists.length > 0) {
+      _.remove(this.selectedMedias, selectedMedia => selectedMedia.id === media.id);
+    } else {
+      this.selectedMedias.push(media);
+    }
   }
 
-  @action open() {
+  done() {
+    this.doneFn && this.doneFn(this.selectedMedias);
+    this.reset();
+  }
+
+  @action reset() {
+    this.doneFn = null;
+    this.selectedMedias = [];
+  }
+  
+  @action openWithPane(paneType, doneFn) {
     this.mediaLibraryVisible = true;
+    this.fetchPane(paneType);
+    this.doneFn = doneFn;
+  }
+
+  @action open(doneFn) {
+    this.mediaLibraryVisible = true;
+    this.doneFn = doneFn;
   }
 
   @action close() {

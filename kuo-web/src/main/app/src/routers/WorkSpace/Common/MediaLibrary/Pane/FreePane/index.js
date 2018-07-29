@@ -10,10 +10,16 @@ class FreePane extends Component {
     this.props.pane.selectCategory(category);
   }
 
-  render() {
-    const { pane } = this.props;
-    const { categories, medias, currentCategory } = pane;
+  select(media) {
+    this.props.mediaLibraryUiStore.select(media);
+  }
 
+  render() {
+    const { pane, mediaLibraryUiStore: { selectedMedias } } = this.props;
+    const { categories, medias, currentCategory } = pane;
+    const selectedIds = selectedMedias.map(selectedMedia => selectedMedia.id);
+
+    console.log(selectedIds, selectedMedias);
     return (
       <div className="content-wrapper">
         <div className="sidebar">
@@ -45,10 +51,10 @@ class FreePane extends Component {
                 <ul className="items">
                   {
                     medias.map(media => (
-                      <li className="item">
+                      <li className={`item ${selectedIds.includes(media.id)?'selected' : ''}`}>
                         <div className="image"
                           style={{ backgroundImage: `url(${media.cover})` }}
-                          onClick={() => this.toggle(media)}
+                          onClick={() => this.select(media)}
                         />
                       </li>
                     ))

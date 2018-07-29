@@ -31,7 +31,7 @@ class DesignPanelUiStore {
 
   @observable switchSettingsPanelVisible = false;
 
-  @observable gallerySettingsPanelVisible = true;
+  @observable gallerySettingsPanelVisible = false;
 
   @observable x = 100;
 
@@ -139,6 +139,10 @@ class DesignPanelUiStore {
 
   @action closeSettingPanel() {
     this.settingPanelVisible = false;
+  }
+
+  @action showGallerySettingsPanel() {
+    this.gallerySettingsPanelVisible = true;
   }
 
   @action position(x, y) {

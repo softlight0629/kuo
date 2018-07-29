@@ -6,7 +6,8 @@ import { withRouter } from 'react-router';
 
 import './index.less';
 
-@inject('designPanelUiStore', 'mediaLibraryStore')
+@withRouter
+@inject('designPanelUiStore', 'mediaLibraryUiStore')
 @observer
 class ManageMedia extends Component {
 
@@ -19,10 +20,10 @@ class ManageMedia extends Component {
   }
 
   componentDidMount() {
-    const { medias } = this.props.astm.store;
+    const { galleryMedias } = this.props.astm.store;
     if (!this.state.selected) {
       this.setState({
-        selected: medias[0],
+        selected: galleryMedias[0],
       });
     }
   }
@@ -32,10 +33,9 @@ class ManageMedia extends Component {
   }
 
   replaceImage() {
-    const media = this.state.selected;
-
-    this.props.mediaLibraryStore.choose((selectedMedia) => {
-      media.replaceImage(selectedMedia.fileUrl);
+    const selected = this.state.selected;
+    this.props.mediaLibraryUiStore.openWithPane('frees', selectedMedias => {
+      selected.setCover(selectedMedias[0].cover);
     });
   }
 
@@ -44,10 +44,24 @@ class ManageMedia extends Component {
       selected: media,
     })
   }
+
+  addMedia() {
+    const { store } = this.props.astm;
+    this.props.mediaLibraryUiStore.openWithPane('frees', (selectedMedias) => {
+      const galleryMedias = selectedMedias.map(selectedMedia => ({
+        width: 96,
+        height: 120,
+        cover: selectedMedia.cover,
+        mediaType: selectedMedia.mediaType,
+      }));
+      store.addGalleryMedias(galleryMedias);
+    });
+  }
   
   render() {
     const { store } = this.props.astm;
-    const { medias } = store;
+    const { galleryMedias } = store;
+    const selected = this.state.selected || galleryMedias[0];
 
     return (
       <PanelWrapper title="Organize Your Gallery" width={1152} onClose={this.close.bind(this)}>
@@ -56,7 +70,7 @@ class ManageMedia extends Component {
             <div className="om-sidebar menu right">
               <div className="sidebar-header">
                 <div className="sidebar-header-image">
-                  <div className="sidebar-header-image-wrapper">
+                  <div className="sidebar-header-image-wrapper" style={{ backgroundImage: `url(${selected.cover})` }}>
                   </div>
                 </div>
               </div>
@@ -76,19 +90,19 @@ class ManageMedia extends Component {
                   <div className="composite-text-input-labeled">
                     <span className="control-label">Title</span>
                     <div className="input-container">
-                      <Input placeholder="Add your title here"/>
+                      <Input placeholder="Add your title here" value={selected.title} placeholder="Add your title here" />
                     </div>
                   </div>
                   <div className="composite-text-input-labeled">
                     <span className="control-label">Description</span>
                     <div className="input-container">
-                      <Input placeholder="Describe your image"/>
+                      <Input placeholder="Describe your image" value={selected.description} placeholder="Describe your image"  />
                     </div>
                   </div>
                   <div className="composite-text-input-labeled">
                     <span className="control-label">Link</span>
                     <div className="input-container">
-                      <Input placeholder="Link"/>
+                      <Input placeholder="Link" value={selected.linkAddress} placeholder="Link"/>
                     </div>
                   </div>
                 </div>
@@ -97,7 +111,7 @@ class ManageMedia extends Component {
             <div className="om-subheader">
               <div className="subheader-actions">
                 <div className="photos-upload">
-                  <Button>+ Add Media</Button>
+                  <Button onClick={this.addMedia.bind(this)}>+ Add Media</Button>
                 </div>
                 <div className="icons-container">
                   <Icon type="dashboard" />
@@ -119,10 +133,11 @@ class ManageMedia extends Component {
                 <div className="photos-wrapper">
                   <ul className="items-wrapper">
                     {
-                      medias.map((media, i) => (
+                      galleryMedias.map((media, i) => (
                         <li key={i} className="item-wrapper" style={{ width: media.width, height: media.height }} onClick={() => this.selectMedia(media)}>
-                          <div className="item" style={{ backgroundImage: `url(${media.pictureUrl})`}}>
+                          <div className="item" style={{ backgroundImage: `url(${media.cover})`}}>
                             <div className="item-details">
+                              <div className="figcaption">{i + 1}</div>
                               <div className="actions-menu"></div>
                             </div>
                           </div>

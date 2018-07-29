@@ -91,7 +91,6 @@ class LinkPanel extends Component {
   }
 
   renderEmailLink = () => {
-    console.log(this.state.email);
     return (
       <div className="section">
         <TextInput label="What's the email address?" value={this.state.email.address || ''} onChange={e => this.setState({email: { ...this.state.email, address: e.target.value }})}/>

@@ -1,7 +1,6 @@
 import { observable, action, computed } from "mobx";
 import MediaBase from '../common/MediaBase';
 
-console.log(MediaBase, 'mediab.....');
 class PictureMedia extends MediaBase {
 
   constructor(option) {

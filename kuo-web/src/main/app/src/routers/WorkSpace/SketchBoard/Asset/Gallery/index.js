@@ -10,7 +10,7 @@ class AstvGallery extends Component {
 
   render() {
     const { rect: { width, height } } = this.props.astm.spec;
-    const { medias } = this.props.astm.store;
+    const { galleryMedias } = this.props.astm.store;
     const thumbnailWidth = 147;
     const containerHeight = height - thumbnailWidth - 9;
 
@@ -24,7 +24,7 @@ class AstvGallery extends Component {
                   <div className="gallery-item">
                     <img
                       className="gallery-item"
-                      src={medias[0].pictureUrl}
+                      src={galleryMedias[0].cover}
                     />
                   </div>
                 </div>
@@ -35,14 +35,14 @@ class AstvGallery extends Component {
         <div className="ast-gallery-thumbnails" style={{ width, height: thumbnailWidth }}>
           <div className="gallery-column" style={{ width, height: thumbnailWidth }}>
             {
-              medias.map(media => (
+              galleryMedias.map(media => (
                 <div className="gallery-group" style={{ width: thumbnailWidth, height: thumbnailWidth }}>
                   <div className="gallery-item-container">
                     <div className="gallery-item-wrapper">
                       <div className="gallery-item">
                         <img
                           className="gallery-item"
-                          src={media.pictureUrl}
+                          src={media.cover}
                         />
                       </div>
                     </div>

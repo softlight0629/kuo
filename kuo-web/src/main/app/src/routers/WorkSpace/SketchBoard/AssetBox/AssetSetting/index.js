@@ -87,6 +87,11 @@ class AssetSetting extends Component {
     this.props.designPanelUiStore.showSettingPanel();
   }
 
+  showGallerySettingsPanel() {
+    this.refAstm();
+    this.props.designPanelUiStore.showGallerySettingsPanel();
+  }
+
   render() {
     const { astm, astUiStore } = this.props;
     const settingButtons = astUiStore.astSettingButtons(astm.kind);
@@ -98,6 +103,8 @@ class AssetSetting extends Component {
           { settingButtons.includes('ChangeText') && <AssetSettingButton label={<span className="label" >Change Text</span>} onClick={() => this.showChangeTextPanel()} /> }
           { settingButtons.includes('ChangeImage') && <AssetSettingButton label={<span className="label" >Change Image</span>} onClick={() => this.showChangeImagePanel()} /> }
           { settingButtons.includes('ManageMedia') && <AssetSettingButton label={<span className="label" >Manage Media</span>} onClick={() => this.showManageMediaPanel()} /> }
+          { settingButtons.includes('GallerySettings') && <AssetSettingButton label={<span className="label" >Settings</span>} onClick={() => this.showGallerySettingsPanel()} /> }
+
           { settingButtons.includes('SetInputType') && <AssetSettingButton label={<span className="label" >Set Input Type</span>} onClick={() => this.showSetInputTypePanel()} /> }
           { settingButtons.includes('SetInitialText') && <AssetSettingButton label={<span className="label" >Set Initial Text</span>} onClick={() => this.showSetInitialTextPanel()} /> }
           { settingButtons.includes('ManageButtons') && <AssetSettingButton label={<span className="label" >Manage Buttons</span>} onClick={() => this.showManageButtonsPanel()} /> }

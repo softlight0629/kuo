@@ -13,16 +13,9 @@ const TabPane = Tabs.TabPane;
 @observer
 class MediaLibrary extends Component {
 
-  componentDidMount() {
-    // this.props.mediaLibraryUiStore.fetch();
-  }
-
-  toggle(picture) {
-    this.props.mediaLibraryStore.selectPicture(picture);
-  }
-
   choose() {
-    this.props.mediaLibraryStore.appendToSkecthBoard();
+    this.props.mediaLibraryUiStore.done();
+    this.close();
   }
 
   close() {
@@ -30,11 +23,12 @@ class MediaLibrary extends Component {
   }
 
   fetchPane(paneType) {
-      this.props.mediaLibraryUiStore.fetchPane(paneType);
+    this.props.mediaLibraryUiStore.fetchPane(paneType);
   }
 
   render() {
-    const { currentPane, mediaLibraryVisible } = this.props.mediaLibraryUiStore;
+    const { mediaLibraryUiStore } = this.props;
+    const { currentPane, mediaLibraryVisible } = mediaLibraryUiStore;
     this.uploadProps = {
       action: 'http://192.168.1.102:8085/api/v1/medias',
       data: { guid: currentPane.currentCategory && currentPane.currentCategory.guid },
@@ -81,11 +75,11 @@ class MediaLibrary extends Component {
           onChange={activeKey => this.fetchPane(activeKey)}
         >
           <TabPane tab="My Images" key="myUploads">
-            {currentPane.paneType === 'myUploads' && <MyUploadPane pane={currentPane} /> }
+            {currentPane.paneType === 'myUploads' && <MyUploadPane pane={currentPane} mediaLibraryUiStore={mediaLibraryUiStore} /> }
           </TabPane>
           <TabPane tab="Social Images" key="socials">Content of Tab Pane 2</TabPane>
           <TabPane tab="Free From Wix" key="frees">
-            {currentPane.paneType === 'frees' && <FreePane pane={currentPane} /> }
+            {currentPane.paneType === 'frees' && <FreePane pane={currentPane} mediaLibraryUiStore={mediaLibraryUiStore} /> }
           </TabPane>
         </Tabs>
       </Modal>

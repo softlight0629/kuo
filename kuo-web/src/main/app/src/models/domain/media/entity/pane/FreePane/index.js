@@ -14,7 +14,7 @@ class FreePane {
   }
 
   fetch() {
-    return this.service.mediaService.fetchMediaCategories('416cae22-ceaf-49b0-acae-22ceaf69b075')
+    return this.service.mediaService.fetchMediaCategories('cfc8bd4f-5fcc-4c91-88bd-4f5fcc4c91fb')
       .then(action(res => {
         this.categories = res.data.map(category => new MediaCategory(category));
         this.selectCategory(this.categories[0]);

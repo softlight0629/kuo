@@ -1,12 +1,26 @@
-import { observable } from 'mobx';
-import { MediaFactory } from '../../../../domain/media/common';
+import { observable, action } from 'mobx';
+import GalleryMedia from './GalleryMedia';
 
 class Store {
   
-  @observable medias = [];
+  @observable galleryMedias = [];
 
-  constructor({ medias }) {
-    this.medias = medias.map(media => MediaFactory.create(media));
+  constructor({ galleryMedias }) {
+    this.galleryMedias = galleryMedias.map(galleryMedia => new GalleryMedia(galleryMedia));
+  }
+
+  @action addGalleryMedias(galleryMedias) {
+    if (!galleryMedias || galleryMedias.length <= 0) {
+      return;
+    }
+
+    for (const galleryMedia of galleryMedias) {
+      this.galleryMedias.push(new GalleryMedia(galleryMedia));
+    }
+  }
+
+  @action addGalleryMedia(galleryMedia) {
+    this.galleryMedias.push(new GalleryMedia(galleryMedia));
   }
 }
 
