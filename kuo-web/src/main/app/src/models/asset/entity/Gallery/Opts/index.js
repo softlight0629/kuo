@@ -8,6 +8,28 @@ class Opts {
 
   @observable thumbnailSpacing;
 
+  @observable thumbnailSize;
+
+  @observable spacing;
+
+  @observable collageDesity;
+
+  @observable imageOriention;
+
+  @observable scrollDirection;
+
+  @observable imagesPerRow;
+
+  @observable titlePosition;
+
+  @observable thumbnailResize;
+
+  @observable imageRatio;
+
+  @observable thumbnailResize;
+
+  @observable enableLoadMore;
+
   @observable itemClickAction;
 
   @observable enableDownload;
@@ -25,7 +47,7 @@ class Opts {
   @observable enableLoopVideos;
 
   constructor({
-    galleryLayout = 'Thumbnails',
+    galleryLayout = 'Collage',
     thumbnailPlacement = 'bottom',
     thumbnailSpacing = 17,
     itemClickAction = 'Expand',

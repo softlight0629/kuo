@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { observer } from 'mobx-react';
 import cssrender from '../../../../../../../helper/cssrender';
 import './index.less';
 
+@observer
 class ThumbnailsGalleryLayout extends Component {
 
   render() {
@@ -18,10 +20,7 @@ class ThumbnailsGalleryLayout extends Component {
               <div className="gallery-item-container" style={{ width, margin: 0, top: 0, left: 0 }}>
                 <div className="gallery-item-wrapper" style={{ height: containerHeight }}>
                   <div className="gallery-item">
-                    <img
-                      className="gallery-item"
-                      src={galleryMedias[0].cover}
-                    />
+                    <img className="gallery-item" src={galleryMedias[0].cover} />
                   </div>
                 </div>
               </div>
@@ -38,10 +37,7 @@ class ThumbnailsGalleryLayout extends Component {
                   >
                     <div className="gallery-item-wrapper" style={{ height: 129, borderRadius: 0 }}>
                       <div className="gallery-item">
-                        <img
-                          className="gallery-item"
-                          src={media.cover}
-                        />
+                        <img className="gallery-item" src={media.cover} />
                       </div>
                     </div>
                   </div>

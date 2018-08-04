@@ -65,6 +65,7 @@ class LinkPanel extends Component {
     for (let i = 0; i < Types.length; i++) {
       pageOptions.push(<Option key={i} value={Types[i]}>{Types[i]}</Option>);
     }
+
     return (
       <div className="section">
         <Dropdown label="Which page?"  options={pageOptions} />

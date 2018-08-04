@@ -11,8 +11,8 @@ class Gallery {
     this.spec = SpecFactory.create(spec, spec => new Spec(spec));
     this.meta = MetaFactory.create(meta);
     this.state = StateFactory.create(state);
-    this.store = new Store(store);
     this.opts = OptsFactory.create(opts, opts => new Opts(opts));
+    this.store = new Store(store);
   }
 }
 

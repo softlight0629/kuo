@@ -15,16 +15,15 @@ import {
 import ScrollBar from '../../../../../../components/ScrollBar';
 import './index.less';
 
-const Types = [
+const Option = Select.Option;
+const optionsOfTypes = [
   'Text',
   'Password',
   'Number',
   'Email',
   'URL',
   'Phone Number',
-];
-
-const Option = Select.Option;
+].map((type, i) => <Option key={i} value={type}>{type}</Option>)
 
 @observer
 class SetInputTypePanel extends Component {
@@ -32,15 +31,10 @@ class SetInputTypePanel extends Component {
   close() {
   }
 
-
   render() {
     const { astm } = this.props;
     const { opts, store } = astm;
 
-    const types = [];
-    for (let i = 0; i < Types.length; i++) {
-      types.push(<Option key={i} value={Types[i]}>{Types[i]}</Option>);
-    }
     return (
       <PanelWrapper title="Input Settings" onClose={this.close.bind(this)}>
         <div className="set-input-panel">
@@ -48,7 +42,7 @@ class SetInputTypePanel extends Component {
             <div className="content-wrapper">
               <ScrollBar>
                 <div className="section">
-                  <Dropdown label="Type:" value={opts.type}  options={types} onChange={v => opts.setInputType(v)}/>
+                  <Dropdown label="Type:" value={opts.type}  options={optionsOfTypes} onChange={v => opts.setInputType(v)}/>
                   <Divider type="long" />
                   <SectionDivider content="Text Settings" />
                   <Divider type="long" />

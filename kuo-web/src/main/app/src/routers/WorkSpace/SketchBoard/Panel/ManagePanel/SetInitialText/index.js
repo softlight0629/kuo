@@ -28,8 +28,8 @@ class SetInitialTextPanel extends Component {
                 <RadioButtonGroup label="Show text on load" value={1} >
                   <Radio value={1}>None</Radio>
                   <Radio value={2}>Placeholder text</Radio>
-                  <Radio value={2}>Initial text</Radio>
-                  <Radio value={2}>Initial text then placeholder text</Radio>
+                  <Radio value={3}>Initial text</Radio>
+                  <Radio value={4}>Initial text then placeholder text</Radio>
                 </RadioButtonGroup>
                 <Divider type="long" />
                 <TextInput type="textarea" />

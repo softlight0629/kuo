@@ -237,7 +237,7 @@ class WorkSpaceStore {
             },
             spec: {
               rect: {
-                width: 568,
+                width: 888,
                 height: 527,
                 x: 200,
                 y: 200,

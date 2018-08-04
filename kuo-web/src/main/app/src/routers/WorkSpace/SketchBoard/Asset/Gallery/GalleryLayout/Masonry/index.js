@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { observer } from 'mobx-react';
 import './index.less';
 
 const _transform2Col = (galleryMedias) => {
@@ -67,9 +68,9 @@ const _transform = (galleryMedias) => {
   return transformed;
 }
 
+
+@observer
 class MasonryGalleryLayout extends Component {
-
-
 
   render() {
     const { galleryMedias } = this.props.astm.store;
