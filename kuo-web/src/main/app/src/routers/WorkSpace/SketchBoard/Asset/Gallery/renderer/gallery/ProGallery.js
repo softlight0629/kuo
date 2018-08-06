@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GalleryContainer from './GalleryContainer';
+import { defaultImages } from '../constants/default-images';
 
 class ProGallery extends Component {
 
@@ -9,16 +10,17 @@ class ProGallery extends Component {
   }
 
   render() {
-    const { items, watermarkData, settings, offsetTop } = this.props;
+    const { items, watermarkData, settings, offsetTop, width } = this.props;
 
     return (
-      <div className="pro-gallery">
+      <div id={`pro-gallery-${this.domId}`} className="pro-gallery">
         <GalleryContainer 
           domId={this.domId}
-          items={items}
+          items={items || defaultImages}
           watermarkData={watermarkData}
           settings={settings}
           offsetTop={offsetTop}
+          width={width}
         />
       </div>
     )

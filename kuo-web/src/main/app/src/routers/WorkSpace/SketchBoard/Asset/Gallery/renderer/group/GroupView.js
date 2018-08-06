@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as _ from 'lodash';
 import ItemContainer from '../item/ItemContainer';
 
 class GroupView extends Component {

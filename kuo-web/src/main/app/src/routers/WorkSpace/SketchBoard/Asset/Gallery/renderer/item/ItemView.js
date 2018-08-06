@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import idxUtils from '../../utils';
+import ReactDOM from 'react-dom';
+import utils from '../utils';
 import classnames from 'classnames';
+import ImageItem from './ImageItem';
+import { placements } from '../utils/consts';
 import * as _ from 'lodash';
 
 class ItemView extends Component {
@@ -98,7 +100,7 @@ class ItemView extends Component {
     } else if (itemClick === 'expand' || itemClick === 'link') {
       this.props.actions.toggleFullscreen(this.props.idx);
     } else if (this.props.type === 'video') {
-      let shouldTogglePlay = itemClick !== 'expand' && (videoPlay === 'onClick' || idxUtils.isMobile());
+      let shouldTogglePlay = itemClick !== 'expand' && (videoPlay === 'onClick' || utils.isMobile());
       if (shouldTogglePlay) {
         this.props.playing ? this.props.pasuseVideo(this.props.idx) : this.props.playVideo(this.props.idx);
       }
@@ -108,7 +110,7 @@ class ItemView extends Component {
   }
 
   toggleFullscreenIfNeeded(e) {
-    const targetClass = _.get(e, 'target.className');
+    let targetClass = _.get(e, 'target.className');
     if (_.isObject(targetClass)) {
       targetClass = _.valuesIn(targetClass);
     }
@@ -140,7 +142,7 @@ class ItemView extends Component {
   }
 
   handleItemMouseDown(e) {
-    if (idxUtils.isMobile() && this.props.styleParams.allowMultishare) {
+    if (utils.isMobile() && this.props.styleParams.allowMultishare) {
       clearTimeout(this.longPressTimer);
       this.longPressTimer = setTimeout(() => {
         e.preventDefault();
@@ -152,7 +154,7 @@ class ItemView extends Component {
   }
 
   handleItemMouseUp(e) {
-    if (idxUtils.isMobile() && this.longPressTimer) {
+    if (utils.isMobile() && this.longPressTimer) {
       clearTimeout(this.longPressTimer);
     }
 
@@ -168,7 +170,7 @@ class ItemView extends Component {
   }
 
   shouldShowHoverOnMobile() {
-    return idxUtils.isMobile() && this.props.styleParams.itemClick === 'nothing';
+    return utils.isMobile() && this.props.styleParams.itemClick === 'nothing';
   }
 
   isHighlight() {
@@ -242,6 +244,7 @@ class ItemView extends Component {
     let social = this.getSocial();
     let share = this.getShare();
     let itemHover = this.getItemHover([itemTexts, social, share], imageDimensions);
+
     switch (type) {
       case 'dummy':
         itemInner = (<div></div>);
@@ -259,7 +262,7 @@ class ItemView extends Component {
       case 'image':
       case 'picture':
       default:
-        itemInner = [this.getImageItem(imageDimensions), imageHover];
+        itemInner = [this.getImageItem(imageDimensions), itemHover];
     }
 
     if (styleParams.isSlideshow) {
@@ -281,7 +284,7 @@ class ItemView extends Component {
   getBottomInfoElement() {
     const { styleParams, title, fileName, type } = this.props;
 
-    const displayTitle = idxUtils.getTitleOrFileName(title, fileName);
+    const displayTitle = utils.getTitleOrFileName(title, fileName);
     // const placements = 
 
     const buttonPlacement = this.getButtonPlacement();
@@ -292,6 +295,26 @@ class ItemView extends Component {
     }
 
     return bottomInfo;
+  }
+
+  getImageItem(imageDimensions) {
+    var props = _.pick(this.props, ['alt', 'title', 'description', 'visible', 'id', 'styleParams', 'resized_url', 'settings']);
+
+    return (
+      <ImageItem
+        {...props}
+        key="imageItem"
+        loaded={this.state.loaded}
+        imageDimensions={imageDimensions}
+        isThumbnail={!!this.props.thumbnailHighlightId}
+        actions={{
+          handleItemMouseDown: this.handleItemMouseDown.bind(this),
+          handleItemMouseUp: this.handleItemMouseUp.bind(this),
+          setItemLoaded: this.setItemLoaded.bind(this),
+          setItemError: this.setItemError.bind(this),
+        }}
+      />
+    )
   }
 
   getItemContainerStyles() {
@@ -305,7 +328,7 @@ class ItemView extends Component {
       const shadowOffset = Math.round(styleParams.imageMargin * styleParams.boxShadow / 5);
       const shadowSpread = Math.min(15, Math.round(styleParams.imageMargin * styleParams.boxShadow / 2));
       boxShadow = {
-        boxShadow: shadowOffset + 'px ' + shadowOffset + 'px ' + shadowSpread + 'px 0 rgba(0,0,0,0.2)';
+        boxShadow: shadowOffset + 'px ' + shadowOffset + 'px ' + shadowSpread + 'px 0 rgba(0,0,0,0.2)',
       };
     }
 
@@ -347,8 +370,13 @@ class ItemView extends Component {
   }
 
   getItemWrapperClass() {
-    const { styleParams } = this.props.styleParams;
+    const { styleParams } = this.props;
     return `gallery-item-wrapper visible ${styleParams.cubeImages ? 'cube-type-' + styleParams.cubeType : ''}`;
+  }
+
+  getItemContainerTabIndex() {
+    var tabIndex = this.isHighlight() ? utils.getTabIndex('currentThumbnail') : this.props.currentIdx === this.props.idx ? utils.getTabIndex('currentGalleryItem') : -1;
+    return tabIndex;
   }
 
   render() {

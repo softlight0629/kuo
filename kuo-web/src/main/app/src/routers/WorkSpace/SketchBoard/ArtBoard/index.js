@@ -8,6 +8,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
 import { SketchPicker } from 'react-color';
 import AssetBox from '../AssetBox';
+import ProGallery from '../Asset/Gallery/renderer/gallery/ProGallery';
 
 @withRouter
 @inject('workSpaceStore', 'sketchBoardStore')
@@ -38,6 +39,7 @@ class ArtBoard extends Component {
                       {
                         pageResource && pageResource.astms.map((astm, i) => <AssetBox key={i} astm={astm} />)
                       }
+                      {/* <ProGallery /> */}
                       </div>
                     </div>
                   </div>

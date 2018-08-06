@@ -118,7 +118,6 @@ class Layouter {
     let maxLoops = this.srcItems.length * 10;
 
     while (this.srcItems[this.pointer]) {
-      console.log(this.pointer, 'pointer....');
 
       maxLoops--;
       if (maxLoops <= 0) {

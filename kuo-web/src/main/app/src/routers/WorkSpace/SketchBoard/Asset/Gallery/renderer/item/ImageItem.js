@@ -15,6 +15,8 @@ class ImageItem extends Component {
       actions,
       settings,
     } = this.props;
+    
+    console.log(resized_url, 'resized_url...');
 
     const imageProps = settings && settings.imageProps && typeof settings.imageProps === 'function' ? settings.imageProps(id) : {};
     return (

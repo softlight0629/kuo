@@ -1,11 +1,12 @@
 import * as _ from 'lodash';
 import { Group } from '../../layouter';
+import utils from '../utils';
 
 class GalleryGroup {
 
   constructor(config) {
 
-    this.uniqueId = utils.generateUUID():
+    this.uniqueId = utils.generateUUID();
     this.isGalleryGroup = true;
 
     this.dto = _.merge({}, config.dto);

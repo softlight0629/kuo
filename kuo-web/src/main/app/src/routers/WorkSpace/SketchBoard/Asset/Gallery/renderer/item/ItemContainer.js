@@ -21,9 +21,9 @@ class ItemContainer extends Component {
       } else {
         // tall image
         return this.props.style.height * this.props.style.ratio <= maxWidth;
-      } else {
-        return this.props.width <= maxWidth || this.props.style.height <= maxHeight;
       }
+    } else {
+      return this.props.width <= maxWidth || this.props.style.height <= maxHeight;
     }
   }
 
@@ -43,6 +43,7 @@ class ItemContainer extends Component {
         isSmallItem={this.isSmallItem()}
         isNarrow={this.isNarrow()}
         isShort={this.isShort()}
+        {...this.props}
       />
     )
   }

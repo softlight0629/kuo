@@ -54,4 +54,4 @@ const CommonItemContainer = function CommonItemContainer(ComposedComponent) {
   return CommonItemContainerNotConnected(ComposedComponent);
 }
 
-export CommonItemContainer;
+export default CommonItemContainer;
