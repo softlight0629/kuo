@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
 import PanelWrapper from '../../PanelWrapper';
 import ScrollBar from '../../../../../../components/ScrollBar';
-import filterRegister from '../../../../../../helper/filter_register';
+import filterRegistrar from '../../../../../../core/filterRegistrar';
 
 const range = (start, end) => new Array(end - start).fill(start).map((el, i) => start + i);
 
@@ -559,7 +559,7 @@ class FilterPanel extends Component {
                               <div className="illustration-container illustration-bg">
                                 <div className="illustration-inner-container">
                                   <div style={{ width: 72, height: 72, position: 'relative' }}>
-                                    { filterRegister.render(FILTER_LABELS[i], {
+                                    { filterRegistrar.render(FILTER_LABELS[i], {
                                       id: `filter_${i}`,
                                       style: {
                                         width: 72,

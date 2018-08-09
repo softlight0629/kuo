@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import Site from '../../models/domain/site/entity/Site';
+import Site from '../../models/site/Site';
 
 class AccountStore {
 

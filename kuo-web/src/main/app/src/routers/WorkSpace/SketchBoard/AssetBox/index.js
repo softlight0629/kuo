@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import Rnd from 'react-rnd';
 import { Icon } from 'antd';
 import AssetSetting from './AssetSetting';
-import astRegister from '../../../../helper/ast_register';
+import assetRegistrar from '../../../../core/assetRegistrar';
 import './index.less';
 
 @withRouter
@@ -30,7 +30,7 @@ class AssetBox extends Component {
   }
 
   renderAstv(astm) {
-    const Astv = astRegister.findAstv(astm.kind);
+    const Astv = assetRegistrar.findAstv(astm.kind);
     return <Astv astm={astm} />;
   }
 

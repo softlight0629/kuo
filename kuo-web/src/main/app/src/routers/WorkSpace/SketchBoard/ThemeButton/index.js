@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject } from 'mobx-react';
 import extend from 'extend';
-import astRegister from '../../../../helper/ast_register';
+import assetRegistrar from '../../../../core/assetRegistrar';
 
 import './index.less';
 
@@ -23,7 +23,7 @@ class ThemeButton extends Component {
     const { loc, ast, onClick } = this.props;
     const { kind, spec, store, state, meta = {} } = ast;
     const { width, height, x, y } = loc;
-    const Astv = astRegister.findAstv(kind);
+    const Astv = assetRegistrar.findAstv(kind);
 
     return (
       <div className="theme-button" onClick={(theme) => this.handleClick()} style={{

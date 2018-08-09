@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx'
 import * as _ from 'lodash';
-import { FreePane, MyUploadPane } from '../../models/domain/media/entity/pane';
+import { FreePane, MyUploadPane } from '../../models/media/pane';
 
 class MediaLibraryUiStore {
   
