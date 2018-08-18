@@ -1,0 +1,73 @@
+.ast-button {
+  cursor: pointer;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+  transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
+  
+  .arrow-top, .arrow-bottom {
+    border-left: 0;
+    border-right: 50px solid transparent;
+    position: absolute;
+    right: 0;
+  }
+
+  .arrow-top {
+    border-bottom: 50px solid transparent;
+    bottom: 50% !important;
+  }
+
+  .arrow-bottom {
+    border-top: 50px solid transparent;
+    top: 50% !important;
+  }
+
+  .arrow-bg {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 50px;
+  }
+
+  .arrow-left {
+    .arrow-top, .arrow-bottom {
+      left: 0;
+      border-right: 0;
+      border-left: 50px solid transparent;
+    }
+
+    .arrow-bg {
+      right: 0;
+      left: 50px;
+    }
+  }
+
+  &-text {
+    display: inline-block;
+    transition: color 0.4s ease 0s;
+    margin: 0;
+    position: relative;
+  }
+
+  .lift-shadow {
+    background: url(https://static.parastorage.com/services/skins/2.1229.80/images/wysiwyg/core/themes/base/liftedshadow_medium.png) no-repeat;
+    bottom: -26px;
+    height: 26px;
+    position: absolute;
+    width: 165px;
+  }
+
+  .lift-shadow-right {
+    background-position: 100% 0;
+    right: -20px;
+  }
+
+  .lift-shadow-left {
+    background-position: 0 0;
+    left: -20px;
+  }
+}

@@ -77,7 +77,12 @@ module.exports = function(proxy, allowedHost) {
     historyApiFallback: {
       // Paths with dots should still use the history fallback.
       // See https://github.com/facebookincubator/create-react-app/issues/387.
-      disableDotRule: true,
+      disableDotRule: false,
+
+      rewrites: [
+        { from: /^\/rosa-editor.html/, to: '/build/rosa-editor.html' },
+        { from: /^\/rosa.html/, to: '/build/rosa.html' },
+      ],
     },
     public: allowedHost,
     proxy,

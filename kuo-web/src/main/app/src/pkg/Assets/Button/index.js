@@ -5,7 +5,6 @@ import { withRouter } from 'react-router';
 import cssrender from '../../../helper/cssrender';
 import './index.less';
 
-@withRouter
 @observer
 class AstvButton extends Component {
 

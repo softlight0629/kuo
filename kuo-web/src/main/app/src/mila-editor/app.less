@@ -1,0 +1,79 @@
+@import '~antd/dist/antd.css';
+@import './fonts/iconfont/iconfont.css';
+// @import './externals/animated.less';
+
+/* 设置使用字体的优先级 anticon-user 高 */
+:global(.anticon) {  /* :global() 是为了覆盖全局class .anticon 的样式 */
+  &:before {
+    /* 优先调用 anticon-user 字体，就是上面图例创建的 anticon-custom，名字对上就行，我自己的程序叫 anticon-user 了 */
+    font-family: "anticon", "anticon-kuo" !important;   
+    /* 默认样式是这样
+        font-family: "anticon" !important;   
+    */
+  }
+}
+
+
+ul,ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+:not(input):not(textarea) {
+  user-select: none;
+}
+
+.font_0 {
+  font: normal normal normal 28px/1.4em 'open sans', sans-serif;
+  color: rgba(0,0,0,1);
+}
+.font_1 {
+  font: normal normal normal 13px/1.4em 'open sans', sans-serif;
+  color: rgba(0,0,0,1);
+}
+.font_2 {
+  font: normal normal bold 17px/1.4em 'open sans', sans-serif;
+  color: rgba(0,0,0,1);
+}
+.font_3 {
+  font: normal normal normal 28px/1.4em 'open sans', sans-serif;
+  color: rgba(0,0,0,1);
+}
+.font_4 {
+  font: normal normal bold 28px/1.4em 'open sans', sans-serif;
+  color: rgba(0,0,0,1);
+}
+.font_5 {
+  font: normal normal bold 22px/1.4em 'open sans', sans-serif;
+  color: rgba(0,0,0,1);
+}
+.font_6 {
+  font: normal normal normal 20px/1.4em 'open sans', sans-serif;
+  color: rgba(0,0,0,1);
+}
+.font_7 {
+  font: normal normal normal 16px/1.4em 'open sans', sans-serif;
+  color: rgba(0,0,0,1);
+}
+.font_8 {
+  font: normal normal normal 15px/1.4em 'open sans', sans-serif;
+  color: rgba(0,0,0,1);
+}
+.font_9 {
+  font: normal normal normal 13px/1.4em 'open sans', sans-serif;
+  color: rgba(0,0,0,1);
+}
+.font_10 {
+  font: normal normal normal 10px/1.4em 'open sans', sans-serif;
+  color: rgba(0,0,0,1);
+}
+
+.app {
+  height: 100%;
+}

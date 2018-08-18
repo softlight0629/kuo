@@ -29,7 +29,6 @@ const effects = {
   effect_9: 'rgba(10,189,240,0.298) 3px 3px 0px, rgba(254,1,1,0.298) -3px -3px 0px',
 }
 
-@withRouter
 @observer
 class AstvText extends Component {
 

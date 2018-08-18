@@ -23,7 +23,6 @@ const menu = (
   </Menu>
 );
 
-@withRouter
 @observer
 class AstvDropdown extends Component {
 

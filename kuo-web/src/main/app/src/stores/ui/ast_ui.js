@@ -3,7 +3,7 @@ const ast_setting_buttons = {
   Button: ['ChangeText', 'Layout', 'Design', 'Link'],
   Text: ['EditText', 'Animation', 'Link'],
   Menu: ['ChangeText', 'Layout', 'Design'],
-  Image: ['ChangeImage', 'Design', 'Animation', 'Link'],
+  Image: ['ChangeImage', 'Settings', 'Filter', 'Design', 'Animation', 'Link'],
   Gallery: ['ManageMedia','GallerySettings', 'Layout', 'Design'],
   Input: ['SetInputType', 'Layout', 'Design'],
   Select: ['ManageItems', 'Setting', 'Layout', 'Design'],

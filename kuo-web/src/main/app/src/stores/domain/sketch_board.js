@@ -1,6 +1,7 @@
 import { observable, action } from 'mobx';
 import { AstmButton, AstmMenu, AstmText, AstmImage } from '../../models/pkg/assets';
 import { PageRes } from '../../models/site/resource';
+import compRegistrar from '@packages/compUtils/compRegistrar';
 
 class SketchBoardStore {
 
@@ -16,6 +17,10 @@ class SketchBoardStore {
   }
 
   @action appendAst(option) {
+    this.pageResource.appendAst(option);
+  }
+
+  @action appendComp(option) {
     this.pageResource.appendAst(option);
   }
 }
