@@ -137,6 +137,7 @@ const optionsOfPlaybackSpeed = [
   },
 ].map((option, index) => <Option key={index} value={option.value}>{option.label}</Option>);
 
+@inject('designPanelUiStore')
 @observer
 class GallerySettingsPanel extends Component {
 
@@ -149,6 +150,7 @@ class GallerySettingsPanel extends Component {
   } 
 
   close() {
+    this.props.designPanelUiStore.closeGallerySettingsPanel();
   }
 
   handleLayoutChange(v) {

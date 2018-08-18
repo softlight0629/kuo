@@ -1,7 +1,7 @@
 
 const ast_setting_buttons = {
   Button: ['ChangeText', 'Layout', 'Design', 'Link'],
-  Text: ['EditText', 'Animation', 'Link'],
+  RichText: ['EditText', 'Animation', 'Link'],
   Menu: ['ChangeText', 'Layout', 'Design'],
   Photo: ['ChangeImage', 'Settings', 'Filter', 'Design', 'Animation', 'Link'],
   Gallery: ['ManageMedia','GallerySettings', 'Layout', 'Design'],

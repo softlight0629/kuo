@@ -147,6 +147,10 @@ class DesignPanelUiStore {
     this.gallerySettingsPanelVisible = true;
   }
 
+  @action closeGallerySettingsPanel() {
+    this.gallerySettingsPanelVisible = false;
+  }
+
   @action showImageSettingsPanel() {
     this.imageSettingsPanelVisible = true;
   }
