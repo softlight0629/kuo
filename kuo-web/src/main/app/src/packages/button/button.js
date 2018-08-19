@@ -37,13 +37,14 @@ class Button extends Component {
 
   render() {
     const { astm } = this.props;
-    const { spec, store: { text } } = astm;
+    const { spec, dataQuery: { text }, layout } = astm;
     const { arrow, liftShadow, fill, border, ...rest } = spec;
 
     const style = {
-      ...cssrender({ ...(arrow ? {} : {fill}), ...({ ...rest, border })}),
+      ...cssrender({ ...(arrow ? {} : {fill}), ...({ ...rest, border }), rect: { width: layout.width, height: layout.height, }}),
       ...(liftShadow ? { overflow: 'visible' } : {}),
     }
+
     return (
       <a className="ast-button" style={style}>
         { arrow && this.renderArrow(arrow, fill) }

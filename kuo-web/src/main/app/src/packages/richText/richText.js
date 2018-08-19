@@ -106,9 +106,9 @@ class RichText extends Component {
   )
 
   render() {
-    const { spec, store } = this.props.astm;
+    const { spec, dataQuery } = this.props.astm;
     const { theme, textAlign, textEffect, textIndent, font } = spec;
-    const { text } = store;
+    const { text } = dataQuery;
 
     return (
       <div className="ast-text">

@@ -1,29 +1,28 @@
 import { observable, action, extendObservable } from 'mobx';
-import MetaFactory from '../../compUtils/factory/metaFactory';
-import SpecFactory from '../../compUtils/factory/specFactory';
-import StateFactory from '../../compUtils/factory/stateFactory';
-import Store from './Store';
-import ButtonSpec from './Spec';
+import DataQuery from './dataQuery';
+import ButtonSpec from './buttonSpec';
 
-import compRegistrar from '../../compUtils/compRegistrar';
 import skinRegistrar from '@packages/compUtils/skinRegistrar';
-import skinRender from '../../runtime/skinRender';
+import compRegistrar from '@packages/compUtils/compRegistrar';
+import idUtils from '@packages/coreUtils/core/idUtils';
+import skinRender from '@packages/runtime/skinRender';
+import BaseComp from '@packages/components/core/baseComp';
 
-class Button {
+class Button extends BaseComp {
 
   @observable.ref spec;
 
-  @observable.ref state;
+  constructor(option) {
+    super(option)
+    const { skin, spec = {}, propQuery = {}, dataQuery = {} } = option;
 
-  @observable.ref meta;
-
-  constructor({ spec = {}, state = {}, store, meta = {} }) {
-    this.compId = `comp-${Date.now()}`;
+    this.id = this.uniqId('comp-');
     this.kind = 'Button';
-    this.spec = SpecFactory.create(spec, spec => new ButtonSpec(spec));
-    this.meta = MetaFactory.create(meta);
-    this.state = StateFactory.create(state);
-    this.store = new Store(store);
+    this.type = 'Component';
+    this.obervers = [];
+    this.skin = skin;
+    this.spec = new ButtonSpec(spec);
+    this.dataQuery = new DataQuery(dataQuery);
   }
 
   // 把样式全部替换掉
@@ -33,7 +32,7 @@ class Button {
       return;
     }
 
-    this.meta.skin = skin;
+    this.skin = skin;
 
     // 找到 skin 的样式，重新渲染
     let spec = skinRender.createSkinSpec(skinOfJson, this, ButtonSpec);
@@ -49,28 +48,15 @@ class Button {
     }
   }
 
-  @action apply({ spec, meta }) {
-    const rect = this.spec.rect.serialize();
-    this.spec = SpecFactory.create({
-      ...spec,
-      rect: {
-        x: rect.x,
-        y: rect.y,
-        width: spec.rect.width,
-        height: spec.rect.height,
-      },
-    });
-
-    this.meta = MetaFactory.create(meta || {});
+  @action apply({ spec, skin }) {
+    this.skin = skin;
+    this.spec = new ButtonSpec(spec);
   }
 
   serialize() {
     return {
       kind: this.kind,
-      meta: this.meta.serialize(),
       spec: this.spec.serialize(),
-      state: this.state.serialize(),
-      store: this.store.serialize(),
     }
   }
 }

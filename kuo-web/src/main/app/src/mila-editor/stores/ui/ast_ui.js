@@ -13,10 +13,13 @@ const ast_setting_buttons = {
   TextArea: ['SetInitialText', 'Layout', 'Design'],
   Pagination: ['ManageMedia', 'Layout', 'Design'],
   Switch: ['SwitchSettings', 'Layout', 'Design'],
-  Table: ['ManageTable', 'Layout', 'Design']
+  Table: ['ManageTable', 'Layout', 'Design'],
+  StripColumnsContainer: ['ChangeText', 'Layout', 'Design'],
+  Column: ['ChangeText', 'Layout', 'Design'],
 }
 
 class AstUiStore {
+
   astSettingButtons(astm) {
     return ast_setting_buttons[astm];
   }

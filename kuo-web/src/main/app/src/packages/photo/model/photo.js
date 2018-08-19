@@ -1,33 +1,25 @@
 import { observable, extendObservable, action } from 'mobx';
-import MetaFactory from '../../compUtils/factory/metaFactory';
-import SpecFactory from '../../compUtils/factory/specFactory';
-import StateFactory from '../../compUtils/factory/stateFactory';
-import OptsFactory from '../../compUtils/factory/optsFactory';
 
-import Store from './Store';
-import Opts from './Opts';
+import DataQuery from './dataQuery';
+import PropQuery from './propQuery';
 
-import compRegistrar from '../../compUtils/compRegistrar';
+import BaseComp from '@packages/components/core/baseComp';
+import Spec from '@packages/components/core/spec';
 
-class Photo {
+import compRegistrar from '@packages/compUtils/compRegistrar';
 
-  @observable.ref spec;
+class Photo extends BaseComp {
 
-  @observable.ref meta;
+  constructor(option) {
+    super(option);
+    const { spec = {}, skin, dataQuery, propQuery = {} } = option;
 
-  @observable.ref opts;
-
-  constructor({ spec = {}, store, meta = {}, state = {}, opts = {} }) {
-    this.compId = `comp-${Date.now()}`;
+    this.id = this.uniqId('comp-');
     this.kind = 'Photo';
-    this.spec = SpecFactory.create(spec);
-    this.meta = MetaFactory.create({
-      ...meta,
-      lockRation: true,
-    });
-    this.state = StateFactory.create(state)
-    this.store = new Store(store);
-    this.opts = OptsFactory.create(opts, opts => new Opts(opts));
+    this.skin = skin;
+    this.spec = new Spec(spec);
+    this.dataQuery = new DataQuery(dataQuery);
+    this.propQuery = new PropQuery(propQuery);
 
     // crop: {
     //   height: 182,
@@ -37,19 +29,9 @@ class Photo {
     // }
   }
 
-  @action apply({ spec, meta }) {
-    const rect = this.spec.rect.serialize();
-    this.spec = SpecFactory.create({
-      ...spec,
-      rect: {
-        x: rect.x,
-        y: rect.y,
-        width: spec.rect.width,
-        height: spec.rect.height,
-      },
-    });
-
-    this.meta = MetaFactory.create(meta || {});
+  @action apply({ spec, skin }) {
+    this.spec = new Spec(spec);
+    this.skin = skin;
   }
 
   serialize() {

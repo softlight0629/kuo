@@ -154,38 +154,38 @@ class GallerySettingsPanel extends Component {
   }
 
   handleLayoutChange(v) {
-    const { opts } = this.props.astm;
-    opts.setGalleryLayout(v);
+    const { propQuery } = this.props.astm;
+    propQuery.setGalleryLayout(v);
   }
 
   handleThumbnailPlacementChange(v) {
-    const { opts } = this.props.astm;
-    opts.setThumbnailPlacement(v);
+    const { propQuery } = this.props.astm;
+    propQuery.setThumbnailPlacement(v);
   }
 
   handleThumbnailSpacingChange(v) {
-    const { opts } = this.props.astm;
-    opts.setThumbnailSpacing(v);
+    const { propQuery } = this.props.astm;
+    propQuery.setThumbnailSpacing(v);
   }
 
   handleItemClickActionChange(v) {
-    const { opts } = this.props.astm;
-    opts.setItemClickAction(v);
+    const { propQuery } = this.props.astm;
+    propQuery.setItemClickAction(v);
   }
 
   handleSocialSharingChange(v) {
-    const { opts } = this.props.astm;
-    opts.setEnableSocialSharing(v)
+    const { propQuery } = this.props.astm;
+    propQuery.setEnableSocialSharing(v)
   }
 
   renderLayout() {
-    const { opts } = this.props.astm;
+    const { propQuery } = this.props.astm;
 
     return (
       <div className="tab-content">
         <RadioImageButtonGroup 
           title="Layouts" 
-          value={opts.galleryLayout} 
+          value={propQuery.galleryLayout} 
           options={radioImageOptionsOfLayout} 
           onChange={this.handleLayoutChange.bind(this)} 
         />
@@ -194,7 +194,7 @@ class GallerySettingsPanel extends Component {
         <Divider type="long" />
         <RadioImageButtonGroup 
           title="Thumbnail Placement"
-          value={opts.thumbnailPlacement}
+          value={propQuery.thumbnailPlacement}
           maxPerRow={4} 
           options={radioImageOptionsOfThumnail} 
           onChange={this.handleThumbnailPlacementChange.bind(this)} 
@@ -202,7 +202,7 @@ class GallerySettingsPanel extends Component {
         <Divider type="long" />
         <SectionDivider content="How Should it Look?" />
         <Divider type="long" />
-        <InputSlider label="Thumbnail Spacing" value={opts.thumbnailSpacing} onChange={this.handleThumbnailSpacingChange.bind(this)} />
+        <InputSlider label="Thumbnail Spacing" value={propQuery.thumbnailSpacing} onChange={this.handleThumbnailSpacingChange.bind(this)} />
       </div>
     )
   }
@@ -215,39 +215,39 @@ class GallerySettingsPanel extends Component {
   }
 
   renderAdvanced() {
-    const { opts } = this.props.astm;
+    const { propQuery } = this.props.astm;
 
     return (
       <div className="tab-content">
         <SectionDivider content="Image Settings" />
         <Divider type="long" />
-        <InputSlider label="Image Quality" value={opts.imageQuality} onChange={v => opts.setImageQuality(v)}/>
+        <InputSlider label="Image Quality" value={propQuery.imageQuality} onChange={v => propQuery.setImageQuality(v)}/>
         <Divider type="long" />
-        <ToggleSwitch label="Image Sharpening" checked={opts.enableImageSharpening} onChange={v => opts.setEnableImageSharpening(v)}/>
+        <ToggleSwitch label="Image Sharpening" checked={propQuery.enableImageSharpening} onChange={v => propQuery.setEnableImageSharpening(v)}/>
         <Divider type="long" />
         <SectionDivider content="Video Settings" />
         <Divider type="long" />
-        <Dropdown label="Play Videos" value={opts.playVideoWhen} options={optionsOfPlayVideos} onChange={v => opts.setPlayVideoWhen(v)}/>
+        <Dropdown label="Play Videos" value={propQuery.playVideoWhen} options={optionsOfPlayVideos} onChange={v => propQuery.setPlayVideoWhen(v)}/>
         <Divider type="long" />
-        <Dropdown label="Playback Speed" value={opts.playbackSpeed} options={optionsOfPlaybackSpeed} onChange={v => opts.setPlaybackSpeed(v)} />
+        <Dropdown label="Playback Speed" value={propQuery.playbackSpeed} options={optionsOfPlaybackSpeed} onChange={v => propQuery.setPlaybackSpeed(v)} />
         <Divider type="long" />
-        <ToggleSwitch label="Loop Videos" checked={opts.enableLoopVideos} onChange={v => opts.setEnableLoopVideos(v)} />
+        <ToggleSwitch label="Loop Videos" checked={propQuery.enableLoopVideos} onChange={v => propQuery.setEnableLoopVideos(v)} />
       </div>
     )
   }
 
   renderSettings() {
-    const { opts } = this.props.astm;
+    const { propQuery } = this.props.astm;
 
     return (
       <div className="tab-content">
         <SectionDivider content="Gallery Settings" />
         <Divider type="long" />
-        <Dropdown label="When click on a item:" value={opts.itemClickAction} options={optionsOfItemClickAction} onChange={this.handleItemClickActionChange.bind(this)}/>
+        <Dropdown label="When click on a item:" value={propQuery.itemClickAction} options={optionsOfItemClickAction} onChange={this.handleItemClickActionChange.bind(this)}/>
         <Divider type="long" />
         <SectionDivider content="Social Settings" />
         <Divider type="long" />
-        <ToggleSwitch label="Social Sharing" checked={opts.enableSocialSharing} onChange={this.handleSocialSharingChange.bind(this)}/>
+        <ToggleSwitch label="Social Sharing" checked={propQuery.enableSocialSharing} onChange={this.handleSocialSharingChange.bind(this)}/>
       </div>
     )
   }

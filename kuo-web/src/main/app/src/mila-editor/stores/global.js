@@ -15,6 +15,7 @@ import AstUiStore from './ui/ast_ui';
 // import AstSkinUiStore from './ui/ast_skin_ui';
 // import AstThemeUiStore from './ui/ast_theme_ui';
 import MediaLibraryUiStore from './ui/media_library_ui';
+import PanelUiStore from './ui/panel_ui';
 
 import service from '../services';
 
@@ -38,27 +39,10 @@ class GlobalStore {
     this.astSkinUiStore = {};
     this.astThemeUiStore = {};
     this.mediaLibraryUiStore = new MediaLibraryUiStore(this, service);
+    this.panelUiStore = new PanelUiStore(this, service);
   }
 }
 
 const store = new GlobalStore();
 
-export default {
-  authStore: store.authStore,
-  workSpaceStore: store.workSpaceStore,
-  dashboardStore: store.dashboardStore,
-  accountStore: store.accountStore,
-  sketchBoardStore: store.sketchBoardStore,
-  mediaLibraryStore: store.mediaLibraryStore,
-
-  workSpaceUiStore: store.workSpaceUiStore,
-  designPanelUiStore: store.designPanelUiStore,
-  resGrpUiStore: store.resGrpUiStore,
-  colorPickerUiStore: store.colorPickerUiStore,
-  compToolBarUiStore: store.compToolBarUiStore,
-  astRefUiStore: store.astRefUiStore,
-  astUiStore: store.astUiStore,
-  astSkinUiStore: store.astSkinUiStore,
-  astThemeUiStore: store.astThemeUiStore,
-  mediaLibraryUiStore: store.mediaLibraryUiStore,
-};
+export default store

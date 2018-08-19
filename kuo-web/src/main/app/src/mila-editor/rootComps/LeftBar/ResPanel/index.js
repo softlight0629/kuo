@@ -61,7 +61,7 @@ class ResPanel extends Component {
     return (
       <div 
         className="skin-wrapper"
-        data-skin={`${buttonStyle.template.meta.skin}`}
+        data-skin={`${buttonStyle.template.skin}`}
         onClick={() => this.appendCompToSkecthBoard(template)} style={{ top: buttonStyle.y, left: buttonStyle.x }}>
         <CompView astm={astm}></CompView>
       </div>

@@ -30,7 +30,7 @@ class AssetSetting extends Component {
     this.refAstm();
     const { astm } = this.props;
     this.props.mediaLibraryUiStore.openWithPane('frees', selectedMedias => {
-      astm.store.setSrc(selectedMedias[0].cover);
+      astm.dataQuery.setSrc(selectedMedias[0].cover);
     });
   }
 

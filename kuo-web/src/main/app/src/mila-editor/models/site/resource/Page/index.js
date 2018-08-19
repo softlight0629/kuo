@@ -16,9 +16,11 @@ class PageRes {
     this.name = name;
 
     if (assets) {
-      this.astms = (JSON.parse(assets)).map(asset => {
-        const CompModelClazz = compRegistrar.getComp('mila.components.model.' + asset.kind);
-        return new CompModelClazz(asset);
+      this.astms = (JSON.parse(assets)).map(compDefinition => {
+        // const CompModelClazz = compRegistrar.getComp('mila.components.model.' + asset.kind);
+        // const component =  new CompModelClazz(asset);
+
+        return this.store.runtimeCtx.addComponent(compDefinition);
       });
     }
   }
@@ -27,12 +29,8 @@ class PageRes {
     this.name = name;
   }
 
-  @action appendAst(option) {
-    const CompModelClazz = compRegistrar.getComp('mila.components.model.' + option.kind);
-    const astm = new CompModelClazz(option);
-
-    this.astms.push(astm);
-    this.store.astRefUiStore.refAstm(astm);
+  @action appendAst(compDefinition) {
+    this.store.runtimeCtx.addComponent(compDefinition);
   }
 
   serialize() {

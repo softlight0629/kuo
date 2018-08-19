@@ -38,9 +38,9 @@ class FilterPanel extends Component {
                   position: 'relative',
                 }}
                 imageData={{
-                  src: astm.store.src,
-                  width: astm.spec.rect.width,
-                  height: astm.spec.rect.height,
+                  src: astm.dataQuery.src,
+                  width: astm.layout.width,
+                  height: astm.layout.height,
                   effectName: thumb.value,
                 }}
                 imageWidth={thumbWidth}

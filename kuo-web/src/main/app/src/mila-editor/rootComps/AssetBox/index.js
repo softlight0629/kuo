@@ -21,7 +21,7 @@ class AssetBox extends Component {
 
   onDragStop(e, d) {
     this.setState({ rnding: false });
-    this.props.astm.spec.rect.setPosition(d.x, d.y);
+    this.props.astm.layout.setPosition(d.x, d.y);
   }
 
   activateAst(astm) {
@@ -36,7 +36,7 @@ class AssetBox extends Component {
 
   render() {
     const { astm, designPanelUiStore } = this.props;
-    const { spec: { rect, animation }, meta: { lockRation } } = astm;
+    const { spec: { animation }, layout } = astm;
 
     const stylus = {
       cursor: 'pointer',
@@ -77,13 +77,13 @@ class AssetBox extends Component {
         <Rnd
           style={stylus}
           className={`asset-handles ${selected?'selected':''}`}
-          size={{ width: rect.width + 2, height: rect.height + 2 }}
-          position={{ x: rect.x, y: rect.y }}
+          size={{ width: layout.width + 2, height: layout.height + 2 }}
+          position={{ x: layout.x, y: layout.y }}
           resizeHandleClasses={resizeHandleClasses}
-          lockAspectRatio={lockRation}
+          // lockAspectRatio={lockRation}
           onResize={(e, direction, ref, delta, position) => {
-            rect.setSize(ref.offsetWidth - 2, ref.offsetHeight - 2);
-            rect.setPosition(position.x, position.y);
+            layout.setSize(ref.offsetWidth - 2, ref.offsetHeight - 2);
+            layout.setPosition(position.x, position.y);
           }}
           onResizeStart={() => this.setState({ rnding: true })}
           onResizeStop={() => this.setState({ rnding: false })}

@@ -34,7 +34,7 @@ const Fonts = [
   'Times',
 ];
 
-@inject('designPanelUiStore', 'astRefUiStore', 'astThemeUiStore', 'astSkinUiStore')
+@inject('designPanelUiStore', 'astRefUiStore', 'astThemeUiStore', 'panelUiStore')
 @observer
 class DesignPanel extends Component {
 
@@ -144,7 +144,7 @@ class DesignPanel extends Component {
   }
 
   close() {
-    this.props.designPanelUiStore.closeDesignPanel();
+    this.props.panelUiStore.closePanelByName('compPanels.design');
   }
 
   renderThemePanel() {
@@ -267,17 +267,17 @@ class DesignPanel extends Component {
 
   render() {
     const { astm } = this.props.astRefUiStore;
-    const skins = this.props.astSkinUiStore.skinsOfKind(astm.kind);
+    // const skins = this.props.astSkinUiStore.skinsOfKind(astm.kind);
 
     return (
       <PanelWrapper title="Button Setttings" onClose={this.close.bind(this)}>
         <div className="advanced-style-panel">
           <div className="advanced-style-panel-header">
-            <SkinButtonSlider skins={skins} />
+            {/* <SkinButtonSlider skins={skins} /> */}
           </div>
           <div className="advanced-style-panel-body">
             <div className="content-container">
-              {this.renderStateTabs(astm)}
+              {/* {this.renderStateTabs(astm)} */}
             </div>
           </div>
         </div>

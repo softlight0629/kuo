@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as _ from 'lodash';
 import Header from './Header';
 import Footer from './Footer';
 import MasterPage from './MasterPage';
@@ -8,8 +9,9 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
 import { SketchPicker } from 'react-color';
 import AssetBox from '../AssetBox';
+import createComponent from '@packages/runtime/component/createComponent';
 
-@inject('workSpaceStore', 'sketchBoardStore')
+@inject('workSpaceStore', 'sketchBoardStore', 'runtimeCtx')
 @observer
 class ArtBoard extends Component {
 
@@ -17,7 +19,7 @@ class ArtBoard extends Component {
   }
 
   render() {
-    const { pageResource } = this.props.sketchBoardStore;
+    const { components } = this.props.runtimeCtx;
 
     return (
       <div className="artboard-container">
@@ -34,7 +36,7 @@ class ArtBoard extends Component {
                       {/* <div className="mainPageBg">{ pageResource.template }</div> */}
                       <div className="mainPageBgContent">
                       {
-                        pageResource && pageResource.astms.map((astm, i) => <AssetBox key={i} astm={astm} />)
+                        components.map((component, i) => createComponent(component))
                       }
                       </div>
                     </div>

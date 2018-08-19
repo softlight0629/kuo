@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import * as _ from 'lodash';
 import { withRouter } from 'react-router';
 import GridLine  from '../GridLine';
 import ResBtnGrp from '../LeftBar';
@@ -27,9 +28,30 @@ import {
 } from '../Panel/ManagePanel';
 import ColorPicker from '../ColorPicker';
 
-@inject('designPanelUiStore', 'colorPickerUiStore', 'astRefUiStore')
+@inject('designPanelUiStore', 'colorPickerUiStore', 'astRefUiStore', 'panelUiStore')
 @observer
 class SketchBoard extends Component {
+
+  renderCompPanel(panel) {
+    const CompPanelClass = panel.compPanelClass;
+    const props = panel.props;
+
+    return (
+      <CompPanelClass rtStore={this.props.rtStore} {...props}/>
+    )
+  }
+
+  renderCompPanels() {
+    const openedPanels = this.props.panelUiStore.openedPanels;
+    console.log(openedPanels, 'openedPanels....');
+    return (
+      <div>
+        {
+          openedPanels.map(panel => this.renderCompPanel(panel))
+        }        
+      </div>
+    )
+  }
 
   render() {
     const { 
@@ -63,7 +85,7 @@ class SketchBoard extends Component {
           <div className="sketch-board-canvas">
             <ArtBoard />
             {/* <CompToolBar /> */}
-            { designPanelVisible && <DesignPanel astm={astm}/> }
+            {/* { designPanelVisible && <DesignPanel astm={astm}/> }
             { editTextPanelVisible && <TextPanel astm={astm} /> }
             { layoutPanelVisible &&  <LayoutPanel astm={astm}/> }
             { animationPanelVisible && <AnimationPanel astm={astm}/> }
@@ -79,9 +101,11 @@ class SketchBoard extends Component {
             { manageMediaPanelVisible && <ManageMediaPanel astm={astm} />}
             { switchSettingsPanelVisible && <SwitchSettingsPanel astm={astm} />}
             { gallerySettingsPanelVisible && <GallerySettingsPanel astm={astm} />}
-            {imageSettingsPanelVisible && <ImageSettingsPanel astm={astm} />}
+            {imageSettingsPanelVisible && <ImageSettingsPanel astm={astm} />} */}
 
-            { colorPickerVisible && <ColorPicker astm={astm}/> }
+            {/* { colorPickerVisible && <ColorPicker astm={astm}/> } */}
+
+            { this.renderCompPanels() }
           </div>
           <ResBtnGrp />
         </div>

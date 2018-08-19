@@ -18,6 +18,9 @@ class SketchBoardStore {
   @action appendAst(option) {
     this.pageResource.appendAst(option);
   }
+  @action addComponent(option) {
+    this.pageResource.appendAst(option);
+  }
 
   @action appendComp(option) {
     this.pageResource.appendAst(option);

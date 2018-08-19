@@ -1,26 +1,26 @@
 import { observable, action, extendObservable } from 'mobx';
-import MetaFactory from '../../compUtils/factory/metaFactory';
-import SpecFactory from '../../compUtils/factory/specFactory';
-import StateFactory from '../../compUtils/factory/stateFactory';
-import TextSpec from './Spec';
-import Store from './Store';
+import TextSpec from './textSpec';
+import DataQuery from './dataQuery';
 
-import compRegistrar from '../../compUtils/compRegistrar';
+import BaseComp from '@packages/components/core/baseComp';
+import compRegistrar from '@packages/compUtils/compRegistrar';
 
-class RichText {
+class RichText extends BaseComp {
 
-  constructor({ spec = {}, store, meta = {}}) {
+  constructor(option) {
+    super(option);
+    const { spec, dataQuery } = option;
+
+    this.id = this.uniqId('comp-');
     this.kind = 'RichText';
-
-    this.spec = SpecFactory.create(spec, spec => new TextSpec(spec));
-    this.meta = MetaFactory.create(meta);
-    this.store = new Store(store);
+    this.type = 'Component';
+    this.spec = new TextSpec(spec);
+    this.dataQuery = new DataQuery(dataQuery);
   }
 
   serialize() {
     return {
       kind: this.kind,
-      meta: this.meta.serialize(),
       spec: this.spec.serialize(),
       store: this.store.serialize(),
     }

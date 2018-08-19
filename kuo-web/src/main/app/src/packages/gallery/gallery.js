@@ -252,11 +252,11 @@ class Gallery extends Component {
   }
 
   getStyleParams() {
-    const { opts } = this.props.astm;
+    const { propQuery } = this.props.astm;
 
     return _.merge(sp, {
       numbers: {
-        galleryLayout: opts.getGalleryLayoutId(),
+        galleryLayout: propQuery.getGalleryLayoutId(),
       },
     });
   }
@@ -265,13 +265,13 @@ class Gallery extends Component {
 
   render() {
     const { astm } = this.props;
-    const { opts: { galleryLayout }, spec: { rect }, opts } = astm;
+    const { propQuery: { galleryLayout }, layout: { width, height } } = astm;
 
     this.trigger(consts.Events.STYLE_PARAMS_CHANGE);
 
     return (
       <div className="ast-gallery">
-        <ProGallery width={rect.width} events={this.events} getStyleParams={this.getStyleParams.bind(this)}/>
+        <ProGallery width={width} events={this.events} getStyleParams={this.getStyleParams.bind(this)}/>
       </div>
     )
   }

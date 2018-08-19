@@ -8,7 +8,7 @@ class AstvMenu extends Component {
 
   render() {
     const { astm } = this.props;
-    const { spec, store, state, meta } = astm;
+    const { spec, store, state, skin } = astm;
     const { rect: { width, height }, shadow, border, fill, font, layout, corner, separator, gap = 0 } = spec;
 
     const { menuItems } = store;
@@ -30,7 +30,7 @@ class AstvMenu extends Component {
                 }} 
                 data-postion={`${i === 0 ? 'left' : i === menuItems.length - 1 ? 'right' : 'center'}`}>
                 <a className="ast-menu-btn-link" style={cssrender({...(i === 0 ? {font: hover.font } : {font})})}>
-                  { meta.skin === 'skin_menu_03' && <div className="ast-menu-btn-repeat-bg"></div> }
+                  { skin === 'skin_menu_03' && <div className="ast-menu-btn-repeat-bg"></div> }
                   <div className="ast-menu-btn-gapper">
                     <div className="ast-menu-btn-bg">
                       <p className="ast-menu-btn-label" style={{ lineHeight: `${height}px`}}>{menuItem.text}</p>

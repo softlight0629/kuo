@@ -1,5 +1,3 @@
-import SpecFactory from '../compUtils/factory/specFactory'
-import StateFactory from '../compUtils/factory/stateFactory';
 import skinRegistrar from '@packages/compUtils/skinRegistrar';
 
 function createSkinSpec(skinOfJson, compModel, SpecOfClazz) {
@@ -12,9 +10,9 @@ function createSkinSpec(skinOfJson, compModel, SpecOfClazz) {
 
   let spec;
   if (SpecOfClazz) { 
-    spec = SpecFactory.create(specJson, spec => new SpecOfClazz(spec));
+    spec = new SpecOfClazz(spec);
   } else {
-    spec = SpecFactory.create(specJson);
+    // spec = SpecFactory.create(specJson);
   }
 
   return spec;
@@ -27,9 +25,9 @@ function createSkinState(skinOfJson, StateOfClazz) {
 
   let state;
   if (StateOfClazz) { 
-    state = StateFactory.create(skinOfJson.state, state => new StateOfClazz(state));
+    state = new StateOfClazz(state);
   } else {
-    state = StateFactory.create(skinOfJson.state);
+    // state = StateFactory.create(skinOfJson.state);
   }
 
   return state;

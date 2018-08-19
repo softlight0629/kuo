@@ -64,9 +64,9 @@ class Photo extends Component {
 
   render() {
     const { astm } = this.props;
-    const { spec, store: { src, alt } } = astm;
-    const { rect: { width, height }, corner, border, shadow, layout, fill } = spec;
-    const filterId = fill.filterEffect && `${fill.filterEffect}-${astm.compId}`;
+    const { spec, layout: {width, height}, dataQuery: { src, alt } } = astm;
+    const { corner, border, shadow, layout, fill } = spec;
+    const filterId = fill.filterEffect && `${fill.filterEffect}-${astm.id}`;
     
     return (
       <div className="ast-image">

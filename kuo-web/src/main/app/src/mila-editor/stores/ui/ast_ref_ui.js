@@ -65,6 +65,10 @@ class AstRefUiStore {
 
   @observable.ref astm = op;
 
+  constructor(store) {
+    this.store = store;
+  }
+
   @action refAstm(astm) {
     this.astm = astm;
   }
