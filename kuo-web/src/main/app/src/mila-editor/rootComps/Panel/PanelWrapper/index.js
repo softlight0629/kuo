@@ -8,7 +8,6 @@ import { withRouter } from 'react-router';
 
 const TabPane = Tabs.TabPane;
 
-@inject('designPanelUiStore')
 @observer
 class PanelWrapper extends Component {
   constructor(props) {
@@ -26,14 +25,14 @@ class PanelWrapper extends Component {
 
   render() {
     const { title, width = 288, onDone } = this.props;
-    const { x, y } = this.props.designPanelUiStore;
 
+    console.log({ x: this.state.x, y: this.state.y }, 'xxxsasdas');
     return (
       <Rnd
-        position={{ x: x, y: y }}
+        position={{ x: this.state.x, y: this.state.y }}
         dragHandleClassName=".panel-header"
         style={{ zIndex: 999 }}
-        onDragStop={(e, d) => { this.props.designPanelUiStore.position(d.x, d.y) }}
+        onDragStop={(e, d) => { this.setState({ x:d.x, y:d.y})}}
       >
         <div className="design-panel" style={{ width: `${width}px` }}>
           <header className="panel-header">

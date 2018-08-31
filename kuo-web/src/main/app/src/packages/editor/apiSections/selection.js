@@ -49,20 +49,26 @@ function create(editorAPI) {
 
   // function getSelectedComponents() {}
 
-  // function isComponentSelected(compRef) {
-  //   const selectedComponents = getSelectedComponents();
-  //   if (_.isEmpty(compRef)) {
-  //     return !_.isEmpty(selectedComponents);
-  //   }
+  function isComponentSelected(compRef) {
+    const selectedComponents = getSelectedComponents();
+    if (_.isEmpty(compRef)) {
+      return !_.isEmpty(selectedComponents);
+    }
 
-  //   const components = asArray(compRef);
-  //   return _.every(components, function isContainedInSelectedComponents(comp) {
-  //     return _.some(selectedComponents, comp);
-  //   });
-  // }
+    const components = asArray(compRef);
+    return _.every(components, function isContainedInSelectedComponents(comp) {
+      return _.some(selectedComponents, comp);
+    });
+  }
+
 
   function selectComponentByCompRef(compRef) {
     const compsToBeSelected = asArray(compRef);
+
+    if (isComponentSelected(compRef)) {
+      return;
+    }
+
     stateManagement.selection.selectComponents(compsToBeSelected);
   }
 

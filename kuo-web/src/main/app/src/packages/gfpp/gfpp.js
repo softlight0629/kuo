@@ -19,12 +19,12 @@ class Gfpp extends Component {
   repeatButton(button, index) {
     return React.createElement(gfppButtonGenerator, _.assign({}, {
       key: button.icon || button.label || button.tooltip,
-    }, button, { rtStore: this.props.rtStore}));
+    }, button, this.props));
   }
 
   render() {
-    const { rtStore } = this.props;
-    const { buttons } = mapToProps(rtStore, this.props.compRef);
+    const { editorAPI, compRef } = this.props;
+    const { buttons } = mapToProps(editorAPI, compRef);
 
     return (
       <ul

@@ -7,17 +7,16 @@ import PanelWrapper from '../../PanelWrapper';
 
 import './index.less';
 
-@inject('designPanelUiStore', 'astRefUiStore')
+@inject('astRefUiStore')
 @observer
 class LayoutPanel extends Component {
 
   close() {
-    this.props.designPanelUiStore.closeLayoutPanel();
+    this.props.editorAPI.panels.closePanelByName('compPanels.layout');
   }
 
   render() {
-    const { astm } = this.props.astRefUiStore;
-    const { layout } = astm;
+    const { layout } = this.props.selectedComponent;
 
     return (
       <PanelWrapper title="Button Layouts" onClose={this.close.bind(this)}>

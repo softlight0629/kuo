@@ -35,9 +35,9 @@ class CompCtrol extends Component {
     this.props.astm.layout.setPosition(d.x, d.y);
   }
 
-  activateComponent(astm) {
-    this.props.astRefUiStore.refAstm(astm);
-    // 检测 shift
+  activateComponent(compRef) {
+    const editorAPI = this.getEditorAPI();
+    editorAPI.selection.selectComponentByCompRef(compRef);
   }
 
   renderComp(astm) {
@@ -111,7 +111,6 @@ class CompCtrol extends Component {
     }
 
     const selectedComponents = editorAPI.selection.getSelectedComponents();
-    console.log(selectedComponents, 'selectedComponents.....');
     const selected = selectedComponents.includes(astm);
 
     return (

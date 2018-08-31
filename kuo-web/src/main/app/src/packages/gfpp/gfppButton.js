@@ -4,9 +4,8 @@ import { Icon } from 'antd';
 class GfppButton extends Component {
 
   onClick() {
-    const rtStore = this.props.rtStore;
-    const selectedComponent = this.props.selectedComponent;
-    this.props.onClick(rtStore, selectedComponent);
+    const editorAPI = this.props.editorAPI;
+    this.props.onClick(editorAPI, this.props.compRef);
   }
 
   render() {

@@ -29,8 +29,8 @@ function createButtons(gfppData) {
   return mainActions.concat(defaultActions).concat(extraActions);
 }
 
-export default function mapToProps(rtStore, compRef) {
-  const gfppDta = gfppModel.getData(rtStore, compRef);
+export default function mapToProps(editorAPI, compRef) {
+  const gfppDta = gfppModel.getData(editorAPI, compRef);
   const buttons = createButtons(gfppDta);
 
   return {

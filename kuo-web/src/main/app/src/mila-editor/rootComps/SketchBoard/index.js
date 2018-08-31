@@ -6,6 +6,10 @@ import GridLine  from '../GridLine';
 import ResBtnGrp from '../LeftBar';
 import CompToolBar from '../ToolBar';
 import ArtBoard from '../ArtBoard';
+import stateManagement from '@packages/stateManagement/stateManagement';
+import compPanelsRegistrar from '@packages/compUtils/compPanelsRegistrar';
+import { editorAPIMixin, editorAPIMixinApi } from '@packages/mixin/editorAPIMixin';
+
 import { 
   DesignPanel, 
   LayoutPanel, 
@@ -32,24 +36,28 @@ import ColorPicker from '../ColorPicker';
 @observer
 class SketchBoard extends Component {
 
+  constructor(props) {
+    super(props);
+
+    editorAPIMixinApi(this);
+  }
+
   renderCompPanel(panel) {
-    const CompPanelClass = panel.compPanelClass;
-    const props = panel.props;
+    const CompPanelClass = compPanelsRegistrar.getCompPanel(panel.name);
 
     return (
-      <CompPanelClass rtStore={this.props.rtStore} {...props}/>
+      <CompPanelClass editorAPI={this.getEditorAPI()} {...panel.props}/>
     )
   }
 
   renderCompPanels() {
-    const openedPanels = this.props.panelUiStore.openedPanels;
-    console.log(openedPanels, 'openedPanels....');
+    const openedPanels = stateManagement.panels.selectOpenPanels();
     return (
-      <div>
+      <React.Fragment>
         {
           openedPanels.map(panel => this.renderCompPanel(panel))
         }        
-      </div>
+      </React.Fragment>
     )
   }
 
@@ -84,27 +92,6 @@ class SketchBoard extends Component {
           </div>
           <div className="sketch-board-canvas">
             <ArtBoard />
-            {/* <CompToolBar /> */}
-            {/* { designPanelVisible && <DesignPanel astm={astm}/> }
-            { editTextPanelVisible && <TextPanel astm={astm} /> }
-            { layoutPanelVisible &&  <LayoutPanel astm={astm}/> }
-            { animationPanelVisible && <AnimationPanel astm={astm}/> }
-            { linkPanelVisible && <LinkPanel astm={astm}/> }
-            { settingPanelVisible && <SelectSettingsPanel astm={astm} />}
-            { filterPanelVisible && <FilterPanel astm={astm} />}
-
-            { changeTextPanelVisible && <ChangeTextPanel astm={astm} /> }
-            { setInputTypePanelVisible && <SetInputTypePanel astm={astm} />}
-            { setInitialTextPanelVisible && <SetInitialTextPanel astm={astm} />}
-            { manageButtonsPanelVisible && <ManageButtonsPanel astm={astm} />}
-            { manageItemsPanelVisible && <ManageItemsPanel astm={astm} />}
-            { manageMediaPanelVisible && <ManageMediaPanel astm={astm} />}
-            { switchSettingsPanelVisible && <SwitchSettingsPanel astm={astm} />}
-            { gallerySettingsPanelVisible && <GallerySettingsPanel astm={astm} />}
-            {imageSettingsPanelVisible && <ImageSettingsPanel astm={astm} />} */}
-
-            {/* { colorPickerVisible && <ColorPicker astm={astm}/> } */}
-
             { this.renderCompPanels() }
           </div>
           <ResBtnGrp />
@@ -114,4 +101,4 @@ class SketchBoard extends Component {
   }
 }
 
-export default SketchBoard;
+export default editorAPIMixin(SketchBoard);
