@@ -4,21 +4,22 @@ import ScrollBar from '../../../components/ScrollBar';
 import { observer } from 'mobx-react';
 
 @observer
-class FreePane extends Component {
+class MediaPane extends Component {
 
   selectCategory(category) {
-    // this.props.pane.selectCategory(category);
   }
 
-  select(media) {
-    // this.props.mediaLibraryUiStore.select(media);
+  toggle(media) {
+    const editorAPI = this.props.editorAPI;
+    editorAPI.mediaGallery.toggleSelectedMedia(media);
   }
 
   render() {
-    // const { pane, mediaLibraryUiStore: { selectedMedias } } = this.props;
-    // const { categories, medias, currentCategory } = pane;
-    // const selectedIds = selectedMedias.map(selectedMedia => selectedMedia.id);
+    const editorAPI = this.props.editorAPI;
+    const selectedMediaIds = editorAPI.mediaGallery.getSelectedMediaIds();
 
+    const { categoryFolders, medias, selectedMedias } = this.props;
+    
     return (
       <div className="content-wrapper">
         <div className="sidebar">
@@ -27,7 +28,7 @@ class FreePane extends Component {
                 <div className="folders">
                   <ul className="folder-list">
                     {
-                      categories.map(category => (
+                      categoryFolders.map(category => (
                         <li className="folder-list-item" onClick={() => this.selectCategory(category)}>
                           <div className="name">
                             <div className="name-inner">{category.title}</div>
@@ -45,15 +46,15 @@ class FreePane extends Component {
               <div className="entities-grid">
                 <Breadcrumb>
                   <Breadcrumb.Item>Images</Breadcrumb.Item>
-                  <Breadcrumb.Item>{currentCategory.title}</Breadcrumb.Item>
+                  {/* <Breadcrumb.Item>{currentCategory.title}</Breadcrumb.Item> */}
                 </Breadcrumb>
                 <ul className="items">
                   {
                     medias.map(media => (
-                      <li className={`item ${selectedIds.includes(media.id)?'selected' : ''}`}>
+                      <li className={`item ${selectedMediaIds.includes(media.id)?'selected' : ''}`}>
                         <div className="image"
-                          style={{ backgroundImage: `url(${media.cover})` }}
-                          onClick={() => this.select(media)}
+                          style={{ backgroundImage: `url(${media.fileUrl})` }}
+                          onClick={() => this.toggle(media)}
                         />
                       </li>
                     ))
@@ -67,4 +68,4 @@ class FreePane extends Component {
   }
 }
 
-export default FreePane;
+export default MediaPane;

@@ -12,7 +12,7 @@ import './index.less';
 class LayoutPanel extends Component {
 
   close() {
-    this.props.editorAPI.panels.closePanelByName('compPanels.layout');
+    this.props.editorAPI.panels.closePanelByName('panels.compPanels.layout');
   }
 
   render() {

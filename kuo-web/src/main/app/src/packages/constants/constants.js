@@ -56,6 +56,7 @@ export default {
         EFFECTS: 'effects',
         CROP: 'crop',
         AVIARY: 'aviary',
+        TEXT: 'text',
         ANIMATION: 'animation',
         MOBILE_ANIMATION: 'mobileAnimation',
         LINK: 'link',

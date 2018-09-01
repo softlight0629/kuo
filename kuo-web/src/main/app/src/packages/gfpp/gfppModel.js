@@ -14,43 +14,47 @@ const DEFAULT_GFPP_DATA = {
 const DEFAULTS = {
   settings: {
     icon: 'setting',
-    onClick: gfppData.utils.getTogglePanelFn('compPanels.settings'),
+    onClick: gfppData.utils.getTogglePanelFn('panels.compPanels.settings'),
   },
   design: {
-    icon: 'dashboard',
-    onClick: gfppData.utils.getTogglePanelFn('compPanels.design'),
+    icon: 'apple-o',
+    onClick: gfppData.utils.getTogglePanelFn('panels.compPanels.design'),
   },
   layout: {
-    icon: 'layout',
-    onClick: gfppData.utils.getTogglePanelFn('compPanels.layout'),
+    icon: 'window-o',
+    onClick: gfppData.utils.getTogglePanelFn('panels.compPanels.layout'),
   },
   filters: {
-    icon: 'rocket',
-    onClick: gfppData.utils.getTogglePanelFn('compPanels.filter'),
+    icon: 'gitlab',
+    onClick: gfppData.utils.getTogglePanelFn('panels.compPanels.filter'),
+  },
+  text: {
+    icon: 'codepen',
+    onClick: gfppData.utils.getTogglePanelFn('panels.compPanels.text'),
   },
   behaviors: {
     icon: 'layout',
-    onClick: gfppData.utils.getTogglePanelFn('compPanels.behaviors'),
+    onClick: gfppData.utils.getTogglePanelFn('panels.compPanels.behaviors'),
   },
   effects: {
     icon: 'layout',
-    onClick: gfppData.utils.getTogglePanelFn('compPanels.effects'),
+    onClick: gfppData.utils.getTogglePanelFn('panels.compPanels.effects'),
   },
   stretch: {
-    icon: 'layout',
-    onClick: gfppData.utils.getTogglePanelFn('compPanels.stretch'),
+    icon: 'fork',
+    onClick: gfppData.utils.getTogglePanelFn('panels.compPanels.stretch'),
   },
   corp: {
-    icon: 'layout',
+    icon: 'tool',
     onClick: (rtStore, compRef) => {},
   },
   animation: {
-    icon: 'sync',
-    onClick:(rtStore, compRef) => {},
+    icon: 'aliyun',
+    onClick: gfppData.utils.getTogglePanelFn('panels.compPanels.animation'),
   },
   link: {
     icon: 'link',
-    onClick:(rtStore, compRef) => {},
+    onClick: gfppData.utils.getTogglePanelFn('panels.compPanels.link'),
   }
 }
 

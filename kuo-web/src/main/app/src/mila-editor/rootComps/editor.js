@@ -1,6 +1,7 @@
 import React,  { Component } from 'react';
 import { withRouter } from 'react-router';
 import { observer, inject } from 'mobx-react';
+import stateManagement from '@packages/stateManagement/stateManagement';
 
 import SiteStructure from './LeftSiteTree';
 import MediaLibrary from './MediaLibrary';
@@ -18,10 +19,12 @@ class WorkSpace extends Component {
   }
 
   render() {
+    const { mediaGallery } = stateManagement;
 
+    console.log(mediaGallery.props, 'props....');
     return (
       <div className="workspace">
-        <MediaLibrary />
+        <MediaLibrary visible={mediaGallery.visible} {...mediaGallery.props} categoryFolders={mediaGallery.categoryFolders} medias={mediaGallery.medias} />
         <div className="workspace-wrapper">
           <div className="pane-container">
             <SiteStructure />

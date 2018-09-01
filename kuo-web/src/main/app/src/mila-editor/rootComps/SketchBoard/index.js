@@ -62,26 +62,6 @@ class SketchBoard extends Component {
   }
 
   render() {
-    const { 
-      designPanelVisible, 
-      layoutPanelVisible,
-      linkPanelVisible,
-      editTextPanelVisible,
-      animationPanelVisible,
-      settingPanelVisible,
-      filterPanelVisible,
-
-      changeTextPanelVisible,
-      manageMediaPanelVisible,
-      setInputTypePanelVisible,
-      setInitialTextPanelVisible,
-      manageButtonsPanelVisible,
-      manageItemsPanelVisible,
-      switchSettingsPanelVisible,
-      gallerySettingsPanelVisible,
-      imageSettingsPanelVisible,
-    } = this.props.designPanelUiStore;
-    const { astm } = this.props.astRefUiStore;
     const { colorPickerVisible } = this.props.colorPickerUiStore;
 
     return (

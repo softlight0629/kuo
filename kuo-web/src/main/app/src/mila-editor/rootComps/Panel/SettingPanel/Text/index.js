@@ -93,7 +93,7 @@ class TextPanel extends Component {
   }
 
   render() {
-    const { font, fill, textEffect, textAlign, textIndent, theme } = this.props.astm;
+    const { spec: { font, fill, textEffect, textAlign, textIndent, theme } } = this.props.selectedComponent;
 
     const fonts = [];
     for (let i = 0; i < Fonts.length; i++) {

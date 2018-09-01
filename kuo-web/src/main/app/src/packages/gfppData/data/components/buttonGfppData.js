@@ -28,5 +28,6 @@ export default {
     ACTIONS.FILTERS,
     ACTIONS.ANIMATION,
     ACTIONS.LINK,
+    ACTIONS.TEXT,
   ],
 }

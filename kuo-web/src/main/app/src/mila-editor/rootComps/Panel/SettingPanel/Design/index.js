@@ -144,7 +144,7 @@ class DesignPanel extends Component {
   }
 
   close() {
-    this.props.panelUiStore.closePanelByName('compPanels.design');
+    this.props.editorAPI.panels.closePanelByName('panels.compPanels.design');
   }
 
   renderThemePanel() {

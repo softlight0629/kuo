@@ -15,31 +15,31 @@ class WorkSpaceStore {
   @action fetch(guid) {
     this.site = new Site(this.store, siteData);
     this.store.sketchBoardStore.activatePage(this.site.getFirstPageResource());
-    // this.store.sketchBoardStore.addComponent({
-    //   kind: 'Photo',
-    //   type: 'Component',
-    //   componentType: 'mila.components.Photo',
-    //   layout: {
-    //     width: 679,
-    //     height: 425,
-    //     x: 100,
-    //     y: 200,
-    //   },
-    //   spec: {
-    //     fill: {
-    //       opacity: 1,
-    //       filterEffect: 'kennedy',
-    //     },
-    //     border: {
-    //       width: 0,
-    //     },
-    //   },
-    //   dataQuery: {
-    //     src: 'https://static.wixstatic.com/media/f31ce2_51215dc7492f455f81e5e5e443704ad7~mv2.jpg/v1/fill/w_720,h_404,al_c,lg_1,q_80/f31ce2_51215dc7492f455f81e5e5e443704ad7~mv2.webp',
-    //   },
-    //   propQuery: {
-    //   },
-    // });
+    this.store.sketchBoardStore.addComponent({
+      kind: 'Photo',
+      type: 'Component',
+      componentType: 'mila.components.Photo',
+      layout: {
+        width: 679,
+        height: 425,
+        x: 100,
+        y: 200,
+      },
+      spec: {
+        fill: {
+          opacity: 1,
+          filterEffect: 'kennedy',
+        },
+        border: {
+          width: 0,
+        },
+      },
+      dataQuery: {
+        src: 'https://static.wixstatic.com/media/f31ce2_51215dc7492f455f81e5e5e443704ad7~mv2.jpg/v1/fill/w_720,h_404,al_c,lg_1,q_80/f31ce2_51215dc7492f455f81e5e5e443704ad7~mv2.webp',
+      },
+      propQuery: {
+      },
+    });
     // this.store.sketchBoardStore.addComponent({
     //   kind: 'RichText',
     //   type: 'Component',
@@ -57,51 +57,51 @@ class WorkSpaceStore {
     //     text: 'Heading',
     //   },
     // });
-    this.store.sketchBoardStore.addComponent({
-      kind: 'Button',
-      type: 'Component',
-      componentType: 'mila.components.Button',
-      skin: 'mila.components.skins.Button.ButtonBasicSkin',
-      layout: {
-        width: 151,
-        height: 40,
-        x: 520,
-        y: 200,
-      },
-      spec: {
-        layout: {
-          align: 'center',
-          margin: 0,
-        },
-        animation: {
-        },
-        fill: {
-          color: '#323232',
-          opacity: 100,
-        },
-        border: {
-          color: '#000000',
-          width: 0,
-          opacity: 100,
-        },
-        font: {
-          fontFamily: 'Arial',
-          fontSize: 16,
-          color: '#ffffff',
-        },
-        corner: {
-          leftTop: '0px',
-          rightTop: '0px',
-          leftBottom: '0px',
-          rightBottom: '0px',
-        },
-      },
-      dataQuery: {
-        text: 'this is button',
-      },
-      propQuery: {
-      },
-    });
+    // this.store.sketchBoardStore.addComponent({
+    //   kind: 'Button',
+    //   type: 'Component',
+    //   componentType: 'mila.components.Button',
+    //   skin: 'mila.components.skins.Button.ButtonBasicSkin',
+    //   layout: {
+    //     width: 151,
+    //     height: 40,
+    //     x: 520,
+    //     y: 200,
+    //   },
+    //   spec: {
+    //     layout: {
+    //       align: 'center',
+    //       margin: 0,
+    //     },
+    //     animation: {
+    //     },
+    //     fill: {
+    //       color: '#323232',
+    //       opacity: 100,
+    //     },
+    //     border: {
+    //       color: '#000000',
+    //       width: 0,
+    //       opacity: 100,
+    //     },
+    //     font: {
+    //       fontFamily: 'Arial',
+    //       fontSize: 16,
+    //       color: '#ffffff',
+    //     },
+    //     corner: {
+    //       leftTop: '0px',
+    //       rightTop: '0px',
+    //       leftBottom: '0px',
+    //       rightBottom: '0px',
+    //     },
+    //   },
+    //   dataQuery: {
+    //     text: 'this is button',
+    //   },
+    //   propQuery: {
+    //   },
+    // });
     // this.store.sketchBoardStore.addComponent({
     //   kind: 'Gallery',
     //   type: 'Component',

@@ -17,7 +17,7 @@ const thumbHeight = 72;
 class FilterPanel extends Component {
 
   close() {
-    this.props.designPanelUiStore.closeFilterPanel();
+    this.props.editorAPI.panels.closePanelByName('panels.compPanels.filter');
   }
 
   selectEffect(effect) {
@@ -25,7 +25,8 @@ class FilterPanel extends Component {
   }
 
   renderThumb(thumb) {
-    const astm = this.props.astm;
+    const { dataQuery, layout } = this.props.selectedComponent;
+    
 
     return (
       <div className="thumbnail-wrapper item-wrapper" onClick={() => this.selectEffect(thumb.value)}>
@@ -38,9 +39,9 @@ class FilterPanel extends Component {
                   position: 'relative',
                 }}
                 imageData={{
-                  src: astm.dataQuery.src,
-                  width: astm.layout.width,
-                  height: astm.layout.height,
+                  src: dataQuery.src,
+                  width: layout.width,
+                  height: layout.height,
                   effectName: thumb.value,
                 }}
                 imageWidth={thumbWidth}

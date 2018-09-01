@@ -10,12 +10,11 @@ import './index.less';
 class AnimationPanel extends Component {
 
   close() {
-    this.props.designPanelUiStore.closeAniamtionPanel();
+    this.props.editorAPI.panels.closePanelByName('panels.compPanels.animation');
   }
 
   render() {
-    const { astm } = this.props.astRefUiStore;
-    const { animation } = astm;
+    const { spec: { animation } } = this.props.selectedComponent;
 
     return (
       <PanelWrapper title="Choose Animation" onClose={this.close.bind(this)}>

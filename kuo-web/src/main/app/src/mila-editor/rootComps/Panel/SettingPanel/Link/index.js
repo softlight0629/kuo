@@ -37,18 +37,19 @@ class LinkPanel extends Component {
   }
 
   componentDidMount() {
-    const { astm } = this.props;
+    const { spec: { link } } = this.props.selectedComponent;
+
     this.setState({
-      type: astm.spec.link.type,
-      page: astm.spec.link.page || {},
-      email: astm.spec.link.email || {},
-      phoneNumber: astm.spec.link.phoneNumber || {},
-      webAddress: astm.spec.link.webAddress || {},
+      type:link.type,
+      page: link.page || {},
+      email: link.email || {},
+      phoneNumber: link.phoneNumber || {},
+      webAddress: link.webAddress || {},
     });
   }
 
   close() {
-    this.props.designPanelUiStore.closeLinkPanel();
+    this.props.editorAPI.panels.closePanelByName('panels.compPanels.link');
   }
 
   renderNoneLink = () => {
@@ -115,18 +116,18 @@ class LinkPanel extends Component {
   }
 
   done() {
-    const { astm } = this.props;
+    const { spec } = this.props.selectedComponent;
     
     if (this.state.type === 'WebAddress') {
-      astm.spec.link.setWebAddress(this.state.webAddress);
+      spec.link.setWebAddress(this.state.webAddress);
     }
 
     if (this.state.type === 'Email') {
-      astm.spec.link.setEmail(this.state.email);
+      spec.link.setEmail(this.state.email);
     }
 
     if (this.state.type === 'PhoneNumber') {
-      astm.spec.link.setPhoneNumber(this.state.phoneNumber);
+      spec.link.setPhoneNumber(this.state.phoneNumber);
     }
   }
 
@@ -138,7 +139,6 @@ class LinkPanel extends Component {
       marginBottom: '14px',
     };
 
-    console.log(this.state.type, 'sssa');
     return (
       <PanelWrapper title="What do you want to link to?" width={560} onClose={this.close.bind(this)} onDone={() => this.done() }>
         <div className="link-panel">

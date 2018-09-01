@@ -52,4 +52,5 @@ class ColorPicker extends Component {
   }
 }
 
+// panels.toolPanels.colorPicker.colorPickerPanel
 export default ColorPicker;
