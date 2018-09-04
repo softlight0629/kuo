@@ -1,30 +1,25 @@
 import * as _ from 'lodash';
 import compRegistrar from '@packages/compUtils/compRegistrar';
 import BaseComp from './baseComp';
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 
 class BaseContainerComp extends BaseComp {
 
-  components = [];
+  @observable components = [];
 
   constructor(option) {
     super(option);
 
     _.delay((() => {
-      option.components.map(component => {
-        return this.addComponent(component);
-      });
+      option.components.map(action(compDefinition => {
+        const compRef = this.addChildComponent(compDefinition);
+        this.components.push(compRef);
+      }));
     }), 1000);
   }
 
-  addComponent(component) {
-    const CompModelClazz = compRegistrar.getComp('mila.components.model.' + component.kind);
-    const comp =  new CompModelClazz(component);
-
-    this.components.push(comp);
-    this.runtimeCtx.addComponent(comp.id, comp);
-
-    return comp;
+  @action addChildComponent(compDefinition) {
+    return this.runtimeCtx.addChildComponent(this.id, compDefinition);
   }
 
   get size() {

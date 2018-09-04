@@ -35,7 +35,7 @@ class AssetBox extends Component {
   }
 
   render() {
-    const { astm, designPanelUiStore } = this.props;
+    const { astm, designPanelUiStore, compRef } = this.props;
     const { spec: { animation }, layout } = astm;
 
     const stylus = {
@@ -90,13 +90,11 @@ class AssetBox extends Component {
           // onDragStart={() => this.setState({ rnding: true })}
           onDragStop={this.onDragStop.bind(this)}
         >
-          <div className="asset-box" onMouseDown={() => this.activateAst(astm)}>
+          <div id={`${compRef.id}`} className="comp" onMouseDown={() => this.activateAst(astm)}>
             {selected && !this.state.rnding && <AssetSetting astm={astm} />}
             <div className={`animated`} style={{ width: '100%', height: '100%', ...animationProps}}>
-              <div key={1} className="asset">
-                {this.renderAstv(astm) }
-                <div className="asset-modal" />
-              </div>
+              {this.renderAstv(astm) }
+              <div className="comp-overlay" />
             </div>
           </div>
         </Rnd>

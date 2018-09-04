@@ -21,13 +21,12 @@ class FilterPanel extends Component {
   }
 
   selectEffect(effect) {
-    this.props.astm.spec.fill.setFilterEffect(effect);
+    this.props.selectedComponent.spec.fill.setFilterEffect(effect);
   }
 
   renderThumb(thumb) {
     const { dataQuery, layout } = this.props.selectedComponent;
     
-
     return (
       <div className="thumbnail-wrapper item-wrapper" onClick={() => this.selectEffect(thumb.value)}>
       <label className="label">

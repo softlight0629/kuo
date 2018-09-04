@@ -19,6 +19,7 @@ class Button extends BaseComp {
     this.id = this.uniqId('comp-');
     this.kind = 'Button';
     this.type = 'Component';
+    this.componentType = 'mila.components.Button';
     this.obervers = [];
     this.skin = skin;
     this.spec = new ButtonSpec(spec);

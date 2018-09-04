@@ -1,7 +1,6 @@
 import idUtils from '@packages/coreUtils/core/idUtils';
-import runtimeCtx from '@packages/runtime/runtimeCtx';
+import ctx from '@packages/runtime/runtimeCtx';
 import Layout from './layout';
-
 
 class BaseComp {
   constructor(option) {
@@ -13,8 +12,7 @@ class BaseComp {
   }
 
   get runtimeCtx() {
-    console.log('sss', runtimeCtx);
-    return runtimeCtx;
+    return ctx.getRuntimeCtx();
   }
 
   uniqId(prefix = '') {

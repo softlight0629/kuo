@@ -15,7 +15,7 @@ useStrict(true);
 const editorAPI = create(stores);
 stores.editorAPI = editorAPI;
 
-const runtimeCtx = new RuntimeCtx(editorAPI);
+const runtimeCtx = RuntimeCtx.create(editorAPI);
 stores.runtimeCtx = runtimeCtx;
 
 ReactDOM.render(

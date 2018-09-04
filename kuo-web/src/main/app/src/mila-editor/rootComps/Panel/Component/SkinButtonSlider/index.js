@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { inject } from 'mobx-react';
 
-@inject('astRefUiStore')
 class SkinButtonSlider extends Component {
 
   constructor(props) {
@@ -12,8 +11,8 @@ class SkinButtonSlider extends Component {
   }
 
   apply(skin) {
-    const { astm } = this.props.astRefUiStore;
-    skin.apply(astm);
+    // const { astm } = this.props.astRefUiStore;
+    // skin.apply(astm);
   }
 
   renderSkinButton(skin) {

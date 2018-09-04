@@ -15,31 +15,31 @@ class WorkSpaceStore {
   @action fetch(guid) {
     this.site = new Site(this.store, siteData);
     this.store.sketchBoardStore.activatePage(this.site.getFirstPageResource());
-    this.store.sketchBoardStore.addComponent({
-      kind: 'Photo',
-      type: 'Component',
-      componentType: 'mila.components.Photo',
-      layout: {
-        width: 679,
-        height: 425,
-        x: 100,
-        y: 200,
-      },
-      spec: {
-        fill: {
-          opacity: 1,
-          filterEffect: 'kennedy',
-        },
-        border: {
-          width: 0,
-        },
-      },
-      dataQuery: {
-        src: 'https://static.wixstatic.com/media/f31ce2_51215dc7492f455f81e5e5e443704ad7~mv2.jpg/v1/fill/w_720,h_404,al_c,lg_1,q_80/f31ce2_51215dc7492f455f81e5e5e443704ad7~mv2.webp',
-      },
-      propQuery: {
-      },
-    });
+    // this.store.sketchBoardStore.addComponent({
+    //   kind: 'Photo',
+    //   type: 'Component',
+    //   componentType: 'mila.components.Photo',
+    //   layout: {
+    //     width: 679,
+    //     height: 425,
+    //     x: 100,
+    //     y: 200,
+    //   },
+    //   spec: {
+    //     fill: {
+    //       opacity: 1,
+    //       filterEffect: 'kennedy',
+    //     },
+    //     border: {
+    //       width: 0,
+    //     },
+    //   },
+    //   dataQuery: {
+    //     src: 'https://static.wixstatic.com/media/f31ce2_51215dc7492f455f81e5e5e443704ad7~mv2.jpg/v1/fill/w_720,h_404,al_c,lg_1,q_80/f31ce2_51215dc7492f455f81e5e5e443704ad7~mv2.webp',
+    //   },
+    //   propQuery: {
+    //   },
+    // });
     // this.store.sketchBoardStore.addComponent({
     //   kind: 'RichText',
     //   type: 'Component',
@@ -165,79 +165,79 @@ class WorkSpaceStore {
     //   }
     // });
 
-    // this.store.sketchBoardStore.addComponent({
-    //   kind: 'StripColumnsContainer',
-    //   type: 'Container',
-    //   componentType: 'mila.components.StripColumnsContainer',
-    //   layout: {
-    //     width: 980,
-    //     height: 650,
-    //     x: 100,
-    //     y: 200,
-    //   },
-    //   spec: {
-    //   },
-    //   components: [
-    //     {
-    //       kind: 'Column',
-    //       type: 'Container',
-    //       componentType: 'mila.components.Column',
-    //       layout: {
-		// 				width: 490,
-		// 				height: 650,
-		// 				x: -115,
-		// 				y: 0,
-		// 				scale: 1.0,
-		// 				rotationInDegrees: 0.0,
-		// 				fixedPosition: false
-    //       },
-    //       spec: {},
-    //       components: [
-    //         {
-    //           kind: 'RichText',
-    //           type: 'Component',
-    //           componentType: 'mila.components.RichText',
-    //           layout: {
-    //             width: 679,
-    //             height: 425,
-    //             x: 100,
-    //             y: 200,
-    //           },
-    //           spec: {
-    //             theme: 'h2',
-    //           },
-    //           dataQuery: {
-    //             text: 'Heading',
-    //           },
-    //         },
-    //       ],
-    //       propQuery: {},
-    //       dataQuery: {},
-    //     },
-    //     {
-    //       kind: 'Column',
-    //       type: 'Container',
-    //       componentType: 'mila.components.Column',
-    //       layout: {
-		// 				width: 490,
-		// 				height: 650,
-		// 				x: 605,
-		// 				y: 0,
-		// 				scale: 1.0,
-		// 				rotationInDegrees: 0.0,
-		// 				fixedPosition: false
-    //       },
-    //       spec: {},
-    //       components: [],
-    //       propQuery: {},
-    //       dataQuery: {},
-    //     },
-    //   ],
-    //   dataQuery: {
-    //   },
-    //   propQuery: {
-    //   },
-    // });
+    this.store.sketchBoardStore.addComponent({
+      kind: 'StripColumnsContainer',
+      type: 'Container',
+      componentType: 'mila.components.StripColumnsContainer',
+      layout: {
+        width: 980,
+        height: 650,
+        x: 100,
+        y: 200,
+      },
+      spec: {
+      },
+      components: [
+        {
+          kind: 'Column',
+          type: 'Container',
+          componentType: 'mila.components.Column',
+          layout: {
+						width: 490,
+						height: 650,
+						x: -115,
+						y: 0,
+						scale: 1.0,
+						rotationInDegrees: 0.0,
+						fixedPosition: false
+          },
+          spec: {},
+          components: [
+            {
+              kind: 'RichText',
+              type: 'Component',
+              componentType: 'mila.components.RichText',
+              layout: {
+                width: 177,
+                height: 51,
+                x: 100,
+                y: 200,
+              },
+              spec: {
+                theme: 'h2',
+              },
+              dataQuery: {
+                text: 'Heading',
+              },
+            },
+          ],
+          propQuery: {},
+          dataQuery: {},
+        },
+        {
+          kind: 'Column',
+          type: 'Container',
+          componentType: 'mila.components.Column',
+          layout: {
+						width: 490,
+						height: 650,
+						x: 605,
+						y: 0,
+						scale: 1.0,
+						rotationInDegrees: 0.0,
+						fixedPosition: false
+          },
+          spec: {},
+          components: [],
+          propQuery: {},
+          dataQuery: {},
+        },
+      ],
+      dataQuery: {
+      },
+      propQuery: {
+      },
+    });
   }
 
   save() {

@@ -9,7 +9,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
 import { SketchPicker } from 'react-color';
 import AssetBox from '../AssetBox';
-import createComponent from '@packages/runtime/component/createComponent';
+import compClassFactory from '@packages/compUtils/compClassFactory';
 
 @inject('workSpaceStore', 'sketchBoardStore', 'runtimeCtx')
 @observer
@@ -36,7 +36,7 @@ class ArtBoard extends Component {
                       {/* <div className="mainPageBg">{ pageResource.template }</div> */}
                       <div className="mainPageBgContent">
                       {
-                        components.map((component, i) => createComponent(component))
+                        components.map((compRef, i) => compClassFactory.createComponent(compRef))
                       }
                       </div>
                     </div>

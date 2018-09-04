@@ -1,0 +1,51 @@
+
+.strc1[data-responsive] {
+  display: grid;
+  -webkit-box-pack: center;
+  justify-content: center;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr;
+
+  min-width: 980px;
+  position: absolute;
+  margin-left: 0px;
+  top: 0px;
+  height: 650px;
+  left: 0px;
+  width: 100%;
+
+  & > * {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 2;
+    grid-column-end: 2;
+    margin: 0 auto;
+  }
+
+  .strc1-balata {
+    position: absolute;
+    top: 0px;
+    width: calc(100% - 0px);
+    height: 100%;
+    overflow: hidden;
+    pointer-events: auto;
+    left: 0px;
+    right: 0px;
+    min-width: 980px;
+    clip: rect(0px, 1432px, 650px, 0px);
+  }
+
+  .strc1-inline-content {
+    position: relative;
+    display: flex;
+    width: calc(100% - 0px);
+    min-width: 980px;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+

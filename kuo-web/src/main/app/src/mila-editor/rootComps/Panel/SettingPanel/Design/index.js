@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as _ from 'lodash';
 import { Icon, Slider, Tabs, Select, InputNumber } from 'antd';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
@@ -13,9 +14,12 @@ import {
 } from '../../Component';
 // import ThemeButton from '../../ThemeButton';
 import PanelWrapper from '../../PanelWrapper';
+import { editorAPIMixin, editorAPIMixinApi } from '@packages/mixin/editorAPIMixin';
 
 import './index.less';
-import SkinButtonSlider from '../../Component/SkinButtonSlider';
+// import SkinButtonSlider from '../../Component/SkinButtonSlider';
+import ThumbnailSlider from '@packages/baseUi/panelInputs/thumbnailSlider';
+import staticAssets from '@packages/staticAssets/staticAssets';
 
 const TabPane = Tabs.TabPane;
 const Option = Select.Option;
@@ -37,6 +41,34 @@ const Fonts = [
 @inject('designPanelUiStore', 'astRefUiStore', 'astThemeUiStore', 'panelUiStore')
 @observer
 class DesignPanel extends Component {
+
+  constructor(props) {
+    super(props);
+
+    editorAPIMixinApi(this);
+  }
+
+  componentDidMount() {
+    const editorAPI = this.getEditorAPI();
+    const currentSkin = this.props.selectedComponent.skin;
+    const skins = editorAPI.dss.getComponentSkins(this.props.selectedComponent.componentType) || [];
+    this.componentSkins = skins;
+  }
+
+  getItemsForThumnailSlider() {
+    const editorAPI = this.getEditorAPI();
+    const currentSkin = this.props.selectedComponent.skin;
+    const componentSkins = editorAPI.dss.getComponentSkins(this.props.selectedComponent.componentType) || [];
+    
+    return _.map(componentSkins, (skinName, index) => {
+      const assetName = `advancedStylePanel/iconsForSkins/${skinName}.png`;
+      return {
+        label: index,
+        value: skinName,
+        iconSrc: _.get(staticAssets, [ 'staticAssetsMap', assetName]),
+      }
+    });
+  }
 
   renderBorderPane(border) {
 
@@ -232,7 +264,7 @@ class DesignPanel extends Component {
     )
   }
 
-  renderStateTabs = ({ spec, state: { hover, clicked, disabled } }) => (
+  renderStateTabs = ({ spec }) => (
     <Tabs
       defaultActiveKey="1"
       size="small"
@@ -241,7 +273,7 @@ class DesignPanel extends Component {
       <TabPane tab={<span>Regular</span>} key="1">
         {this.renderRegularPanel(spec)}
       </TabPane>
-      {
+      {/* {
         hover && (
           <TabPane tab={<span>Hover</span>} key="2">
             {this.renderStatePanel(hover)}
@@ -261,23 +293,25 @@ class DesignPanel extends Component {
             {this.renderStatePanel(disabled)}
           </TabPane>
         )
-      }
+      } */}
     </Tabs>
   )
 
   render() {
-    const { astm } = this.props.astRefUiStore;
+    const { selectedComponent } = this.props;
     // const skins = this.props.astSkinUiStore.skinsOfKind(astm.kind);
 
     return (
       <PanelWrapper title="Button Setttings" onClose={this.close.bind(this)}>
         <div className="advanced-style-panel">
           <div className="advanced-style-panel-header">
-            {/* <SkinButtonSlider skins={skins} /> */}
+            {
+              <ThumbnailSlider items={this.getItemsForThumnailSlider()}/>
+            }
           </div>
           <div className="advanced-style-panel-body">
             <div className="content-container">
-              {/* {this.renderStateTabs(astm)} */}
+              {this.renderStateTabs(selectedComponent)}
             </div>
           </div>
         </div>
@@ -286,4 +320,4 @@ class DesignPanel extends Component {
   }
 }
 
-export default DesignPanel;
+export default editorAPIMixin(DesignPanel);

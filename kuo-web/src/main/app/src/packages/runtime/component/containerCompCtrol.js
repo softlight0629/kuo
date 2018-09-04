@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
-import Rnd from 'react-rnd';
 import { Icon } from 'antd';
 import compRegistrar from '@packages/compUtils/compRegistrar';
 import Gfpp from '@packages/gfpp/gfpp';
 import { editorAPIMixin, editorAPIMixinApi } from '@packages/mixin/editorAPIMixin';
-import './compCtrol.less';
+import './containerCompControl.less';
 
-@inject('designPanelUiStore')
 @observer
-class CompCtrol extends Component {
+class ContainerCompCtrol extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      rnding: false,
-
       gfppIsCollapsed: true,
       gfppStyle: {
         top: 0,
@@ -74,7 +70,7 @@ class CompCtrol extends Component {
   render() {
     const editorAPI = this.getEditorAPI();
   
-    const { astm, designPanelUiStore } = this.props;
+    const { astm, compRef } = this.props;
     const { spec: { animation }, layout } = astm;
 
     const stylus = {
@@ -114,34 +110,12 @@ class CompCtrol extends Component {
     const selected = selectedComponents.includes(astm);
 
     return (
-        <Rnd
-          style={stylus}
-          className={`asset-handles ${selected?'selected':''}`}
-          size={{ width: layout.width + 2, height: layout.height + 2 }}
-          position={{ x: layout.x, y: layout.y }}
-          resizeHandleClasses={resizeHandleClasses}
-          // lockAspectRatio={lockRation}
-          onResize={(e, direction, ref, delta, position) => {
-            layout.setSize(ref.offsetWidth - 2, ref.offsetHeight - 2);
-            layout.setPosition(position.x, position.y);
-          }}
-          onResizeStart={() => this.setState({ rnding: true })}
-          onResizeStop={() => this.setState({ rnding: false })}
-          // onDragStart={() => this.setState({ rnding: true })}
-          onDragStop={this.onDragStop.bind(this)}
-        >
-          <div className="asset-box" onMouseDown={() => this.activateComponent(astm)}>
-            {selected && !this.state.rnding && this.renderGfpp(astm)}
-            <div className={`animated`} style={{ width: '100%', height: '100%', ...animationProps}}>
-              <div key={1} className="asset">
-                {this.renderComp(astm) }
-                <div className="asset-modal" />
-              </div>
-            </div>
-          </div>
-        </Rnd>
+      <div id={`${compRef.id}`} class="comp" onMouseDown={() => this.activateComponent(astm)}>
+        {selected && this.renderGfpp(astm)}
+          {this.renderComp(astm) }
+      </div>
     )
   }
 }
 
-export default editorAPIMixin(CompCtrol);
+export default editorAPIMixin(ContainerCompCtrol);
