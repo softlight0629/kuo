@@ -1,4 +1,6 @@
+import { observable } from 'mobx';
 
-class DataQuery {}
+class DataQuery {
+}
 
 export default DataQuery;

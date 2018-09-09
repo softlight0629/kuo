@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import * as _ from 'lodash';
 import ctx from '@packages/runtime/runtimeCtx';
 import compRegistrar from '@packages/compUtils/compRegistrar';
 import compClassFactory from '@packages/compUtils/compClassFactory';
@@ -56,13 +57,20 @@ class Column extends Component {
     const { compRef } = this.props;
     const columnsProps = this.getColumnProps();
     const { mc, mcBg, inlineContentContainer, inlineContent } = columnsProps;
+    const { background } = compRef.dataQuery;
+    const propQuery = compRef.propQuery;
+
   
     return (
       <div className="mc" style={mc.style}>
         <div className="mc-container">
           <div className="mc-bg" style={mcBg.style}>
-            { compClassFactory.createRRChildComponent('mila.view.components.background.Balata') }
-
+            { compClassFactory.createRRChildComponent('mila.view.components.background.Balata', {
+              displayMode: propQuery.dispalyMode,
+              type: background.type,
+              compData: background.compData,
+              color: background.color,
+            }) }
             <div className="inline-content-container" style={inlineContentContainer.style}>
               <div className="inline-content" style={inlineContent.style}>
                 {

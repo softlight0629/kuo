@@ -21,7 +21,7 @@ export const editorAPIMixin = Component => {
   return MixinComponent;
 }
 
-export const editorAPIMixinApi = (component) =>{
+export const editorAPIMixinApi = (component) => {
 
   function getEditorAPI() {
     return this.props.editorAPI;

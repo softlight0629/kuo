@@ -1,13 +1,14 @@
-
-const comps = {};
+import compFactory from '@packages/compUtils/compFactory';
 
 export default {
 
-  register(name, compClass) {
-    comps[name] = compClass;
+  register(name, componentClass) {
+    compFactory.register(name, componentClass);
+    return this;
   },
 
   getComp(name) {
-    return comps[name];
-  }
+    return compFactory.getCompReactClass(name);
+  },
+  
 };

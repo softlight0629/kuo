@@ -14,6 +14,7 @@ class RichText extends BaseComp {
     this.id = this.uniqId('comp-');
     this.kind = 'RichText';
     this.type = 'Component';
+    this.componentType = 'mila.components.RichText';
     this.spec = new TextSpec(spec);
     this.dataQuery = new DataQuery(dataQuery);
   }

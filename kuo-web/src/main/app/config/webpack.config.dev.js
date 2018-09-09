@@ -123,6 +123,7 @@ module.exports = {
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
       '@packages': path.resolve(__dirname, '../src/packages'),
+      '@packages-bin': path.resolve(__dirname, '../src/packages-bin'),
       '@mila': path.resolve(__dirname, '../src/mila'),
       '@mila-editor': path.resolve(__dirname, '../src/mila-editor'),
       '@app': path.resolve(__dirname, '../src'),

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import cssrender from '../runtime/cssRender';
 import skins from './buttonSkins/skins.json';
-import './button.less';
-
 import compRegistrar from '../compUtils/compRegistrar';
 import skinRegistrar from '@packages/compUtils/skinRegistrar';
+
+import './button.less';
 
 @observer
 class Button extends Component {

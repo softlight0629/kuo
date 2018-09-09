@@ -1,4 +1,14 @@
+import { observable } from 'mobx';
 
-class PropQuery {}
+class PropQuery {
+
+  @observable fullWidth;
+
+  constructor({
+    fullWidth = true,
+  }) {
+    this.fullWidth = fullWidth;
+  }
+}
 
 export default PropQuery;

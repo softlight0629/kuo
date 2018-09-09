@@ -211,8 +211,21 @@ class WorkSpaceStore {
               },
             },
           ],
-          propQuery: {},
-          dataQuery: {},
+          dataQuery: {
+            background: {
+              type: 'Image',
+              compData: {
+                width: 706,
+                height: 650,
+                title: '',
+                alt: 'frontera-cabernet-merlot-2013-100x300.pn',
+                uri: '035244_e73291085fbe44a5be9f6b32af50803f.jpg',
+              }
+            }
+          },
+          propQuery: {
+            displayMode: 'fill',
+          },
         },
         {
           kind: 'Column',
@@ -229,8 +242,15 @@ class WorkSpaceStore {
           },
           spec: {},
           components: [],
-          propQuery: {},
-          dataQuery: {},
+          dataQuery: {
+            background: {
+              type: 'Color',
+              color: 'rgb(241, 220, 194)',
+            }
+          },
+          propQuery: {
+            displayMode: 'fill',
+          },
         },
       ],
       dataQuery: {

@@ -21,7 +21,6 @@ class WorkSpace extends Component {
   render() {
     const { mediaGallery } = stateManagement;
 
-    console.log(mediaGallery.props, 'props....');
     return (
       <div className="workspace">
         <MediaLibrary visible={mediaGallery.visible} {...mediaGallery.props} categoryFolders={mediaGallery.categoryFolders} medias={mediaGallery.medias} />
