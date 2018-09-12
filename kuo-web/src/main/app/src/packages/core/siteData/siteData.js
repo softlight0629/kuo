@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import warmupUtilsLib from '@packages/warmupUtils/warmupUtilsLib';
+import warmupUtilsLib from '@packages/coreUtils/core/warmupUtilsLib';
 import MobileDeviceAnalyzer from './MobileDeviceAnalyzer';
 
 const MASTER_PAGE_ID = 'masterPage';
@@ -131,6 +131,10 @@ class SiteData {
 
   getVisitedPages() {
     return this.getter(['visitedPages']);
+  }
+
+  getViewMode() {
+    return '';
   }
 
   getPageDataMap(pageId, dataType) {

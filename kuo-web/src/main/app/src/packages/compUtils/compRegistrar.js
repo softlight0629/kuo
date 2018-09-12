@@ -10,5 +10,4 @@ export default {
   getComp(name) {
     return compFactory.getCompReactClass(name);
   },
-  
 };

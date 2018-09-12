@@ -36,7 +36,7 @@ function createSiteRoot() {
 }
 
 function createSiteBg() {
-  return backgroundInstantiator.getBgComponent();
+  // return backgroundInstantiator.getBgComponent();
 }
 
 function getDesktopModeSiteChildren(shouldRenderPage, siteData) {
@@ -52,7 +52,8 @@ function getDesktopModeSiteChildren(shouldRenderPage, siteData) {
 function getMobileModeChildren() {}
 
 function isDesktopMode(siteAPI) {
-  return !siteAPI.getSiteData().isMobileView();
+  return true;
+  // return !siteAPI.getSiteData().isMobileView();
 }
 
 class SiteReact extends Component {
@@ -60,7 +61,7 @@ class SiteReact extends Component {
   constructor(props) {
     super(props);
 
-    this.onAfterLayout = _.once(this.props.onAfterLayout);
+    // this.onAfterLayout = _.once(this.props.onAfterLayout);
     this.siteAPI = new SiteAPI(this);
     this.siteIsReady = false;
     this.siteIsFullyRendered = false;
@@ -124,7 +125,7 @@ class SiteReact extends Component {
 
   getSiteChildren() {
     const { siteData } = this.props;
-  
+    console.log(siteData, 'siteData......');
     const siteChildren = isDesktopMode(this.siteAPI) ?
       getDesktopModeSiteChildren.call(this, siteData) :
       getMobileModeChildren.call(this, siteData);
@@ -135,10 +136,10 @@ class SiteReact extends Component {
 
   render() {
     const siteData = this.props.siteData;
-    const shouldRenderPage = this.siteAPI.isPageAllowed()
+    // const shouldRenderPage = this.siteAPI.isPageAllowed()
 
-    if (!shouldRenderPage) {
-    }
+    // if (!shouldRenderPage) {
+    // }
 
     const className = this.props.className;
 

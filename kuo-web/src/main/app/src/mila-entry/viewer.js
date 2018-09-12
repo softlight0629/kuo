@@ -174,10 +174,10 @@ window.rendererModel = {
   },
 }
 
-
 const { rendererModel, publicModel, serviceTopology = {} } = window;
 window.persistent = storageUtil(window);
-window.queryUtil = getQueryUtils(window);
+const queryUtil = getQueryUtils(window);
+window.queryUtil = queryUtil;
 
 const render = _render(window);
 const isServerSide = window.isStreaming
@@ -195,7 +195,6 @@ const isExternalPreview = rendererModel.previewMode
 // const mobileView = mobile.isMobileView(window, siteModel, queryUtil)
 const isPreview = false;
 const mobileView = false;
-const queryUtil = {};
 
 useStrict(true);
 

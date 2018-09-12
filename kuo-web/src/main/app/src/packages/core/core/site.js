@@ -45,10 +45,12 @@ function createSiteService(siteModel, props) {
 
   siteModel.renderFlags = _.assign({}, siteModel.renderFlags, renderOptions);
   const siteData = new SiteData(siteModel);
-  const siteDataAPI = SiteDataAPI.createSiteDataAPI(siteData, props);
+  const siteDataWrapper = SiteDataAPI.create(siteData, props);
+  const siteDataAPI = siteDataWrapper.siteData;
 
   return {
     siteData,
+    siteDataWrapper,
     siteDataAPI,
     siteModel,
   }
