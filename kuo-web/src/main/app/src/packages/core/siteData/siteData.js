@@ -1,15 +1,11 @@
 import * as _ from 'lodash';
 import warmupUtilsLib from '@packages/coreUtils/core/warmupUtilsLib';
 import MobileDeviceAnalyzer from './MobileDeviceAnalyzer';
+import DalFactory from '@packages/documentServices/dataAccessLayer/DalFactory';
 
 const MASTER_PAGE_ID = 'masterPage';
 
-function getPointersAndDal() {}
-
-const siteDataUtils = {};
-const constants = {};
-const experiment = {};
-
+// 构造 Site 数据对象
 class SiteData {
 
   constructor(siteModel) {
@@ -17,86 +13,113 @@ class SiteData {
       return;
     }
 
-    this.getter = _.get.bind(_, this);
+    this.getter = _.get.bind(this);
 
-    this._currentRootInfos = {};
-    this._currentPageIds = {
+    this.currentPageIds = {
       primaryPage: null,
       popupPage: null,
     };
 
-    _.assign(this, {
-      currentUrl: {},
-      screenSize: { width: null, height: null },
-    }, siteModel);
+    _.assign(this, siteModel);
 
     const userAgent = this.requestModel && this.requestModel.userAgent;
-    this.browserDetection = warmupUtilsLib.browserDetection(userAgent);
-    this.browser = this.browserDetection.browser;
-    this.os = this.browserDetection.os;
-    delete this.browserDetection;
-
-    this.mobile = new MobileDeviceAnalyzer(_.assign({ userAgent }, _.get(siteModel.publicModel, 'deviceInfo')));
-    this.isPortrait = this.mobile.isPortrait();
+    this.browser = {};
+    this.os = {};
+    this.mobile = {};
 
     this._forceMobileView = siteModel.forceMobileView;
-    this._isMobileDevice = this.mobile.isMobileDevice();
-    this._isTabletDevice = this.os && this.os.tablet && !this.browser.ie || this.mobile.isTabletDevice();
+    this._isMobileDevice = false;
+    this._isTabletDevice = false;
 
-    this.customUrlMapping = {};
+
+    this.siteId = this.siteId || this.rendererModel && this.rendererModel.siteInfo.siteId;
 
     this.pagesData = this.pagesData || {};
 
-    this.MASTER_PAGE_ID = MASTER_PAGE_ID;
+
+    this.deletedPagesMap = {};
+
+    this.imageLoader = {};
 
     this.renderFlags = this.renderFlags || {};
+
+    this.MASTER_PAGE_ID = MASTER_PAGE_ID;
+
     _.defaults(this.renderFlags, {
-      isZoomAllowed: true,
+      isPlayingAllowed: true, //default state
+      isZoomAllowed: true, //default state
+      isSocialInteractionAllowed: true, //default state
       siteTransformScale: 1,
-      isSiteMembersDialogOpenAllowed: true,
-      siteSale: 1,
+      isExternalNavigationAllowed: true, //default state
+      isBackToTopButtonAllowed: true, //default true
+      isWixAdsAllowed: this.isViewerMode(), //default true
+      isSlideShowGalleryClickAllowed: true, //default true
+      isTinyMenuOpenAllowed: true, //default true
+      renderFixedPositionContainers: true,
+      // Don't lock a password-protected page in editor on start.
+      // Editor takes control over the flag later on (enables it in preview mode).
+      isPageProtectionEnabled: this.isViewerMode(),
+      isSiteMembersDialogsOpenAllowed: true,
+      allowSiteOverflow: true,
+      shouldResetGalleryToOriginalState: false,
+      shouldResetComponent: true,
+      extraSiteHeight: 0,
+      siteScale: 1,
+      blockingLayer: null,
+      blockingPopupLayer: null,
+      shouldUpdateJsonFromMeasureMap: false,
       componentViewMode: 'preview',
+      allowShowingFixedComponents: true,
+      renderFixedPositionBackgrounds: true,
+      showHiddenComponents: false,
+      ignoreComponentsHiddenProperty: [],
+      componentPreviewStates: {},
+      // renderMobileActionMenu: !warmupUtilsLib.urlUtils.isQueryParamOn(this.currentUrl, 'hideMobileActionBar'),
+      initWixCode: this.isViewerMode(),
+      enforceShouldKeepChildrenInPlace: true,
+      preserveCompLayoutOnReparent: false
     });
+
+    this.mediaStore = {};
+    this.mediaQualityStore = {};
+
+    this.visitedPages = [];
+
+    this.dataTypes = {
+      PROPERTIES: 'component_properties',
+      DATA: 'document_data',
+      THEME: 'theme_data',
+      DESIGN: 'design_data',
+      BEHAVIORS: 'behaviors_data',
+      CONNECTIONS: 'connections_data',
+      MOBILE_HINTS: 'mobile_hints',
+    };
   }
 
-  setStore(store) {
-    this.store = store;
-  }
-
-  /**
-  *
-  * @returns {string} the underlying page, the one that sits in the master page
-  */
   getPrimaryPageId() {
-    return this.getter(['_currentPageIds', 'primaryPage']);
+    return this.getter(['currentPageIds', 'primaryPage']);
   }
 
-  /**
-   *
-   * @returns {string} the page that is the actual physical url
-   */
-  getCurrentUrlPageId() {
+  getCurrentPageId() {
     return this.getPrimaryPageId();
   }
 
-  isMobileOptimizedOn() {
-    return this.getter(['rendererModel', 'siteMetaData', 'adaptiveMobileOn']);
+  getAllRenderedRoots() {
+    return [this.MASTER_PAGE_ID, this.getPrimaryPageId()];
   }
 
-  isPageProtectionEnabled() {
-    return this.getter(['renderFlags', 'isPageProtectionEnabled']);
+  isMobileView() {
+    const forceMobileView = this.getter(['_forceMobileView']);
+
+    if (_.isBoolean(forceMobileView)) {
+      return forceMobileView;
+    }
+
+    return false;
   }
 
   isMobileDevice() {
     return this.getter(['_isMobileDevice']);
-  }
-
-  browserFlags() {
-    return this.getter(['_browserFlags']);
-  }
-
-  forceLandingPage(urlObj) {
-    return urlObj.query && urlObj.query.forceLandingPage;
   }
 
   isTabletDevice() {
@@ -104,104 +127,157 @@ class SiteData {
   }
 
   isTouchDevice() {
-    return this.isTabletDevice() || this.isMobileDevice();
+    return this.isMobileDevice() || this.isTabletDevice();
   }
-  /**
-   * @param {boolean} isMobile
-   */
+
   setMobileView(isMobile) {
     this._forceMobileView = isMobile;
   }
 
-  getMasterPageData(innerPath) {
-    return this.getPageData(this.MASTER_PAGE_ID, innerPath);
+  getColor() { }
+
+  getColorMap() { }
+
+  getMasterPageData() {
+    return this.getPageData(this.MASTER_PAGE_ID);
   }
 
-  getPageData(pageId, innerPath, noClone) {
-    const { pointers, dal } = getPointersAndDal(this);
-    const pagePointer = pointers.page.getPagePointer(pageId);
-    return pagePointer && dal.get(pointers.getInnerPointer(pagePointer, innerPath), undefined, noClone);
+  getPageData(pageId) {
+    // const pointers = DalFactory.
   }
 
   hasPage(pageId) {
-    const { pointers, dal } = getPointersAndDal(this);
-    const pagePointer = pointers.page.getPagePointer(pageId);
-    return !!(pagePointer && dal.isExist(pagePointer));
   }
 
   getVisitedPages() {
     return this.getter(['visitedPages']);
   }
 
-  getViewMode() {
-    return '';
+  getPageDataMap() { }
+
+  getServiceToplogyProperty(prop) {
+    return this.getter(['serviceTopology', prop]);
   }
 
-  getPageDataMap(pageId, dataType) {
-    const { pointers, dal } = getPointersAndDal(this);
-    const type = _.invert(constants.PAGE_DATA_DATA_TYPES)[dataType];
-    return dal.get(pointers.data.getPageDataMap(type, pageId));
+  getStaticMediaUrl() {
+    return this.getServiceToplogyProperty('staticMediaUrl');
+  }
+
+  getStaticVideoUrl() {
+    return this.getServiceToplogyProperty('staticVideoUrl');
+  }
+
+  getMetaSiteId() {
+    return this.getter(['rendererModel', 'metaSiteId']);
+  }
+
+  getRendererModel() {
+    return this.getter(['rendererModel']);
+  }
+
+  getPublicModel() {
+    return this.getter(['publicModel']);
+  }
+
+  getUserId() {
+    return this.getter(['siteHeader', 'userId']);
+  }
+
+  getSiteMetaData() {
+    return this.getter(['rendererModel', 'siteMetaData']);
+  }
+
+  getAuthToken() {
+    return this.getter(['rendererModel', 'authToken']);
+  }
+
+  getSiteStructure() {
+    return this.getDataByQuery(this.getStructureCompId());
+  }
+
+  getCookie() {
+    return this.getter(['rendererModel', 'cookie']);
+  }
+
+  isPageLandingPage(pageId) { }
+
+  getStructureCompId() {
+    return this.MASTER_PAGE_ID;
   }
 
   getBodyClientWidth() {
     return window.document.body.clientWidth;
   }
+
   getBodyClientHeight() {
     return window.document.body.clientHeight;
   }
+
   getScreenWidth() {
     return this.getScreenSize().width;
   }
+
   getScreenHeight() {
     return this.getScreenSize().height;
   }
+
   getScreenSize() {
     return this.getter(['screenSize']);
   }
 
+  // called from layout.js during measure
+  updateScreenSize(screesSize) { }
+
+  getScrollBarWidth() {
+    const windowInnerWidth = this.isMobileView() ? 320 : window.innerWidth;
+    return windowInnerWidth - this.getScreenWidth();
+  }
+
+  getSiteX() {
+    if (this.isMobileView() || this.isMobileDevice()) {
+      return 0;
+    }
+
+    return Math.min(parseInt(Math.floor((this.getSiteWidth() - this.getScreenWidth()) / 2), 10), 0);
+  }
   getSiteWidth() {
     if (this.isMobileView()) {
       return 320;
-    } else if (this.isFacebookSite()) {
-      return 520;
     }
 
     const siteStructure = this.getSiteStructure();
     return _.get(siteStructure, 'renderModifiers.siteWidth', 980);
   }
 
+  getDataByQuery(query, rootId, dataType) {
+    rootId = rootId || MASTER_PAGE_ID;
+    dataType = dataType || this.dataTypes.DATA;
+  }
+
   getPageMinHeight() {
     return this.isMobileView() ? 200 : 500;
   }
 
-  getMainPageId() {
-    if (this.publicModel) {
-      return this.publicModel.pageList.mainPageId;
-    }
-    const siteStructureData = this.getDataByQuery(MASTER_PAGE_ID, MASTER_PAGE_ID);
-    return _.get(siteStructureData, 'mainPage.id') || _.get(siteStructureData, 'mainPageId') || 'mainPage';
+  isHomePage(pageId) {
+    return pageId && pageId === this.getMainPageId();
   }
 
-  getAllPageIds() {
-    const publicModel = this.getter(['publicModel'], undefined, true);
-    if (publicModel) {
-      return _.map(publicModel.pageList.pages, 'pageId');
-    }
-
-    return siteDataUtils.getAllPageIds(this);
+  getPagesDataItems() {
   }
 
-  getPageTitle(pageId) {
-    if (this.publicModel) {
-      const pages = _.get(this.publicModel, ['pageList', 'pages']);
-      return _.get(_.find(pages, { pageId }), 'title');
-    }
-    return _.get(this.getDataByQuery(pageId), 'title');
+  getFavicon() {
+    return this.publicModel && this.publicModel.favicon;
   }
 
-  getPageJsonld(pageId) {
-    return this.pageIdToJsonLd[pageId] || {};
+  getDocumentLocation() {
+    return this.currentUrl;
   }
+
+  getMainPageId() {}
+
+  getAllPageIds() {}
+
+  getPageTitle(pageId) {}
 
   getBrowser() {
     return this.browser;
@@ -211,32 +287,8 @@ class SiteData {
     return this.os;
   }
 
-
-  getPageTopMargin() {
-    return this.getWixTopAdHeight();
-  }
-
-  getPageMargins() {
-    return {
-      bottom: this.getPageBottomMargin(),
-      top: this.getPageTopMargin()
-    };
-  }
-
-  getWixTopAdHeight() { // eslint-disable-line complexity
-    const isWixAdsAllowed = siteDataUtils.isWixAdsAllowed(this);
-
-    if (!isWixAdsAllowed || !this.shouldShowWixAds()) {
-      return 0;
-    }
-
-    if (this.isMobileView()) {
-      const isLandscapeMobileDevice = this.isMobileDevice() && this.mobile.isLandscape();
-      const isHeaderFixedPosition = !!siteDataUtils.isHeaderFixedPosition(this);
-      return isHeaderFixedPosition && !isLandscapeMobileDevice ? 38 : 0;
-    }
-
-    return experiment.isOpen('displayWixAdsNewVersion', this) ? 50 : 0;
+  isPreviewMode() {
+    return this.getter(['rendererModel', 'previewMode']);
   }
 }
 

@@ -15,9 +15,6 @@ function renderSiteWithData(siteData, props) {
   return siteReact(_.assign({}, props, {
     siteData,
     rootId: 'masterPage',
-    // navigateMethod: navigateTo,
-    // updateHeadMethod,
-    // getSiteContainer,
   }));
 }
 
@@ -29,7 +26,7 @@ function renderSite(siteData, props) {
   return renderSiteWithData(siteData, props);
 }
 
-function createSiteService(siteModel, props) {
+function createSiteSvr(siteModel, props) {
   let renderOptions = {};
   if (siteModel.isMilaEditor) {
     renderOptions = _.assign(renderOptions, {
@@ -45,8 +42,8 @@ function createSiteService(siteModel, props) {
 
   siteModel.renderFlags = _.assign({}, siteModel.renderFlags, renderOptions);
   const siteData = new SiteData(siteModel);
-  const siteDataWrapper = SiteDataAPI.create(siteData, props);
-  const siteDataAPI = siteDataWrapper.siteData;
+  const siteDataWrapper = SiteDataAPI.createSiteDataAndDal(siteData, props);
+  const siteDataAPI = siteDataWrapper.siteDataAPI;
 
   return {
     siteData,
@@ -57,6 +54,6 @@ function createSiteService(siteModel, props) {
 }
 
 export default {
-  createSiteService,
+  createSiteSvr,
   renderSite,
 }

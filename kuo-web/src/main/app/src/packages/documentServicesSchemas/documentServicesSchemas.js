@@ -1,5 +1,8 @@
 import skins from './services/skins';
+import dataSchemas from './schemas/allDataSchemas/allDataSchemas';
 
 export default {
-  getComponentSkins: skins.getComponentSkins,
+  schemas: {
+    dataSchemas,
+  }
 }

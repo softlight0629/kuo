@@ -6,12 +6,11 @@ export default (window) => {
   
   function render(isServerSide, isPreview, isExternalPreivew, queryUtil, siteModel, mobileView) {
 
+    // 下一步， 构造  siteAsJson, render 实例化到  dal
     siteModel.requestModel = {
       userAgent: window.navigator.userAgent,
       cookie: document.cookie,
     };
-
-    // siteModel.currentUrl = urlUtils.parseUrl(window.location.href);
 
     function renderServerSide() {
     }
@@ -20,12 +19,15 @@ export default (window) => {
     // siteModel 包含了 site 渲染的所有配置数据
     // 根据 siteModel, 创建 siteData, siteDataAPI, 渲染 site, 返沪 site react dom
     function renderClientSide() {
-      // 初始化 SiteDataAPI
-      const ss = site.createSiteService(window.siteModel);
+      // 底层数据初始化
+      const siteSvr = site.createSiteSvr(window.siteModel);
       const config = {};
-      window.documentServices = new Site({}, ss.siteDataAPI, siteModel);
 
-      return site.renderSite(ss.siteData);
+      // 构造 dal 层
+      // 构造 documentServices -> 需要能拿到 dal 层的数据
+      window.documentServices = new Site({}, siteSvr.siteDataAPI, siteModel);
+
+      return site.renderSite(siteSvr.siteData);
     }
    
     function callRender() {

@@ -1,45 +1,39 @@
 import * as _ from 'lodash';
 import ActionQueue from './data/ActionQueue';
+import DalFactory from '@packages/documentServices/dataAccessLayer/DalFactory';
+import PointersCacheGenerator from '@packages/documentServices/dataAccessLayer/PointersCacheGenerator'
 
 class SiteDataAPI {
-  
-  constructor(siteData, eventsManager) {
-    this.siteData = siteData;
+  constructor(srv, eventsManager) {
+    this.siteData = srv.siteData;
     this.eventsManager = eventsManager;
-    this.pagesPendingForMasterPage = [];
-
-    this.actionQueue = new ActionQueue();
-  }
-
-  loadPage(data, callack) {
-  }
-
-  createDisplayedPage(rootId) {
+    // this.actionQueue = new ActionQueue();
+    // this.document = documentDataAPI(srv);
   }
 }
 
-function create(fullSiteData, props) {
-  const fullPagesData = {};
-  const cache = {};
-  const sitePrivates = createPrivatesForSite(fullSiteData, cache, fullPagesData, props);
+function createSiteDataAndDal(siteData, props) {
+  const srv = {};
 
-  // _.forEach(fullSiteData.getAllPossiblyRenderedRoots(), rootId => {
-  //   sitePrivates.siteDataAPI.createDisplayedPage(rootId);
-  // });
+  srv.dal = DalFactory.getDataAccessLayerInstance(siteData);
+  srv.siteData = siteData;
+  srv.siteDataAPI = new SiteDataAPI(srv, props && props.eventsManager);
 
-  return _.clone(sitePrivates);
+  initDalAndPointers(srv.dal, siteData);
 }
 
-function createPrivatesForSite(fullSiteData, cache, fullPagesData, props) {
-  const privatesForSite = {};
+function initDalAndPointers(dal, siteData) {
+  const pagesData = siteData.getPagesData();
+  
+  _.forEach(pagesData, (pageData) => {
+    const ps = DalFactory.getPointersCacheInstance(pageData.structure.id);
+    dal.addPagePointers(pageData.structure.id, ps);
 
-  privatesForSite.cache = cache;
-  privatesForSite.siteData = fullSiteData;
-  privatesForSite.fullPagesData = fullPagesData;
-  privatesForSite.siteDataAPI = new SiteDataAPI(privatesForSite, props && props.eventsMananger);
-  return privatesForSite;
+    PointersCacheGenerator.generatePagePointers(pointersCache, pageData);
+  });
 }
+
 
 export default {
-  create,
+  createSiteDataAndDal,
 }
