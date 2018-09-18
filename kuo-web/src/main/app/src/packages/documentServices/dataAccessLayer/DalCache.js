@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 
 // 一张表关联一个 DalCache, 对于表的操作全部封装再这里
 // 增加，查找，删除，更新的操作
@@ -12,14 +13,18 @@ class DalCache {
   }
 
   // add
-  add(item) {}
+  add(item) {
+    this._cache[item.id] = item;
+  }
 
   // update
-  update(id, item) {}
+  update(id, item) {
+  }
 
   // remove
-  remove(id) {}
-
+  remove(id) {
+    delete this._cache[id];
+  }
 }
 
 

@@ -1,0 +1,42 @@
+{
+	"DESKTOP": {
+		"masterPage": ["pagesData", "masterPage", "structure"],
+		"SITE_HEADER": ["pagesData", "masterPage", "structure", "children", 0],
+		"PAGES_CONTAINER": ["pagesData", "masterPage", "structure", "children", 1],
+		"SITE_FOOTER": ["pagesData", "masterPage", "structure", "children", 2],
+		"comp-jjm9nipk": ["pagesData", "masterPage", "structure", "children", 0, "components", 0],
+		"SITE_PAGES": ["pagesData", "masterPage", "structure", "children", 1, "components", 0],
+		"h1sjs": ["pagesData", "h1sjs", "structure"],
+		"TPAMultiSection_jj5ucnh8": ["pagesData", "h1sjs", "structure", "components", 0],
+		"g7qdo": ["pagesData", "g7qdo", "structure"],
+		"TPASection_ja2ldjgf": ["pagesData", "g7qdo", "structure", "components", 0],
+		"domkj": ["pagesData", "domkj", "structure"],
+		"comp-jl0et3m7": ["pagesData", "domkj", "structure", "components", 0],
+		"comp-jl0et3nf": ["pagesData", "domkj", "structure", "components", 0, "components", 0],
+		"comp-jl0et3nz": ["pagesData", "domkj", "structure", "components", 0, "components", 1],
+		"comp-jl0et3o4": ["pagesData", "domkj", "structure", "components", 0, "components", 1, "components", 0],
+		"comp-jl0et3oh": ["pagesData", "domkj", "structure", "components", 0, "components", 1, "components", 1],
+		"comp-jl0et3oq": ["pagesData", "domkj", "structure", "components", 0, "components", 1, "components", 2]
+	},
+	"MOBILE": {
+		"masterPage": ["pagesData", "masterPage", "structure"],
+		"SITE_HEADER": ["pagesData", "masterPage", "structure", "mobileComponents", 0],
+		"PAGES_CONTAINER": ["pagesData", "masterPage", "structure", "mobileComponents", 1],
+		"SITE_FOOTER": ["pagesData", "masterPage", "structure", "mobileComponents", 2],
+		"BACK_TO_TOP_BUTTON": ["pagesData", "masterPage", "structure", "mobileComponents", 3],
+		"TINY_MENU": ["pagesData", "masterPage", "structure", "mobileComponents", 0, "components", 0],
+		"comp-jjm9nipk": ["pagesData", "masterPage", "structure", "mobileComponents", 0, "components", 1],
+		"SITE_PAGES": ["pagesData", "masterPage", "structure", "mobileComponents", 1, "components", 0],
+		"h1sjs": ["pagesData", "h1sjs", "structure"],
+		"TPAMultiSection_jj5ucnh8": ["pagesData", "h1sjs", "structure", "mobileComponents", 0],
+		"g7qdo": ["pagesData", "g7qdo", "structure"],
+		"TPASection_ja2ldjgf": ["pagesData", "g7qdo", "structure", "mobileComponents", 0],
+		"domkj": ["pagesData", "domkj", "structure"],
+		"comp-jl0et3m7": ["pagesData", "domkj", "structure", "mobileComponents", 0],
+		"comp-jl0et3nf": ["pagesData", "domkj", "structure", "mobileComponents", 0, "components", 0],
+		"comp-jl0et3nz": ["pagesData", "domkj", "structure", "mobileComponents", 0, "components", 1],
+		"comp-jl0et3o4": ["pagesData", "domkj", "structure", "mobileComponents", 0, "components", 1, "components", 0],
+		"comp-jl0et3oh": ["pagesData", "domkj", "structure", "mobileComponents", 0, "components", 1, "components", 1],
+		"comp-jl0et3oq": ["pagesData", "domkj", "structure", "mobileComponents", 0, "components", 1, "components", 2]
+	}
+}

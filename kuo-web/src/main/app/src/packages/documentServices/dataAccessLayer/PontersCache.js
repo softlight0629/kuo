@@ -19,9 +19,6 @@ class PointersCache {
   getPointerByDataType(dataType) {
     return this.pointers[dataType];
   }
-
-
-
 }
 
 export default DbCache;

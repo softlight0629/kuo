@@ -4,6 +4,9 @@ import compRegistrar from '@packages/compUtils/compRegistrar';
 const compClasses = {};
 const compFactories = {};
 
+const compModelClasses = {};
+const compModelFactories = {};
+
 const compFactory = {
   
   getCompClass(name) {
@@ -14,11 +17,37 @@ const compFactory = {
     return compClasses[name];
   },
 
+  getModelTypeFactoryByCompType(name) {
+    let modelTypeFactory = compModelFactories[name];
+    if (modelTypeFactory) {
+      return modelTypeFactory;
+    }
+
+    const _compModelClass = compModelClasses[name];
+    if (_compModelClass) {
+      modelTypeFactory = {
+        create: (props) => {
+          return new _compModelClass(props);
+        }
+      }
+
+      compModelFactories[name] = modelTypeFactory;
+    }
+
+    return modelTypeFactory;
+  }
+
   register(name, componentClass) {
     compClasses[name] = componentClass;
 
     const compFactory = React.createFactory(componentClass);
     compFactories[name] = compFactory;
+
+    return compFactory;
+  },
+
+  registerCompModel(compType, componentClass) {
+    compModelClasses[compType] = componentClass;
 
     return compFactory;
   }

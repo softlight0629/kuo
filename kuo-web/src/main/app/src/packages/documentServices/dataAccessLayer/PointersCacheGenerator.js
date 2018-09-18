@@ -10,8 +10,8 @@ const dataTypes = {
   Page: 'page',
 }
 
-// page pointers cache 初始化
-function generatePagePointers(ps, pageData) {
+// pageData 实例化， 入 dalcache
+function generate(dalCache, pageData) {
 
   // cache  建表
   _.values(dataTypes).forEach(cacheName => {
@@ -51,10 +51,10 @@ function generateStructure(ps, structure) {
 
 // 构造 Component Model
 function generateComponent(ps, component) {
-  const modelType =  compFactory.getModelTypeByCompType(component.componentType);
+  const modelTypeFactory =  compFactory.getModelTypeFactoryByCompType(component.componentType);
 
   const components = component.components;
-  const model = modelType.create(_.assign(_.assign({}, component, components ? { 
+  const model = modelTypeFactory.create(_.assign(_.assign({}, component, components ? { 
     components: _.map(components, component => component.id);
   }: {})));
 
@@ -91,7 +91,7 @@ function _generate(ps, dataType, datas) {
 
   _.forEach(keys, key => {
     const data = datas[key];
-    const typeFactory = documentServicesSchemas.services.getSchemaByDataType(dataType, data.type);
+    const typeFactory = documentServicesSchemas.services.getTypeFactoryByDataType(dataType, data.type);
 
     const pointer = ps.getPointerByDataType(dataType);
     pointer.add(data.id, typeFactory.create(data));
@@ -99,5 +99,5 @@ function _generate(ps, dataType, datas) {
 }
 
 export default {
-  generatePagePointers,
+  generate,
 }

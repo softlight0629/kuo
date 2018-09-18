@@ -27,6 +27,7 @@ export default (window) => {
       // 构造 documentServices -> 需要能拿到 dal 层的数据
       window.documentServices = new Site({}, siteSvr.siteDataAPI, siteModel);
 
+      // 这边应该是哪到底层的数据去渲染整个SITE，因为 siteData 应该已经 mobx, React 这边要对这些数据做出反应
       return site.renderSite(siteSvr.siteData);
     }
    

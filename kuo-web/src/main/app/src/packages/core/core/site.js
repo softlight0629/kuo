@@ -45,6 +45,14 @@ function createSiteSvr(siteModel, props) {
   const siteDataWrapper = SiteDataAPI.createSiteDataAndDal(siteData, props);
   const siteDataAPI = siteDataWrapper.siteDataAPI;
 
+  const privateServies = {
+    // 通过 pointers 来读取数据
+    pointers: siteDataWrapper.pointers,
+    // 通过 dal 来
+    dal: siteDataWrapper.dal,
+    siteDataAPI,
+  }
+
   return {
     siteData,
     siteDataWrapper,

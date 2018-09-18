@@ -14,7 +14,6 @@ class DataAccessLayer {
   getPagePointers(pageId) {
     return this.pointersCacheMap[pageId];
   }
-
 }
 
 
