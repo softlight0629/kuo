@@ -16,7 +16,7 @@ function displayedJson(pointersCache) {
   const getWrappedGetterFunction = function (func, functions) {
     return function () {
       const args = _.toArray(arguments);
-      const concatedArgs = [pointers.getItemInPath, boundCache].concat(args);
+      const concatedArgs = [pointersCache.getItemInPath, boundCache].concat(args);
       const result = func.apply(functions, concatedArgs);
       return result;
     }

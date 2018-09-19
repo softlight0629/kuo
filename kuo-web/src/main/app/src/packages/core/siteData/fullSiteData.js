@@ -1,9 +1,11 @@
+import * as _ from 'lodash';
 import mobx from 'mobx';
 import SiteData from './siteData';
 import DALFactory from '@packages/documentServices/dataAccessLayer/dal/DALFactory';
-import PageDataGenerator from '@packages'
+import DALCacheGenerator from '@packages/documentServices/dataAccessLayer/DALCacheGenerator';
 
 // 开始做构造 数据实例化， mobx化. 拿到实例树
+// 接下来要做， SiteDataAPI 构造，实例化 FullSiteData
 class FullSiteData extends SiteData{
   
   constructor(siteModel) {
@@ -17,7 +19,9 @@ class FullSiteData extends SiteData{
     // json -> mobx model 实例
 
     _.forEach(this.pagesData, pageData => {
-      const pageDataSchema = PageDataGenerator.generate(pageData);
+      const pageDataSchema = DALCacheGenerator.generate({
+        dalCache,
+      }, pageData);
     });
   }
 

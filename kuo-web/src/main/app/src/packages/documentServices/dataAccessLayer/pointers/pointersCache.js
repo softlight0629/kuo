@@ -9,7 +9,7 @@ import pointerGeneratorsRegistry from './pointerGeneratorsRegistry';
 function getItemInPath(cacheJson, path) {
   let obj = cacheJson;
   _.forEach(path, pathPart => {
-    if (_.isUndefined(object)) {
+    if (_.isUndefined(obj)) {
       return false;
     }
 
@@ -17,6 +17,21 @@ function getItemInPath(cacheJson, path) {
   });
 
   return obj;
+}
+
+function isEqualPath(a, b) {
+  if (!a) {
+      return !b;
+  }
+  if (!b || b.length !== a.length) {
+      return false;
+  }
+  for (let i = 0; i < a.length; ++i) {
+      if (a[i] !== b[i]) {
+          return false;
+      }
+  }
+  return true;
 }
 
 function _getPath(pointer) {

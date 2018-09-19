@@ -1,5 +1,9 @@
 import * as _ from 'lodash';
 
+function isPathExist() {}
+
+function removeValueInPath() {}
+
 // 全局实例存储, 各种 type 的 cache 实例都在这里
 class DalCache {
 
@@ -28,7 +32,7 @@ class DalCache {
   // ['pagesData', 'domkj', 'data', 'doucment_data', 'dataItem-xxxxx'], value
   // ['pagesData', 'structure', 'DESKTOP', 'domkj'] 组件实例都在这里
   setByPath(path, data) {
-    if (!_.isArray(pata)) {
+    if (!_.isArray(path)) {
       throw new Error(`path type is not an array - ${path}`);
     }
 

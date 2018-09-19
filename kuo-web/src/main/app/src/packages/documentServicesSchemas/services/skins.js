@@ -1,11 +1,11 @@
-import skinsByComponentType from '@packages/documentServicesSchemas/schemas/skinsByComponentType';
+// import skinsByComponentType from '@packages/documentServicesSchemas/schemas/skinsByComponentType';
 
 function getComponentSkins(componentType) {
-  if (skinsByComponentType[componentType]) {
-    return skinsByComponentType[componentType].slice();
-  }
+  // if (skinsByComponentType[componentType]) {
+  //   return skinsByComponentType[componentType].slice();
+  // }
 
-  return [];
+  // return [];
 }
 
 export default {

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as _ from 'lodash';
 import SiteReactClass from '@packages/core/siteRender/SiteReact';
-import SiteData from '@packages/core/siteData/siteData';
+import FullSiteData from '@packages/core/siteData/fullSiteData';
 import SiteDataAPI from '@packages/core/core/SiteDataAPI';
 
 const siteReact = React.createFactory(SiteReactClass);
@@ -26,7 +26,7 @@ function renderSite(siteData, props) {
   return renderSiteWithData(siteData, props);
 }
 
-function createSiteSvr(siteModel, props) {
+function createSitePrivates(siteModel, props) {
   let renderOptions = {};
   if (siteModel.isMilaEditor) {
     renderOptions = _.assign(renderOptions, {
@@ -36,32 +36,32 @@ function createSiteSvr(siteModel, props) {
 
   if (siteModel.rendererModel.previewMode) {
     renderOptions = _.assign(renderOptions, {
+      isSocialInteractionAllowed: false,
       isPlayingAllowed: false,
     });
   }
 
   siteModel.renderFlags = _.assign({}, siteModel.renderFlags, renderOptions);
-  const siteData = new SiteData(siteModel);
-  const siteDataWrapper = SiteDataAPI.createSiteDataAndDal(siteData, props);
+  const fullSiteData = new FullSiteData(siteModel);
+  const siteDataWrapper = SiteDataAPI.createSiteDataAndDal(fullSiteData, props);
   const siteDataAPI = siteDataWrapper.siteDataAPI;
 
-  const privateServies = {
-    // 通过 pointers 来读取数据
+  const viewerPrivateServices = {
     pointers: siteDataWrapper.pointers,
-    // 通过 dal 来
     dal: siteDataWrapper.dal,
     siteDataAPI,
   }
 
   return {
-    siteData,
+    fullSiteData,
     siteDataWrapper,
+    viewerPrivateServices,
     siteDataAPI,
     siteModel,
   }
 }
 
 export default {
-  createSiteSvr,
+  createSitePrivates,
   renderSite,
 }

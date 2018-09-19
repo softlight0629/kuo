@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import warmupUtilsLib from '@packages/coreUtils/core/warmupUtilsLib';
 import MobileDeviceAnalyzer from './MobileDeviceAnalyzer';
-import DalFactory from '@packages/documentServices/dataAccessLayer/DalFactory';
+import DALFactory from '@packages/documentServices/dataAccessLayer/dal/DALFactory';
 
 const MASTER_PAGE_ID = 'masterPage';
 

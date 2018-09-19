@@ -35,7 +35,7 @@ const compFactory = {
     }
 
     return modelTypeFactory;
-  }
+  },
 
   register(name, componentClass) {
     compClasses[name] = componentClass;
@@ -50,7 +50,7 @@ const compFactory = {
     compModelClasses[compType] = componentClass;
 
     return compFactory;
-  }
+  },
 }
 
 export default compFactory;

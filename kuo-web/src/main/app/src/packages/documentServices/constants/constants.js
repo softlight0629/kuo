@@ -1,5 +1,13 @@
 
 export default {
+
+  VIEW_MODES: {
+
+    DESKTOP: 'DESKTOP',
+
+    MOBILE: 'MOBILE',
+  },
+
   PAGE_DATA_DATA_TYPES: {
     props: 'component_properties',
     data: 'document_data',

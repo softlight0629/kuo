@@ -1,7 +1,43 @@
 import * as _ from 'lodash';
 import ActionQueue from './data/ActionQueue';
-import DalFactory from '@packages/documentServices/dataAccessLayer/DalFactory';
-import PointersCacheGenerator from '@packages/documentServices/dataAccessLayer/PointersCacheGenerator'
+import DALFactory from '@packages/documentServices/dataAccessLayer/dal/DALFactory';
+import DataAccessPointers from '@packages/documentServices/dataAccessLayer/pointers/DataAccessPointers';
+
+// const privates = new SiteDatePrivates();
+
+function createSiteDataAPIAndDal(fullSiteData) {
+  const fullPagesData = DALFactory.getFullPagesData(fullSiteData, _.pick(fullSiteData, 'pagesData'));
+  const cache = DALFactory.getCacheInstance(fullSiteData);
+  const dalAndPointers = initDalAndPointers(fullSiteData, cache);
+  const sitePrivates = createPrivatesForSite(fullSiteData, dalAndPointers, cache, fullPagesData);
+
+  _.forEach(fullSiteData.getAllRenderedRoots(), rootId => {
+    sitePrivates.siteDataAPI.createDisplayedPage(rootId);
+  });
+
+  return _.clone(sitePrivates);
+}
+
+function initDalAndPointers(fullSiteData, cache) {
+  return {
+    dal: DALFactory.getInstance(fullSiteData),
+    pointers: new DataAccessPointers(cache),
+  }
+}
+
+function createPrivatesForSite(fullSiteData, dalAndPointers, cache, fullPagesData, props) {
+  const privatesForSite = {};
+  privatesForSite.dal =  dalAndPointers.dal;
+  privatesForSite.pointers = dalAndPointers.pointers;
+  privatesForSite.cache = cache;
+  // privatesForSite.fullPagesData = fullPagesData;
+  privatesForSite.siteData = fullSiteData;
+  privatesForSite.dal.setByPath(['pagesData'], {});
+  privatesForSite.siteDataAPI = new SiteDataAPI(privatesForSite, props && props.eventsManager);
+
+  return privatesForSite;
+}
+
 
 class SiteDataAPI {
   constructor(srv, eventsManager) {
@@ -12,28 +48,8 @@ class SiteDataAPI {
   }
 }
 
-function createSiteDataAndDal(siteData, props) {
-  const srv = {};
-
-  srv.dal = DalFactory.getDataAccessLayerInstance(siteData);
-  srv.siteData = siteData;
-  srv.siteDataAPI = new SiteDataAPI(srv, props && props.eventsManager);
-
-  initDalAndPointers(srv.dal, siteData);
-}
-
-function initDalAndPointers(dal, siteData) {
-  const pagesData = siteData.getPagesData();
-  
-  _.forEach(pagesData, (pageData) => {
-    const ps = DalFactory.getPointersCacheInstance(pageData.structure.id);
-    dal.addPagePointers(pageData.structure.id, ps);
-
-    PointersCacheGenerator.generatePagePointers(pointersCache, pageData);
-  });
-}
 
 
 export default {
-  createSiteDataAndDal,
+  createSiteDataAPIAndDal,
 }
