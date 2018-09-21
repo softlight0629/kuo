@@ -1,6 +1,6 @@
 import BaseContainerComp from '@packages/components/core/baseContainerComp';
 import Spec from '@packages/components/core/spec';
-import compRegistrar from '@packages/compUtils/compRegistrar';
+import compFactory from '@packages/compUtils/compFactory';
 import PropQuery from './propQuery';
 import DataQuery from './dataQuery';
 
@@ -9,16 +9,16 @@ class StripColumnsContainer extends BaseContainerComp {
   constructor(option) {
     super(option);
 
-    const { spec, dataQuery = {}, propQuery = {} } = option;
+    const { spec, dataQuery, propQuery, designQuery } = option;
     this.kind = 'StripColumnsContainer';
     this.type = 'Container';
     this.componentType = 'mila.components.StripColumnsContainer';
-    this.spec = new Spec(spec);
-    this.dataQuery = new DataQuery(dataQuery);
-    this.propQuery = new PropQuery(propQuery);
+    this.dataQuery = dataQuery;
+    this.designQuery = designQuery;
+    this.propQuery = propQuery;
   }
 }
 
-compRegistrar.register('mila.components.model.StripColumnsContainer', StripColumnsContainer);
+compFactory.registerCompModel('mila.components.view.StripColumnsContainer', StripColumnsContainer);
 
 export default StripColumnsContainer;

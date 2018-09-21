@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import PrivateServices from '@packages/privateServices/privateServices';
+import PrivateServices from '@packages/documentServices/privateServices/privateServices';
 
 function getConfigurationMethods(config) {
   const methods = {};
@@ -20,7 +20,6 @@ function initModulesPublicAPI(ps, config, documentServices) {
   const publicNamespaces = {};
 
   // function getPublicMethodsByNamespaceWithLazyInit(namespace) {
-
   // }
 }
 
@@ -43,7 +42,7 @@ class Site {
 
   // 1. 准备 pointersCache
   // buildRenderedSite, 调用回调来构造 SiteReact, 然后传递一个 callback
-  constructor(config, siteDataWrapper, buildRenderedSite) {
+  constructor(config, siteDataWrapper, siteModel, buildRenderedSite) {
     const ps = new PrivateServices(config, siteDataWrapper);
     this.ps = ps;
 

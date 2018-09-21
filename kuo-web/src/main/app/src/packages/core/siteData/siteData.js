@@ -36,7 +36,6 @@ class SiteData {
 
     this.pagesData = this.pagesData || {};
 
-
     this.deletedPagesMap = {};
 
     this.imageLoader = {};
@@ -128,6 +127,10 @@ class SiteData {
 
   isTouchDevice() {
     return this.isMobileDevice() || this.isTabletDevice();
+  }
+
+  isViewerMode() {
+    return false;
   }
 
   setMobileView(isMobile) {

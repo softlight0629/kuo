@@ -11,10 +11,10 @@ class BaseContainerComp extends BaseComp {
     super(option);
 
     _.delay((() => {
-      option.components.map(action(compDefinition => {
-        const compRef = this.addChildComponent(compDefinition);
-        this.components.push(compRef);
-      }));
+      // option.components.map(action(compDefinition => {
+      //   const compRef = this.addChildComponent(compDefinition);
+      //   this.components.push(compRef);
+      // }));
     }), 1000);
   }
 

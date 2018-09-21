@@ -36,7 +36,7 @@ class PrivateScope {
 
 
 
-class SetOperationQueue {
+class SetOperationsQueue {
 
   constructor(privateServices) {
     this.siteId = privateServices.siteAPI.getSiteId();
@@ -62,4 +62,4 @@ class SetOperationQueue {
   flushQueueAndExecute() {}
 }
 
-export default SetOperationQueue;
+export default SetOperationsQueue;

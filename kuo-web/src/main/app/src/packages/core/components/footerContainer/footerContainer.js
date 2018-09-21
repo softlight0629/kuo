@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import compRegistrar from '@packages/compUtils/compRegistrar';
+import compFactory from '@packages/compUtils/compFactory';
 
 class FooterContainer extends Component {
 
@@ -18,7 +18,7 @@ class FooterContainer extends Component {
   }
 }
 
-compRegistrar.register('mila.components.core.FooterContainer', FooterContainer);
+compFactory.register('mila.components.core.FooterContainer', FooterContainer);
 
 
 export default FooterContainer;

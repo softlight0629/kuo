@@ -27,8 +27,13 @@ function getInstance(siteData) {
 
 function getFullCacheJson() {}
 
+function getFullPagesData(siteData, fullJson) {
+  return fullJson;
+}
+
 export default {
   getInstance,
   getCacheInstance,
   getPointersInstance,
+  getFullPagesData,
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import compRegistrar from '@packages/compUtils/compRegistrar';
+import compFactory from '@packages/compUtils/compFactory';
 
 class MasterPage extends Component {
 
@@ -19,6 +19,6 @@ MasterPage.propTypes = {
 }
 
 
-compRegistrar.register('mila.component.core.MasterPage', MasterPage);
+compFactory.register('mila.components.core.MasterPage', MasterPage);
 
 export default MasterPage;

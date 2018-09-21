@@ -31,7 +31,7 @@ function getPageDataPath(type, pageId, typeKey) {
   return ['pagesData', pageId, 'data', typeKey || getTypeKey(type)];
 }
 
-_.forEach(DATA_TYPES, type => {
+_.forEach(types, type => {
   pointerGeneratorsRegistry.registerPointerType(type, findDataItem.bind(null, type));
 });
 
@@ -56,7 +56,7 @@ const getterFunctions = {
   },
 
   getDesignItem(getItemAtPath, cache, designItemId, pageId) {
-    return this.getItem(getItemAtPath, cahe, types.design, designItemId, pageId);
+    return this.getItem(getItemAtPath, cache, types.design, designItemId, pageId);
   },
 
   getDesignItemsWithPredicate(getItemAtPath, cache, predicate, pageId) {

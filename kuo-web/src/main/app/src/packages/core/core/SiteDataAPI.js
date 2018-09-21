@@ -5,7 +5,7 @@ import DataAccessPointers from '@packages/documentServices/dataAccessLayer/point
 
 // const privates = new SiteDatePrivates();
 
-function createSiteDataAPIAndDal(fullSiteData) {
+function createSiteDataAndDal(fullSiteData) {
   const fullPagesData = DALFactory.getFullPagesData(fullSiteData, _.pick(fullSiteData, 'pagesData'));
   const cache = DALFactory.getCacheInstance(fullSiteData);
   const dalAndPointers = initDalAndPointers(fullSiteData, cache);
@@ -46,10 +46,20 @@ class SiteDataAPI {
     // this.actionQueue = new ActionQueue();
     // this.document = documentDataAPI(srv);
   }
+
+  createDisplayedPage(rootId) {}
+
+  updateDisplayedJsonAfterPageLoaded(rootId) {}
+
+  loadPage() {}
+
+  createDisplayedPages() {}
+
+  getActionQueue() {}
 }
 
 
 
 export default {
-  createSiteDataAPIAndDal,
+  createSiteDataAndDal,
 }

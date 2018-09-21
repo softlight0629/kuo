@@ -19,8 +19,9 @@ import RuntimeCtx from '@packages/runtime/runtimeCtx';
 window.siteAsJson = {
   masterPage: {
     structure: {
+      id:'masterPage',
       type: 'Document',
-      documentType: 'document',
+      componentType: 'mila.components.core.MasterPage',
       children: [
         {
           type: 'Container',
@@ -85,7 +86,12 @@ window.siteAsJson = {
           }
         ],
       }
-    }
+    },
+    data: {
+      document_data: {},
+      design_data: {},
+      component_properties: {},
+    },
   },
   pages: [
     {
@@ -151,6 +157,11 @@ window.siteAsJson = {
           fixedPosition: false,
         },
         componentType: 'mila.components.core.Page',
+      },
+      data: {
+        document_data: {},
+        design_data: {},
+        component_properties: {},
       },
       title: 'HOME',
       pageUriSEO: 'home',

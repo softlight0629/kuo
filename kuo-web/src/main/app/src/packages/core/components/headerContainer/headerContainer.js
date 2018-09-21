@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import compRegistrar from '@packages/compUtils/compRegistrar';
+import compFactory from '@packages/compUtils/compFactory';
 
 class HeaderContainer extends Component {
 
@@ -16,6 +16,6 @@ class HeaderContainer extends Component {
   }
 }
 
-compRegistrar.register('mila.components.core.HeaderContainer', HeaderContainer);
+compFactory.register('mila.components.core.HeaderContainer', HeaderContainer);
 
 export default HeaderContainer;

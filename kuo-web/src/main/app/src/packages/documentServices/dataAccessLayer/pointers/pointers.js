@@ -1,0 +1,2 @@
+import './dataPointers';
+import './componentPointers';

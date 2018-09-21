@@ -15,7 +15,7 @@ function getFullConfig() {
     modules,
     shouldRender: true,
     isReadOnly: false,
-    onUndoe: false,
+    onUndo: false,
   }
 }
 

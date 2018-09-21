@@ -2,9 +2,7 @@
 export default {
 
   VIEW_MODES: {
-
     DESKTOP: 'DESKTOP',
-
     MOBILE: 'MOBILE',
   },
 

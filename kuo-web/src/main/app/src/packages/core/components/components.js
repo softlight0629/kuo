@@ -1,6 +1,4 @@
-// import HeaderContainer from './headerContainer/headerContainer';
-// import FooterContainer from './footerContainer/footerContainer';
-// import MasterPage from './masterPage/masterPage';
+
 import Image from './image/image';
 // import ZoomedImage from './zoomedImage/zoomedImage'
 // import Anchor from './anchor/anchor';
@@ -12,3 +10,15 @@ import Image from './image/image';
 // import Video from './video/video';
 // import SiteButton from './siteButton/siteButton';
 
+
+
+import './headerContainer/headerContainer';
+import './footerContainer/footerContainer';
+import './masterPage/masterPage';
+
+import './headerContainer/model/headerContainer';
+import './footerContainer/model/footerContainer';
+import './masterPage/model/masterPage';
+
+import './page/page';
+import './page/model/page';

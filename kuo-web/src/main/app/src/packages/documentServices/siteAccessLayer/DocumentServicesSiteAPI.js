@@ -6,6 +6,7 @@ const sites = {};
 class DocumentServicesSiteAPI extends DSSiteAPIBase{
 
   constructor(site) {
+    super(site);
     if (!site || !site.props) {
       return;
     }
@@ -29,8 +30,6 @@ class DocumentServicesSiteAPI extends DSSiteAPIBase{
   scrollToComponent() {}
 
   setMobileView() {}
-
-  
 }
 
 export default DocumentServicesSiteAPI;

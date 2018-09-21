@@ -26,6 +26,7 @@ const compFactory = {
     const _compModelClass = compModelClasses[name];
     if (_compModelClass) {
       modelTypeFactory = {
+        componentType: name,
         create: (props) => {
           return new _compModelClass(props);
         }

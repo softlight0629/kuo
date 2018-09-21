@@ -42,7 +42,7 @@ function generate(ps, pageData) {
 // 
 function generateStructure(ps, structure) {
   const pageId = structure.id;
-  const modelType = compFactory.getModelTypeByCompType(structure.componentType);
+  const modelType = compFactory.getModelTypeFactoryByCompType(structure.componentType);
 
   // model 实例化
   const components = structure.components;

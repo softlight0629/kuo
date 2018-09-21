@@ -1,26 +1,23 @@
 import BaseContainerComp from '@packages/components/core/baseContainerComp';
 import Spec from '@packages/components/core/spec';
-import compRegistrar from '@packages/compUtils/compRegistrar';
-
-import DataQuery from './dataQuery';
-import PropQuery from './propQuery';
+import compFactory from '@packages/compUtils/compFactory';
 
 class Column extends BaseContainerComp {
 
   constructor(option) {
     super(option);
 
-    const { spec, dataQuery = {}, propQuery = {} } = option;
+    const { spec, dataQuery, propQuery, designQuery } = option;
     this.id = this.uniqId('comp-');
     this.kind = 'Column';
     this.type = 'Container';
     this.componentType = 'mila.components.Column';
-    this.spec = new Spec(spec);
-    this.dataQuery = new DataQuery(dataQuery);
-    this.propQuery = new PropQuery(propQuery);
+    this.dataQuery = dataQuery;
+    this.designQuery = designQuery;
+    this.propQuery = propQuery;
   }
 }
 
-compRegistrar.register('mila.components.model.Column', Column);
+compFactory.registerCompModel('mila.components.view.Column', Column);
 
 export default Column;

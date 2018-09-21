@@ -79,14 +79,6 @@ class SiteReact extends Component {
     this.siteAPI.onSiteUnmount();
   }
 
-  getDefaultProps() {
-    return {
-      onAfterLayout: _.noop,
-      siteRootPosition: 'static',
-      rootId: 'masterPage',
-    }
-  }
-
   getPrimaryPage() {
     let page = this.getMasterPage();
     if (this.props.rootId === 'masterPage' && page) {
@@ -145,11 +137,18 @@ class SiteReact extends Component {
 
     return (
       <div className={className}>
+        renderr.....
         { this.getSiteChildren() }
       </div>
     )
   }
 }
+
+SiteReact.defaultProps = {
+  onAfterLayout: _.noop,
+  siteRootPosition: 'static',
+  rootId: 'masterPage',
+};
 
 SiteReact.propTypes = {
   rootId: PropTypes.string,

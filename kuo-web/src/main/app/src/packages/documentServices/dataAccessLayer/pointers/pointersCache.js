@@ -66,6 +66,16 @@ class PointersCache {
     }
   }
 
+  getBoundCacheInstance() {
+    return {
+      getAllPointers: this.getAllPointers.bind(this),
+      getPath: this.getPath.bind(this),
+      getPointer: this.getPointer.bind(this),
+      setPath: this.setPath.bind(this),
+      resolveId: this.resolveId.bind(this),
+    }
+  }
+
   getPath(pointer) {
     if (!pointer) {
       return;
@@ -93,6 +103,8 @@ class PointersCache {
 
     return typeCache[id] ? pointer : null;
   }
+
+  getAllPointers() {}
 
   resolveId(id, type) {
     return id;
