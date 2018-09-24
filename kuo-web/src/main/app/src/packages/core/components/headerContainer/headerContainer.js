@@ -3,7 +3,19 @@ import compFactory from '@packages/compUtils/compFactory';
 
 class HeaderContainer extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  isScreenWidth() {
+    return true;
+  }
+
   render() {
+    const { isMobileView, isMobileDevice, structure } = this.props;
+
     return (
       <header className="header_container">
         <div className="hc_screen_bg"></div>
@@ -14,6 +26,9 @@ class HeaderContainer extends Component {
       </header>
     )
   }
+}
+
+HeaderContainer.propTypes = {
 }
 
 compFactory.register('mila.components.core.HeaderContainer', HeaderContainer);

@@ -29,7 +29,7 @@ function getRootProps(siteAPI) {
 
 function createSiteRoot() {
   return (
-    <div className="site_root" id="site_root" style={this.getRootStyle()}>
+    <div className="SITE_ROOT" id="SITE_ROOT" key="SITE_ROOT" style={this.getRootStyle()}>
       { pageReact(getRootProps.call(this, this.siteAPI)) }
     </div>
   )
@@ -106,6 +106,16 @@ class SiteReact extends Component {
     return _.get(this.getPageRefs(page), pageId);
   }
 
+  isPageExists(pageId) {}
+
+  navigateIfPossible() {}
+
+  tryToNavigate() {}
+
+  handleNaviagetion() {}
+
+  reLayout() {}
+
   getRootStyle() {
     const style = {
       width: '100%',
@@ -117,7 +127,6 @@ class SiteReact extends Component {
 
   getSiteChildren() {
     const { siteData } = this.props;
-    console.log(siteData, 'siteData......');
     const siteChildren = isDesktopMode(this.siteAPI) ?
       getDesktopModeSiteChildren.call(this, siteData) :
       getMobileModeChildren.call(this, siteData);
@@ -125,19 +134,17 @@ class SiteReact extends Component {
     return siteChildren;
   }
 
+  scrollTo() {}
+
+  scrollToAnchor() {}
+
+  scrollToTop() {}
 
   render() {
     const siteData = this.props.siteData;
-    // const shouldRenderPage = this.siteAPI.isPageAllowed()
-
-    // if (!shouldRenderPage) {
-    // }
-
-    const className = this.props.className;
 
     return (
       <div className={className}>
-        renderr.....
         { this.getSiteChildren() }
       </div>
     )
@@ -153,10 +160,16 @@ SiteReact.defaultProps = {
 SiteReact.propTypes = {
   rootId: PropTypes.string,
   siteRootPosition: PropTypes.oneOf(['static', 'relative']),
-  siteData: PropTypes.object,
+  siteData: PropTypes.object.isRequired,
   onAfterLayout: PropTypes.func,
   getSiteContainer: PropTypes.func,
   className: PropTypes.string,
+  updateHeadMethod: PropTypes.func,
+  navigateMethod: PropTypes.func,
+  viewerPrivateServices: PropTypes.shape({
+    pointers: PropTypes.object.isRequired,
+    siteDataAPI: PropTypes.object.isRequired,
+  }).isRequired,
 };
 
 export default SiteReact;

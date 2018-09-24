@@ -10,13 +10,25 @@ const hookTypes = {
   PAGE_LOADED: 'page_loaded',
 };
 
-function renderSiteWithData(siteData, props) {
+function renderSiteWithData(siteData, viewerPrivateServices, props) {
 
   return siteReact(_.assign({}, props, {
     siteData,
+    viewerPrivateServices,
     rootId: 'masterPage',
+    navigateMethod: navigateTo,
+    updateHeadMethod,
+    getSiteContainer,
   }));
 }
+
+function updateHeadMethod() {
+}
+
+function updatePageHeadTags() {}
+
+function navigateTo() {}
+
 
 function getSiteContainer() {
   return window;

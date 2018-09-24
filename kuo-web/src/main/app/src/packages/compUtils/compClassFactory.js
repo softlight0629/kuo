@@ -1,7 +1,7 @@
 import React from 'react';
 import CompControl from '@packages/runtime/component/compCtrol';
 import ContainerCompControl from '@packages/runtime/component/containerCompCtrol';
-import compRegistrar from '@packages/compUtils/compRegistrar';
+import compFactory from '@packages/compUtils/compFactory';
 
 // 渲染父组件
 function createComponent(compRef) {
@@ -33,7 +33,7 @@ function createChildComponent(compRef, extraProps = {}) {
 
 // 渲染原子性组件
 function createRRChildComponent(compType, extraProps = {}) {
-  const CompClass = compRegistrar.getComp(compType);
+  const CompClass = compFactory.getComp(compType);
   if (!CompClass) {
     return null;
   }
