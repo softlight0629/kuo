@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import DataAccessLayer from '@packages/documentServices/dataAccessLayer/DataAccessLayer';
-import SetOperationsQueue from '@packages/documentServices/siteAccessLayer/SetOperationsQueue';
+// import SetOperationsQueue from '@packages/documentServices/siteAccessLayer/SetOperationsQueue';
 import DocumentServicesSiteAPI from '@packages/documentServices/siteAccessLayer/DocumentServicesSiteAPI';
 
 
@@ -19,7 +19,7 @@ class PrivateDocumentServices {
 
   initiateSiteAPI(renderedSite) {
     this.siteAPI = new DocumentServicesSiteAPI(renderedSite);
-    this.setOperationsQueue = new SetOperationsQueue(this);
+    // this.setOperationsQueue = new SetOperationsQueue(this);
   }
 }
 

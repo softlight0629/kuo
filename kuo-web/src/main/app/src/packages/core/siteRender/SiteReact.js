@@ -28,6 +28,7 @@ function getRootProps(siteAPI) {
 }
 
 function createSiteRoot() {
+  // 创建 MasterPage
   return (
     <div className="SITE_ROOT" id="SITE_ROOT" key="SITE_ROOT" style={this.getRootStyle()}>
       { pageReact(getRootProps.call(this, this.siteAPI)) }
@@ -75,8 +76,6 @@ class SiteReact extends Component {
   componentDidUpdate() {}
 
   componentWillUnmount() {
-    this.dead = true;
-    this.siteAPI.onSiteUnmount();
   }
 
   getPrimaryPage() {

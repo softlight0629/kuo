@@ -18,9 +18,6 @@ function runDocumentServicesDataFixersAndInitMethods() {
 function initModulesPublicAPI(ps, config, documentServices) {
   const methods = getConfigurationMethods(config);
   const publicNamespaces = {};
-
-  // function getPublicMethodsByNamespaceWithLazyInit(namespace) {
-  // }
 }
 
 function onApplyPatchDone(ps, config, documentServices, siteDataWrapper, siteUtils) {
@@ -44,14 +41,6 @@ class Site {
   // buildRenderedSite, 调用回调来构造 SiteReact, 然后传递一个 callback
   constructor(config, siteDataWrapper, siteModel, buildRenderedSite) {
     const ps = new PrivateServices(config, siteDataWrapper);
-    this.ps = ps;
-
-    const siteUtils = {};
-
-    if (buildRenderedSite) {
-      siteUtils.buildRenderedSite = buildRenderedSite.bind(this);
-    }
-
     initModulesPublicAPI(ps, config, this);
 
     onApplyPatchDone(ps, config, this, siteDataWrapper, siteUtils);

@@ -6,11 +6,10 @@ import compFactory from '@packages/compUtils/compFactory';
 class MasterPage extends Component {
 
   render() {
-    const {id, isPreviewMode, isMobileView } = this.props;
+    const siteData = this.props.ps.getSiteData();
 
     return (
       <div id="masterPage" rootId="masterPage" style={{ top: 0, width: '100%' }}>
-        { }
       </div>
     )
   }

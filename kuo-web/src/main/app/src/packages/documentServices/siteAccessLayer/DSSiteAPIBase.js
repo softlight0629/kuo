@@ -38,9 +38,6 @@ class DSSiteAPIBase {
   getPrimaryPageId() {}
 
   isPageLandingPage() {}
-
-
-
 }
 
 export default DSSiteAPIBase;
