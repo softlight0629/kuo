@@ -17,6 +17,5 @@ export default {
     if (type === COMPONENT_POINTER_TYPE) {
       return ['structure', id];
     }
-    
   }
 }

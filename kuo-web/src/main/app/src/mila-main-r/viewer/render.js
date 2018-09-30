@@ -17,7 +17,6 @@ export default (window) => {
     }
 
     function buildRenderedSite() {
-      console.log('call me.......');
     }
 
     function getConfig() {

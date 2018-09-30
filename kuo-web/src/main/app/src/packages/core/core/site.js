@@ -54,6 +54,7 @@ function createSitePrivates(siteModel, props) {
   }
 
   siteModel.renderFlags = _.assign({}, siteModel.renderFlags, renderOptions);
+  // 创建 dalCache 实例, 初始化 dalCache 可以拿到  site 快照数据
   const fullSiteData = new FullSiteData(siteModel);
   const siteDataWrapper = SiteDataAPI.createSiteDataAndDal(fullSiteData, props);
   const siteDataAPI = siteDataWrapper.siteDataAPI;

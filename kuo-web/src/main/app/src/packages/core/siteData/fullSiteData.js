@@ -16,10 +16,9 @@ class FullSiteData extends SiteData{
     }
 
     const dalCache = DALFactory.getInstance(this, { pagesData: siteModel.pagesData || {} });
-    // json -> mobx model 实例
 
     _.forEach(this.pagesData, pageData => {
-      const pageDataSchema = DALCacheGenerator.generate({
+      DALCacheGenerator.generate({
         dalCache,
         pointersCache: dalCache.pointersCache,
       }, pageData);

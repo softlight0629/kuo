@@ -3,8 +3,8 @@ import constants from './constants/constants';
 import fullFunctionalityConfig from './privateServices/fullFunctionalityConfig';
 
 export default {
-  Site,
-  constants,
+  // Site,
+  // constants,
   configs: {
     fullFunctionality: fullFunctionalityConfig,
   },

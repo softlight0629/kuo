@@ -1,19 +1,28 @@
 import * as _ from 'lodash';
 
-const _privates = {};
+let counter = 0;
 
 class SiteDataPrivates {
 
+  constructor() {
+    this.name = `_private_${counter}`;
+    counter++;
+  }
+
   set(key, value) {
-    _privates[key] = value;
+    key[this.name] = value;
   }
 
   get(key) {
-    return _privates[key];
+    return key[this.name]
+  }
+
+  delete(key) {
+    delete key[this.name];
   }
 
   has(key) {
-    return _.has(_privates, key);
+    return _.has(key, this.name);
   }
 
 }
