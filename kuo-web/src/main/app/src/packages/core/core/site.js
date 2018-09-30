@@ -10,11 +10,12 @@ const hookTypes = {
   PAGE_LOADED: 'page_loaded',
 };
 
-function renderSiteWithData(siteData, viewerPrivateServices, props) {
+function renderSiteWithData(documentServices, siteData, viewerPrivateServices, props) {
 
   return siteReact(_.assign({}, props, {
     siteData,
-    viewerPrivateServices,
+    ps: viewerPrivateServices,
+    ds: documentServices,
     rootId: 'masterPage',
     navigateMethod: navigateTo,
     updateHeadMethod,
@@ -34,8 +35,8 @@ function getSiteContainer() {
   return window;
 }
 
-function renderSite(siteData, props) {
-  return renderSiteWithData(siteData, props);
+function renderSite(documentServices, siteData, props) {
+  return renderSiteWithData(documentServices, siteData, props);
 }
 
 function createSitePrivates(siteModel, props) {
@@ -59,16 +60,16 @@ function createSitePrivates(siteModel, props) {
   const siteDataWrapper = SiteDataAPI.createSiteDataAndDal(fullSiteData, props);
   const siteDataAPI = siteDataWrapper.siteDataAPI;
 
-  const viewerPrivateServices = {
+  const privateServices = {
     pointers: siteDataWrapper.pointers,
-    dal: siteDataWrapper.dal,
+    dalCache: siteDataWrapper.dalCache,
     siteDataAPI,
   }
 
   return {
     fullSiteData,
     siteDataWrapper,
-    viewerPrivateServices,
+    ps: privateServices,
     siteDataAPI,
     siteModel,
   }

@@ -31,10 +31,9 @@ export default (window) => {
       const config = getConfig();
       // 构造 dal 层
       // 构造 documentServices -> 需要能拿到 dal 层的数据
-      window.documentServices = new Site(config, siteDataWrapper, siteModel, buildRenderedSite);
-
+      const documentServices = new Site(config, siteDataWrapper, siteModel, buildRenderedSite);
       // 这边应该是哪到底层的数据去渲染整个SITE，因为 siteData 应该已经 mobx, React 这边要对这些数据做出反应
-      return site.renderSite(siteDataWrapper.siteData);
+      return site.renderSite(documentServices, siteDataWrapper.siteData);
     }
    
     function callRender() {
