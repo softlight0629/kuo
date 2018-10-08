@@ -87,10 +87,10 @@ function handleColorAlphaProp(value, paramName, paramsDefaults, styleData) {
 }
 
 function getCssUnits(cssValue) {
-  const numericValue = _.parseInt(cssValue).toString();
+  const numbericValue = _.parseInt(cssValue).toString();
   cssValue = cssValue.toString();
 
-  if (isNaN(numericValue) || cssValue === numericValue) {
+  if (isNaN(numbericValue) || cssValue === numbericValue) {
     return '';
   }
 
@@ -146,7 +146,7 @@ function renderParam(paramName, skinData, styleData, colors) {
         paramValue = limitBorderRadius(paramValue);
       }
       break;
-    case: 'BOX_SHADOW':
+    case 'BOX_SHADOW':
       if (isBoxShadowOff(paramName, styleData, skinData.paramsDefaults)) {
         return '';
       }

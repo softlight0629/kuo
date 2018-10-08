@@ -43,3 +43,5 @@ function getAPI(sitePrivates) {
 
   return api;
 }
+
+export default getAPI;

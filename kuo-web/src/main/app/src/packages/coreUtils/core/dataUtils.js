@@ -67,7 +67,7 @@ function findCompInStructure(compStructure, isMobile, predicate) {
 }
 
 export default {
-  getChidrenData,
+  getChidrenData: getChildrenData,
   getChildrenKey,
   isMobileStructureExist,
   findHierarchyInStructure,

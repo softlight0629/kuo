@@ -190,13 +190,13 @@ const createFontUtils = fontsMetadata => {
     }
 
     function collectFontsFromTextDataArray(textHtml) {
-        const doc = new fragment.DOMParser().parseFromString(textHtml, 'text/html')
-        return _(doc.querySelectorAll('*'))
-            .toArray()
-            .map(el => _.get(el, ['style', 'font-family']))
-            .compact()
-            .invokeMap('trim')
-            .value()
+        // const doc = new fragment.DOMParser().parseFromString(textHtml, 'text/html')
+        // return _(doc.querySelectorAll('*'))
+        //     .toArray()
+        //     .map(el => _.get(el, ['style', 'font-family']))
+        //     .compact()
+        //     .invokeMap('trim')
+        //     .value()
     }
 
     function isUploadedFontFamily(fontFamilyStr) {
@@ -285,3 +285,5 @@ url("${mediaRootUrl}ufonts/${fontId}/ttf/file.ttf") format("ttf");
         getShortUploadedFontFamily
     }
 }
+
+export default createFontUtils;

@@ -54,7 +54,7 @@ export default {
   getUniqueStructure,
   getOriginalStructure,
   isDisplayedComponent,
-  getIemId,
+  getItemId,
   getUniqueDisplayedId,
   getOriginalId,
 }

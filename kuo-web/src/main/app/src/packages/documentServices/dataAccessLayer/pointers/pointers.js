@@ -12,7 +12,6 @@ const DATA_POINTTER_TYPES = _.mapValues(DATA_MAPS, (v, type) => type);
 const createTypedPointer = type => id => ({ id: id.replace('#', ''), type});
 
 export default {
-
   getPath: ({id, type}) => {
     if (type === COMPONENT_POINTER_TYPE) {
       return ['structure', id];

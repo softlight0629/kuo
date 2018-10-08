@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import React from 'react';
-import { createSkinCss: createCss } from '@packages/core/runtime/skinUtils';
+import skinUtils from '@packages/core/runtime/skinUtils';
+import createReactElement from '@packages/coreUtils/core/createReactElement';
 // react, params, paramsDefaults,  css 
 // dom 结构， 定义可修改的参数，参数的默认值， css 样式定义 
 // 最终结果，渲染好dom, 创建好 css 规则，应用到 dom 树
@@ -11,7 +12,7 @@ import { createSkinCss: createCss } from '@packages/core/runtime/skinUtils';
 const TAG_INDEX = 0;
 const REF_INDEX = 1;
 const CLASS_INDEX = 2;
-const POPS_INDEX = 3;
+const PROPS_INDEX = 3;
 const CHILDREN_START = PROPS_INDEX + 1;
 
 function scopeClassNames(classes, styleName) {}
@@ -53,7 +54,7 @@ function renderSkinHtmlWithPlugins(skinTree, refData, styleName, rootId) {
       _.forEach(skinPart, (val, property) => {
         switch(property) {
           case 'parentConst':
-            parentConstructor = val,
+            parentConstructor = val;
             break;
           case 'children':
             children = val;
@@ -137,7 +138,7 @@ function createSkinCss(skinData, styleProps, themeData, styleId, mobileData) {
   // }
 
   const pickedTheme = _.pick(themeData, ['color', 'font']);
-  let skinCss = createCss(skinData, styleProps, pickedTheme, styleId, skinRenderingConfig);
+  let skinCss = skinUtils.createCss(skinData, styleProps, pickedTheme, styleId, skinRenderingConfig);
 
   return skinCss;
 }

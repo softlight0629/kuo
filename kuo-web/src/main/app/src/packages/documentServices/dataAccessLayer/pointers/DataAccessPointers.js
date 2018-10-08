@@ -1,11 +1,11 @@
 import * as _ from 'lodash';
-import pointerGeneratorsRegistry from './pointers/pointerGeneratorsRegistry';
+import pointerGeneratorsRegistry from '../pointers/pointerGeneratorsRegistry';
 
-function addFunctionsToNameSpace(namespace, pointersCache) {
+function addFunctionsToNameSpace(pointersCache) {
   const pointersGenerators =  pointerGeneratorsRegistry.getPointersGenerators();
 
   _.forEach(pointersGenerators, (functions, name) => {
-    namespace[name] = _.mapValues(funtions, func => {
+    this[name] = _.mapValues(functions, func => {
       return func.bind(functions, pointersCache.getItemInPath);
     });
   });

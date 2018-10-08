@@ -15,7 +15,7 @@ class FullSiteData extends SiteData{
       return;
     }
 
-    const dalCache = DALFactory.getInstance(this, { pagesData: siteModel.pagesData || {} });
+    const dalCache = DALFactory.getDalCacheInstance(this, { pagesData: siteModel.pagesData || {} });
 
     _.forEach(this.pagesData, pageData => {
       DALCacheGenerator.generate({

@@ -88,6 +88,17 @@ function handleCalcWithParams(skinCssValue, skinData, styleProps, themeData, opt
 })
 }
 
+function handleParams(skinCssValue, skinData, styleProps, themeData, options) {
+  return skinCssValue.replace(/\[(.*?)\]/g, (full, prop) => {
+      const param = params.renderParam(prop, skinData, styleProps, themeData.color, options.evals)
+      return paramValueToCss(param.value, param.type, themeData, options)
+  })
+}
+
+function handleAnimationReferences(cssVal, styleId) {
+  return cssVal.replace(/((-webkit-)?animation(-name)?: ?)/mgi, `$1${styleId}_`)
+}
+
 function renderSkinCssRules(skinData, styleProps, themeData, styleId) {
   return _.map(skinData.css, (cssVal, cssSelector) => {
     const prefix = cssSelector[0] === '@' ? `${styleId}_` : `.${styleId}`;

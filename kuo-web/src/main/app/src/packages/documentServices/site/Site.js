@@ -3,21 +3,27 @@ import PrivateServices from '@packages/documentServices/privateServices/privateS
 
 function getConfigurationMethods(config) {
   const methods = {};
-  const modulesMethods = _.chain(config.modules)
-    .map('methods')
-    .clone();
+  const modules = _.values(config.modules);
+
+  const modulesMethods = _.map(modules, 'methods');
   modulesMethods.unshift(methods);
   _.merge.apply(_, modulesMethods);
+
   return methods;
+}
+
+function initModulesPublicAPI(ps, config, documentServices) {
+  const methods = getConfigurationMethods(config);
+
+  _.forEach(methods, (value, key) => {
+    documentServices[key] = value;
+  });
 }
  
 class Site {
  
   constructor(config, siteDataWrapper, siteModel, buildRenderedSite) {
     const ps = new PrivateServices(config, siteDataWrapper);
-    this.ps = ps;
-
-    // document service 模块挂载到 Site
     initModulesPublicAPI(ps, config, this);
   }
 }

@@ -143,7 +143,8 @@ class SiteReact extends Component {
     const siteData = this.props.siteData;
 
     return (
-      <div className={className}>
+      <div>
+        siteReact...
         { this.getSiteChildren() }
       </div>
     )
@@ -159,7 +160,7 @@ SiteReact.defaultProps = {
 SiteReact.propTypes = {
   rootId: PropTypes.string,
   siteRootPosition: PropTypes.oneOf(['static', 'relative']),
-  siteData: PropTypes.object.isRequired,
+  siteData: PropTypes.object,
   onAfterLayout: PropTypes.func,
   getSiteContainer: PropTypes.func,
   className: PropTypes.string,
@@ -168,7 +169,7 @@ SiteReact.propTypes = {
   viewerPrivateServices: PropTypes.shape({
     pointers: PropTypes.object.isRequired,
     siteDataAPI: PropTypes.object.isRequired,
-  }).isRequired,
+  }),
 };
 
 export default SiteReact;

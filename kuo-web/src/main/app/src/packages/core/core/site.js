@@ -71,6 +71,7 @@ function createSitePrivates(siteModel, props) {
     siteDataWrapper,
     ps: privateServices,
     siteDataAPI,
+    siteData: siteDataAPI.siteData,
     siteModel,
   }
 }

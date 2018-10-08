@@ -95,6 +95,7 @@ class PointersCache {
       id,
       type,
     };
+
     if (path) {
       if (!isEqualPath(typeCache[id], path)) {
         typeCache[id] = path;

@@ -228,6 +228,8 @@ class SiteData {
     return this.getter(['screenSize']);
   }
 
+  getViewMode() {}
+
   // called from layout.js during measure
   updateScreenSize(screesSize) { }
 

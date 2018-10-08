@@ -41,6 +41,6 @@ function fontToCSSWithoutColor(fontString, themeData) {
 }
 
 export default {
-  fontToCssWithoutColor,
+  fontToCssWithoutColor: fontToCSSWithoutColor,
   getFullFontFamily,
 }

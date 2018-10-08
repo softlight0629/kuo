@@ -5,7 +5,7 @@ import DataAccessPointers from '@packages/documentServices/dataAccessLayer/point
 import documentDataAPI from '@packages/core/core/data/apiSections/documentDataAPI';
 import SiteDataPrivates from '@packages/documentServices/dataAccessLayer/SiteDataPrivates';
 
-const privates = new SiteDatePrivates();
+const privates = new SiteDataPrivates();
 
 function createSiteDataAndDal(fullSiteData) {
   const fullPagesData = DALFactory.getFullPagesData(fullSiteData, _.pick(fullSiteData, 'pagesData'));
