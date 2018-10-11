@@ -5,11 +5,11 @@ class PropsResolver extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-    context.onRenderStart(props.id);
+    // context.onRenderStart(props.id);
   }
 
   render() {
-    const componentType = this.context.componentsModelAspect.getStructure(this.props.id, 'componentType');
+    const componentType = this.context.componentsModelAspect.getStructureProperty(this.props.id, 'componentType');
     const CompClass = this.context.getCompClass(componentType);
 
     if (!CompClass) {

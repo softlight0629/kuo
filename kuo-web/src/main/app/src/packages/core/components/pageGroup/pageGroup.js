@@ -5,7 +5,7 @@ class PageGroup extends Component {
 
   render() {
     return (
-
+      <div>PageGroup</div>
     )
   }
 }

@@ -1,12 +1,12 @@
 import * as _ from 'lodash';
 import pointerGeneratorsRegistry from '../pointers/pointerGeneratorsRegistry';
 
-function addFunctionsToNameSpace(pointersCache) {
+function addFunctionsToNameSpace(pointersCache, boundedCache) {
   const pointersGenerators =  pointerGeneratorsRegistry.getPointersGenerators();
 
   _.forEach(pointersGenerators, (functions, name) => {
     this[name] = _.mapValues(functions, func => {
-      return func.bind(functions, pointersCache.getItemInPath);
+      return func.bind(functions, pointersCache.getItemInPath, boundedCache);
     });
   });
 
@@ -16,7 +16,8 @@ function addFunctionsToNameSpace(pointersCache) {
 class DataAccessPointers {
 
   constructor(pointersCache) {
-    addFunctionsToNameSpace.call(this, pointersCache);
+    const boundedCache = pointersCache.getBoundCacheInstance(false);
+    addFunctionsToNameSpace.call(this, pointersCache, boundedCache);
   }
 }
 

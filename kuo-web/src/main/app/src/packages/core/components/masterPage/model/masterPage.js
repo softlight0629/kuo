@@ -3,7 +3,7 @@ import compFactory from '@packages/compUtils/compFactory';
 class MasterPage {
 
   constructor(option) {
-    this.id = option.id;
+    Object.assign(this, option);    
   }
 }
 

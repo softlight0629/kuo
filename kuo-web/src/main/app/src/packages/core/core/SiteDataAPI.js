@@ -39,7 +39,7 @@ function createPrivatesForSite(fullSiteData, dalAndPointers, pointersCache, full
   // privatesForSite.fullPagesData = fullPagesData;
   privatesForSite.siteData = fullSiteData;
   // 初始化 pagesData
-  privatesForSite.dalCache.setByPath(['pagesData'], {});
+  // privatesForSite.dalCache.setByPath(['pagesData'], {});
 
   // 构造 siteDataAPI
   privatesForSite.siteDataAPI = new SiteDataAPI(privatesForSite, props && props.eventsManager);

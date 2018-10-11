@@ -16,10 +16,10 @@ function getRootProps(siteAPI) {
     layout: { position: this.props.siteRootPosition },
     componentType: 'mila.components.core.MasterPage',
   });
+
   props.ref = this.props.rootId;
   props.refInParent = props.ref;
-  props.className = 'site_root';
-  props.firstPage = true;
+  props.className = 'SITE_ROOT';
   props.style = {
     width: '100%',
   }
@@ -62,7 +62,6 @@ class SiteReact extends Component {
   constructor(props) {
     super(props);
 
-    // this.onAfterLayout = _.once(this.props.onAfterLayout);
     this.siteAPI = new SiteAPI(this);
     this.siteIsReady = false;
     this.siteIsFullyRendered = false;
@@ -144,7 +143,6 @@ class SiteReact extends Component {
 
     return (
       <div>
-        siteReact...
         { this.getSiteChildren() }
       </div>
     )

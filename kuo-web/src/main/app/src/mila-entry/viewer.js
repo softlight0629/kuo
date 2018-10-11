@@ -71,7 +71,7 @@ window.siteAsJson = {
             rotationInDegrees: 0.0,
             fixedPosition: false,
           },
-          componentType: 'mila.components.FooterContainer',
+          componentType: 'mila.components.core.FooterContainer',
         },
       ],
       layout: {

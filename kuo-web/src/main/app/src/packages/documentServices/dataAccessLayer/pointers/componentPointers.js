@@ -21,6 +21,8 @@ function findComponent(currentRootIds, getItemAtPath, pointer) {}
 pointerGeneratorsRegistry.registerPointerType(constants.VIEW_MODES.DESKTOP, findComponent);
 pointerGeneratorsRegistry.registerPointerType(constants.VIEW_MODES.MOBILE, findComponent);
 
+const masterPageId = 'masterPage';
+
 const getterFunctions = {
   getMobilePointer() {},
 
@@ -50,9 +52,22 @@ const getterFunctions = {
 
   getComponent() {},
 
-  getMasterPage() {},
+  getMasterPage(getItemAtPath, cache) {
+    return this.getPage(getItemAtPath, cache, masterPageId);
+  },
 
-  getPage() {},
+  getPage(getItemAtPath, cache, id, viewMode) {
+    let pointer = cache.getPointer(id, viewMode);
+    if (!pointer) {
+      const path = getPagePath(id, viewMode);
+      const page = getItemAtPath(path);
+      if (!page) {
+        return null;
+      }
+      pointer = cache.getPointer(id, viewMode, path);
+    }
+    return pointer;
+  },
 
   getNewPage() {},
 

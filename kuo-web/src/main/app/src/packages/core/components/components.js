@@ -12,13 +12,22 @@ import Image from './image/image';
 
 
 
-import './headerContainer/headerContainer';
-import './footerContainer/footerContainer';
-import './masterPage/masterPage';
 
-import './headerContainer/model/headerContainer';
-import './footerContainer/model/footerContainer';
+
+
+import './masterPage/masterPage';
 import './masterPage/model/masterPage';
+
+import './headerContainer/headerContainer';
+import './headerContainer/model/headerContainer';
+
+import './footerContainer/footerContainer';
+import './footerContainer/model/footerContainer';
+
 
 import './page/page';
 import './page/model/page';
+
+
+import './pagesContainer/pagesContainer';
+import './pagesContainer/model/pagesContainer';

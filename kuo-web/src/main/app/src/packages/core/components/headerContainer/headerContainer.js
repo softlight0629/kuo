@@ -41,7 +41,7 @@ class HeaderContainer extends Component {
         style: this.props.defaultBackgroundStyle,
       },
       inlineContent: {
-        children: this.getChildenRenderer({ contentArea: this.props.defaultContentArea})
+        // children: this.getChildenRenderer({ contentArea: this.props.defaultContentArea})
       }
     }
   }

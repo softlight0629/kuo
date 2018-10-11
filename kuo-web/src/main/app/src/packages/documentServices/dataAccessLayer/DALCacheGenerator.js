@@ -45,7 +45,7 @@ function generateStructure(ps, structure) {
   const modelType = compFactory.getModelTypeFactoryByCompType(structure.componentType);
 
   // model 实例化
-  const components = structure.components;
+  const components = structure.components || structure.children;
   const instance = modelType.create(_.assign({}, structure, { components: _.map(components, component => component.id) }));
 
   // component 实例化

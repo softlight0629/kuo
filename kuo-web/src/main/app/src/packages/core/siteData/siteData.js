@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import warmupUtilsLib from '@packages/coreUtils/core/warmupUtilsLib';
 import MobileDeviceAnalyzer from './MobileDeviceAnalyzer';
 import DALFactory from '@packages/documentServices/dataAccessLayer/dal/DALFactory';
+import constants from '@packages/core/constants/constants';
 
 const MASTER_PAGE_ID = 'masterPage';
 
@@ -228,7 +229,9 @@ class SiteData {
     return this.getter(['screenSize']);
   }
 
-  getViewMode() {}
+  getViewMode() {
+    return this.isMobileView() ? constants.VIEW_MODES.MOBILE : constants.VIEW_MODES.DESKTOP;
+  }
 
   // called from layout.js during measure
   updateScreenSize(screesSize) { }

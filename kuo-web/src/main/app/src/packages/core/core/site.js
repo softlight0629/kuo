@@ -10,13 +10,20 @@ const hookTypes = {
   PAGE_LOADED: 'page_loaded',
 };
 
-function renderSiteWithData(documentServices, siteData, viewerPrivateServices, props) {
+function renderSiteWithData(documentServices, siteDataWrapper) {
 
-  return siteReact(_.assign({}, props, {
-    siteData,
-    ps: viewerPrivateServices,
-    ds: documentServices,
+  // site react 通过 siteData 来做整站的渲染
+  return siteReact(_.assign({}, {
+    // 站点数据快照API
+    siteData: siteDataWrapper.siteData,  // 底层全部共享 dal 层. dal 层描述了 整个 site 的数据接口, 数据流动
+    // 远程数据加载操作接口
+    siteDataAPI: siteDataWrapper.siteDataAPI,
+    // Site Render Private 操作
+    ps: siteDataWrapper.ps,
+    // 给 editor 提供的 API 接口
+    // ds: documentServices,
     rootId: 'masterPage',
+    
     navigateMethod: navigateTo,
     updateHeadMethod,
     getSiteContainer,

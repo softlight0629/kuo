@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import MasterPage from './MasterPage';
 
-import './index.less';
+// import './index.less';
 import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router';
 import { SketchPicker } from 'react-color';

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as _ from 'lodash';
 import compFactory from '@packages/compUtils/compFactory';
 
 function getReactConstructor(componentType) {
@@ -34,16 +35,12 @@ class PageReact extends Component {
   }
 
   render() {
-    const props = {
+    const reactConstrcutor = getReactConstructor(this.props.componentType);
+    this.renderedPage = reactConstrcutor(_.assign({
       id: this.props.rootId,
       key: this.props.rootId,
-      'data-ref': this.props.rootId,
       rootId: this.props.rootId,
-      compRef: comp => { this._comp = comp },
-    };
-
-    const reactConstrcutor = getReactConstructor(this.props.componentType);
-    this.renderedPage = reactConstrcutor(props);
+    }, this.props));
 
     return this.renderedPage;
   }

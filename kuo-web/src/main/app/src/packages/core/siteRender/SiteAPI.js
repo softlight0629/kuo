@@ -13,6 +13,18 @@ class SiteAPI {
     return this._site.props.siteData;
   }
 
+  getPointersCache() {
+    return this._site.props.ps.pointersCache;
+  }
+
+  getPointers() {
+    return this._site.props.ps.pointers;
+  }
+
+  getDalCache() {
+    return this._site.props.ps.dalCache;
+  }
+
   getLoadedStyles() {
     return this._site.loadedStyles;
   }
@@ -40,6 +52,8 @@ class SiteAPI {
   getComponentsByPageId(rootId) {
     return this._site.getComponentsByPageId(rootId);
   }
+
+  getPageData() {}
 
   getComponentFocusedPage() {}
 
