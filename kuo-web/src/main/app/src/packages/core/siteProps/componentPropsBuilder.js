@@ -1,6 +1,6 @@
 import propsBuilderUtil from './propsBuilderUtil';
 
-function getRootProps(compClass, rootId, siteAPI) {
+function getRootProps(compClass, rootId, siteAPI, ps) {
   const siteData = siteAPI.getSiteData();
   const pointers = siteAPI.getPointers();
 
@@ -18,6 +18,7 @@ function getRootProps(compClass, rootId, siteAPI) {
     id: rootId,
     key: `${rootId}`,
     pageId: rootId,
+    ps,
     styleId: propsBuilderUtil.getStyleId(styleId, skin),
     skin: propsBuilderUtil.getSkin(styleId, skin),
     style: {

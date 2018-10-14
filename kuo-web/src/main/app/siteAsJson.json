@@ -28,7 +28,7 @@
 					"connectionQuery": "connection-jjm9niqo",
 					"componentType": "wysiwyg.viewer.components.Grid"
 				}],
-				"skin": "wysiwyg.viewer.skins.screenwidthcontainer.TransparentScreen",
+				"skin": "wysiwyg.viewer.skins.screenwidthcontainer.DefaultScreen",
 				"layout": {
 					"width": 980,
 					"height": 356,

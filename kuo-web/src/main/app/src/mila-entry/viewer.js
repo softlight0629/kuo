@@ -28,7 +28,7 @@ window.siteAsJson = {
           id: 'SITE_HEADER',
           components: [
           ],
-          skin: 'mila.viewer.skins.screenwidthcontainer.TransparentScreen',
+          skin: 'mila.viewer.skins.screenwidthcontainer.DefaultScreen',
           layout: {
             width: 980,
             height: 356,

@@ -19,12 +19,16 @@ function initModulesPublicAPI(ps, config, documentServices) {
     documentServices[key] = value;
   });
 }
- 
+
 class Site {
  
   constructor(config, siteDataWrapper, siteModel, buildRenderedSite) {
-    const ps = new PrivateServices(config, siteDataWrapper);
+    this.ps = new PrivateServices(config, siteDataWrapper);
     initModulesPublicAPI(ps, config, this);
+  }
+
+  init(renderedSite) {
+    this.ps.initiateSiteAPI(renderedSite);
   }
 }
 

@@ -10,7 +10,7 @@ import SiteAPI from '@packages/core/siteRender/SiteAPI';
 const pageReact = React.createFactory(PageReactClass);
 
 function getRootProps(siteAPI) {
-  const props = componentPropsBuilder.getRootProps(PageReactClass, this.props.rootId, siteAPI);
+  const props = componentPropsBuilder.getRootProps(PageReactClass, this.props.rootId, siteAPI, this.props.ps);
   props.structure = _.merge({}, props.structure, {
     id: 'masterPage',
     layout: { position: this.props.siteRootPosition },

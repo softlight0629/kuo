@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import SiteReactClass from '@packages/core/siteRender/SiteReact';
 import FullSiteData from '@packages/core/siteData/fullSiteData';
 import SiteDataAPI from '@packages/core/core/SiteDataAPI';
+import PrivateDocumentServices from '@packages/documentServices/privateServices';
 
 const siteReact = React.createFactory(SiteReactClass);
 const hookTypes = {
@@ -23,27 +24,26 @@ function renderSiteWithData(documentServices, siteDataWrapper) {
     // 给 editor 提供的 API 接口
     // ds: documentServices,
     rootId: 'masterPage',
-    
     navigateMethod: navigateTo,
     updateHeadMethod,
     getSiteContainer,
   }));
 }
 
-function updateHeadMethod() {
-}
+function updateHeadMethod() {}
 
 function updatePageHeadTags() {}
 
 function navigateTo() {}
-
 
 function getSiteContainer() {
   return window;
 }
 
 function renderSite(documentServices, siteData, props) {
-  return renderSiteWithData(documentServices, siteData, props);
+  const _site = renderSiteWithData(documentServices, siteData, props);
+  
+  return _site;
 }
 
 function createSitePrivates(siteModel, props) {
@@ -70,6 +70,7 @@ function createSitePrivates(siteModel, props) {
   const privateServices = {
     pointers: siteDataWrapper.pointers,
     dalCache: siteDataWrapper.dalCache,
+    pointersCache: siteDataWrapper.pointersCache,
     siteDataAPI,
   }
 

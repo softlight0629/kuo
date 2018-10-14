@@ -25,7 +25,6 @@ function create(editorAPI) {
         if (!payload) {
           return;
         }
-
         const fileInfo = _.head(payload);
         // const { width, height } = fileInfo;
         // const payload = {
