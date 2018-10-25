@@ -1,8 +1,13 @@
 import * as _ from 'lodash';
 
+const privatesMap  = new WeakMap();
+
 class SiteAPI {
   constructor(site) {
     this._site = site;
+
+    const fetchers = milaProps.fetchers.get(this);
+    privatesMap.set(this, {fetchers});
   }
 
   setSite(site) {
@@ -51,6 +56,12 @@ class SiteAPI {
 
   getComponentsByPageId(rootId) {
     return this._site.getComponentsByPageId(rootId);
+  }
+
+  getMilaFetcher(milaTypeDefinition) {
+    const fetchers = privatesMap.get(this).fetchers;
+
+    return _.get(fetchers, milaTypeDefinition.id);
   }
 
   getPageData() {}

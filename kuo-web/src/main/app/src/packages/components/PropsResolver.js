@@ -18,7 +18,7 @@ class PropsResolver extends React.Component {
       return (<div id={this.props.id}></div>)
     }
 
-    const structure = this.context.getStructure(this.props.id);
+    // const structure = this.context.getStructure(this.props.id);/s
 
     // 构造组件的 props
     // const nextProps = createCompProps(this.props);

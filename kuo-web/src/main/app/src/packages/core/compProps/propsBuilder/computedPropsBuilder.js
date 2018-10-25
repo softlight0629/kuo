@@ -21,7 +21,7 @@ function createComputedFromMilaTypeDefinition(milaTypeDefinition, state, props, 
 
     const globalComputed = mobx.computed(function () {
       try {
-
+        return state.fetchMilaType(milaTypeDefinition, state, _.omit(props, ['structure']));
       } catch (e) {
         console.log(e);
       }
